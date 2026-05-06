@@ -1,0 +1,243 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CoversGallery from '../components/CoversGallery.astro';
+import { getCollection } from 'astro:content';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import matter from 'gray-matter';
+import bookOrder from '../data/book-order.json';
+import newsRaw from '../data/news.md?raw';
+import matter from 'gray-matter';
+
+const news = matter(newsRaw).data as {
+  visible: boolean;
+  text?: string;
+  links?: { label: string; url: string }[];
+};
+
+// Книги из коллекции (только видимые в галерее)
+const allBooks = await getCollection('books');
+const visibleBooks = allBooks.filter(b => !b.data.series || (b.data.books && b.data.books.length > 0));
+const orderedBooks = [...visibleBooks].sort((a, b) => {
+  const ia = (bookOrder as string[]).indexOf(a.slug);
+  const ib = (bookOrder as string[]).indexOf(b.slug);
+  return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+});
+const covers = orderedBooks.map(b => ({
+  slug: b.slug,
+  title: b.data.title,
+  src: `/images/${b.data.cover}`,
+  description: b.data.shortDescription,
+  marketplace: b.data.marketplace,
+  links: b.data.links?.length ? b.data.links : (b.data.seriesLinks ?? []),
+}));
+
+// links.md
+const linksRaw = readFileSync(join(process.cwd(), 'src/data/links.md'), 'utf-8');
+const { data: links } = matter(linksRaw);
+
+// telegram.md
+const tgRaw = readFileSync(join(process.cwd(), 'src/data/telegram.md'), 'utf-8');
+const { data: tg } = matter(tgRaw);
+
+const platformIcons: Record<string, string> = {
+  'ЛитРес': '<rect x="2" y="3" width="20" height="4.5" rx="1.5" fill="currentColor"/><rect x="2" y="10" width="20" height="4.5" rx="1.5" fill="currentColor"/><rect x="2" y="16.5" width="20" height="4.5" rx="1.5" fill="currentColor"/>',
+  'Автор.Тудей': '<circle cx="12" cy="3.5" r="1.5" fill="currentColor"/><path d="M11 6C8 5 5 5.5 2 4c1 3 3.5 5 7 5.5L11 8z" fill="currentColor"/><path d="M13 6c3-1 6-.5 9-2-1 3-3.5 5-7 5.5L13 8z" fill="currentColor"/><path d="M11 8l-1 7h4l-1-7h-2z" fill="currentColor"/><path d="M7 16l5 2 5-2v5l-5 1.5L7 21v-5z" fill="currentColor"/>',
+  'ЛитНет': '<path d="M3 21.5L12 2.5l9 19" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>',
+  'ЛитГород': '<rect x="2" y="5" width="4" height="11" rx="0.5" fill="currentColor"/><rect x="9" y="2" width="4" height="14" rx="0.5" fill="currentColor"/><rect x="16" y="4" width="4" height="12" rx="0.5" fill="currentColor"/><path d="M1 17L12 14l11 3v5L12 21 1 22v-5z" fill="currentColor"/>',
+};
+
+const socialIcons: Record<string, string> = {
+  vk: '<path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C5.051 10.64 4.56 8.556 4.56 8.09c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .373.17.508.271.508.22 0 .407-.135 1-.745 1.558-1.744 2.676-4.42 2.676-4.42.152-.305.389-.59.829-.59h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.271.796.813 1.202 1.304.745.864 1.32 1.592 1.473 2.1.136.475-.136.71-.627.71z"/>',
+  telegram: '<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>',
+  threads: '<path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.471 12.01v-.017c.029-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.144 1.49.7 2.58 1.761 3.154 3.07.797 1.829.848 4.367-1.017 6.203-1.821 1.793-4.022 2.584-7.82 2.604zm-3.063-9.076c.007.29.109.54.31.76.396.44 1.127.676 2.04.627.966-.052 1.7-.378 2.183-.97.434-.528.677-1.33.723-2.385a11.13 11.13 0 0 0-2.446-.138c-.973.056-1.747.327-2.232.77-.43.394-.587.873-.578 1.336z"/>',
+  pikabu: '<path d="M12 2c-3.5 0-6.4 2.3-6.4 5.6 0 .1 0 .2.01.3H5.5l1.2 12.6c.1.9.8 1.5 1.7 1.5h7.2c.9 0 1.6-.6 1.7-1.5L18.4 7.9h-.11C18.4 4.3 15.5 2 12 2zm0 1.5c2.7 0 4.8 1.8 4.9 4.1H7.1C7.2 5.3 9.3 3.5 12 3.5zM8.8 9h1.5v10.5H8.8V9zm2.9 0h.6v10.5h-.6V9zm2.1 0h1.5v10.5H13.8V9z"/>',
+  dzen: '<path fill-rule="evenodd" d="M3 0h18q3 0 3 3v18q0 3-3 3H3q-3 0-3-3V3q0-3 3-3zm9 2Q8 8 2 12q6 4 10 10 4-6 10-10Q16 8 12 2z"/>',
+};
+---
+<BaseLayout title="Главная">
+  <!-- Hero -->
+  <section class="relative overflow-hidden py-8 md:py-12">
+    <div class="absolute inset-0 bg-gradient-to-b from-dp-dark via-dp-dark/95 to-dp-dark/80"></div>
+    <div class="absolute top-5 left-6 w-10 h-10 border-l-2 border-t-2 border-dp-gold/40 z-10"></div>
+    <div class="absolute top-5 right-6 w-10 h-10 border-r-2 border-t-2 border-dp-gold/40 z-10"></div>
+    <div class="absolute bottom-5 left-6 w-10 h-10 border-l-2 border-b-2 border-dp-gold/40 z-10"></div>
+    <div class="absolute bottom-5 right-6 w-10 h-10 border-r-2 border-b-2 border-dp-gold/40 z-10"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 xl:grid-cols-[200px_1fr_200px] items-center gap-0">
+        <div class="hidden xl:block h-72 pointer-events-none overflow-hidden self-center"
+          style="mask-image: linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
+          <img src="/images/authors/kk.jpg" alt="Ксения Котова" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
+        </div>
+        <div class="text-center px-6 xl:px-10">
+          <p class="font-accent italic text-dp-gold/80 text-base mb-3 tracking-wide">Те, кто смотрят на небо, еще умеют мечтать</p>
+          <h1 class="font-heading text-xl md:text-3xl font-bold text-parchment leading-tight mb-4">
+            Соавторский дуэт:<br/>Ксения Котова,<br/>Василий Зеленков
+          </h1>
+          <div class="w-16 h-px bg-dp-gold mx-auto mb-4"></div>
+          <p class="text-parchment/70 text-base leading-relaxed mb-7 max-w-xl mx-auto">
+            Авторские миры, забытые легенды и латунные сердца, бьющиеся вопреки. Наши романы — ностальгия по альтернативному прошлому и мечта о неслучившемся будущем с осязаемой красотой безумных устройств.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/books" class="px-7 py-2.5 bg-dp-gold text-dp-dark font-body text-sm tracking-widest uppercase hover:bg-dp-copper transition-colors">Книги</a>
+            <a href="/about" class="px-7 py-2.5 border border-dp-gold/50 text-parchment/80 text-sm tracking-widest uppercase hover:border-dp-gold hover:text-parchment transition-colors">Об авторах</a>
+          </div>
+        </div>
+        <div class="hidden xl:block h-72 pointer-events-none overflow-hidden self-center"
+          style="mask-image: linear-gradient(to left, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to left, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
+          <img src="/images/authors/vz.jpg" alt="Василий Зеленков" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News banner -->
+  {news.visible && news.text && (
+    <div class="max-w-5xl mx-auto px-6 pt-6">
+      <div class="mx-[30px] flex flex-wrap items-baseline gap-3 py-3 border border-dp-gold/30 bg-dp-gold/5 text-dp-text leading-relaxed px-6">
+        <span class="text-[9px] tracking-widest uppercase text-dp-gold shrink-0">Новости</span>
+        <span class="font-accent italic text-base">{news.text}</span>
+        {news.links && news.links.map(link => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer"
+            class="text-[10px] font-body tracking-widest px-1.5 py-0.5 border border-dp-gold/50 text-dp-gold hover:border-dp-gold hover:text-dp-text transition-colors shrink-0">
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- Covers Gallery -->
+  <section class="max-w-5xl mx-auto px-6 pt-8 pb-2">
+    <div class="text-center mb-4">
+      <h2 class="font-heading text-3xl font-semibold">Книги</h2>
+      <div class="w-12 h-px bg-dp-gold mx-auto mt-4 mb-4"></div>
+      <p class="font-accent italic text-dp-muted text-base">Каждая история — вход в потрясающий авторский мир</p>
+    </div>
+    <CoversGallery covers={covers} />
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-4">
+      <div class="flex-1 h-px bg-dp-border"></div>
+      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+      <div class="flex-1 h-px bg-dp-border"></div>
+    </div>
+  </div>
+
+  <!-- Literary platforms -->
+  <section class="max-w-5xl mx-auto px-6 py-12">
+    <div class="relative border border-dp-border max-w-2xl mx-auto px-10 py-8">
+      <div class="absolute top-2 left-2 w-5 h-5 border-l border-t border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute top-2 right-2 w-5 h-5 border-r border-t border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute bottom-2 left-2 w-5 h-5 border-l border-b border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute bottom-2 right-2 w-5 h-5 border-r border-b border-dp-gold/50 pointer-events-none"></div>
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl font-semibold">Литпорталы</h2>
+        <div class="w-12 h-px bg-dp-gold mx-auto mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Ксения Котова</h3>
+          <div class="flex gap-3 mt-4 flex-wrap justify-center">
+            {links.litportals.ksenia.map((p: {label: string; url: string}) => (
+              <a href={p.url} aria-label={p.label} title={p.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
+                <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" set:html={platformIcons[p.label]}/>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Василий Зеленков</h3>
+          <div class="flex gap-3 mt-4 flex-wrap justify-center">
+            {links.litportals.vasily.map((p: {label: string; url: string}) => (
+              <a href={p.url} aria-label={p.label} title={p.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
+                <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" set:html={platformIcons[p.label]}/>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-4">
+      <div class="flex-1 h-px bg-dp-border"></div>
+      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+      <div class="flex-1 h-px bg-dp-border"></div>
+    </div>
+  </div>
+
+  <!-- Social media -->
+  <section class="max-w-5xl mx-auto px-6 py-12">
+    <div class="relative border border-dp-border max-w-2xl mx-auto px-10 py-8">
+      <div class="absolute top-2 left-2 w-5 h-5 border-l border-t border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute top-2 right-2 w-5 h-5 border-r border-t border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute bottom-2 left-2 w-5 h-5 border-l border-b border-dp-gold/50 pointer-events-none"></div>
+      <div class="absolute bottom-2 right-2 w-5 h-5 border-r border-b border-dp-gold/50 pointer-events-none"></div>
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl font-semibold">Соцсети</h2>
+        <div class="w-12 h-px bg-dp-gold mx-auto mt-4"></div>
+      </div>
+      <div class="flex justify-center gap-6 flex-wrap">
+        {links.socials.map((s: {label: string; url: string; icon: string}) => (
+          <a href={s.url} title={s.label} aria-label={s.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
+            <div class="w-12 h-12 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" set:html={socialIcons[s.icon]}/>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="text-center font-accent italic text-dp-muted text-base mt-8">
+        Связаться с нами{' '}
+        <a href={links.contact.vk} class="text-dp-text hover:text-dp-gold transition-colors border-b border-dp-border hover:border-dp-gold">ВКонтакте</a>
+        {' '}или{' '}
+        <a href={links.contact.telegram} class="text-dp-text hover:text-dp-gold transition-colors border-b border-dp-border hover:border-dp-gold">Телеграм</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-4">
+      <div class="flex-1 h-px bg-dp-border"></div>
+      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+      <div class="flex-1 h-px bg-dp-border"></div>
+    </div>
+  </div>
+
+  <!-- Telegram feed -->
+  <section class="max-w-5xl mx-auto px-6 pt-8 pb-4">
+    <div class="mb-12">
+      <h2 class="font-heading text-3xl font-semibold">Последние новости</h2>
+      <div class="w-12 h-px bg-dp-gold mt-4"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="border border-dp-border p-6 flex flex-col gap-3">
+        <p class="text-[10px] tracking-widest uppercase text-dp-muted">{tg.posts.digest.label}</p>
+        <div class="flex-1">
+          <script is:inline async src="https://telegram.org/js/telegram-widget.js?22"
+            data-telegram-post={tg.posts.digest.postId}
+            data-width="100%"
+            data-userpic="false"
+            data-color="C9A84C"></script>
+        </div>
+      </div>
+      <div class="border border-dp-border p-6 flex flex-col gap-3">
+        <p class="text-[10px] tracking-widest uppercase text-dp-muted">{tg.posts.current.label}</p>
+        <div class="flex-1 text-dp-muted font-accent italic leading-relaxed">Здесь будет виджет актуального поста</div>
+      </div>
+      <div class="border border-dp-border p-6 flex flex-col gap-3">
+        <p class="text-[10px] tracking-widest uppercase text-dp-muted">{tg.posts.intro.label}</p>
+        <div class="flex-1 text-dp-muted font-accent italic leading-relaxed">Здесь будет виджет вводного поста</div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

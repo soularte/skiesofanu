@@ -1,0 +1,40 @@
+﻿---
+socials:
+  - label: "ВКонтакте"
+    url: "#"
+    icon: "vk"
+  - label: "Телеграм"
+    url: "#"
+    icon: "telegram"
+  - label: "Threads"
+    url: "#"
+    icon: "threads"
+  - label: "Пикабу"
+    url: "#"
+    icon: "pikabu"
+  - label: "Яндекс Дзен"
+    url: "#"
+    icon: "dzen"
+litportals:
+  ksenia:
+    - label: "ЛитРес"
+      url: "#"
+    - label: "Автор.Тудей"
+      url: "#"
+    - label: "ЛитНет"
+      url: "#"
+    - label: "ЛитГород"
+      url: "#"
+  vasily:
+    - label: "ЛитРес"
+      url: "#"
+    - label: "Автор.Тудей"
+      url: "#"
+    - label: "ЛитНет"
+      url: "#"
+    - label: "ЛитГород"
+      url: "#"
+contact:
+  vk: "#"
+  telegram: "#"
+---

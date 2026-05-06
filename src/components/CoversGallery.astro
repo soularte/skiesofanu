@@ -1,0 +1,112 @@
+---
+interface Props {
+  covers: {
+    src: string;
+    title: string;
+    slug: string;
+    description?: string;
+    marketplace?: boolean;
+    links?: { url: string; label: string }[];
+  }[];
+}
+const { covers } = Astro.props;
+---
+
+<div class="flex items-start gap-6">
+  <!-- Left arrow -->
+  <button
+    id="covers-prev"
+    aria-label="Назад"
+    class="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center bg-parchment border border-dp-border text-dp-gold hover:border-dp-gold hover:bg-dp-gold hover:text-white transition-colors shadow-sm"
+    style="margin-top: -2rem;"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Scrollable track wrapper -->
+  <div class="relative flex-1 min-w-0">
+    <!-- Fade edges -->
+    <div class="pointer-events-none absolute left-0 top-0 w-8 bg-gradient-to-r from-parchment to-transparent z-10" style="height: 270px;"></div>
+    <div class="pointer-events-none absolute right-0 top-0 w-8 bg-gradient-to-l from-parchment to-transparent z-10" style="height: 270px;"></div>
+
+    <div
+      id="covers-track"
+      class="flex gap-6 overflow-x-auto select-none pt-12 pb-4 px-4"
+      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
+    >
+    {covers.map(cover => (
+      <div class="flex-shrink-0 transition-transform duration-300 hover:scale-110 origin-bottom" style="width: 180px; scroll-snap-align: center;">
+        <a href={`/books/${cover.slug}`} class="group block" draggable="false">
+          <div class="relative shadow-md transition-shadow duration-300" style="width: 180px;">
+            <img
+              src={cover.src}
+              alt={cover.title}
+              draggable="false"
+              style="width: 180px; display: block;"
+              class="transition-none"
+            />
+            <div class="absolute inset-0 bg-white/0 group-hover:bg-white/15 transition-colors duration-300"></div>
+          </div>
+        </a>
+        {cover.description && (
+          <p class="text-dp-muted text-xs leading-relaxed mt-2.5 cursor-default">{cover.description}</p>
+        )}
+        {cover.links && cover.links.length > 0 && (
+          <div class="flex flex-wrap gap-1 mt-2">
+            {cover.marketplace && (
+              <span class="text-[10px] font-body tracking-widest px-1.5 py-0.5 bg-dp-border/40 text-dp-muted border border-dp-border cursor-default select-none">
+                МАРКЕТПЛЕЙСЫ
+              </span>
+            )}
+            {cover.links.map(link => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={link.label}
+                class="text-[10px] font-body tracking-widest px-1.5 py-0.5 border border-dp-gold/50 text-dp-gold hover:border-dp-gold hover:text-dp-text transition-colors cursor-pointer"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+    </div>
+  </div>
+
+  <!-- Right arrow -->
+  <button
+    id="covers-next"
+    aria-label="Вперёд"
+    class="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center bg-parchment border border-dp-border text-dp-gold hover:border-dp-gold hover:bg-dp-gold hover:text-white transition-colors shadow-sm"
+    style="margin-top: -2rem;"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  #covers-track::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  const track = document.getElementById('covers-track') as HTMLElement;
+  const prev = document.getElementById('covers-prev') as HTMLButtonElement;
+  const next = document.getElementById('covers-next') as HTMLButtonElement;
+
+  if (track) {
+    const STEP = 220;
+    prev?.addEventListener('click', () => {
+      track.scrollBy({ left: -STEP, behavior: 'smooth' });
+    });
+    next?.addEventListener('click', () => {
+      track.scrollBy({ left: STEP, behavior: 'smooth' });
+    });
+  }
+</script>

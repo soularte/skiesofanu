@@ -1,0 +1,88 @@
+---
+interface Props {
+  characters: {
+    name: string;
+    role: string;
+    description: string;
+    photo?: string;
+  }[];
+  folder?: string;
+}
+const { characters, folder } = Astro.props;
+---
+
+<div class="flex items-start gap-6">
+  <!-- Left arrow -->
+  <button
+    id="chars-prev"
+    aria-label="Назад"
+    class="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center bg-parchment border border-dp-border text-dp-gold hover:border-dp-gold hover:bg-dp-gold hover:text-white transition-colors shadow-sm"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Scrollable track wrapper -->
+  <div class="relative flex-1 min-w-0">
+    <div class="pointer-events-none absolute left-0 top-0 w-16 bg-gradient-to-r from-parchment to-transparent z-10" style="height: 310px;"></div>
+    <div class="pointer-events-none absolute right-0 top-0 w-16 bg-gradient-to-l from-parchment to-transparent z-10" style="height: 310px;"></div>
+
+    <div
+      id="chars-track"
+      class="flex gap-6 overflow-x-auto select-none pb-4 px-16"
+      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
+    >
+      {characters.map(char => (
+        <div class="flex-shrink-0 flex flex-col" style="width: 220px; scroll-snap-align: center;">
+          <div class="border border-dp-border overflow-hidden" style="width: 220px; height: 310px;">
+            {char.photo
+              ? <img src={`/images/${folder ? folder + '/' : ''}${char.photo}`} alt={char.name} class="w-full h-full object-cover" />
+              : <div class="w-full h-full bg-dp-dark/30 flex items-center justify-center"><span class="text-dp-muted text-xs tracking-wider text-center px-3">{char.name}</span></div>
+            }
+          </div>
+          <div class="pt-3 pb-2">
+            <p class="font-heading font-semibold text-sm leading-tight mb-1">{char.name}</p>
+            {char.role && <p class="text-[10px] text-dp-gold tracking-widest uppercase leading-tight mb-2">{char.role}</p>}
+            {char.description && (
+              <div class="border-t border-dp-border/60 pt-2">
+                <p class="text-dp-muted text-[11px] leading-relaxed">{char.description}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Right arrow -->
+  <button
+    id="chars-next"
+    aria-label="Вперёд"
+    class="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center bg-parchment border border-dp-border text-dp-gold hover:border-dp-gold hover:bg-dp-gold hover:text-white transition-colors shadow-sm"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  #chars-track::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  const track = document.getElementById('chars-track') as HTMLElement;
+  const prev = document.getElementById('chars-prev') as HTMLButtonElement;
+  const next = document.getElementById('chars-next') as HTMLButtonElement;
+
+  if (track) {
+    const STEP = 250;
+    prev?.addEventListener('click', () => {
+      track.scrollBy({ left: -STEP, behavior: 'smooth' });
+    });
+    next?.addEventListener('click', () => {
+      track.scrollBy({ left: STEP, behavior: 'smooth' });
+    });
+  }
+</script>
