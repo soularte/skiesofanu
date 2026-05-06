@@ -7,10 +7,12 @@ const books = defineCollection({
     cover: z.string(),
     marketplace: z.boolean().optional().default(false),
     genres: z.array(z.string()).max(3),
+    displayOrder: z.number().optional(),
     logline: z.string().optional(),
     shortDescription: z.string(),
     mediumDescription: z.string().optional(),
     series: z.string().optional(),
+    seriesSubtitle: z.string().optional(),
     seriesDescription: z.string().optional(),
     seriesOrder: z.number().optional(),
     readingOrder: z.array(z.object({
@@ -45,6 +47,10 @@ const books = defineCollection({
       file: z.string(),
       orientation: z.enum(['horizontal', 'vertical']).optional().default('horizontal'),
     }).optional(),
+    reviews: z.array(z.object({
+      text: z.string(),
+      author: z.string(),
+    })).optional(),
   }),
 });
 

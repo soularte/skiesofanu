@@ -1,7 +1,6 @@
 ﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import bookOrder from '../../data/book-order.json';
 
 const allBooks = await getCollection('books');
 
@@ -10,14 +9,10 @@ const visibleBooks = allBooks.filter(b =>
   !b.data.series || (b.data.books && b.data.books.length > 0)
 );
 
-// Сортировка по book-order.json; книги не в списке — в конце
-const sorted = [...visibleBooks].sort((a, b) => {
-  const ia = (bookOrder as string[]).indexOf(a.slug);
-  const ib = (bookOrder as string[]).indexOf(b.slug);
-  const ra = ia === -1 ? 999 : ia;
-  const rb = ib === -1 ? 999 : ib;
-  return ra - rb;
-});
+// Сортировка по displayOrder из frontmatter
+const sorted = [...visibleBooks].sort((a, b) =>
+  (a.data.displayOrder ?? 999) - (b.data.displayOrder ?? 999)
+);
 
 // Предрендерим тело каждой книги (только если нет mediumDescription)
 const ordered = await Promise.all(

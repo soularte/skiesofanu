@@ -37,7 +37,7 @@ const { characters, folder } = Astro.props;
         <div class="flex-shrink-0 flex flex-col" style="width: 220px; scroll-snap-align: center;">
           <div class="border border-dp-border overflow-hidden" style="width: 220px; height: 310px;">
             {char.photo
-              ? <img src={`/images/${folder ? folder + '/' : ''}${char.photo}`} alt={char.name} class="w-full h-full object-cover" />
+              ? <img src={`/images/${folder ? folder + '/' : ''}${char.photo}`} alt={char.name} loading="lazy" class="w-full h-full object-cover" />
               : <div class="w-full h-full bg-dp-dark/30 flex items-center justify-center"><span class="text-dp-muted text-xs tracking-wider text-center px-3">{char.name}</span></div>
             }
           </div>

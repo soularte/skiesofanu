@@ -1,13 +1,49 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import matter from 'gray-matter';
+
+const siteRaw = readFileSync(join(process.cwd(), 'src/data/site.md'), 'utf-8');
+const { data: site } = matter(siteRaw) as { data: {
+  siteName: string;
+  siteTagline?: string;
+  defaultDescription: string;
+  metricsId?: string;
+  privacyText: string;
+}};
+
+const authorsRaw = readFileSync(join(process.cwd(), 'src/data/authors.md'), 'utf-8');
+const { data: authorsData } = matter(authorsRaw) as { data: {
+  ksenia: { name: string };
+  vasily: { name: string };
+}};
+const authorNames = `${authorsData.ksenia.name}, ${authorsData.vasily.name}`;
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
+  keywords?: string;
+  ogType?: string;
 }
 
-const { title, description = 'Официальный сайт авторского дуэта Ксения Котова и Василий Зеленков — романтическая дизельпанк-проза.' } = Astro.props;
+const SITE_KEYWORDS = 'стимпанк, дизельпанк, фэнтези, фантастика, ксения котова, василий зеленков, авиаторы его величества, романтическое фэнтези, литнет, литгород, автор тудей, литрес, умная фантастика, умное фэнтези, авторские миры, фантастические миры, воздушные корабли, летающие острова, воздушные пираты, парящие города, альтернативная история, ретрофутуризм, приключенческая фантастика, фэнтези-приключения, романтическая фантастика, авантюрный роман, городское фэнтези, магический реализм, читать онлайн, купить книгу фэнтези, электронная книга фэнтези, серия книг фэнтези, цикл фэнтези, новинки фэнтези, российское фэнтези, отечественное фэнтези, соавторы, соавторский дуэт, авторский тандем, книжная серия, небеса ану, авиаторы, Лем Декс, steampunk, dieselpunk, fantasy, science fiction, Ksenia Kotova, Vasily Zelenkov, Aviators of His Majesty, romantic fantasy, litnet, litgorod, author today, litres, smart fantasy, author worlds, fictional worlds, airships, floating islands, air pirates, retrofuturism, adventure fantasy, romantic fiction, russian fantasy books, co-authors, writing duo, skies of anu';
+
+const {
+  title,
+  description = site.defaultDescription,
+  image,
+  canonicalURL = Astro.url.href,
+  keywords,
+  ogType = 'website',
+} = Astro.props;
+
+const ogImage = image ?? '/images/authors/favi.jpg';
+const allKeywords = keywords ? `${keywords}, ${SITE_KEYWORDS}` : SITE_KEYWORDS;
+const siteTitle = `${title} — ${site.siteName}`;
 ---
 <!doctype html>
 <html lang="ru">
@@ -15,7 +51,29 @@ const { title, description = 'Официальный сайт авторског
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} — Соавторский дуэт</title>
+    <meta name="keywords" content={allKeywords} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter/X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Авторы и тема -->
+    <meta name="author" content={authorNames} />
+    <meta name="theme-color" content="#FAF6F0" />
+
+    <title>{siteTitle}</title>
+    <link rel="icon" type="image/jpeg" href="/images/authors/favis.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,12 +85,77 @@ const { title, description = 'Официальный сайт авторског
       margin-top: 1em;
     }
   </style>
+
+    <!-- Яндекс.Метрика — включается автоматически при заполнении metricsId в src/data/site.md -->
+    {site.metricsId && (
+      <script define:vars={{ metricsId: site.metricsId }}>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(metricsId, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+      </script>
+      <noscript><div><img src={`https://mc.yandex.ru/watch/${site.metricsId}`} style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    )}
+
   </head>
   <body class="bg-parchment text-dp-text font-body antialiased min-h-screen flex flex-col">
-    <Header />
+    <Header siteName={site.siteName} siteTagline={site.siteTagline} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer copyright={authorNames} />
+
+    <!-- Кнопка «Наверх» -->
+    <button
+      id="back-to-top"
+      aria-label="Наверх"
+      class="fixed bottom-6 right-4 z-40 w-10 h-10 border border-dp-gold/50 text-dp-gold bg-parchment flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 hover:border-dp-gold hover:bg-dp-gold/10 md:right-6"
+    >
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" /></svg>
+    </button>
+
+    <!-- Плашка конфиденциальности -->
+    <div
+      id="privacy-banner"
+      class="fixed bottom-0 left-0 right-0 z-50 border-t border-dp-border bg-parchment px-6 py-4 flex items-center justify-between gap-4"
+    >
+      <p class="text-xs text-dp-muted leading-relaxed">
+        {site.privacyText}
+      </p>
+      <button
+        id="privacy-close"
+        aria-label="Закрыть"
+        class="flex-shrink-0 w-7 h-7 flex items-center justify-center border border-dp-border text-dp-muted hover:border-dp-gold hover:text-dp-gold transition-colors"
+      >
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <script>
+      // Кнопка «Наверх»
+      const btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+        } else {
+          btn.style.opacity = '0';
+          btn.style.pointerEvents = 'none';
+        }
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Плашка конфиденциальности
+      const banner = document.getElementById('privacy-banner');
+      if (localStorage.getItem('privacy-closed')) {
+        banner.style.display = 'none';
+      }
+      document.getElementById('privacy-close').addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem('privacy-closed', '1');
+      });
+    </script>
   </body>
 </html>

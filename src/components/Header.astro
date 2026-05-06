@@ -1,4 +1,11 @@
 ---
+interface Props {
+  siteName: string;
+  siteTagline?: string;
+}
+
+const { siteName, siteTagline } = Astro.props;
+
 const navLinks = [
   { href: '/', label: 'Главная' },
   { href: '/books', label: 'Книги' },
@@ -9,8 +16,9 @@ const currentPath = Astro.url.pathname;
 ---
 <header class="border-b border-dp-border bg-parchment/90 backdrop-blur-sm sticky top-0 z-50">
   <div class="max-w-5xl mx-auto px-6 pt-4 pb-[26px] flex items-center justify-between">
-    <a href="/" class="font-heading text-2xl font-semibold tracking-wide text-dp-text hover:text-dp-gold transition-colors">
-      Бортжурнал
+    <a href="/" class="flex flex-col leading-tight hover:text-dp-gold transition-colors group">
+      <span class="font-heading text-2xl font-semibold tracking-wide text-dp-text group-hover:text-dp-gold transition-colors">{siteName}</span>
+      {siteTagline && <span class="text-[10px] tracking-widest uppercase text-dp-muted mt-0.5">{siteTagline}</span>}
     </a>
     <nav class="hidden md:flex items-center gap-8">
       {navLinks.map(link => (

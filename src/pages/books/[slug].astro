@@ -2,6 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CharactersGallery from '../../components/CharactersGallery.astro';
 import { getCollection, render } from 'astro:content';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import matter from 'gray-matter';
 
 export async function getStaticPaths() {
   const books = await getCollection('books');
@@ -15,8 +18,47 @@ const { book } = Astro.props;
 const { Content } = await render(book);
 const isSeries = !!(book.data.books && book.data.books.length > 0);
 const coverLinks = book.data.links?.length ? book.data.links : (book.data.seriesLinks ?? []);
+
+const authorsRaw = readFileSync(join(process.cwd(), 'src/data/authors.md'), 'utf-8');
+const { data: authorsData } = matter(authorsRaw) as { data: {
+  ksenia: { name: string };
+  vasily: { name: string };
+}};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: book.data.title,
+  description: book.data.logline ?? book.data.shortDescription ?? '',
+  genre: book.data.genres ?? [],
+  image: `/images/${book.data.cover}`,
+  url: Astro.url.href,
+  inLanguage: 'ru',
+  author: [
+    { '@type': 'Person', name: authorsData.ksenia.name },
+    { '@type': 'Person', name: authorsData.vasily.name },
+  ],
+  ...(book.data.series ? { isPartOf: { '@type': 'BookSeries', name: book.data.series } } : {}),
+};
 ---
-<BaseLayout title={book.data.title} description={book.data.logline ?? book.data.title}>
+<style>
+  summary { display: block; }
+  summary::-webkit-details-marker { display: none; }
+  .section-chevron {
+    transition: transform 0.2s ease;
+    color: #C9A84C;
+  }
+  details[open] .section-chevron {
+    transform: rotate(90deg);
+  }
+</style>
+<BaseLayout
+  title={book.data.title}
+  description={book.data.logline ?? book.data.shortDescription ?? book.data.title}
+  image={`/images/${book.data.cover}`}
+  ogType="book"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <div class="max-w-5xl mx-auto px-6 pt-20 pb-16">
 
     <!-- Breadcrumb -->
@@ -31,6 +73,9 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
       <div class="text-center mb-16">
         <h1 class="font-heading text-4xl md:text-5xl font-semibold text-dp-gold">{book.data.series}</h1>
         <div class="w-12 h-px bg-dp-gold mx-auto mt-4"></div>
+        {book.data.seriesSubtitle && (
+          <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{book.data.seriesSubtitle}</p>
+        )}
       </div>
     )}
 
@@ -43,6 +88,7 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
           <img
             src={`/images/${book.data.cover}`}
             alt={book.data.title}
+            loading="eager"
             class="w-[200px] shadow-lg"
           />
           <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none"></div>
@@ -96,13 +142,18 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
 
     <!-- Series description + Reading order -->
     {(book.data.seriesDescription || (book.data.readingOrder && book.data.readingOrder.length > 0)) && book.data.series && (
-      <div class="mt-16">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-dp-border"></div>
-          <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-          <div class="flex-1 h-px bg-dp-border"></div>
-        </div>
-        <h2 class="font-heading text-2xl font-semibold mb-4">О цикле «{book.data.series}»</h2>
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">О цикле «{book.data.series}»</h2>
+          </div>
+        </summary>
         {book.data.seriesDescription && (
           <div class="max-w-2xl mb-4 space-y-4">
             {book.data.seriesDescription.split('\n\n').filter((p: string) => p.trim()).map((para: string) => (
@@ -151,18 +202,23 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
             )}
           </div>
         )}
-      </div>
+      </details>
     )}
 
     <!-- Booktrailer section -->
     {book.data.booktrailer && book.data.booktrailer.visible !== false && (
-      <div class="mt-16">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-dp-border"></div>
-          <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-          <div class="flex-1 h-px bg-dp-border"></div>
-        </div>
-        <h2 class="font-heading text-2xl font-semibold mb-6 text-center">Буктрейлер</h2>
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">Буктрейлер</h2>
+          </div>
+        </summary>
         <div class="flex justify-center">
           <div class={book.data.booktrailer.orientation === 'vertical' ? 'max-h-[600px] w-auto max-w-xs' : 'w-full max-w-2xl'}>
             <video
@@ -173,24 +229,54 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
             />
           </div>
         </div>
-      </div>
+      </details>
+    )}
+
+    <!-- Reviews section -->
+    {book.data.reviews && book.data.reviews.length > 0 && (
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">Отзывы</h2>
+          </div>
+        </summary>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {book.data.reviews.map(review => (
+            <div class="border border-dp-border p-6 flex flex-col gap-4">
+              <p class="text-dp-text leading-relaxed flex-1">&laquo;{review.text}&raquo;</p>
+              <p class="text-dp-muted text-xs tracking-widest uppercase text-right">&mdash; {review.author}</p>
+            </div>
+          ))}
+        </div>
+      </details>
     )}
 
     <!-- Books in series -->
     {isSeries && (
-      <div class="mt-16">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-dp-border"></div>
-          <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-          <div class="flex-1 h-px bg-dp-border"></div>
-        </div>
-        <h2 class="font-heading text-2xl font-semibold mb-8">Книги цикла</h2>
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">Книги цикла</h2>
+          </div>
+        </summary>
         <div class="space-y-10">
           {(book.data.books ?? []).slice(1).map((b, i) => (
             <article class={`flex flex-col items-center sm:items-start sm:flex-row gap-8 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}>
               <!-- Cover + links -->
               <div class={`flex-shrink-0 flex flex-col gap-4 items-center sm:items-start ${i % 2 === 1 ? 'sm:items-end' : ''}`}>
-                <img src={`/images/${b.cover}`} alt={b.title} class="w-[200px] shadow-lg" />
+                <img src={`/images/${b.cover}`} alt={b.title} loading="lazy" class="w-[200px] shadow-lg" />
                 {b.links && b.links.length > 0 && (
                   <div class="flex flex-col gap-1.5 w-[200px] items-center sm:items-start">
                     {b.marketplace && (
@@ -231,18 +317,23 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
             </article>
           ))}
         </div>
-      </div>
+      </details>
     )}
 
     <!-- Characters section -->
     {book.data.characters && book.data.characters.length > 0 && (
-      <div class="mt-16">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-dp-border"></div>
-          <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-          <div class="flex-1 h-px bg-dp-border"></div>
-        </div>
-        <h2 class="font-heading text-2xl font-semibold mb-6">Персонажи</h2>
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">Персонажи</h2>
+          </div>
+        </summary>
         <CharactersGallery characters={book.data.characters} folder={book.data.charactersFolder} />
         {book.data.characterMaps && book.data.characterMaps.length > 0 && (
           <div class="flex flex-wrap gap-3 mt-6">
@@ -254,18 +345,23 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
             ))}
           </div>
         )}
-      </div>
+      </details>
     )}
 
     <!-- World section -->
     {book.data.world && (
-      <div class="mt-16">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-dp-border"></div>
-          <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-          <div class="flex-1 h-px bg-dp-border"></div>
-        </div>
-        <h2 class="font-heading text-2xl font-semibold mb-4">Мир</h2>
+      <details class="mt-16" open>
+        <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-dp-border"></div>
+            <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
+            <div class="flex-1 h-px bg-dp-border"></div>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <h2 class="font-heading text-2xl font-semibold">Мир</h2>
+          </div>
+        </summary>
         <div class="mb-4 space-y-4">
           {book.data.world.split('\n\n').filter((p: string) => p.trim()).map((para: string) => (
             <p class="text-dp-text leading-relaxed">{para.trim()}</p>
@@ -281,7 +377,7 @@ const coverLinks = book.data.links?.length ? book.data.links : (book.data.series
             ))}
           </div>
         )}
-      </div>
+      </details>
     )}
 
   </div>
