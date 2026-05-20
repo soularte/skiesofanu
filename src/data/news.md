@@ -1,10 +1,10 @@
 ---
 # Поставьте false, чтобы скрыть плашку (или true, чтобы показать)
-visible: true
+visible: false
 
 # Кружочки прогресса (visible: false — скрыть все; visible у item — скрыть конкретный)
 progress:
-  visible: true
+  visible: false
   items:
     - title: "Авиаторы Его Величества"
       current: 27

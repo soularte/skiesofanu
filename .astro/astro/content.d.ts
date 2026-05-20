@@ -156,29 +156,14 @@ declare module 'astro:content' {
   data: InferEntrySchema<"authors">
 } & { render(): Render[".md"] };
 };
-"blog": {
-"miroustroistvo-nebesa.md": {
-	id: "miroustroistvo-nebesa.md";
-  slug: "miroustroistvo-nebesa";
+"blog": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"personazhi-aviatory.md": {
-	id: "personazhi-aviatory.md";
-  slug: "personazhi-aviatory";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"process-soavtorstva.md": {
-	id: "process-soavtorstva.md";
-  slug: "process-soavtorstva";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-};
+  data: InferEntrySchema<"blog">;
+  render(): Render[".md"];
+}>;
 "books": {
 "aviatory.md": {
 	id: "aviatory.md";
