@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import MarketplaceLinks from '../MarketplaceLinks.astro';
+import GenreChip from '../GenreChip.astro';
+import GoldLine from '../GoldLine.astro';
+import type { CollectionEntry } from 'astro:content';
+import { findImage } from '../../lib/images';
+
+type BookData = CollectionEntry<'books'>['data'];
+
+interface Props {
+  data: BookData;
+  Content: any;
+}
+const { data, Content } = Astro.props;
+const coverImg = findImage(data.cover);
+const coverLinks = data.links ?? [];
+---
+<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-start">
+  <!-- Left: cover + purchase links -->
+  <div class="flex flex-col items-center md:items-start gap-6">
+    <div class="relative">
+      <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none -z-10"></div>
+      {coverImg && (
+        <Image
+          src={coverImg}
+          alt={data.title}
+          widths={[250, 500]}
+          sizes="250px"
+          loading="eager"
+          fetchpriority="high"
+          class="h-[350px] w-auto relative cursor-pointer"
+          data-lightbox-group="book-cover"
+        />
+      )}
+    </div>
+
+    {coverLinks.length > 0 && (
+      <div class="w-[200px]">
+        <MarketplaceLinks links={coverLinks} marketplace={data.marketplace} />
+      </div>
+    )}
+  </div>
+
+  <!-- Right: title, genres, description -->
+  <div>
+    <h1 class="font-heading text-4xl md:text-5xl font-semibold leading-tight mb-4">{data.title}</h1>
+    <GoldLine class="mb-6" />
+
+    {data.genres && (
+      <div class="flex flex-wrap gap-1 mb-6">
+        {data.genres.map(g => <GenreChip label={g} />)}
+      </div>
+    )}
+
+    {data.logline && (
+      <p class="font-accent italic text-dp-gold-ink text-base mb-6 leading-relaxed">{data.logline}</p>
+    )}
+
+    <div class="prose prose-sm prose-invert max-w-none text-dp-text leading-relaxed">
+      <Content />
+    </div>
+  </div>
+</div>

@@ -18,5 +18,7 @@ const icons: Record<string, string> = {
   pikabu: '<path d="M12 2c-3.5 0-6.4 2.3-6.4 5.6 0 .1 0 .2.01.3H5.5l1.2 12.6c.1.9.8 1.5 1.7 1.5h7.2c.9 0 1.6-.6 1.7-1.5L18.4 7.9h-.11C18.4 4.3 15.5 2 12 2zm0 1.5c2.7 0 4.8 1.8 4.9 4.1H7.1C7.2 5.3 9.3 3.5 12 3.5zM8.8 9h1.5v10.5H8.8V9zm2.9 0h.6v10.5h-.6V9zm2.1 0h1.5v10.5H13.8V9z"/>',
   dzen: '<path fill-rule="evenodd" d="M3 0h18q3 0 3 3v18q0 3-3 3H3q-3 0-3-3V3q0-3 3-3zm9 2Q8 8 2 12q6 4 10 10 4-6 10-10Q16 8 12 2z"/>',
 };
+const fallbackIcon = '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="currentColor"/>';
+const svgContent = icons[name] ?? fallbackIcon;
 ---
-<svg xmlns="http://www.w3.org/2000/svg" class={className} viewBox="0 0 24 24" fill="currentColor" set:html={icons[name] ?? ''} />
+<svg xmlns="http://www.w3.org/2000/svg" class={className} viewBox="0 0 24 24" fill="currentColor" set:html={svgContent} />

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldLine from '../../components/GoldLine.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const authors = await getCollection('authors');
+  return authors.map((author) => ({
+    params: { slug: author.slug },
+    props: { author },
+  }));
+}
+
+const { author } = Astro.props;
+const { Content } = await author.render();
+
+const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
+const canonicalURL = new URL(`/about/${author.slug}/`, siteOrigin).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author.data.title,
+  url: canonicalURL,
+  jobTitle: 'Писатель',
+  nationality: 'Russian',
+};
+---
+<BaseLayout
+  title={author.data.title}
+  canonicalURL={canonicalURL}
+  ogType="profile"
+  additionalSchema={personSchema}
+>
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <header class="mb-8">
+      <nav class="text-xs tracking-widest uppercase text-dp-muted mb-4">
+        <a href="/about" class="hover:text-dp-gold transition-colors">Об авторах</a>
+        <span class="mx-2">→</span>
+        <span class="text-dp-text">{author.data.title}</span>
+      </nav>
+      <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{author.data.title}</h1>
+      <GoldLine />
+    </header>
+
+    <div class="prose-content max-w-none text-dp-text leading-relaxed">
+      <Content />
+    </div>
+
+    <footer class="mt-12 pt-6 border-t border-dp-border">
+      <a href="/about" class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors">
+        ← Назад к авторам
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

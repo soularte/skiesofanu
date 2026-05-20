@@ -81,7 +81,7 @@ colors: {
 | Поле | Тип | Описание |
 |---|---|---|
 | `title` | string | Название книги или цикла |
-| `cover` | string | Имя файла обложки в `public/images/` |
+| `cover` | string | Имя файла обложки в `src/assets/images/` (или подпапке `sp/`) |
 | `genres` | string[] (макс. 3) | Жанры |
 | `shortDescription` | string | Короткая аннотация (карточка галереи) |
 
@@ -108,7 +108,6 @@ colors: {
 | `series` | string | Название цикла |
 | `seriesSubtitle` | string | Подзаголовок цикла (курсив под названием) |
 | `seriesDescription` | string | Описание цикла (секция «О цикле») |
-| `seriesLinks` | `{label, url}[]` | Ссылки на цикл на платформах |
 | `readingOrder` | `{title, labels?}[]` | Порядок чтения |
 | `readingMap` | `{label, url}` | Кнопка карты чтения |
 | `books` | объекты (см. ниже) | Книги цикла |
@@ -167,6 +166,9 @@ siteTagline: string        # опц., подзаголовок в шапке
 defaultDescription: string # описание для страниц без собственного description
 metricsId: string          # ID Яндекс.Метрики; пустая строка = отключено
 privacyText: string        # текст плашки конфиденциальности
+blogSubtitle: string       # опц., подзаголовок на странице блога
+aboutSubtitle: string      # опц., подзаголовок на странице «Об авторах»
+booksSubtitle: string      # опц., подзаголовок на странице «Книги»
 ```
 
 Данные из `site.md` читаются в `BaseLayout.astro` и передаются в `Header` (`siteName`, `siteTagline`).
@@ -234,47 +236,133 @@ contact:
 
 | URL | Файл | Описание |
 |---|---|---|
-| `/` | `src/pages/index.astro` | Главная: герой, баннер новостей, галерея обложек, литпорталы, соцсети, Telegram |
+| `/` | `src/pages/index.astro` | Главная: герой, баннер новостей, галерея обложек, литпорталы, блог, Telegram |
 | `/books` | `src/pages/books/index.astro` | Список всех книг с чередующимся макетом |
 | `/books/[slug]` | `src/pages/books/[slug].astro` | Детальная страница книги или цикла |
-| `/about` | `src/pages/about.astro` | Об авторах |
+| `/books/[slug]/lore/[loreSlug]` | `src/pages/books/[slug]/lore/[loreSlug].astro` | Статья лора, привязанная к книге |
+| `/blog` | `src/pages/blog/index.astro` | Список постов блога с фильтром по тегам |
+| `/blog/[slug]` | `src/pages/blog/[slug].astro` | Страница поста блога |
+| `/about` | `src/pages/about/index.astro` | Об авторах + литпорталы |
+| `/about/[slug]` | `src/pages/about/[slug].astro` | Индивидуальная страница автора |
+| `/404` | `src/pages/404.astro` | Страница «Не найдено» |
 
 ---
 
 ## Компоненты
 
+### UI-примитивы (переиспользуемые стили в одном месте)
+
+| Файл | Что делает | Props |
+|---|---|---|
+| `src/components/GenreChip.astro` | Серый чип жанра/метки (uppercase) | `label: string` |
+| `src/components/TagChip.astro` | Золотой хэштег-чип (опц. ссылка) | `tag: string`, `href?: string` |
+| `src/components/TagFilter.astro` | Панель фильтрации по тегам (кнопки «Все» + #теги). Генерирует событие `filter-change` | `tags: string[]`, `group?: string`, `class?: string` |
+| `src/components/GoldLine.astro` | Декоративная золотая линия-разделитель | `size?: 'sm'\|'md'\|'lg'`, `class?: string` |
+| `src/components/GalleryArrow.astro` | Кнопка-стрелка навигации карусели | `direction: 'left'\|'right'`, `id: string` |
+| `src/components/SectionLink.astro` | Кнопка-ссылка секции (карта мира, дерево связей и т.д.) | `href: string`, `label: string` |
+
+### Общие компоненты
+
 | Файл | Что делает |
 |---|---|
-| `src/layouts/BaseLayout.astro` | HTML-обёртка: `<head>` (SEO, Open Graph, JSON-LD, Metrica), Header, Footer. Читает `site.md` и `authors.md` |
+| `src/layouts/BaseLayout.astro` | HTML-обёртка: `<head>` (SEO, Open Graph, JSON-LD, Metrica), Header, Footer, плашка конфиденциальности. Читает `site.md` и `authors.md` |
 | `src/components/Header.astro` | Навигация. Принимает пропы `siteName: string`, `siteTagline?: string` из BaseLayout |
-| `src/components/Footer.astro` | Копирайт + ссылки навигации. Принимает проп `copyright: string` (формируется из имён авторов в `authors.md`) |
-| `src/components/Icon.astro` | Централизованный SVG-компонент. Принимает `name: string` (ключ иконки) и `class?: string`. Заменяет дублированные словари иконок в страницах |
-| `src/components/CoversGallery.astro` | Горизонтальная галерея обложек со скроллом (кнопки ← →) |
-| `src/components/CharactersGallery.astro` | Горизонтальная галерея персонажей со скроллом |
+| `src/components/Footer.astro` | Копирайт + ссылки навигации. Принимает проп `copyright: string` |
+| `src/components/Icon.astro` | Централизованный SVG-компонент. Принимает `name: string` и `class?: string` |
+| `src/components/SocialBar.astro` | Иконки соцсетей (вариант `topbar` или `footer`) |
+| `src/components/CoversGallery.astro` | Горизонтальная галерея обложек (mobile swipe + desktop scroll) |
+| `src/components/CardsGallery.astro` | Горизонтальная галерея карточек/иллюстраций |
+| `src/components/CharactersGallery.astro` | Горизонтальная галерея персонажей |
+| `src/components/Lightbox.astro` | Модальный просмотр изображений по клику |
+| `src/components/LitPortals.astro` | Блок литпорталов (Ксения + Василий) |
+| `src/components/MarketplaceLinks.astro` | Бейдж «Маркетплейсы» + список ссылок на магазины |
+| `src/components/Divider.astro` | Декоративный разделитель (горизонтальная линия с золотым ромбом) |
+| `src/components/DecoratedBox.astro` | Бордер-блок с 4 золотыми уголками + slot |
+
+### Компоненты страницы книги (`src/components/book/`)
+
+| Файл | Что делает |
+|---|---|
+| `BookHero.astro` | Hero-секция книги (обложка + мета + описание) |
+| `BooksInSeries.astro` | Галерея книг внутри цикла |
+| `Booktrailer.astro` | Секция буктрейлера (video) |
+| `CharactersSection.astro` | Секция персонажей |
+| `LoreSection.astro` | Секция лора (статьи) с фильтром по тегам |
+| `Reviews.astro` | Секция отзывов |
+| `SeriesAbout.astro` | Секция «О цикле» |
+| `WorldSection.astro` | Секция «Мир» |
+| `Section.astro` | Обёртка-секция с заголовком |
+
+---
+
+## Утилиты (`src/lib/`)
+
+| Файл | Что делает |
+|---|---|
+| `src/lib/data.ts` | `loadDataFile()`, `loadDataFileWithContent()`, `miniMarkdown()` — парсинг YAML из `src/data/*.md` через gray-matter |
+| `src/lib/images.ts` | `findImage()` — поиск `ImageMetadata` по имени файла/пути в `src/assets/images/` |
+| `src/lib/slider.ts` | `initSlider()` — общая логика мобильного свайп-слайдера и десктопных стрелок для галерей |
+| `src/lib/types.ts` | TypeScript-интерфейсы для data-файлов |
 
 ---
 
 ## Изображения
 
 ```
-public/images/
-  *.jpg                     ← обложки книг (прямо в корне)
+src/assets/images/
+  *.jpg                     ← обложки книг (корень или подпапка sp/)
   authors/
     kk.jpg                  ← фото Ксении Котовой
     vz.jpg                  ← фото Василия Зеленкова
-    favis.jpg               ← favicon (иконка вкладки браузера)
-    favi.jpg                ← OG-image (изображение для соцсетей по умолчанию)
   characters/               ← фото персонажей цикла «Небеса Ану»
-  characters-*/             ← фото персонажей других циклов (папка на каждый цикл)
-public/videos/
-  *.mp4                     ← видео-буктрейлеры
+  sp/                       ← обложки серии «Стирающее поветрие» и др.
+public/
+  images/
+    blog/                   ← обложки постов блога (SVG-заглушки)
+    lore/                   ← обложки статей лора
+    authors/
+      favis.jpg             ← favicon (иконка вкладки)
+      favi.jpg              ← OG-image (соцсети)
+  cards/
+    Aviators/               ← промо-карточки
+  videos/
+    *.mp4                   ← видео-буктрейлеры
 ```
 
-Путь к обложке: `/images/{cover}` — значение поля `cover` в .md файле.
-Путь к фото персонажа: `/images/{charactersFolder}/{photo}`.
+Обложки книг загружаются через `findImage()` из `src/assets/images/` и обрабатываются Astro `<Image>` (оптимизация, WebP, srcset).
+
+Обложки блога и лора — обычные `<img>` из `public/`, без оптимизации.
+
 Путь к буктрейлеру: `/videos/{booktrailer.file}`.
 
-Главная обложка книги (первая в макете): `loading="eager"`. Все остальные изображения: `loading="lazy"`.
+---
+
+## Стилевые соглашения
+
+### Типографика мелкого текста
+
+Все мелкие текстовые элементы используют единый кегль `text-xs tracking-widest uppercase`:
+
+- Хлебные крошки (breadcrumb)
+- Дата публикации на карточках блога
+- Ссылки «Читать →», «← Назад»
+- Навигация «Позднее / Ранее / Предыдущая / Следующая»
+- Подзаголовок сайта (имена авторов) в шапке
+
+### Централизованные стили
+
+| Что | Где определяется | Используется в |
+|---|---|---|
+| Жанровый чип (серый) | `GenreChip.astro` | BookHero, BooksInSeries, SeriesAbout, books/index |
+| Хэштег-чип (золотой) | `TagChip.astro` | blog/index, blog/[slug], LoreSection, lore/[loreSlug] |
+| Фильтр-кнопки (Все + #теги) | `TagFilter.astro` | blog/index, LoreSection |
+| Золотая линия-разделитель | `GoldLine.astro` | 16 мест по всему сайту |
+| Стрелки галереи | `GalleryArrow.astro` | CardsGallery, CoversGallery, CharactersGallery |
+| Кнопка-ссылка секции | `SectionLink.astro` | CharactersSection, WorldSection, SeriesAbout |
+
+### Плашка конфиденциальности
+
+Фон `bg-dp-dark` (как строка соцсетей), текст `text-parchment/80`, крестик с обводкой `border-parchment/40`.
 
 ---
 

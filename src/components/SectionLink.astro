@@ -1,0 +1,11 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+const { href, label } = Astro.props;
+---
+<a href={href} target="_blank" rel="noopener noreferrer"
+  class="text-xs tracking-widest uppercase px-3 py-1.5 border border-dp-border text-dp-muted hover:border-dp-gold hover:text-dp-gold transition-colors">
+  {label}
+</a>

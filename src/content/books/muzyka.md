@@ -1,9 +1,10 @@
 ---
+# === Мета / BookHero ===
 title: "Пусть эта музыка стихнет"
 cover: "04 Пусть эта музыка стихнет.jpg"
-marketplace: true
 displayOrder: 16
 genres: ["Фантастика", "Фэнтези", "Сборник рассказов"]
+marketplace: true
 logline: "Правдивые истории о фантастическом."
 shortDescription: "Сборник фантастических рассказов, где каждая история — вселенная."
 mediumDescription: |

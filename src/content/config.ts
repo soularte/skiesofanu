@@ -1,5 +1,16 @@
 ﻿import { defineCollection, z } from "astro:content";
 
+const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    excerpt: z.string(),
+    tags: z.array(z.string()).default([]),
+    cover: z.string().optional(),
+  }),
+});
+
 const books = defineCollection({
   type: "content",
   schema: z.object({
@@ -14,13 +25,12 @@ const books = defineCollection({
     series: z.string().optional(),
     seriesSubtitle: z.string().optional(),
     seriesDescription: z.string().optional(),
-    seriesOrder: z.number().optional(),
     readingOrder: z.array(z.object({
       title: z.string(),
       labels: z.array(z.string()).max(3).optional(),
     })).optional(),
     readingMap: z.object({ label: z.string(), url: z.string() }).optional(),
-    seriesLinks: z.array(z.object({ label: z.string(), url: z.string() })).optional(),
+    cardsFolder: z.string().optional(),
     links: z.array(z.object({ label: z.string(), url: z.string() })).optional().default([]),
     world: z.string().optional(),
     worldMaps: z.array(z.object({ label: z.string(), url: z.string() })).optional(),
@@ -54,4 +64,24 @@ const books = defineCollection({
   }),
 });
 
-export const collections = { books };
+const lore = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    book: z.string(),
+    excerpt: z.string(),
+    date: z.date(),
+    cover: z.string().optional(),
+    order: z.number().optional(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+const authors = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = { books, blog, lore, authors };

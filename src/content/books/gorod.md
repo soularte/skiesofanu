@@ -1,4 +1,5 @@
 ---
+# === Мета / BookHero ===
 title: "Город без имени"
 cover: "06 Город без имени.jpg"
 displayOrder: 25
@@ -14,6 +15,8 @@ links:
     url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/gorod-bez-imeni-73765626/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
   - label: "Автор.Тудей"
     url: "https://author.today/work/558315"
+
+# === Мир ===
 world: |
   Город без имени не принадлежит ни одному конкретному миру. Скорее, он сам — маленький отдельный мир, место на пересечении путей.
 

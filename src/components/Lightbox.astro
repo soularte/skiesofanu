@@ -1,0 +1,149 @@
+---
+---
+<!-- Global Lightbox overlay -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Просмотр изображения"
+>
+  <!-- Close button -->
+  <button
+    id="lb-close"
+    aria-label="Закрыть"
+    class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Prev arrow -->
+  <button
+    id="lb-prev"
+    aria-label="Предыдущее"
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Next arrow -->
+  <button
+    id="lb-next"
+    aria-label="Следующее"
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <!-- Image container -->
+  <img
+    id="lb-img"
+    src=""
+    alt=""
+    class="max-h-[90vh] max-w-[90vw] object-contain select-none"
+  />
+
+  <!-- Counter -->
+  <div id="lb-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-body"></div>
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox') as HTMLElement;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const lbClose = document.getElementById('lb-close') as HTMLButtonElement;
+  const lbPrev = document.getElementById('lb-prev') as HTMLButtonElement;
+  const lbNext = document.getElementById('lb-next') as HTMLButtonElement;
+  const lbCounter = document.getElementById('lb-counter') as HTMLElement;
+
+  let gallery: string[] = [];
+  let currentIndex = 0;
+
+  function openLightbox(images: string[], startIndex: number) {
+    gallery = images;
+    currentIndex = startIndex;
+    showImage();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    updateArrows();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+    gallery = [];
+  }
+
+  function showImage() {
+    lbImg.src = gallery[currentIndex];
+    // Copy alt text from the trigger element
+    const triggers = document.querySelectorAll(`[data-lightbox-group]`);
+    const triggerEl = Array.from(triggers).find(el => {
+      const src = el.getAttribute('data-lightbox-src') || (el as HTMLImageElement).src || el.querySelector('img')?.src || '';
+      return src === gallery[currentIndex];
+    });
+    const altText = triggerEl?.getAttribute('alt') || triggerEl?.querySelector('img')?.getAttribute('alt') || '';
+    lbImg.alt = altText;
+    lbCounter.textContent = gallery.length > 1 ? `${currentIndex + 1} / ${gallery.length}` : '';
+  }
+
+  function updateArrows() {
+    lbPrev.style.display = gallery.length > 1 ? 'flex' : 'none';
+    lbNext.style.display = gallery.length > 1 ? 'flex' : 'none';
+  }
+
+  function goNext() {
+    if (gallery.length <= 1) return;
+    currentIndex = (currentIndex + 1) % gallery.length;
+    showImage();
+  }
+
+  function goPrev() {
+    if (gallery.length <= 1) return;
+    currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+    showImage();
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', goPrev);
+  lbNext.addEventListener('click', goNext);
+
+  // Close on backdrop click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') goNext();
+    if (e.key === 'ArrowLeft') goPrev();
+  });
+
+  // Expose global open function for galleries
+  (window as any).__openLightbox = openLightbox;
+
+  // Auto-attach to elements with data-lightbox-group
+  document.querySelectorAll('[data-lightbox-group]').forEach(el => {
+    el.addEventListener('click', () => {
+      const group = el.getAttribute('data-lightbox-group')!;
+      const allInGroup = Array.from(document.querySelectorAll(`[data-lightbox-group="${group}"]`));
+      const images = allInGroup.map(item => {
+        return item.getAttribute('data-lightbox-src')
+          || (item as HTMLImageElement).src
+          || item.querySelector('img')?.src
+          || '';
+      }).filter(Boolean);
+      const index = allInGroup.indexOf(el);
+      openLightbox(images, index >= 0 ? index : 0);
+    });
+  });
+</script>

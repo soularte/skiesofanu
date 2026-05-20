@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagChip from '../../components/TagChip.astro';
+import GoldLine from '../../components/GoldLine.astro';
+import { getCollection } from 'astro:content';
+import { loadDataFile } from '../../lib/data';
+import type { AuthorsData } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const allItems = posts.map(p => ({ slug: p.slug, title: p.data.title, tags: p.data.tags ?? [] }));
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, allItems },
+  }));
+}
+
+const { post, allItems } = Astro.props;
+const { Content } = await post.render();
+
+const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
+  bio: [],
+  ksenia: { name: 'Ксения Котова', photo: 'kk.jpg' },
+  vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
+});
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.date.toISOString(),
+  url: canonicalURL,
+  inLanguage: 'ru',
+  author: [
+    { '@type': 'Person', name: authorsData.ksenia.name },
+    { '@type': 'Person', name: authorsData.vasily.name },
+  ],
+  ...(post.data.cover ? { image: new URL(post.data.cover, Astro.site ?? Astro.url.origin).href } : {}),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Блог', item: new URL('/blog/', Astro.site ?? Astro.url.origin).href },
+    { '@type': 'ListItem', position: 2, name: post.data.title, item: canonicalURL },
+  ],
+};
+---
+<BaseLayout title={post.data.title} description={post.data.excerpt} image={post.data.cover} ogType="article">
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <header class="mb-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+        <nav class="text-xs tracking-widest uppercase text-dp-muted">
+          <a href="/blog" class="hover:text-dp-gold transition-colors">Блог</a>
+          <span class="mx-2">→</span>
+          <span class="text-dp-text">{post.data.title}</span>
+        </nav>
+        <div class="flex gap-4 mt-2 sm:mt-0 self-end sm:self-auto blog-nav-top"></div>
+      </div>
+      <time class="text-xs tracking-widest uppercase text-dp-muted">
+        {post.data.date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
+      </time>
+      <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{post.data.title}</h1>
+      <div class="flex flex-wrap gap-2 mb-4">
+        {post.data.tags.map(tag => <TagChip tag={tag} href="/blog" />)}
+      </div>
+      {post.data.cover && (
+        <div class="aspect-[4/3] overflow-hidden border border-dp-border mb-4">
+          <img
+            src={post.data.cover}
+            alt={post.data.title}
+            width="800"
+            height="600"
+            loading="eager"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      <GoldLine />
+    </header>
+
+    <div class="prose-content max-w-none text-dp-text leading-relaxed">
+      <Content />
+    </div>
+
+    <footer class="mt-12 pt-6 border-t border-dp-border">
+      <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
+        <a href="/blog" class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors">
+          ← Назад
+        </a>
+        <div class="flex gap-4 self-end sm:self-auto blog-nav-bottom"></div>
+      </div>
+    </footer>
+  </article>
+
+  <script type="application/json" id="blog-items-data" set:html={JSON.stringify({ items: allItems, currentSlug: post.slug })} />
+
+  <script>
+    document.querySelectorAll('.prose-content img').forEach((img) => {
+      img.setAttribute('data-lightbox-group', 'blog-article');
+      img.setAttribute('data-lightbox-src', (img as HTMLImageElement).src);
+    });
+
+    // Dynamic prev/next based on ?tag= parameter
+    (function() {
+      const dataEl = document.getElementById('blog-items-data');
+      if (!dataEl) return;
+      const { items, currentSlug } = JSON.parse(dataEl.textContent || '{}');
+      const tag = new URLSearchParams(window.location.search).get('tag');
+
+      const filtered = tag && tag !== 'all'
+        ? items.filter((i: any) => i.tags.includes(tag))
+        : items;
+
+      const idx = filtered.findIndex((i: any) => i.slug === currentSlug);
+      const prev = idx < filtered.length - 1 ? filtered[idx + 1] : null;
+      const next = idx > 0 ? filtered[idx - 1] : null;
+
+      const tagParam = tag && tag !== 'all' ? `?tag=${encodeURIComponent(tag)}` : '';
+      const linkClass = 'text-xs tracking-widest uppercase text-dp-muted hover:text-dp-gold-ink transition-colors';
+
+      function renderNav(container: Element) {
+        let html = '';
+        if (next) {
+          html += `<a href="/blog/${next.slug}${tagParam}" class="${linkClass}" title="${next.title}">← Позднее</a>`;
+        }
+        if (prev) {
+          html += `<a href="/blog/${prev.slug}${tagParam}" class="${linkClass}" title="${prev.title}">Ранее →</a>`;
+        }
+        container.innerHTML = html;
+      }
+
+      document.querySelectorAll('.blog-nav-top, .blog-nav-bottom').forEach(renderNav);
+    })();
+  </script>
+</BaseLayout>

@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-//import sitemap from '@astrojs/sitemap';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://astounding-chebakia-15d9f1.netlify.app',
+  site: process.env.SITE_URL || 'https://skiesofanu.com',
   integrations: [
     tailwind(),
-    // sitemap()
-],
+    sitemap(),
+  ],
 });

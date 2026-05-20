@@ -1,4 +1,5 @@
 ---
+# === Мета / BookHero ===
 title: "Данлин"
 cover: "07 Данлин.jpg"
 displayOrder: 26
@@ -7,6 +8,15 @@ logline: "Там, где пар и магия едины."
 shortDescription: "Истории Данлина, где слиты магия, стимпанк и азиатские мотивы."
 mediumDescription: |
   Магия не едина — она многолика. В Данлине каждый народ хранит свои традиции и свою магию: с ее законами, тайнами и запретами. Где-то приручают духов. Где-то чудеса порождаются душой творца. А где-то в основе волшебства — пар, сталь и шестеренки.
+links:
+  - label: "ЛитРес"
+    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/danlin-73795446/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+  - label: "ЛитРес Аудио"
+    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/danlin-73809946/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+  - label: "Автор.Тудей"
+    url: "https://author.today/work/558309"
+
+# === Мир ===
 world: |
   Данлин — мир, разнообразный по культурам. Четыре материка и множество островов породили калейдоскоп стран и обычаев. Где-то уровень технологического развития уже достиг конца XIX века, где-то — напоминает древние времена.
   Одна из ярчайших черт Данлина — различие магических традиций.
@@ -18,13 +28,6 @@ world: |
   Колдуны далёкой южной Ра-Хемри являются ещё и служителями своего бога. Их силы неразрывно связаны с посмертными тенями. Каждое колдовство для ра-хемрийца — не просто магическая практика, но и акт веры.
   
   Всё перечисленное  — лишь малая часть волшебных традиций Данлина. А чтобы узнать больше, читайте сборник!
-links:
-  - label: "ЛитРес"
-    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/danlin-73795446/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
-  - label: "ЛитРес Аудио"
-    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/danlin-73809946/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
-  - label: "Автор.Тудей"
-    url: "https://author.today/work/558309"
 ---
 Магия не едина — она многолика. В Данлине каждый народ хранит свои традиции и свою магию: с ее законами, тайнами и запретами. Где-то приручают духов. Где-то чудеса порождаются душой творца. А где-то в основе волшебства — пар, сталь и шестеренки.
 

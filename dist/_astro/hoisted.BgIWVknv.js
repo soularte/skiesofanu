@@ -1,1 +1,0 @@
-import"./hoisted.Cub1iEF2.js";const e=document.getElementById("chars-track"),t=document.getElementById("chars-prev"),c=document.getElementById("chars-next");e&&(t?.addEventListener("click",()=>{e.scrollBy({left:-250,behavior:"smooth"})}),c?.addEventListener("click",()=>{e.scrollBy({left:250,behavior:"smooth"})}));

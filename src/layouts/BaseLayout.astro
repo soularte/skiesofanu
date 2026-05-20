@@ -1,25 +1,31 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
+import SocialBar from '../components/SocialBar.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { loadDataFile } from '../lib/data';
+import type { SiteData, AuthorsData, LinksData } from '../lib/types';
+import faviconImg from '../assets/images/authors/favis.jpg';
+import defaultOgImg from '../assets/images/authors/favi.jpg';
 
-const siteRaw = readFileSync(join(process.cwd(), 'src/data/site.md'), 'utf-8');
-const { data: site } = matter(siteRaw) as { data: {
-  siteName: string;
-  siteTagline?: string;
-  defaultDescription: string;
-  metricsId?: string;
-  privacyText: string;
-}};
+const site = loadDataFile<SiteData>('src/data/site.md', {
+  siteName: 'Skies of Anu',
+  defaultDescription: '',
+  privacyText: '',
+});
 
-const authorsRaw = readFileSync(join(process.cwd(), 'src/data/authors.md'), 'utf-8');
-const { data: authorsData } = matter(authorsRaw) as { data: {
-  ksenia: { name: string };
-  vasily: { name: string };
-}};
+const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
+  bio: [],
+  ksenia: { name: 'Ксения Котова', photo: 'kk.jpg' },
+  vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
+});
 const authorNames = `${authorsData.ksenia.name}, ${authorsData.vasily.name}`;
+
+const linksData = loadDataFile<LinksData>('src/data/links.md', {
+  socials: [],
+  litportals: { ksenia: [], vasily: [] },
+  contact: { vk: '', telegram: '' },
+});
 
 interface Props {
   title: string;
@@ -28,6 +34,8 @@ interface Props {
   canonicalURL?: string;
   keywords?: string;
   ogType?: string;
+  noindex?: boolean;
+  additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const SITE_KEYWORDS = 'стимпанк, дизельпанк, фэнтези, фантастика, ксения котова, василий зеленков, авиаторы его величества, романтическое фэнтези, литнет, литгород, автор тудей, литрес, умная фантастика, умное фэнтези, авторские миры, фантастические миры, воздушные корабли, летающие острова, воздушные пираты, парящие города, альтернативная история, ретрофутуризм, приключенческая фантастика, фэнтези-приключения, романтическая фантастика, авантюрный роман, городское фэнтези, магический реализм, читать онлайн, купить книгу фэнтези, электронная книга фэнтези, серия книг фэнтези, цикл фэнтези, новинки фэнтези, российское фэнтези, отечественное фэнтези, соавторы, соавторский дуэт, авторский тандем, книжная серия, небеса ану, авиаторы, Лем Декс, steampunk, dieselpunk, fantasy, science fiction, Ksenia Kotova, Vasily Zelenkov, Aviators of His Majesty, romantic fantasy, litnet, litgorod, author today, litres, smart fantasy, author worlds, fictional worlds, airships, floating islands, air pirates, retrofuturism, adventure fantasy, romantic fiction, russian fantasy books, co-authors, writing duo, skies of anu';
@@ -39,11 +47,40 @@ const {
   canonicalURL = Astro.url.href,
   keywords,
   ogType = 'website',
+  noindex = false,
+  additionalSchema,
 } = Astro.props;
 
-const ogImage = image ?? '/images/authors/favi.jpg';
+const ogImage = image ?? defaultOgImg.src;
+const ogImageURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 const allKeywords = keywords ? `${keywords}, ${SITE_KEYWORDS}` : SITE_KEYWORDS;
 const siteTitle = `${title} — ${site.siteName}`;
+
+const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.siteName,
+  description: site.defaultDescription,
+  url: siteOrigin,
+  logo: ogImageURL,
+  member: [
+    {
+      '@type': 'Person',
+      name: authorsData.ksenia.name,
+      url: new URL('/about/ksenia/', siteOrigin).href,
+    },
+    {
+      '@type': 'Person',
+      name: authorsData.vasily.name,
+      url: new URL('/about/vasily/', siteOrigin).href,
+    },
+  ],
+};
+
+const extraSchemas = additionalSchema
+  ? (Array.isArray(additionalSchema) ? additionalSchema : [additionalSchema])
+  : [];
 ---
 <!doctype html>
 <html lang="ru">
@@ -52,6 +89,7 @@ const siteTitle = `${title} — ${site.siteName}`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content={allKeywords} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
@@ -60,27 +98,46 @@ const siteTitle = `${title} — ${site.siteName}`;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={site.siteName} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={siteTitle} />
 
     <!-- Twitter/X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Авторы и тема -->
     <meta name="author" content={authorNames} />
     <meta name="theme-color" content="#FAF6F0" />
 
     <title>{siteTitle}</title>
-    <link rel="icon" type="image/jpeg" href="/images/authors/favis.jpg" />
+    <link rel="icon" type="image/jpeg" href={faviconImg.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&family=Libre+Baskerville:ital@0;1&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&family=Libre+Baskerville:ital@0;1&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {extraSchemas.map(schema => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   <style is:global>
+    @import '../styles/prose.css';
     p + p {
       margin-top: 1em;
     }
@@ -101,14 +158,28 @@ const siteTitle = `${title} — ${site.siteName}`;
 
   </head>
   <body class="bg-parchment text-dp-text font-body antialiased min-h-screen flex flex-col">
-    <Header siteName={site.siteName} siteTagline={site.siteTagline} />
-    <main class="flex-1">
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[999] focus:bg-dp-gold focus:text-dp-dark focus:px-4 focus:py-2 focus:text-sm">Перейти к содержимому</a>
+    <!-- Sticky header group -->
+    <div class="sticky top-0 z-50">
+      {linksData.socials.length > 0 && (
+        <div class="bg-dp-dark">
+          <div class="max-w-5xl mx-auto px-6 py-1.5 flex justify-start">
+            <SocialBar socials={linksData.socials} variant="topbar" />
+          </div>
+        </div>
+      )}
+      <Header siteName={site.siteName} siteTagline={site.siteTagline} />
+    </div>
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
-    <Footer copyright={authorNames} />
+    <Footer copyright={authorNames} socials={linksData.socials} />
+    <Lightbox />
 
     <!-- Кнопка «Наверх» -->
     <button
+      type="button"
       id="back-to-top"
       aria-label="Наверх"
       class="fixed bottom-6 right-4 z-40 w-10 h-10 border border-dp-gold/50 text-dp-gold bg-parchment flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 hover:border-dp-gold hover:bg-dp-gold/10 md:right-6"
@@ -119,15 +190,16 @@ const siteTitle = `${title} — ${site.siteName}`;
     <!-- Плашка конфиденциальности -->
     <div
       id="privacy-banner"
-      class="fixed bottom-0 left-0 right-0 z-50 border-t border-dp-border bg-parchment px-6 py-4 flex items-center justify-between gap-4"
+      class="fixed bottom-0 left-0 right-0 z-50 bg-dp-dark px-6 py-4 flex items-center justify-between gap-4"
+      style="display:none;"
     >
-      <p class="text-xs text-dp-muted leading-relaxed">
+      <p class="text-xs text-parchment/80 leading-relaxed">
         {site.privacyText}
       </p>
       <button
         id="privacy-close"
         aria-label="Закрыть"
-        class="flex-shrink-0 w-7 h-7 flex items-center justify-center border border-dp-border text-dp-muted hover:border-dp-gold hover:text-dp-gold transition-colors"
+        class="flex-shrink-0 w-7 h-7 flex items-center justify-center border border-parchment/40 text-parchment/70 hover:border-dp-gold hover:text-dp-gold transition-colors"
       >
         <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
@@ -136,23 +208,25 @@ const siteTitle = `${title} — ${site.siteName}`;
     <script>
       // Кнопка «Наверх»
       const btn = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-          btn.style.opacity = '1';
-          btn.style.pointerEvents = 'auto';
-        } else {
-          btn.style.opacity = '0';
-          btn.style.pointerEvents = 'none';
-        }
-      });
-      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      if (btn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          } else {
+            btn.style.opacity = '0';
+            btn.style.pointerEvents = 'none';
+          }
+        });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
 
       // Плашка конфиденциальности
       const banner = document.getElementById('privacy-banner');
-      if (localStorage.getItem('privacy-closed')) {
-        banner.style.display = 'none';
+      if (!localStorage.getItem('privacy-closed')) {
+        banner.style.display = '';
       }
-      document.getElementById('privacy-close').addEventListener('click', () => {
+      document.getElementById('privacy-close')?.addEventListener('click', () => {
         banner.style.display = 'none';
         localStorage.setItem('privacy-closed', '1');
       });

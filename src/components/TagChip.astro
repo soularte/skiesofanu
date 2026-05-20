@@ -1,0 +1,13 @@
+---
+interface Props {
+  tag: string;
+  href?: string;
+}
+const { tag, href } = Astro.props;
+const classes = "text-[11px] tracking-widest uppercase text-dp-gold-ink border border-dp-gold/30 px-2 py-1";
+---
+{href ? (
+  <a href={href} class={`${classes} hover:border-dp-gold transition-colors`}>#{tag}</a>
+) : (
+  <span class={classes}>#{tag}</span>
+)}

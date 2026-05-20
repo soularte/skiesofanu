@@ -1,0 +1,75 @@
+---
+import GalleryArrow from './GalleryArrow.astro';
+
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Mobile: one card at a time, centered -->
+  <div class="sm:hidden">
+    <div
+      id="cards-track-mobile"
+      class="overflow-hidden relative"
+    >
+      <div class="flex transition-transform duration-300" id="cards-slider">
+        {images.map(src => (
+          <div class="w-full flex-shrink-0 flex justify-center px-4">
+            <img src={src} alt="Промо-карточка" loading="lazy" draggable="false" width="248" height="350" class="h-[350px] w-auto shadow-lg" data-lightbox-group="cards-mobile" data-lightbox-src={src} />
+          </div>
+        ))}
+      </div>
+      <!-- Tap zones -->
+      <button id="cards-mobile-prev" aria-label="Назад" class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <button id="cards-mobile-next" aria-label="Вперёд" class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
+    </div>
+    {images.length > 1 && (
+      <div class="flex justify-center gap-2 mt-3">
+        {images.map((_, i) => (
+          <button class="cards-dot w-2 h-2 rounded-full bg-dp-border transition-colors" data-index={i}></button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- Desktop: scrollable track -->
+  <div class="hidden sm:block">
+    <div
+      id="cards-track"
+      class="flex gap-4 overflow-x-auto select-none py-2"
+      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
+    >
+      {images.map(src => (
+        <img
+          src={src}
+          alt="Промо-карточка"
+          loading="lazy"
+          draggable="false"
+          width="248"
+          height="350"
+          class="flex-shrink-0 h-[350px] w-auto shadow-lg snap-center cursor-pointer hover:opacity-90 transition-opacity"
+          data-lightbox-group="cards"
+          data-lightbox-src={src}
+        />
+      ))}
+    </div>
+
+    <!-- Left hover zone -->
+    <GalleryArrow direction="left" id="cards-prev" />
+
+    <!-- Right hover zone -->
+    <GalleryArrow direction="right" id="cards-next" />
+  </div>
+</div>
+
+<style>
+  #cards-track::-webkit-scrollbar { display: none; }
+  .cards-dot.active { background-color: #C9A84C; }
+</style>
+
+<script>
+  import { initSlider } from '../lib/slider';
+  initSlider({ prefix: 'cards', step: 300 });
+</script>

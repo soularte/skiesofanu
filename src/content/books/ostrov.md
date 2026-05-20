@@ -1,4 +1,5 @@
 ---
+# === Мета / BookHero ===
 title: "Остров сломанных человечков"
 cover: "Остров.jpg"
 displayOrder: 4

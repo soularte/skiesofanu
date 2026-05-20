@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import type { LinkItem } from '../lib/types';
+
+interface Props {
+  ksenia: LinkItem[];
+  vasily: LinkItem[];
+}
+const { ksenia, vasily } = Astro.props;
+---
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  <div>
+    <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Ксения Котова</h3>
+    <div class="flex gap-3 mt-4 flex-wrap justify-center">
+      {ksenia.map(p => (
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={p.label}
+          title={p.label}
+          class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
+        >
+          <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+            <Icon name={p.label} />
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+  <div>
+    <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Василий Зеленков</h3>
+    <div class="flex gap-3 mt-4 flex-wrap justify-center">
+      {vasily.map(p => (
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={p.label}
+          title={p.label}
+          class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
+        >
+          <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+            <Icon name={p.label} />
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

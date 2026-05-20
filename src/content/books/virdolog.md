@@ -1,4 +1,5 @@
 ---
+# === Мета / BookHero ===
 title: "Вирдолог"
 cover: "02 Вирдолог .jpg"
 displayOrder: 3

@@ -1,18 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CoversGallery from '../components/CoversGallery.astro';
-import Icon from '../components/Icon.astro';
+import Divider from '../components/Divider.astro';
+import GoldLine from '../components/GoldLine.astro';
+import DecoratedBox from '../components/DecoratedBox.astro';
+import LitPortals from '../components/LitPortals.astro';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
+import { loadDataFile, loadDataFileWithContent, miniMarkdown } from '../lib/data';
+import { findImage } from '../lib/images';
+import type { NewsData, LinksData } from '../lib/types';
+import kkPhoto from '../assets/images/authors/kk.jpg';
+import vzPhoto from '../assets/images/authors/vz.jpg';
 
-const newsRaw = readFileSync(join(process.cwd(), 'src/data/news.md'), 'utf-8');
-const { data: news } = matter(newsRaw) as { data: {
-  visible: boolean;
-  text?: string;
-  links?: { label: string; url: string }[];
-}};
+const { data: news, content: newsContent } = loadDataFileWithContent<NewsData>('src/data/news.md', { visible: false });
+const newsHtml = miniMarkdown(newsContent);
 
 // Книги из коллекции (только видимые в галерее)
 const allBooks = await getCollection('books');
@@ -20,22 +22,40 @@ const visibleBooks = allBooks.filter(b => !b.data.series || (b.data.books && b.d
 const orderedBooks = [...visibleBooks].sort((a, b) =>
   (a.data.displayOrder ?? 999) - (b.data.displayOrder ?? 999)
 );
-const covers = orderedBooks.map(b => ({
-  slug: b.slug,
-  title: b.data.title,
-  src: `/images/${b.data.cover}`,
-  description: b.data.shortDescription,
-  marketplace: b.data.marketplace,
-  links: b.data.links?.length ? b.data.links : (b.data.seriesLinks ?? []),
-}));
+const covers = orderedBooks
+  .map(b => {
+    const src = findImage(b.data.cover);
+    if (!src) return null;
+    return {
+      slug: b.slug,
+      title: b.data.title,
+      src,
+      description: b.data.shortDescription,
+      marketplace: b.data.marketplace,
+      links: b.data.links ?? [],
+    };
+  })
+  .filter((c): c is NonNullable<typeof c> => c !== null);
 
-// links.md
-const linksRaw = readFileSync(join(process.cwd(), 'src/data/links.md'), 'utf-8');
-const { data: links } = matter(linksRaw);
+const links = loadDataFile<LinksData>('src/data/links.md', {
+  socials: [],
+  litportals: { ksenia: [], vasily: [] },
+  contact: { vk: '#', telegram: '#' },
+});
 
-// telegram.md
-const tgRaw = readFileSync(join(process.cwd(), 'src/data/telegram.md'), 'utf-8');
-const { data: tg } = matter(tgRaw);
+// Blog posts (latest 3)
+const blogPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+).slice(0, 3);
+
+// Progress from news data
+const visibleProgress = (news.progress?.visible && news.progress?.items)
+  ? news.progress.items.filter(i => i.visible)
+  : [];
+
+// Progress ring colors (соответствуют токенам Tailwind: dp-border / акцентный красный)
+const PROGRESS_TRACK = '#D4C5A9';
+const PROGRESS_FILL = '#8B1A2B';
 ---
 <BaseLayout title="Главная">
   <!-- Hero -->
@@ -49,14 +69,14 @@ const { data: tg } = matter(tgRaw);
       <div class="grid grid-cols-1 xl:grid-cols-[200px_1fr_200px] items-center gap-0">
         <div class="hidden xl:block h-72 pointer-events-none overflow-hidden self-center"
           style="mask-image: linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
-          <img src="/images/authors/kk.jpg" alt="Ксения Котова" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
+          <Image src={kkPhoto} alt="Ксения Котова" widths={[200, 400]} sizes="200px" loading="eager" fetchpriority="high" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
         </div>
         <div class="text-center px-6 xl:px-10">
-          <p class="font-accent italic text-dp-gold/80 text-base mb-3 tracking-wide">Те, кто смотрят на небо, еще умеют мечтать</p>
+          <p class="font-accent italic text-dp-gold-ink text-base mb-3 tracking-wide">Те, кто смотрят на небо, еще умеют мечтать</p>
           <h1 class="font-heading text-xl md:text-3xl font-bold text-parchment leading-tight mb-4">
             Соавторский дуэт:<br/>Ксения Котова,<br/>Василий Зеленков
           </h1>
-          <div class="w-16 h-px bg-dp-gold mx-auto mb-4"></div>
+          <GoldLine size="lg" class="mx-auto mb-4" />
           <p class="text-parchment/70 text-base leading-relaxed mb-7 max-w-xl mx-auto">
             Авторские миры, забытые легенды и латунные сердца, бьющиеся вопреки. Наши романы — ностальгия по альтернативному прошлому и мечта о неслучившемся будущем с осязаемой красотой безумных устройств.
           </p>
@@ -67,24 +87,47 @@ const { data: tg } = matter(tgRaw);
         </div>
         <div class="hidden xl:block h-72 pointer-events-none overflow-hidden self-center"
           style="mask-image: linear-gradient(to left, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to left, transparent 0%, black 25%, black 60%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
-          <img src="/images/authors/vz.jpg" alt="Василий Зеленков" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
+          <Image src={vzPhoto} alt="Василий Зеленков" widths={[200, 400]} sizes="200px" loading="eager" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News banner -->
-  {news.visible && news.text && (
+  <!-- News banner + Progress -->
+  {news.visible && (
     <div class="max-w-5xl mx-auto px-6 pt-6">
-      <div class="mx-[30px] flex flex-wrap items-baseline gap-3 py-3 border border-dp-gold/30 bg-dp-gold/5 text-dp-text leading-relaxed px-6">
-        <span class="text-[9px] tracking-widest uppercase text-dp-gold shrink-0">Новости</span>
-        <span class="font-accent italic text-base">{news.text}</span>
-        {news.links && news.links.map(link => (
-          <a href={link.url} target="_blank" rel="noopener noreferrer"
-            class="text-[10px] font-body tracking-widest px-1.5 py-0.5 border border-dp-gold/50 text-dp-gold hover:border-dp-gold hover:text-dp-text transition-colors shrink-0">
-            {link.label}
-          </a>
-        ))}
+      <div class="mx-[30px] border border-dp-gold/30 bg-dp-gold/5 px-6 py-4">
+        <p class="text-[9px] tracking-widest uppercase text-dp-gold-ink mb-3">В работе</p>
+        {newsHtml && (
+          <div class="font-body text-sm text-dp-text leading-relaxed mb-4 [&>p]:mb-2 [&>p:last-child]:mb-0" set:html={newsHtml} />
+        )}
+        {visibleProgress.length > 0 && (
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            {visibleProgress.map(item => {
+              const pct = Math.round((item.current / item.total) * 100);
+              const circumference = 2 * Math.PI * 36;
+              const offset = circumference - (pct / 100) * circumference;
+              return (
+                <div class="flex flex-col items-center gap-1.5">
+                  <div class="relative w-20 h-20" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${item.title}: ${pct}%`}>
+                    <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="36" fill="none" stroke={PROGRESS_TRACK} stroke-width="10" />
+                      <circle cx="50" cy="50" r="36" fill="none" stroke={PROGRESS_FILL} stroke-width="10"
+                        stroke-dasharray={circumference}
+                        stroke-dashoffset={offset}
+                        stroke-linecap="round" />
+                    </svg>
+                    <span class="absolute inset-0 flex items-center justify-center text-xs font-body text-dp-text">
+                      {pct}%
+                    </span>
+                  </div>
+                  <span class="text-[9px] tracking-widest uppercase text-dp-muted text-center leading-tight">{item.title}</span>
+                  <span class="text-[9px] tracking-widest uppercase text-dp-muted">{item.current}/{item.total} глав</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   )}
@@ -92,8 +135,8 @@ const { data: tg } = matter(tgRaw);
   <!-- Covers Gallery -->
   <section class="max-w-5xl mx-auto px-6 pt-8 pb-2">
     <div class="text-center mb-4">
-      <h2 class="font-heading text-3xl font-semibold">Книги</h2>
-      <div class="w-12 h-px bg-dp-gold mx-auto mt-4 mb-4"></div>
+      <a href="/books" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-3xl font-semibold">Книги</h2></a>
+      <GoldLine class="mx-auto mt-4 mb-4" />
       <p class="font-accent italic text-dp-muted text-base">Каждая история — вход в потрясающий авторский мир</p>
     </div>
     <CoversGallery covers={covers} />
@@ -101,209 +144,87 @@ const { data: tg } = matter(tgRaw);
 
   <!-- Divider -->
   <div class="max-w-5xl mx-auto px-6">
-    <div class="flex items-center gap-4">
-      <div class="flex-1 h-px bg-dp-border"></div>
-      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-      <div class="flex-1 h-px bg-dp-border"></div>
-    </div>
+    <Divider />
   </div>
 
   <!-- Literary platforms -->
   <section class="max-w-5xl mx-auto px-6 py-12">
-    <div class="relative border border-dp-border max-w-2xl mx-auto px-10 py-8">
-      <div class="absolute top-2 left-2 w-5 h-5 border-l border-t border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute top-2 right-2 w-5 h-5 border-r border-t border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute bottom-2 left-2 w-5 h-5 border-l border-b border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute bottom-2 right-2 w-5 h-5 border-r border-b border-dp-gold/50 pointer-events-none"></div>
+    <DecoratedBox class="max-w-2xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="font-heading text-2xl font-semibold">Литпорталы</h2>
-        <div class="w-12 h-px bg-dp-gold mx-auto mt-4"></div>
+        <GoldLine class="mx-auto mt-4" />
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div>
-          <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Ксения Котова</h3>
-          <div class="flex gap-3 mt-4 flex-wrap justify-center">
-            {links.litportals.ksenia.map((p: {label: string; url: string}) => (
-              <a href={p.url} aria-label={p.label} title={p.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
-                <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
-                  <Icon name={p.label} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Василий Зеленков</h3>
-          <div class="flex gap-3 mt-4 flex-wrap justify-center">
-            {links.litportals.vasily.map((p: {label: string; url: string}) => (
-              <a href={p.url} aria-label={p.label} title={p.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
-                <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
-                  <Icon name={p.label} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+      <LitPortals ksenia={links.litportals.ksenia} vasily={links.litportals.vasily} />
+    </DecoratedBox>
   </section>
 
   <!-- Divider -->
   <div class="max-w-5xl mx-auto px-6">
-    <div class="flex items-center gap-4">
-      <div class="flex-1 h-px bg-dp-border"></div>
-      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-      <div class="flex-1 h-px bg-dp-border"></div>
-    </div>
+    <Divider />
   </div>
 
-  <!-- Social media -->
-  <section class="max-w-5xl mx-auto px-6 py-12">
-    <div class="relative border border-dp-border max-w-2xl mx-auto px-10 py-8">
-      <div class="absolute top-2 left-2 w-5 h-5 border-l border-t border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute top-2 right-2 w-5 h-5 border-r border-t border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute bottom-2 left-2 w-5 h-5 border-l border-b border-dp-gold/50 pointer-events-none"></div>
-      <div class="absolute bottom-2 right-2 w-5 h-5 border-r border-b border-dp-gold/50 pointer-events-none"></div>
-      <div class="text-center mb-8">
-        <h2 class="font-heading text-2xl font-semibold">Соцсети</h2>
-        <div class="w-12 h-px bg-dp-gold mx-auto mt-4"></div>
-      </div>
-      <div class="flex justify-center gap-6 flex-wrap">
-        {links.socials.map((s: {label: string; url: string; icon: string}) => (
-          <a href={s.url} title={s.label} aria-label={s.label} class="group text-dp-muted hover:text-dp-gold transition-colors">
-            <div class="w-12 h-12 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
-              <Icon name={s.icon} />
-            </div>
+  <!-- Latest blog posts -->
+
+<section class="max-w-5xl mx-auto px-6 pt-8 pb-4">
+
+  <div class="mb-8">
+
+    <a href="/blog" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-3xl font-semibold">Последние новости</h2></a>
+
+    <GoldLine class="mt-4" />
+
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    {blogPosts.map(post => {
+      const coverSrc = post.data.cover ? findImage(post.data.cover) : undefined;
+      return (
+      <article class="border border-dp-border flex flex-col hover:border-dp-gold/50 transition-colors overflow-hidden">
+
+        {coverSrc ? (
+          <a href={`/blog/${post.slug}`} class="block aspect-[4/3] overflow-hidden">
+            <Image
+              src={coverSrc}
+              alt={post.data.title}
+              widths={[300, 600]}
+              sizes="(max-width: 768px) 100vw, 300px"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </a>
-        ))}
-      </div>
-      <p class="text-center font-accent italic text-dp-muted text-base mt-8">
-        Связаться с нами{' '}
-        <a href={links.contact.vk} class="text-dp-text hover:text-dp-gold transition-colors border-b border-dp-border hover:border-dp-gold">ВКонтакте</a>
-        {' '}или{' '}
-        <a href={links.contact.telegram} class="text-dp-text hover:text-dp-gold transition-colors border-b border-dp-border hover:border-dp-gold">Телеграм</a>
-      </p>
-    </div>
-  </section>
+        ) : (
+          <a href={`/blog/${post.slug}`} class="block aspect-[4/3] bg-dp-dark flex items-center justify-center">
+            <span class="text-parchment/20 text-5xl font-heading">{post.data.title.charAt(0)}</span>
+          </a>
+        )}
 
-  <!-- Divider -->
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="flex items-center gap-4">
-      <div class="flex-1 h-px bg-dp-border"></div>
-      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-      <div class="flex-1 h-px bg-dp-border"></div>
-    </div>
-  </div>
+        <div class="p-6 flex flex-col gap-3 flex-1">
 
-  <!-- Telegram feed -->
+        <time class="text-xs tracking-widest uppercase text-dp-muted">
 
-<section class="max-w-7xl mx-auto px-6 pt-8 pb-4">
+          {post.data.date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
 
-  <div class="mb-12">
+        </time>
 
-    <h2 class="font-heading text-3xl font-semibold">Последние новости</h2>
+        <h3 class="font-heading text-lg font-semibold leading-tight">
 
-    <div class="w-12 h-px bg-dp-gold mt-4"></div>
+          <a href={`/blog/${post.slug}`} class="hover:text-dp-gold transition-colors">{post.data.title}</a>
 
-  </div>
+        </h3>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <p class="text-sm text-dp-muted leading-relaxed flex-1">{post.data.excerpt}</p>
 
-    <div class="border border-dp-border p-6 flex flex-col gap-3 overflow-hidden">
+        <a href={`/blog/${post.slug}`} class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors mt-1">
 
-      <p class="text-[10px] tracking-widest uppercase text-dp-muted">
+          Читать →
 
-        {tg.posts.digest.label}
+        </a>
 
-      </p>
+        </div>
 
-     <div class="telegram-widget-wrap flex-1 max-w-full max-h-[560px] overflow-auto">
-
-        <script
-
-          is:inline
-
-          async
-
-          src="https://telegram.org/js/telegram-widget.js?22"
-
-          data-telegram-post={tg.posts.digest.postId}
-
-          data-width="100%"
-
-          data-userpic="false"
-
-          data-color="C9A84C"
-
-        ></script>
-
-      </div>
-
-    </div>
-
-    <div class="border border-dp-border p-6 flex flex-col gap-3 overflow-hidden">
-
-      <p class="text-[10px] tracking-widest uppercase text-dp-muted">
-
-        {tg.posts.current.label}
-
-      </p>
-
-      <div class="telegram-widget-wrap flex-1 max-w-full max-h-[560px] overflow-auto">
-
-        <script
-
-          is:inline
-
-          async
-
-          src="https://telegram.org/js/telegram-widget.js?22"
-
-          data-telegram-post={tg.posts.current.postId}
-
-          data-width="100%"
-
-          data-userpic="false"
-
-          data-color="C9A84C"
-
-        ></script>
-
-      </div>
-
-    </div>
-
-    <div class="border border-dp-border p-6 flex flex-col gap-3 overflow-hidden">
-
-      <p class="text-[10px] tracking-widest uppercase text-dp-muted">
-
-        {tg.posts.intro.label}
-
-      </p>
-
-      <div class="telegram-widget-wrap flex-1 max-w-full max-h-[560px] overflow-auto">
-
-        <script
-
-          is:inline
-
-          async
-
-          src="https://telegram.org/js/telegram-widget.js?22"
-
-          data-telegram-post={tg.posts.intro.postId}
-
-          data-width="100%"
-
-          data-userpic="false"
-
-          data-color="C9A84C"
-
-        ></script>
-
-      </div>
-
-    </div>
+      </article>
+      );
+    })}
 
   </div>
 

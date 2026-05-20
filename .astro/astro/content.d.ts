@@ -140,7 +140,46 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"books": {
+		"authors": {
+"ksenia.md": {
+	id: "ksenia.md";
+  slug: "ksenia";
+  body: string;
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+} & { render(): Render[".md"] };
+"vasily.md": {
+	id: "vasily.md";
+  slug: "vasily";
+  body: string;
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+} & { render(): Render[".md"] };
+};
+"blog": {
+"miroustroistvo-nebesa.md": {
+	id: "miroustroistvo-nebesa.md";
+  slug: "miroustroistvo-nebesa";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"personazhi-aviatory.md": {
+	id: "personazhi-aviatory.md";
+  slug: "personazhi-aviatory";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"process-soavtorstva.md": {
+	id: "process-soavtorstva.md";
+  slug: "process-soavtorstva";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
+"books": {
 "aviatory.md": {
 	id: "aviatory.md";
   slug: "aviatory";
@@ -196,6 +235,36 @@ declare module 'astro:content' {
   body: string;
   collection: "books";
   data: InferEntrySchema<"books">
+} & { render(): Render[".md"] };
+};
+"lore": {
+"aviatory-aerolit.md": {
+	id: "aviatory-aerolit.md";
+  slug: "aviatory-aerolit";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
+"aviatory-fraktsii.md": {
+	id: "aviatory-fraktsii.md";
+  slug: "aviatory-fraktsii";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
+"aviatory-mir-nebesa.md": {
+	id: "aviatory-mir-nebesa.md";
+  slug: "aviatory-mir-nebesa";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
+"aviatory-vozdushnye-korabli.md": {
+	id: "aviatory-vozdushnye-korabli.md";
+  slug: "aviatory-vozdushnye-korabli";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
 } & { render(): Render[".md"] };
 };
 

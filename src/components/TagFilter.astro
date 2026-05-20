@@ -1,0 +1,51 @@
+---
+/**
+ * Reusable tag filter button strip.
+ * Active state: solid gold bg.  Inactive state: gold border outline.
+ * Parent must provide JS to filter cards; this component only renders buttons.
+ *
+ * CSS class to target buttons: `.filter-btn`
+ * Data attribute for each button: `data-filter-tag`
+ * Active class combo: `bg-dp-gold text-dp-dark`
+ * Inactive class combo: `border border-dp-gold/50 text-dp-gold-ink`
+ */
+interface Props {
+  tags: string[];
+  group?: string;
+  class?: string;
+}
+const { tags, group = 'filter', class: className = '' } = Astro.props;
+
+const base = 'filter-btn text-[11px] tracking-widest uppercase px-2 py-1 transition-colors cursor-pointer';
+const active = 'bg-dp-gold text-dp-dark';
+const inactive = 'border border-dp-gold/50 text-dp-gold-ink hover:border-dp-gold hover:text-dp-text';
+---
+<div class={`flex flex-wrap gap-1 ${className}`} data-filter-group={group}>
+  <button data-filter-tag="all" class={`${base} ${active}`}>Все</button>
+  {tags.map(tag => (
+    <button data-filter-tag={tag} class={`${base} ${inactive}`}>#{tag}</button>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-filter-group]').forEach(container => {
+    const buttons = container.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle visual state
+        buttons.forEach(b => {
+          b.classList.remove('bg-dp-gold', 'text-dp-dark');
+          b.classList.add('border', 'border-dp-gold/50', 'text-dp-gold-ink');
+        });
+        btn.classList.add('bg-dp-gold', 'text-dp-dark');
+        btn.classList.remove('border', 'border-dp-gold/50', 'text-dp-gold-ink');
+
+        // Dispatch custom event for parent to handle filtering
+        container.dispatchEvent(new CustomEvent('filter-change', {
+          detail: { tag: btn.getAttribute('data-filter-tag') },
+          bubbles: true,
+        }));
+      });
+    });
+  });
+</script>

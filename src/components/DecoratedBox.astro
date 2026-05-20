@@ -1,0 +1,13 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<div class={`relative border border-dp-border px-10 py-8 ${className}`}>
+  <div class="absolute top-2 left-2 w-5 h-5 border-l border-t border-dp-gold/50 pointer-events-none"></div>
+  <div class="absolute top-2 right-2 w-5 h-5 border-r border-t border-dp-gold/50 pointer-events-none"></div>
+  <div class="absolute bottom-2 left-2 w-5 h-5 border-l border-b border-dp-gold/50 pointer-events-none"></div>
+  <div class="absolute bottom-2 right-2 w-5 h-5 border-r border-b border-dp-gold/50 pointer-events-none"></div>
+  <slot />
+</div>

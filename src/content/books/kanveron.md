@@ -1,28 +1,25 @@
 ---
+# === Мета / BookHero ===
 title: "Маги Канверона"
 cover: "МК1.jpg"
-marketplace: true
 displayOrder: 2
 genres: ["Приключения", "Романтика", "Боевик"]
+marketplace: true
 logline: "Вдвоем они изменят этот город."
 shortDescription: "Дилогия, где магия вплетена в улицы, а интриги опаснее демонов."
 mediumDescription: |
   Боевой маг Ревин Артелл охотится за химерой, но встречает союзника, чья природа опаснее любого чудовища. На её коже вспыхивают татуировки — следы силы, о которой маги предпочли забыть. А вернувшись в Канверон, Ревин узнаёт о гибели наставника...
-booktrailer:
-  visible: false
-  file: "na.mp4"
-  orientation: "horizontal"
+links:
+  - label: "Автор.Тудей"
+    url: "https://author.today/work/540088"
+  - label: "Литгород"
+    url: "https://book-litgorod.litgorod.ru/go/8k1xnngk"
+  - label: "ЛитНет"
+    url: "https://links.litnet.com/go/cko7r9qv"
+
+# === Серия (заголовок + "О цикле") ===
 series: "Канверон"
 seriesSubtitle: "Здесь магия вплетена в улицы, а интриги опаснее демонов."
-seriesLinks:
-  - label: "ЛитРес"
-    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/aviatory-ego-velichestva-67738754/"
-  - label: "Автор.Тудей"
-    url: "#"
-  - label: "ЛитНет"
-    url: "#"
-  - label: "ЛитГород"
-    url: "#"
 readingOrder:
   - title: "Маги Канверона"
     labels: ["Основной сюжет"]
@@ -30,20 +27,15 @@ readingOrder:
     labels: ["Основной сюжет"]
   - title: "Сказания Ринеммы"
     labels: ["Сборник рассказов"]
+
+# === Буктрейлер ===
+booktrailer:
+  visible: false
+  file: "na.mp4"
+  orientation: "horizontal"
+
+# === Книги цикла ===
 books:
-  - title: "Маги Канверона"
-    cover: "МК1.jpg"
-    marketplace: false
-    logline: "skip"
-    shortDescription: "skip."
-    description: "skip"
-    links:
-      - label: "Автор.Тудей"
-        url: "https://author.today/work/540088"
-      - label: "Литгород"
-        url: "https://book-litgorod.litgorod.ru/go/8k1xnngk"
-      - label: "ЛитНет"
-        url: "https://links.litnet.com/go/cko7r9qv"
   - title: "Аудиуры Завесы"
     cover: "МК2.jpg"
     marketplace: false

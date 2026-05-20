@@ -27,93 +27,97 @@ A novelist portfolio & blog site with a **minimal, clean, romantic dieselpunk** 
 ## Site Map
 
 ```
-/                   → Home (hero + tagline + latest book + CTA)
-/about              → Bio, photo, influences
-/books              → Grid of published works (cover, blurb, buy links)
-/books/[slug]       → Individual book page (synopsis, reviews, purchase)
-/blog               → Article listing (paginated)
-/blog/[slug]        → Single post
-/events             → (future) Signings, readings
-/contact            → Contact form or social links
-/newsletter         → Signup page (also embedded in footer)
+/                   → Home (hero + news + books gallery + litportals + blog + telegram)
+/about              → Bio, photos, influences, litportals
+/about/[slug]       → Individual author page (from content collection)
+/books              → Alternating-layout list of all books/series
+/books/[slug]       → Book/series detail (synopsis, reviews, characters, lore, trailer)
+/books/[slug]/lore/[loreSlug] → Lore article tied to a book
+/blog               → Blog listing with tag filter
+/blog/[slug]        → Single blog post
+/404                → Not found page
 ```
 
 ## Page Breakdown
 
 ### Home `/`
-- Full-width hero: atmospheric dieselpunk illustration or moody photo
-- Tagline / one-liner
-- Featured book card with cover + "Read more" CTA
-- Latest 2–3 blog posts
-- Newsletter CTA strip
+- Full-width hero with author photos and tagline
+- News banner with progress indicators
+- Books gallery (horizontal scroll with covers)
+- Literary platforms block (decorated box)
+- Latest 3 blog posts
+- Telegram widget
 
 ### About `/about`
-- Author photo (styled frame with art-deco border)
-- Short bio (2–3 paragraphs)
-- Influences / "What I write" section
-- Social media links
+- Author portraits with bios
+- Influences section
+- Literary platforms
 
 ### Books `/books`
-- Responsive grid of book covers
-- Each card: cover image, title, genre tag, one-line hook
-- Click → individual book page
+- Alternating left/right layout per book
+- Cover + description + marketplace links
 
 ### Book Detail `/books/[slug]`
-- Large cover image
-- Full synopsis
-- Pull-quotes / reviews
-- Buy links (Amazon, Bookshop, Kindle, etc.)
-- "Also by this author" carousel
+- Hero: cover + genres + logline + description
+- Reviews section
+- Series info (reading order, series description)
+- Booktrailer (video)
+- Books in series gallery
+- Characters gallery
+- World section
+- Lore articles
 
 ### Blog `/blog`
-- Card-based listing (title, date, excerpt, reading time)
-- Category/tag filter
-- Pagination
+- Card grid with tag filter
+- Cover images + excerpts
 
-### Newsletter
-- Embedded signup form (name + email)
-- Incentive copy ("Get a free short story…")
-- Integrated into footer site-wide
-
-### Contact `/contact`
-- Simple form (name, email, message) or mailto link
-- Social icons (Twitter/X, Instagram, Goodreads, etc.)
+### Lore `/books/[slug]/lore/[loreSlug]`
+- Article with cover, breadcrumb, prev/next navigation
 
 ## Content Structure (Astro)
 
 ```
 src/
 ├── content/
-│   ├── books/          # Markdown per book
-│   │   ├── book-one.md
-│   │   └── book-two.md
-│   └── blog/           # Markdown per post
-│       ├── first-post.md
-│       └── second-post.md
+│   ├── books/          # Markdown per book/series
+│   ├── blog/           # Markdown per blog post
+│   ├── lore/           # Markdown per lore article
+│   └── authors/        # Markdown per author
+├── data/               # YAML data files (gray-matter)
+│   ├── site.md
+│   ├── authors.md
+│   ├── links.md
+│   ├── news.md
+│   └── telegram.md
 ├── layouts/
-│   ├── BaseLayout.astro
-│   ├── BookLayout.astro
-│   └── BlogPostLayout.astro
+│   └── BaseLayout.astro
+├── lib/
+│   ├── data.ts         # gray-matter loaders
+│   ├── images.ts       # findImage() utility
+│   ├── slider.ts       # shared gallery slider logic
+│   └── types.ts        # TypeScript interfaces
 ├── pages/
 │   ├── index.astro
-│   ├── about.astro
-│   ├── books/
-│   │   ├── index.astro
-│   │   └── [slug].astro
+│   ├── 404.astro
+│   ├── about/
 │   ├── blog/
-│   │   ├── index.astro
-│   │   └── [slug].astro
-│   ├── contact.astro
-│   └── newsletter.astro
+│   └── books/
 ├── components/
 │   ├── Header.astro
 │   ├── Footer.astro
-│   ├── BookCard.astro
-│   ├── BlogCard.astro
-│   ├── NewsletterForm.astro
-│   └── HeroSection.astro
+│   ├── Icon.astro
+│   ├── CoversGallery.astro
+│   ├── CardsGallery.astro
+│   ├── CharactersGallery.astro
+│   ├── Lightbox.astro
+│   ├── LitPortals.astro
+│   ├── SocialBar.astro
+│   ├── MarketplaceLinks.astro
+│   ├── Divider.astro
+│   ├── DecoratedBox.astro
+│   └── book/           # Book-page sub-components
 └── styles/
-    └── global.css       # Tailwind + custom dieselpunk tokens
+    └── prose.css       # Unified markdown content styles
 ```
 
 ## Color Palette
@@ -135,14 +139,9 @@ src/
 
 ## Next Steps
 
-1. [ ] Initialize Astro project (`npm create astro@latest`)
-2. [ ] Install Tailwind CSS integration
-3. [ ] Set up base layout with header/footer
-4. [ ] Build Home page
-5. [ ] Create content collections for books & blog
-6. [ ] Build Books grid + detail pages
-7. [ ] Build Blog listing + post pages
-8. [ ] Add newsletter form
-9. [ ] Add contact page
-10. [ ] Style with dieselpunk theme
-11. [ ] Deploy to Netlify/Vercel
+All core pages implemented. Remaining work:
+- [ ] Replace placeholder images/SVGs with real assets
+- [ ] Configure real domain in `astro.config.mjs` and `robots.txt`
+- [ ] Set up Yandex Metrika ID in `src/data/site.md`
+- [ ] Deploy to Netlify (config in `netlify.toml`)
+- [ ] Add real blog/lore content

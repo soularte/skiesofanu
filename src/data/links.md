@@ -1,4 +1,11 @@
 ---
+# ═══════════════════════════════════════════════════════════
+# links.md — Все внешние ссылки и соцсети
+# Используется: Главная (/), Об авторах (/about),
+#               BaseLayout (футер, SocialBar)
+# ═══════════════════════════════════════════════════════════
+
+# ─── Иконки соцсетей (SocialBar в шапке + футер) ─────────
 socials:
   - label: "ВКонтакте"
     url: "https://vk.com/skiesofanu"
@@ -15,6 +22,8 @@ socials:
   - label: "Яндекс Дзен"
     url: "https://dzen.ru/skiesofanu"
     icon: "dzen"
+
+# ─── Литпорталы (блок «Литпорталы» на / и /about) ────────
 litportals:
   ksenia:
     - label: "ЛитРес"
@@ -34,6 +43,8 @@ litportals:
       url: "https://links.litnet.com/go/c2a72qtd"
     - label: "ЛитГород"
       url: "https://book-litgorod.litgorod.ru/go/3qw0ebt4"
+
+# ─── Контакты (ссылки «Связаться» в блоке Socials) ───────
 contact:
   vk: "https://vk.com/im/convo/-85006543?entrypoint=community_page&tab=all"
   telegram: "https://t.me/skiesofanu/3543"
