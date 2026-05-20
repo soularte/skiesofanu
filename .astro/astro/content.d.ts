@@ -162,9 +162,23 @@ declare module 'astro:content' {
   collection: "books";
   data: InferEntrySchema<"books">
 } & { render(): Render[".md"] };
+"kanveron.md": {
+	id: "kanveron.md";
+  slug: "kanveron";
+  body: string;
+  collection: "books";
+  data: InferEntrySchema<"books">
+} & { render(): Render[".md"] };
 "muzyka.md": {
 	id: "muzyka.md";
   slug: "muzyka";
+  body: string;
+  collection: "books";
+  data: InferEntrySchema<"books">
+} & { render(): Render[".md"] };
+"ostrov.md": {
+	id: "ostrov.md";
+  slug: "ostrov";
   body: string;
   collection: "books";
   data: InferEntrySchema<"books">
