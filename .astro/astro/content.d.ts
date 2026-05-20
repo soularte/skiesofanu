@@ -156,14 +156,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"authors">
 } & { render(): Render[".md"] };
 };
-"blog": Record<string, {
-  id: string;
-  slug: string;
+"blog": {
+"260515my-soavtory.md": {
+	id: "260515my-soavtory.md";
+  slug: "260515my-soavtory";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
 "books": {
 "aviatory.md": {
 	id: "aviatory.md";
