@@ -224,30 +224,9 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "lore": {
-"aviatory-aerolit.md": {
-	id: "aviatory-aerolit.md";
-  slug: "aviatory-aerolit";
-  body: string;
-  collection: "lore";
-  data: InferEntrySchema<"lore">
-} & { render(): Render[".md"] };
-"aviatory-fraktsii.md": {
-	id: "aviatory-fraktsii.md";
-  slug: "aviatory-fraktsii";
-  body: string;
-  collection: "lore";
-  data: InferEntrySchema<"lore">
-} & { render(): Render[".md"] };
-"aviatory-mir-nebesa.md": {
-	id: "aviatory-mir-nebesa.md";
-  slug: "aviatory-mir-nebesa";
-  body: string;
-  collection: "lore";
-  data: InferEntrySchema<"lore">
-} & { render(): Render[".md"] };
-"aviatory-vozdushnye-korabli.md": {
-	id: "aviatory-vozdushnye-korabli.md";
-  slug: "aviatory-vozdushnye-korabli";
+"aviatory-map.md": {
+	id: "aviatory-map.md";
+  slug: "aviatory-map";
   body: string;
   collection: "lore";
   data: InferEntrySchema<"lore">

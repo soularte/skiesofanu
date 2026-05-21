@@ -3,12 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TagChip from '../../components/TagChip.astro';
 import GoldLine from '../../components/GoldLine.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import { loadDataFile } from '../../lib/data';
+import { findImage } from '../../lib/images';
 import type { AuthorsData } from '../../lib/types';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   const allItems = posts.map(p => ({ slug: p.slug, title: p.data.title, tags: p.data.tags ?? [] }));
+
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post, allItems },
@@ -17,6 +20,11 @@ export async function getStaticPaths() {
 
 const { post, allItems } = Astro.props;
 const { Content } = await post.render();
+
+const coverSrc = post.data.cover ? findImage(post.data.cover) : undefined;
+const coverUrl = coverSrc
+  ? new URL(coverSrc.src, Astro.site ?? Astro.url.origin).href
+  : undefined;
 
 const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
   bio: [],
@@ -38,7 +46,7 @@ const articleLd = {
     { '@type': 'Person', name: authorsData.ksenia.name },
     { '@type': 'Person', name: authorsData.vasily.name },
   ],
-  ...(post.data.cover ? { image: new URL(post.data.cover, Astro.site ?? Astro.url.origin).href } : {}),
+  ...(coverUrl ? { image: coverUrl } : {}),
 };
 
 const breadcrumbLd = {
@@ -50,9 +58,11 @@ const breadcrumbLd = {
   ],
 };
 ---
-<BaseLayout title={post.data.title} description={post.data.excerpt} image={post.data.cover} ogType="article">
+
+<BaseLayout title={post.data.title} description={post.data.excerpt} image={coverUrl} ogType="article">
   <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
   <article class="max-w-3xl mx-auto px-6 py-12">
     <header class="mb-8">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
@@ -63,25 +73,30 @@ const breadcrumbLd = {
         </nav>
         <div class="flex gap-4 mt-2 sm:mt-0 self-end sm:self-auto blog-nav-top"></div>
       </div>
+
       <time class="text-xs tracking-widest uppercase text-dp-muted">
         {post.data.date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
       </time>
+
       <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{post.data.title}</h1>
+
       <div class="flex flex-wrap gap-2 mb-4">
-        {post.data.tags.map(tag => <TagChip tag={tag} href="/blog" />)}
+        {post.data.tags.map(tag => <TagChip tag={tag} />)}
       </div>
-      {post.data.cover && (
+
+      {coverSrc && (
         <div class="aspect-[4/3] overflow-hidden border border-dp-border mb-4">
-          <img
-            src={post.data.cover}
+          <Image
+            src={coverSrc}
             alt={post.data.title}
-            width="800"
-            height="600"
+            width={800}
+            height={600}
             loading="eager"
             class="w-full h-full object-cover"
           />
         </div>
       )}
+
       <GoldLine />
     </header>
 
@@ -111,6 +126,7 @@ const breadcrumbLd = {
     (function() {
       const dataEl = document.getElementById('blog-items-data');
       if (!dataEl) return;
+
       const { items, currentSlug } = JSON.parse(dataEl.textContent || '{}');
       const tag = new URLSearchParams(window.location.search).get('tag');
 
@@ -127,12 +143,15 @@ const breadcrumbLd = {
 
       function renderNav(container: Element) {
         let html = '';
+
         if (next) {
           html += `<a href="/blog/${next.slug}${tagParam}" class="${linkClass}" title="${next.title}">← Позднее</a>`;
         }
+
         if (prev) {
           html += `<a href="/blog/${prev.slug}${tagParam}" class="${linkClass}" title="${prev.title}">Ранее →</a>`;
         }
+
         container.innerHTML = html;
       }
 
