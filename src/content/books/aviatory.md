@@ -13,7 +13,9 @@ mediumDescription: |
   Но команде воздушного корабля «Аве Асандаро» не до артефактов истории. Нет в экипаже и тех, кто мог бы читать мысли, управлять чужой волей, исцелять наложением рук или предвидеть будущее. Им бы денег найти на топливо. Удача часто поворачивается спиной, и на этот раз их подставили по-крупному. Теперь или в тюрьму, или браться за смертельно опасную работу.
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/aviatory-ego-velichestva-67738754/"
+    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/aviatory-ego-velichestva-67738754/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+  - label: "ЛитРес Аудио"
+    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/aviatory-ego-velichestva-67880589/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
   - label: "Автор.Тудей"
     url: "https://author.today/work/series/2899"
   - label: "ЛитГород"
