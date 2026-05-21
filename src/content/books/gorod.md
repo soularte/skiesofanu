@@ -10,9 +10,9 @@ mediumDescription: |
   Есть города, притягивающие достопримечательностями, и есть Город, притягивающий своей душой. Он не спешит раскрывать карты. Его язык шепот дождя по мостовым, тени фонарей на замшелых стенах и аромат чая из приоткрытых окон.
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/gorod-bez-imeni-73759009/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/gorod-bez-imeni-73759009"
   - label: "ЛитРес Аудио"
-    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/gorod-bez-imeni-73765626/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/gorod-bez-imeni-73765626"
   - label: "Автор.Тудей"
     url: "https://author.today/work/558315"
 

@@ -10,9 +10,9 @@ mediumDescription: |
   Магия не едина — она многолика. В Данлине каждый народ хранит свои традиции и свою магию: с ее законами, тайнами и запретами. Где-то приручают духов. Где-то чудеса порождаются душой творца. А где-то в основе волшебства — пар, сталь и шестеренки.
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/danlin-73795446/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/book/vasiliy-zelenkov-27629316/danlin-73795446"
   - label: "ЛитРес Аудио"
-    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/danlin-73809946/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/audiobook/vasiliy-zelenkov-27629316/danlin-73809946"
   - label: "Автор.Тудей"
     url: "https://author.today/work/558309"
 

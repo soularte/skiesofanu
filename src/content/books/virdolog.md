@@ -10,7 +10,7 @@ mediumDescription: |
   Есть семьи, чья кровь хранит нечто большее, чем обыкновенную жизнь. Сверхъестественные дары вирдов переходят из поколения в поколение: одни пленяют красотой, другие несут смерть.
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/kseniya-kotova/virdolog-71533882/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/book/kseniya-kotova/virdolog-71533882"
   - label: "ЛитГород"
     url: "https://book-litgorod.litgorod.ru/go/or0howl5"
   - label: "ЛитНет"

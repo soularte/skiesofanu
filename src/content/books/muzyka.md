@@ -11,9 +11,9 @@ mediumDescription: |
   В каждом рассказе, в каждой сказке или коротком этюде-зарисовке сборника оживает мир, полный ярких деталей и чарующих звуков. Глухая девочка, окруженная музыкой; отчаянный курьер, везущий посылку через пустоши, населенные гигантскими многоножками; мир, где человеческий разум стал самым мощным процессором, а бумажные книги – настоящая редкость...
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/kseniya-kotova/pust-eta-muzyka-stihnet-67315157/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/book/kseniya-kotova/pust-eta-muzyka-stihnet-67315157"
   - label: "ЛитРес Аудио"
-    url: "https://www.litres.ru/audiobook/kseniya-kotova/pust-eta-muzyka-stihnet-68667549/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/audiobook/kseniya-kotova/pust-eta-muzyka-stihnet-68667549"
   - label: "Автор.Тудей"
     url: "https://author.today/work/548606"
   - label: "ЛитГород"

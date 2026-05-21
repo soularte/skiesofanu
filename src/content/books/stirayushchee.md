@@ -10,7 +10,7 @@ mediumDescription: |
   Стирающее поветрие ворвалось в жизнь госпожи Анны Эскрипт и изменило всё. Теперь в «Бумажную лавку» приходят не только за книгами, но и за шансом на будущее. Хозяйка помогает всем без исключения, но чужие судьбы разрушают её изнутри. Она преображает жизнь за жизнью, но спасёт ли себя и свой магазин?
 links:
   - label: "ЛитРес"
-    url: "https://www.litres.ru/book/kseniya-kotova/stirauschee-povetrie-ili-bumazhnaya-lavka-gospozhi-anny-73096388/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
+    url: "https://www.litres.ru/book/kseniya-kotova/stirauschee-povetrie-ili-bumazhnaya-lavka-gospozhi-anny-73096388"
   - label: "Автор.Тудей"
     url: "https://author.today/work/547654"
   - label: "ЛитГород"
