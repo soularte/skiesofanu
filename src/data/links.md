@@ -47,5 +47,5 @@ litportals:
 # ─── Контакты (ссылки «Связаться» в блоке Socials) ───────
 contact:
   vk: "https://vk.com/im/convo/-85006543?entrypoint=community_page&tab=all"
-  telegram: "https://t.me/skiesofanu/3543"
+  telegram: "https://t.me/soularte_kk"
 ---

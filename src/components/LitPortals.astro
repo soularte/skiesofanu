@@ -1,50 +1,92 @@
 ---
 import Icon from './Icon.astro';
 import type { LinkItem } from '../lib/types';
+import { loadDataFile } from '../lib/data';
 
 interface Props {
   ksenia: LinkItem[];
   vasily: LinkItem[];
 }
+
 const { ksenia, vasily } = Astro.props;
+
+const linksData = loadDataFile<any>('src/data/links.md', {
+  contact: {
+    vk: '',
+    telegram: '',
+  },
+});
+
+const contact = linksData.contact ?? {};
 ---
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-  <div>
-    <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Ксения Котова</h3>
-    <div class="flex gap-3 mt-4 flex-wrap justify-center">
-      {ksenia.map(p => (
-        <a
-          href={p.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={p.label}
-          title={p.label}
-          class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
-        >
-          <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
-            <Icon name={p.label} />
-          </div>
-        </a>
-      ))}
+
+<div class="flex flex-col gap-8">
+  <p class="text-center text-sm md:text-base text-dp-muted leading-relaxed max-w-2xl mx-auto">
+    Если хотите связаться с нами напрямую,<br>напишите нам в
+    <a
+      href={contact.telegram}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-dp-gold-ink hover:text-dp-text transition-colors underline underline-offset-4"
+    >
+      Телеграм
+    </a>
+    или
+    <a
+      href={contact.vk}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-dp-gold-ink hover:text-dp-text transition-colors underline underline-offset-4"
+    >
+      ВКонтакте
+    </a>.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+    <div>
+      <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
+        Ксения Котова
+      </h3>
+
+      <div class="flex gap-3 mt-4 flex-wrap justify-center">
+        {ksenia.map(p => (
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={p.label}
+            title={p.label}
+            class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
+          >
+            <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+              <Icon name={p.label} />
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
-  </div>
-  <div>
-    <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">Василий Зеленков</h3>
-    <div class="flex gap-3 mt-4 flex-wrap justify-center">
-      {vasily.map(p => (
-        <a
-          href={p.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={p.label}
-          title={p.label}
-          class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
-        >
-          <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
-            <Icon name={p.label} />
-          </div>
-        </a>
-      ))}
+
+    <div>
+      <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
+        Василий Зеленков
+      </h3>
+
+      <div class="flex gap-3 mt-4 flex-wrap justify-center">
+        {vasily.map(p => (
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={p.label}
+            title={p.label}
+            class="focus-ring group text-dp-muted hover:text-dp-gold transition-colors"
+          >
+            <div class="w-10 h-10 border border-dp-border group-hover:border-dp-gold transition-colors flex items-center justify-center">
+              <Icon name={p.label} />
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </div>
