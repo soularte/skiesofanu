@@ -1,7 +1,7 @@
 ---
 import Section from './Section.astro';
 import CharactersGallery from '../CharactersGallery.astro';
-import SectionLink from '../SectionLink.astro';
+import { loadDataFile } from '../../lib/data';
 import type { CollectionEntry } from 'astro:content';
 
 type BookData = CollectionEntry<'books'>['data'];
@@ -9,15 +9,10 @@ type BookData = CollectionEntry<'books'>['data'];
 interface Props {
   characters: NonNullable<BookData['characters']>;
   folder?: string;
-  maps?: BookData['characterMaps'];
 }
-const { characters, folder, maps } = Astro.props;
+const { characters, folder } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title="Персонажи">
+<Section title={ui.bookSections.characters}>
   <CharactersGallery characters={characters} folder={folder} />
-  {maps && maps.length > 0 && (
-    <div class="flex flex-wrap gap-3 mt-6">
-      {maps.map(m => <SectionLink href={m.url} label={m.label} />)}
-    </div>
-  )}
 </Section>

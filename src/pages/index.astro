@@ -5,6 +5,7 @@ import Divider from '../components/Divider.astro';
 import GoldLine from '../components/GoldLine.astro';
 import DecoratedBox from '../components/DecoratedBox.astro';
 import LitPortals from '../components/LitPortals.astro';
+import StartHere from '../components/StartHere.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { loadDataFile, loadDataFileWithContent, miniMarkdown } from '../lib/data';
@@ -43,10 +44,19 @@ const links = loadDataFile<LinksData>('src/data/links.md', {
   contact: { vk: '#', telegram: '#' },
 });
 
+const ui = loadDataFile<any>('src/data/ui.md', { home: {} });
+const home = ui.home ?? {};
+
+const authorsData = loadDataFile<any>('src/data/authors.md', {
+  ksenia: { name: 'Ксения Котова' },
+  vasily: { name: 'Василий Зеленков' },
+});
+
 // Blog posts (latest 3)
-const blogPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-).slice(0, 3);
+const blogPosts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 
 // Progress from news data
 const visibleProgress = (news.progress?.visible && news.progress?.items)
@@ -57,7 +67,7 @@ const visibleProgress = (news.progress?.visible && news.progress?.items)
 const PROGRESS_TRACK = '#D4C5A9';
 const PROGRESS_FILL = '#8B1A2B';
 ---
-<BaseLayout title="Главная">
+<BaseLayout title={home.booksHeading}>
   <!-- Hero -->
   <section class="relative overflow-hidden py-8 md:py-12">
     <div class="absolute inset-0 bg-gradient-to-b from-dp-dark via-dp-dark/95 to-dp-dark/80"></div>
@@ -72,17 +82,17 @@ const PROGRESS_FILL = '#8B1A2B';
           <Image src={kkPhoto} alt="Ксения Котова" widths={[200, 400]} sizes="200px" loading="eager" fetchpriority="high" class="w-full h-full object-cover object-[50%_8%] opacity-65" />
         </div>
         <div class="text-center px-6 xl:px-10">
-          <p class="font-accent italic text-dp-gold-ink text-base mb-3 tracking-wide">Те, кто смотрят на небо, еще умеют мечтать</p>
+          <p class="font-accent italic text-dp-gold-ink text-base mb-3 tracking-wide">{home.heroQuote}</p>
           <h1 class="font-heading text-xl md:text-3xl font-bold text-parchment leading-tight mb-4">
-            Соавторский дуэт:<br/>Ксения Котова,<br/>Василий Зеленков
+            {home.duoLabel}<br/>{authorsData.ksenia.name},<br/>{authorsData.vasily.name}
           </h1>
           <GoldLine size="lg" class="mx-auto mb-4" />
           <p class="text-parchment/70 text-base leading-relaxed mb-7 max-w-xl mx-auto">
-            Карманные вселенные, забытые легенды и латунные сердца, бьющиеся вопреки. Наши романы — ностальгия по альтернативному прошлому и мечта о неслучившемся будущем с осязаемой красотой безумных устройств.
+            {home.heroDescription}
           </p>
           <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="/books" class="px-7 py-2.5 bg-dp-gold text-dp-dark font-body text-sm tracking-widest uppercase hover:bg-dp-copper transition-colors">Книги</a>
-            <a href="/about" class="px-7 py-2.5 border border-dp-gold/50 text-parchment/80 text-sm tracking-widest uppercase hover:border-dp-gold hover:text-parchment transition-colors">Об авторах</a>
+            <a href="/books" class="px-7 py-2.5 bg-dp-gold text-dp-dark font-body text-sm tracking-widest uppercase hover:bg-dp-copper transition-colors">{home.booksButton}</a>
+            <a href="/about" class="px-7 py-2.5 border border-dp-gold/50 text-parchment/80 text-sm tracking-widest uppercase hover:border-dp-gold hover:text-parchment transition-colors">{home.aboutButton}</a>
           </div>
         </div>
         <div class="hidden xl:block h-72 pointer-events-none overflow-hidden self-center"
@@ -97,7 +107,7 @@ const PROGRESS_FILL = '#8B1A2B';
   {news.visible && (
     <div class="max-w-5xl mx-auto px-6 pt-6">
       <div class="mx-[30px] border border-dp-gold/30 bg-dp-gold/5 px-6 py-4">
-        <p class="text-[9px] tracking-widest uppercase text-dp-gold-ink mb-3">В работе</p>
+        <p class="text-[9px] tracking-widest uppercase text-dp-gold-ink mb-3">{home.inProgress}</p>
         {newsHtml && (
           <div class="font-body text-sm text-dp-text leading-relaxed mb-4 [&>p]:mb-2 [&>p:last-child]:mb-0" set:html={newsHtml} />
         )}
@@ -132,13 +142,17 @@ const PROGRESS_FILL = '#8B1A2B';
     </div>
   )}
 
+  <!-- С чего начать знакомство -->
+  <StartHere />
+
   <!-- Covers Gallery -->
-  <section class="max-w-5xl mx-auto px-6 pt-8 pb-2">
-    <div class="text-center mb-4">
-      <a href="/books" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-3xl font-semibold">Книги</h2></a>
-      <GoldLine class="mx-auto mt-4 mb-4" />
-      <p class="font-accent italic text-dp-muted text-base">Каждая история — дверь в потрясающий авторский мир</p>
+  <section class="max-w-5xl mx-auto px-6 pt-4 pb-2">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex-1 h-px bg-dp-border"></div>
+      <a href="/books" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-2xl md:text-3xl font-semibold whitespace-nowrap">{home.booksHeading}</h2></a>
+      <div class="flex-1 h-px bg-dp-border"></div>
     </div>
+    <p class="font-accent italic text-dp-muted text-base text-center mb-2">{home.everyStory}</p>
     <CoversGallery covers={covers} />
   </section>
 
@@ -151,7 +165,7 @@ const PROGRESS_FILL = '#8B1A2B';
   <section class="max-w-5xl mx-auto px-6 py-12">
     <DecoratedBox class="max-w-2xl mx-auto">
       <div class="text-center mb-8">
-        <h2 class="font-heading text-2xl font-semibold">Литпорталы</h2>
+        <h2 class="font-heading text-2xl font-semibold">{home.litportalsHeading}</h2>
         <GoldLine class="mx-auto mt-4" />
       </div>
       <LitPortals ksenia={links.litportals.ksenia} vasily={links.litportals.vasily} />
@@ -165,11 +179,11 @@ const PROGRESS_FILL = '#8B1A2B';
 
   <!-- Latest blog posts -->
 
-<section class="max-w-5xl mx-auto px-6 pt-8 pb-4">
+<section class="max-w-5xl mx-auto px-6 pt-8 pb-16">
 
   <div class="mb-8">
 
-    <a href="/blog" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-3xl font-semibold">Последние новости</h2></a>
+    <a href="/blog" class="hover:text-dp-gold transition-colors"><h2 class="font-heading text-3xl font-semibold">{home.newsHeading}</h2></a>
 
     <GoldLine class="mt-4" />
 

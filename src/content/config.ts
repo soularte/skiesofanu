@@ -8,6 +8,7 @@ const blog = defineCollection({
     excerpt: z.string(),
     tags: z.array(z.string()).default([]),
     cover: z.string().optional(),
+    draft: z.boolean().optional().default(false),
   }),
 });
 
@@ -33,7 +34,6 @@ const books = defineCollection({
     cardsFolder: z.string().optional(),
     links: z.array(z.object({ label: z.string(), url: z.string() })).optional().default([]),
     world: z.string().optional(),
-    worldMaps: z.array(z.object({ label: z.string(), url: z.string() })).optional(),
     characters: z.array(z.object({
       name: z.string(),
       role: z.string(),
@@ -41,7 +41,7 @@ const books = defineCollection({
       photo: z.string().optional(),
     })).optional(),
     charactersFolder: z.string().optional(),
-    characterMaps: z.array(z.object({ label: z.string(), url: z.string() })).optional(),
+    extraLinks: z.array(z.object({ label: z.string(), url: z.string() })).optional(),
     books: z.array(z.object({
       title: z.string(),
       cover: z.string(),
@@ -74,6 +74,7 @@ const lore = defineCollection({
     cover: z.string().optional(),
     order: z.number().optional(),
     tags: z.array(z.string()).default([]),
+    draft: z.boolean().optional().default(false),
   }),
 });
 
@@ -84,4 +85,20 @@ const authors = defineCollection({
   }),
 });
 
-export const collections = { books, blog, lore, authors };
+const paths = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    cover: z.string(),
+    order: z.number().optional(),
+    books: z.array(z.string()).default([]),
+    featured: z.array(z.object({
+      book: z.string(),
+      text: z.string().optional(),
+    })).default([]),
+    gallery: z.string().optional(),
+    cards: z.string().optional(),
+  }),
+});
+
+export const collections = { books, blog, lore, authors, paths };

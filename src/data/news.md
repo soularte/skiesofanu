@@ -4,7 +4,7 @@ visible: false
 
 # Кружочки прогресса (visible: false — скрыть все; visible у item — скрыть конкретный)
 progress:
-  visible: false
+  visible: true
   items:
     - title: "Авиаторы Его Величества"
       current: 27

@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Divider from '../../components/Divider.astro';
+import GoldLine from '../../components/GoldLine.astro';
+import DecoratedBox from '../../components/DecoratedBox.astro';
+import LitPortals from '../../components/LitPortals.astro';
+import { Image } from 'astro:assets';
+import { loadDataFile } from '../../lib/data';
+import { findImage } from '../../lib/images';
+import type { LinksData, AuthorsData, SiteData } from '../../lib/types';
+
+const links = loadDataFile<LinksData>('src/data/links.md', {
+  socials: [],
+  litportals: { ksenia: [], vasily: [] },
+  contact: { vk: '#', telegram: '#' },
+});
+
+const authors = loadDataFile<AuthorsData>('src/data/authors.md', {
+  bio: [],
+  ksenia: { name: 'Ксения Котова', photo: 'kk.jpg' },
+  vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
+});
+
+const site = loadDataFile<SiteData>('src/data/site.md', { siteName: '', defaultDescription: '', privacyText: '' });
+
+const kseniaPhoto = findImage(`authors/${authors.ksenia.photo}`);
+const vasilyPhoto = findImage(`authors/${authors.vasily.photo}`);
+---
+<BaseLayout title="Об авторах" description="Об авторском дуэте Ксения Котова и Василий Зеленков — соавторская пара родом ЮФО.">
+  <div class="max-w-5xl mx-auto px-6 pt-20 pb-4">
+    <!-- Page header -->
+    <div class="text-center mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-semibold">Об авторах</h1>
+      <GoldLine class="mx-auto mt-4" />
+      {site.aboutSubtitle && <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{site.aboutSubtitle}</p>}
+    </div>
+
+    <!-- Authors: photo — bio — photo -->
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 items-start">
+      <!-- Ксения -->
+      <div class="flex flex-col items-center gap-4 order-1 md:order-1">
+        <div class="relative w-56 h-[350px]">
+          {kseniaPhoto && <Image src={kseniaPhoto} alt={authors.ksenia.name} widths={[224, 448]} sizes="224px" loading="lazy" class="w-56 h-[350px] object-cover object-top grayscale relative z-10" />}
+          <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none z-0"></div>
+        </div>
+        <a href="/about/ksenia" class="font-heading text-lg font-semibold hover:text-dp-gold transition-colors">{authors.ksenia.name}</a>
+      </div>
+
+      <!-- Bio -->
+      <div class="order-3 md:order-2">
+        <div class="space-y-4 text-dp-text leading-relaxed">
+          {authors.bio.map((p: string) => <p>{p}</p>)}
+        </div>
+        {authors.influences && authors.influences.length > 0 && (
+          <div class="mt-8 pt-6 border-t border-dp-border">
+            <h2 class="font-heading text-xs tracking-widest uppercase text-dp-muted mb-3">Влияния и вдохновение</h2>
+            <div class="flex flex-wrap gap-2">
+              {authors.influences.map((tag: string) => (
+                <span class="text-[10px] tracking-widest uppercase px-2 py-1 border border-dp-border text-dp-muted">{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <!-- Василий -->
+      <div class="flex flex-col items-center gap-4 order-2 md:order-3">
+        <div class="relative w-56 h-[350px]">
+          {vasilyPhoto && <Image src={vasilyPhoto} alt={authors.vasily.name} widths={[224, 448]} sizes="224px" loading="lazy" class="w-56 h-[350px] object-cover object-top grayscale relative z-10" />}
+          <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none z-0"></div>
+        </div>
+        <a href="/about/vasily" class="font-heading text-lg font-semibold hover:text-dp-gold transition-colors">{authors.vasily.name}</a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-16">
+      <Divider />
+    </div>
+
+    <!-- Literary platforms -->
+    <DecoratedBox class="max-w-2xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl font-semibold">Площадки</h2>
+        <GoldLine class="mx-auto mt-4" />
+      </div>
+      <LitPortals ksenia={links.litportals.ksenia} vasily={links.litportals.vasily} />
+    </DecoratedBox>
+  </div>
+</BaseLayout>

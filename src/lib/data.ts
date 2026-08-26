@@ -30,7 +30,8 @@ export function miniMarkdown(src: string): string {
 }
 
 function readAndCache(relativePath: string): { data: unknown; content: string } | null {
-  if (cache.has(relativePath)) return cache.get(relativePath)!;
+  const isDev = import.meta.env?.DEV ?? false;
+  if (!isDev && cache.has(relativePath)) return cache.get(relativePath)!;
   try {
     const raw = readFileSync(join(process.cwd(), relativePath), 'utf-8');
     const result = matter(raw);

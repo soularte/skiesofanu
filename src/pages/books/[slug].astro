@@ -8,6 +8,8 @@ import BooksInSeries from '../../components/book/BooksInSeries.astro';
 import CharactersSection from '../../components/book/CharactersSection.astro';
 import WorldSection from '../../components/book/WorldSection.astro';
 import LoreSection from '../../components/book/LoreSection.astro';
+import Section from '../../components/book/Section.astro';
+import PageNav from '../../components/PageNav.astro';
 import CardsGallery from '../../components/CardsGallery.astro';
 import GoldLine from '../../components/GoldLine.astro';
 import { getCollection, render } from 'astro:content';
@@ -19,13 +21,22 @@ import path from 'node:path';
 
 export async function getStaticPaths() {
   const books = await getCollection('books');
-  return books.map(book => ({
-    params: { slug: book.slug },
-    props: { book },
-  }));
+  const visible = books
+    .filter(b => !b.data.series || (b.data.books && b.data.books.length > 0))
+    .sort((a, b) => (a.data.displayOrder ?? 999) - (b.data.displayOrder ?? 999));
+
+  return books.map(book => {
+    const idx = visible.findIndex(b => b.slug === book.slug);
+    const prev = idx > 0 ? visible[idx - 1] : null;
+    const next = idx >= 0 && idx < visible.length - 1 ? visible[idx + 1] : null;
+    return {
+      params: { slug: book.slug },
+      props: { book, prev, next },
+    };
+  });
 }
 
-const { book } = Astro.props;
+const { book, prev, next } = Astro.props;
 const { Content } = await render(book);
 const data = book.data;
 const isSeries = !!(data.books && data.books.length > 0);
@@ -38,11 +49,13 @@ const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
   vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
 });
 
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {}, home: {} });
+
 const canonicalURL = new URL(`/books/${book.slug}/`, Astro.site ?? Astro.url.origin).href;
 
 const allLore = await getCollection('lore');
 const bookLore = allLore
-  .filter(l => l.data.book === book.slug)
+  .filter(l => l.data.book === book.slug && !l.data.draft)
   .sort((a, b) => a.data.title.localeCompare(b.data.title, 'ru'));
 
 let cardImages: string[] = [];
@@ -83,7 +96,7 @@ const breadcrumbLd = {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'Книги',
+      name: ui.home?.booksHeading ?? 'Книги',
       item: new URL('/books/', Astro.site ?? Astro.url.origin).href,
     },
     {
@@ -115,18 +128,21 @@ const breadcrumbLd = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
-  <div class="max-w-5xl mx-auto px-6 pt-10 pb-16">
+  <div class="max-w-5xl mx-auto px-6 pt-4 pb-12">
 
-    <!-- Breadcrumb -->
-    <nav class="mb-6 text-xs tracking-widest uppercase text-dp-muted">
-      <a href="/books" class="hover:text-dp-gold transition-colors">Книги</a>
-      <span class="mx-2">→</span>
-      <span class="text-dp-text">{data.series ?? data.title}</span>
-    </nav>
+    <!-- Breadcrumb + Prev/Next navigation -->
+    <PageNav
+      section={ui.home?.booksHeading}
+      sectionHref="/books"
+      title={data.series ?? data.title}
+      prev={prev ? { href: `/books/${prev.slug}`, title: prev.data.title } : null}
+      next={next ? { href: `/books/${next.slug}`, title: next.data.title } : null}
+      position="top"
+    />
 
     <!-- Series title above grid -->
     {data.series && (
-      <div class="text-center mb-16">
+      <div class="text-center mb-4 md:mb-16">
         <h1 class="font-heading text-4xl md:text-5xl font-semibold text-dp-gold-ink">{data.series}</h1>
         <GoldLine class="mx-auto mt-4" />
         {data.seriesSubtitle && (
@@ -158,16 +174,38 @@ const breadcrumbLd = {
     )}
 
     {data.characters && data.characters.length > 0 && (
-      <CharactersSection characters={data.characters} folder={data.charactersFolder} maps={data.characterMaps} />
+      <CharactersSection characters={data.characters} folder={data.charactersFolder} />
     )}
 
     {data.world && (
-      <WorldSection world={data.world} maps={data.worldMaps} />
+      <WorldSection world={data.world} />
+    )}
+
+    {data.extraLinks && data.extraLinks.length > 0 && (
+      <Section title={ui.bookSections.extraLinks}>
+        <div class="flex flex-wrap gap-2">
+          {data.extraLinks.map(link => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-[11px] font-body tracking-widest uppercase px-3 py-1.5 border border-dp-gold/60 text-dp-gold-ink hover:bg-dp-gold/10 transition-colors">{link.label}</a>
+          ))}
+        </div>
+      </Section>
     )}
 
     {bookLore.length > 0 && (
       <LoreSection items={bookLore} bookSlug={book.slug} />
     )}
+
+    <!-- Breadcrumb + Prev/Next navigation (bottom) -->
+    <div class="mt-12 pt-4 border-t border-dp-border">
+      <PageNav
+        section={ui.home?.booksHeading}
+        sectionHref="/books"
+        title={data.series ?? data.title}
+        prev={prev ? { href: `/books/${prev.slug}`, title: prev.data.title } : null}
+        next={next ? { href: `/books/${next.slug}`, title: next.data.title } : null}
+        position="bottom"
+      />
+    </div>
 
   </div>
 </BaseLayout>

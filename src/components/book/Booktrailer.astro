@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import { loadDataFile } from '../../lib/data';
 
 interface Props {
   trailer: {
@@ -9,8 +10,9 @@ interface Props {
   };
 }
 const { trailer } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title="Буктрейлер">
+<Section title={ui.bookSections.booktrailer}>
   <div class="flex justify-center">
     <div class={trailer.orientation === 'vertical' ? 'max-h-[600px] w-auto max-w-xs' : 'w-full max-w-2xl'}>
       <video

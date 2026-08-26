@@ -1,0 +1,66 @@
+---
+/**
+ * Unified page navigation component for books, blog, etc.
+ *
+ * Props:
+ * - section: display name of the section (e.g. "Книги", "Блог")
+ * - sectionHref: link to the section index
+ * - title: current page breadcrumb title
+ * - prev: { href, title } | null
+ * - next: { href, title } | null
+ * - position: "top" | "bottom" — controls whether breadcrumb is above or below arrows
+ * - navClass: additional classes for dynamic blog nav containers (optional)
+ */
+export interface Props {
+  section: string;
+  sectionHref: string;
+  title: string;
+  prev?: { href: string; title: string } | null;
+  next?: { href: string; title: string } | null;
+  position?: 'top' | 'bottom';
+}
+
+const { section, sectionHref, title, prev, next, position = 'top' } = Astro.props;
+const isBottom = position === 'bottom';
+const linkClass = 'hover:text-dp-gold transition-colors inline-flex items-baseline gap-1';
+---
+
+<nav class={`flex flex-col items-center gap-1 text-xs tracking-widest uppercase text-dp-muted ${isBottom ? 'mt-6' : 'mb-6'}`}>
+  {/* Breadcrumb line */}
+  {!isBottom && (
+    <div class="flex items-center max-w-[70vw] text-center">
+      <a href={sectionHref} class="hover:text-dp-gold transition-colors shrink-0">{section}</a>
+      <span class="mx-2 shrink-0">→</span>
+      <span class="text-dp-text truncate">{title}</span>
+    </div>
+  )}
+
+  {/* Arrows row */}
+  <div class="flex w-full items-center justify-between mt-4">
+    <div class="nav-link-wrap">
+      {prev && (
+        <a href={prev.href} class={linkClass} title={prev.title} data-nav-prev>
+          <span class="text-lg leading-none relative -top-[1px]">←</span>
+          <span class="hidden md:inline">{prev.title}</span>
+        </a>
+      )}
+    </div>
+    <div class="nav-link-wrap">
+      {next && (
+        <a href={next.href} class={linkClass} title={next.title} data-nav-next>
+          <span class="hidden md:inline">{next.title}</span>
+          <span class="text-lg leading-none relative -top-[1px]">→</span>
+        </a>
+      )}
+    </div>
+  </div>
+
+  {/* Breadcrumb line (bottom variant) */}
+  {isBottom && (
+    <div class="flex items-center max-w-[70vw] text-center mt-4">
+      <a href={sectionHref} class="hover:text-dp-gold transition-colors shrink-0">{section}</a>
+      <span class="mx-2 shrink-0">→</span>
+      <span class="text-dp-text truncate">{title}</span>
+    </div>
+  )}
+</nav>

@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GoldLine from '../../components/GoldLine.astro';
+import CoversGallery from '../../components/CoversGallery.astro';
+import CardsGallery from '../../components/CardsGallery.astro';
+import { loadDataFile } from '../../lib/data';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { findImage, findImagesInFolder } from '../../lib/images';
+import { splitContentByMarkers } from '../../lib/markdown';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  const items = await getCollection('paths');
+  return items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+
+// Split body by :::markers for inline component placement
+const segments = splitContentByMarkers(item.body);
+// Check if markers are used — if not, fall back to rendering all at the end
+const hasMarkers = segments.some(s => s.type === 'slot');
+
+const allBooks = await getCollection('books');
+
+const covers = item.data.books
+  .map(ref => {
+    // Format: "slug" for standalone/series cover, or "slug:N" for Nth book in series (1-based)
+    const [bookSlug, indexStr] = ref.split(':');
+    const book = allBooks.find(b => b.slug === bookSlug);
+    if (!book) return null;
+
+    if (indexStr && book.data.books) {
+      // Sub-book of a series
+      const idx = parseInt(indexStr, 10) - 1;
+      const sub = book.data.books[idx];
+      if (!sub) return null;
+      const src = findImage(sub.cover);
+      if (!src) return null;
+      return {
+        slug: `${bookSlug}#book-${indexStr}`,
+        title: sub.title,
+        src,
+        description: sub.shortDescription ?? sub.logline,
+        marketplace: sub.marketplace,
+        links: sub.links ?? [],
+      };
+    }
+
+    // Standalone book or series main cover
+    const src = findImage(book.data.cover);
+    if (!src) return null;
+    return {
+      slug: book.slug,
+      title: book.data.title,
+      src,
+      description: book.data.shortDescription,
+      marketplace: book.data.marketplace,
+      links: book.data.links ?? [],
+    };
+  })
+  .filter((c): c is NonNullable<typeof c> => c !== null);
+
+// Resolve featured book cards
+function resolveBookRef(ref: string) {
+  const [bookSlug, indexStr] = ref.split(':');
+  const book = allBooks.find(b => b.slug === bookSlug);
+  if (!book) return null;
+
+  if (indexStr && book.data.books) {
+    const sub = book.data.books[parseInt(indexStr, 10) - 1];
+    if (!sub) return null;
+    return {
+      slug: `${bookSlug}#book-${indexStr}`,
+      title: sub.title,
+      cover: findImage(sub.cover),
+      description: sub.shortDescription ?? sub.logline ?? sub.description,
+    };
+  }
+
+  return {
+    slug: bookSlug,
+    title: book.data.title,
+    cover: findImage(book.data.cover),
+    description: book.data.shortDescription ?? book.data.mediumDescription,
+  };
+}
+
+const featured = item.data.featured
+  .map(f => {
+    const resolved = resolveBookRef(f.book);
+    if (!resolved) return null;
+    return { ...resolved, customText: f.text };
+  })
+  .filter((f): f is NonNullable<typeof f> => f !== null);
+
+const galleryImages = item.data.gallery ? findImagesInFolder(item.data.gallery) : [];
+
+// Cards: list images from public/cards/{folder}
+let cardImages: string[] = [];
+if (item.data.cards) {
+  const cardsDir = path.join(process.cwd(), 'public', 'cards', item.data.cards);
+  if (fs.existsSync(cardsDir)) {
+    cardImages = fs.readdirSync(cardsDir)
+      .filter(f => /\.(jpg|jpeg|png|webp|avif|gif)$/i.test(f))
+      .sort()
+      .map(f => `/cards/${item.data.cards}/${f}`);
+  }
+}
+
+const ui = loadDataFile<any>('src/data/ui.md', { nav: [] });
+const homeLabel = ui.nav?.[0]?.label ?? 'Главная';
+---
+
+<BaseLayout title={item.data.title}>
+  <article class="max-w-4xl mx-auto px-6 py-12">
+    <header class="mb-8">
+      <nav class="text-xs tracking-widest uppercase text-dp-muted mb-4">
+        <a href="/" class="hover:text-dp-gold transition-colors">{homeLabel}</a>
+        <span class="mx-2">→</span>
+        <span class="text-dp-text">{item.data.title}</span>
+      </nav>
+
+      <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{item.data.title}</h1>
+
+      <GoldLine />
+    </header>
+
+    {/* Render segments with inline components */}
+    {segments.map(seg => {
+      if (seg.type === 'html') {
+        return <div class="prose-content max-w-none text-dp-text leading-relaxed" set:html={seg.html} />;
+      }
+      if (seg.name === 'featured' && featured.length > 0) {
+        return (
+          <div class="my-8 space-y-6">
+            {featured.map(f => (
+              <div class="flex gap-5 p-4 border border-dp-border rounded-md bg-white/[0.03]">
+                {f.cover && (
+                  <a href={`/books/${f.slug}`} class="flex-shrink-0">
+                    <Image src={f.cover} alt={f.title} widths={[120, 240]} sizes="120px" class="w-[120px] h-auto rounded border border-dp-border shadow-md hover:shadow-lg transition-shadow" />
+                  </a>
+                )}
+                <div class="flex-1">
+                  <a href={`/books/${f.slug}`} class="font-heading text-lg font-semibold hover:text-dp-gold-ink transition-colors">{f.title}</a>
+                  <p class="text-dp-text text-sm leading-relaxed mt-2">{f.customText ?? f.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      }
+      if (seg.name === 'books' && covers.length > 0) {
+        return <div class="my-10"><CoversGallery covers={covers} /></div>;
+      }
+      if (seg.name === 'cards' && cardImages.length > 0) {
+        return <div class="my-10"><CardsGallery images={cardImages} /></div>;
+      }
+      if (seg.name === 'gallery' && galleryImages.length > 0) {
+        return (
+          <div class="my-10">
+            <div class="masonry-gallery">
+              {galleryImages.map(({ path: p, image }) => (
+                <div class="masonry-item">
+                  <Image src={image} alt={p.split('/').pop()?.replace(/\.[^.]+$/, '') ?? ''} widths={[400, 800]} sizes="(min-width: 768px) 33vw, 50vw" loading="lazy" class="w-full h-auto rounded-lg cursor-pointer" data-lightbox-group="path-gallery" />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+      return null;
+    })}
+
+    {/* If no markers used, render components after content in default order */}
+    {!hasMarkers && featured.length > 0 && (
+      <div class="mt-8 space-y-6">
+        {featured.map(f => (
+          <div class="flex gap-5 p-4 border border-dp-border rounded-md bg-white/[0.03]">
+            {f.cover && (
+              <a href={`/books/${f.slug}`} class="flex-shrink-0">
+                <Image src={f.cover} alt={f.title} widths={[120, 240]} sizes="120px" class="w-[120px] h-auto rounded border border-dp-border shadow-md hover:shadow-lg transition-shadow" />
+              </a>
+            )}
+            <div class="flex-1">
+              <a href={`/books/${f.slug}`} class="font-heading text-lg font-semibold hover:text-dp-gold-ink transition-colors">{f.title}</a>
+              <p class="text-dp-text text-sm leading-relaxed mt-2">{f.customText ?? f.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+    {!hasMarkers && covers.length > 0 && (
+      <div class="mt-10"><h2 class="font-heading text-2xl font-semibold mb-4">Книги</h2><CoversGallery covers={covers} /></div>
+    )}
+    {!hasMarkers && cardImages.length > 0 && (
+      <div class="mt-10"><CardsGallery images={cardImages} /></div>
+    )}
+    {!hasMarkers && galleryImages.length > 0 && (
+      <div class="mt-10"><div class="masonry-gallery">{galleryImages.map(({ path: p, image }) => (<div class="masonry-item"><Image src={image} alt={p.split('/').pop()?.replace(/\.[^.]+$/, '') ?? ''} widths={[400, 800]} sizes="(min-width: 768px) 33vw, 50vw" loading="lazy" class="w-full h-auto rounded-lg cursor-pointer" data-lightbox-group="path-gallery" /></div>))}</div></div>
+    )}
+
+    <footer class="mt-12 pt-6 border-t border-dp-border">
+      <a href="/" class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors">
+        ← На главную
+      </a>
+    </footer>
+  </article>
+
+  <script>
+    document.querySelectorAll('.prose-content img').forEach((img) => {
+      const height = img.getAttribute('height');
+      if (height) {
+        img.style.height = `${height}px`;
+        img.style.width = 'auto';
+        img.style.maxWidth = 'none';
+        img.style.flex = '0 0 auto';
+      }
+
+      if (!img.getAttribute('data-lightbox-group')) {
+        img.setAttribute('data-lightbox-group', 'path-inline');
+        img.setAttribute('data-lightbox-src', (img as HTMLImageElement).src);
+      }
+    });
+  </script>
+</BaseLayout>
+</BaseLayout>

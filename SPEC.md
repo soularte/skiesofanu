@@ -7,6 +7,7 @@
 - [Архитектура контента](#архитектура-контента)
 - [Схема книги (`src/content/config.ts`)](#схема-книги-srccontentconfigts)
 - [Схема `src/data/site.md`](#схема-srcdatasitemd)
+- [Схема `src/data/ui.md`](#схема-srcdatauimd)
 - [Схема `src/data/authors.md`](#схема-srcdataauthorsmd)
 - [Схема `src/data/news.md`](#схема-srcdatanewsmd)
 - [Схема `src/data/links.md`](#схема-srcdatalinksmd)
@@ -66,7 +67,8 @@ colors: {
 
 | Файл | Что хранит |
 |---|---|
-| `src/data/site.md` | Название сайта, подзаголовок, описание по умолчанию, ID Яндекс.Метрики, текст плашки конфиденциальности |
+| `src/data/site.md` | Название сайта, подзаголовок, описание по умолчанию, ID Яндекс.Метрики, SEO-описания страниц, текст плашки конфиденциальности |
+| `src/data/ui.md` | Все UI-строки: навигация, aria-labels, заголовки секций, тексты страниц и кнопок |
 | `src/data/authors.md` | Имена, фото, биография авторов, блок влияний. Имена авторов автоматически попадают в footer copyright, meta author и JSON-LD |
 | `src/data/links.md` | Соцсети, литпорталы Ксении и Василия, контакты |
 | `src/data/news.md` | Новостной баннер на главной |
@@ -95,10 +97,9 @@ colors: {
 | `mediumDescription` | string | Средняя аннотация (страница `/books` — список); если не задана, используется тело `.md` |
 | `links` | `{label, url}[]` | Ссылки на платформы |
 | `world` | string | Описание мира (секция «Мир») |
-| `worldMaps` | `{label, url}[]` | Кнопки карт мира |
 | `characters` | объекты (см. ниже) | Персонажи (секция «Персонажи») |
 | `charactersFolder` | string | Папка в `public/images/` для фото персонажей |
-| `characterMaps` | `{label, url}[]` | Кнопки дерева связей |
+| `extraLinks` | `{label, url}[]` | Дополнительные ссылки (карты, словари и т.д.) |
 | `reviews` | `{text, author}[]` | Отзывы читателей (секция «Отзывы», 3 колонки) |
 
 ### Опциональные поля — только для циклов
@@ -169,9 +170,89 @@ privacyText: string        # текст плашки конфиденциаль�
 blogSubtitle: string       # опц., подзаголовок на странице блога
 aboutSubtitle: string      # опц., подзаголовок на странице «Об авторах»
 booksSubtitle: string      # опц., подзаголовок на странице «Книги»
+seoAbout: string           # опц., meta description страницы «Об авторах»
+seoBlog: string            # опц., meta description страницы «Блог»
+seoBooks: string           # опц., meta description страницы «Книги»
 ```
 
 Данные из `site.md` читаются в `BaseLayout.astro` и передаются в `Header` (`siteName`, `siteTagline`).
+
+---
+
+## Схема `src/data/ui.md`
+
+Центральный файл всех UI-строк сайта. Все компоненты и страницы читают текстовые строки отсюда через `loadDataFile()`.
+
+```yaml
+nav:                       # массив навигационных ссылок (Header, Footer, 404)
+  - href: string
+    label: string
+
+aria:                      # aria-labels для доступности
+  mainNav: string
+  mobileNav: string
+  footerNav: string
+  openMenu: string
+  scrollTop: string
+  close: string
+  prev: string
+  next: string
+  viewImage: string
+  previousImage: string
+  nextImage: string
+  promoCard: string
+
+bookSections:              # заголовки секций на страницах книг
+  seriesAbout: string
+  readingOrder: string
+  booksInSeries: string
+  characters: string
+  world: string
+  reviews: string
+  booktrailer: string
+  lore: string
+  extraLinks: string
+  marketplace: string
+  readOn: string
+
+pageNav:                   # навигация по страницам
+  newer: string
+  older: string
+  allTags: string
+  readMore: string
+  moreDetails: string
+
+home:                      # главная страница
+  heroQuote: string
+  duoLabel: string
+  heroDescription: string
+  booksButton: string
+  aboutButton: string
+  booksHeading: string
+  newsHeading: string
+  litportalsHeading: string
+  inProgress: string
+  everyStory: string
+
+litportals:                # контактный текст (плейсхолдеры {telegram}, {vk})
+  contactText: string
+  telegramLabel: string
+  vkLabel: string
+
+about:                     # страница «Об авторах»
+  heading: string
+  inspirationHeading: string
+  backToAuthors: string
+  role: string
+
+blog:                      # блог
+  heading: string
+
+notFound:                  # страница 404
+  heading: string
+  subheading: string
+  description: string
+```
 
 ---
 
@@ -259,15 +340,14 @@ contact:
 | `src/components/TagFilter.astro` | Панель фильтрации по тегам (кнопки «Все» + #теги). Генерирует событие `filter-change` | `tags: string[]`, `group?: string`, `class?: string` |
 | `src/components/GoldLine.astro` | Декоративная золотая линия-разделитель | `size?: 'sm'\|'md'\|'lg'`, `class?: string` |
 | `src/components/GalleryArrow.astro` | Кнопка-стрелка навигации карусели | `direction: 'left'\|'right'`, `id: string` |
-| `src/components/SectionLink.astro` | Кнопка-ссылка секции (карта мира, дерево связей и т.д.) | `href: string`, `label: string` |
 
 ### Общие компоненты
 
 | Файл | Что делает |
 |---|---|
 | `src/layouts/BaseLayout.astro` | HTML-обёртка: `<head>` (SEO, Open Graph, JSON-LD, Metrica), Header, Footer, плашка конфиденциальности. Читает `site.md` и `authors.md` |
-| `src/components/Header.astro` | Навигация. Принимает пропы `siteName: string`, `siteTagline?: string` из BaseLayout |
-| `src/components/Footer.astro` | Копирайт + ссылки навигации. Принимает проп `copyright: string` |
+| `src/components/Header.astro` | Навигация. Читает навигацию из `ui.md`. Принимает пропы `siteName: string`, `siteTagline?: string` из BaseLayout |
+| `src/components/Footer.astro` | Копирайт + ссылки навигации из `ui.md`. Принимает проп `copyright: string` |
 | `src/components/Icon.astro` | Централизованный SVG-компонент. Принимает `name: string` и `class?: string` |
 | `src/components/SocialBar.astro` | Иконки соцсетей (вариант `topbar` или `footer`) |
 | `src/components/CoversGallery.astro` | Горизонтальная галерея обложек (mobile swipe + desktop scroll) |
@@ -358,7 +438,6 @@ public/
 | Фильтр-кнопки (Все + #теги) | `TagFilter.astro` | blog/index, LoreSection |
 | Золотая линия-разделитель | `GoldLine.astro` | 16 мест по всему сайту |
 | Стрелки галереи | `GalleryArrow.astro` | CardsGallery, CoversGallery, CharactersGallery |
-| Кнопка-ссылка секции | `SectionLink.astro` | CharactersSection, WorldSection, SeriesAbout |
 
 ### Плашка конфиденциальности
 
@@ -377,3 +456,5 @@ public/
 7. Книги цикла (если `books[]`)
 8. Персонажи (если `characters[]`)
 9. Мир (если `world`)
+10. Дополнительные ссылки (если `extraLinks[]`)
+11. Дополнительные материалы / Лор (если есть привязанные lore-посты)

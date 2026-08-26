@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageNav from '../../../../components/PageNav.astro';
 import TagChip from '../../../../components/TagChip.astro';
 import GoldLine from '../../../../components/GoldLine.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const loreEntries = await getCollection('lore');
+  const loreEntries = (await getCollection('lore')).filter(l => !l.data.draft);
   const books = await getCollection('books');
 
   // Group by book and sort alphabetically within each group
@@ -20,18 +21,23 @@ export async function getStaticPaths() {
   return loreEntries.map(entry => {
     const book = books.find(b => b.slug === entry.data.book);
     const siblings = byBook[entry.data.book];
+    const idx = siblings.findIndex(s => s.slug === entry.slug);
+    const prev = idx > 0 ? siblings[idx - 1] : null;
+    const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
     return {
       params: { slug: entry.data.book, loreSlug: entry.slug },
       props: {
         entry,
         bookTitle: book?.data.series ?? book?.data.title ?? entry.data.book,
         allItems: siblings.map(s => ({ slug: s.slug, title: s.data.title, tags: s.data.tags ?? [] })),
+        prev,
+        next,
       },
     };
   });
 }
 
-const { entry, bookTitle, allItems } = Astro.props;
+const { entry, bookTitle, allItems, prev, next } = Astro.props;
 const { Content } = await entry.render();
 const bookSlug = entry.data.book;
 
@@ -45,23 +51,21 @@ const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigi
   canonicalURL={canonicalURL}
   ogType="article"
 >
-  <article class="max-w-3xl mx-auto px-6 py-12">
+  <article class="max-w-3xl mx-auto px-6 pt-4 pb-12">
     <header class="mb-8">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-        <nav class="text-xs tracking-widest uppercase text-dp-muted">
-          <a href="/books" class="hover:text-dp-gold transition-colors">Книги</a>
-          <span class="mx-2">→</span>
-          <a href={`/books/${bookSlug}`} class="hover:text-dp-gold transition-colors">{bookTitle}</a>
-          <span class="mx-2">→</span>
-          <span class="text-dp-text">Материалы</span>
-        </nav>
-        <div class="flex gap-4 mt-2 sm:mt-0 self-end sm:self-auto lore-nav-top"></div>
-      </div>
+      <PageNav
+        section="Материалы"
+        sectionHref={`/books/${bookSlug}`}
+        title={entry.data.title}
+        prev={prev ? { href: `/books/${bookSlug}/lore/${prev.slug}`, title: prev.data.title } : null}
+        next={next ? { href: `/books/${bookSlug}/lore/${next.slug}`, title: next.data.title } : null}
+        position="top"
+      />
+
       <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{entry.data.title}</h1>
       {entry.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4">
           {entry.data.tags.map(tag => <TagChip tag={tag} />)}
-        </div>
         </div>
       )}
       {entry.data.cover && (
@@ -81,13 +85,15 @@ const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigi
       <Content />
     </div>
 
-    <footer class="mt-12 pt-6 border-t border-dp-border">
-      <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
-        <a href={`/books/${bookSlug}`} class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors">
-          ← Назад
-        </a>
-        <div class="flex gap-4 self-end sm:self-auto lore-nav-bottom"></div>
-      </div>
+    <footer class="mt-12 pt-4 border-t border-dp-border">
+      <PageNav
+        section="Материалы"
+        sectionHref={`/books/${bookSlug}`}
+        title={entry.data.title}
+        prev={prev ? { href: `/books/${bookSlug}/lore/${prev.slug}`, title: prev.data.title } : null}
+        next={next ? { href: `/books/${bookSlug}/lore/${next.slug}`, title: next.data.title } : null}
+        position="bottom"
+      />
     </footer>
   </article>
 
@@ -100,36 +106,43 @@ const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigi
       img.setAttribute('data-lightbox-src', (img as HTMLImageElement).src);
     });
 
-    // Dynamic prev/next based on ?tag= parameter
+    // Patch nav hrefs when ?tag= is present
     (function() {
       const dataEl = document.getElementById('lore-items-data');
       if (!dataEl) return;
       const { items, currentSlug, bookSlug } = JSON.parse(dataEl.textContent || '{}');
       const tag = new URLSearchParams(window.location.search).get('tag');
+      if (!tag || tag === 'all') return;
 
-      const filtered = tag && tag !== 'all'
-        ? items.filter((i: any) => i.tags.includes(tag))
-        : items;
-
+      const filtered = items.filter((i: any) => i.tags.includes(tag));
       const idx = filtered.findIndex((i: any) => i.slug === currentSlug);
-      const prev = idx > 0 ? filtered[idx - 1] : null;
-      const next = idx < filtered.length - 1 ? filtered[idx + 1] : null;
+      if (idx === -1) return;
 
-      const tagParam = tag && tag !== 'all' ? `?tag=${encodeURIComponent(tag)}` : '';
-      const linkClass = 'text-xs tracking-widest uppercase text-dp-muted hover:text-dp-gold-ink transition-colors';
+      const tagParam = `?tag=${encodeURIComponent(tag)}`;
+      const prevItem = idx > 0 ? filtered[idx - 1] : null;
+      const nextItem = idx < filtered.length - 1 ? filtered[idx + 1] : null;
 
-      function renderNav(container: Element) {
-        let html = '';
-        if (prev) {
-          html += `<a href="/books/${bookSlug}/lore/${prev.slug}${tagParam}" class="${linkClass}" title="${prev.title}">← Предыдущая</a>`;
+      document.querySelectorAll('[data-nav-prev]').forEach((el) => {
+        const a = el as HTMLAnchorElement;
+        if (prevItem) {
+          a.href = `/books/${bookSlug}/lore/${prevItem.slug}${tagParam}`;
+          const label = a.querySelector('.hidden');
+          if (label) label.textContent = prevItem.title;
+        } else {
+          a.closest('.nav-link-wrap')?.classList.add('invisible');
         }
-        if (next) {
-          html += `<a href="/books/${bookSlug}/lore/${next.slug}${tagParam}" class="${linkClass}" title="${next.title}">Следующая →</a>`;
-        }
-        container.innerHTML = html;
-      }
+      });
 
-      document.querySelectorAll('.lore-nav-top, .lore-nav-bottom').forEach(renderNav);
+      document.querySelectorAll('[data-nav-next]').forEach((el) => {
+        const a = el as HTMLAnchorElement;
+        if (nextItem) {
+          a.href = `/books/${bookSlug}/lore/${nextItem.slug}${tagParam}`;
+          const label = a.querySelector('.hidden');
+          if (label) label.textContent = nextItem.title;
+        } else {
+          a.closest('.nav-link-wrap')?.classList.add('invisible');
+        }
+      });
     })();
   </script>
 </BaseLayout>

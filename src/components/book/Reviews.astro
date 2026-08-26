@@ -1,12 +1,14 @@
 ---
 import Section from './Section.astro';
+import { loadDataFile } from '../../lib/data';
 
 interface Props {
   reviews: Array<{ text: string; author: string }>;
 }
 const { reviews } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title="Отзывы">
+<Section title={ui.bookSections.reviews}>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     {reviews.map(review => (
       <div class="border border-dp-border p-6 flex flex-col gap-4">

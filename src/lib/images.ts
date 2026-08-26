@@ -30,3 +30,18 @@ for (const [absPath, mod] of Object.entries(modules)) {
 export function findImage(path: string): ImageMetadata | undefined {
   return byKey.get(path);
 }
+
+/**
+ * Получить все изображения из указанной подпапки src/assets/images/.
+ * Возвращает массив { path, image } отсортированный по имени файла.
+ */
+export function findImagesInFolder(folder: string): { path: string; image: ImageMetadata }[] {
+  const prefix = folder.endsWith('/') ? folder : folder + '/';
+  const results: { path: string; image: ImageMetadata }[] = [];
+  for (const [key, meta] of byKey.entries()) {
+    if (key.startsWith(prefix) && !key.slice(prefix.length).includes('/')) {
+      results.push({ path: key, image: meta });
+    }
+  }
+  return results.sort((a, b) => a.path.localeCompare(b.path));
+}

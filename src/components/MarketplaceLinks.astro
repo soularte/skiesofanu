@@ -1,15 +1,20 @@
 ---
+import { loadDataFile } from '../lib/data';
+
 interface Props {
   links: { label: string; url: string }[];
   marketplace?: boolean;
+  centered?: boolean;
 }
-const { links, marketplace = false } = Astro.props;
+const { links, marketplace = false, centered = false } = Astro.props;
+const uiData = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
+const marketplaceLabel = uiData.bookSections?.marketplace ?? 'Маркетплейсы';
 ---
 {links.length > 0 && (
-  <div class="flex flex-wrap gap-1">
+  <div class={`flex flex-wrap gap-1 justify-center ${centered ? '' : 'md:justify-start'}`}>
     {marketplace && (
       <span class="text-[11px] font-body tracking-widest uppercase px-2 py-1 bg-dp-border/40 text-dp-text border border-dp-border cursor-default select-none">
-        Маркетплейсы
+        {marketplaceLabel}
       </span>
     )}
     {links.map(link => (

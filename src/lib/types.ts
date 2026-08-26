@@ -41,6 +41,9 @@ export interface SiteData {
   blogSubtitle?: string;
   aboutSubtitle?: string;
   booksSubtitle?: string;
+  seoAbout?: string;
+  seoBlog?: string;
+  seoBooks?: string;
   privacyText: string;
 }
 

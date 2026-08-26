@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import MarketplaceLinks from './MarketplaceLinks.astro';
 import GalleryArrow from './GalleryArrow.astro';
+import { loadDataFile } from '../lib/data';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
   }[];
 }
 const { covers } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
+const aria = ui.aria ?? {};
 ---
 
 <div class="relative">
@@ -55,8 +58,8 @@ const { covers } = Astro.props;
         ))}
       </div>
       <!-- Tap zones -->
-      <button id="covers-mobile-prev" aria-label="Назад" class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
-      <button id="covers-mobile-next" aria-label="Вперёд" class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <button id="covers-mobile-prev" aria-label={aria.prev} class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <button id="covers-mobile-next" aria-label={aria.next} class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
     </div>
     {covers.length > 1 && (
       <div class="flex justify-center gap-2 mt-3">

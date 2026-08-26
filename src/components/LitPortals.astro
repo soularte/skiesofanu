@@ -10,42 +10,41 @@ interface Props {
 
 const { ksenia, vasily } = Astro.props;
 
-const linksData = loadDataFile<any>('src/data/links.md', {
-  contact: {
-    vk: '',
-    telegram: '',
-  },
-});
+const linksData = loadDataFile<any>('src/data/links.md', { contact: { vk: '', telegram: '' } });
+const authorsData = loadDataFile<any>('src/data/authors.md', { ksenia: { name: 'Ксения Котова' }, vasily: { name: 'Василий Зеленков' } });
+const uiData = loadDataFile<any>('src/data/ui.md', { litportals: {} });
 
 const contact = linksData.contact ?? {};
+const litUi = uiData.litportals ?? {};
 ---
 
 <div class="flex flex-col gap-8">
   <p class="text-center text-sm md:text-base text-dp-muted leading-relaxed max-w-2xl mx-auto">
-    Если хотите связаться с нами напрямую,<br>напишите нам в
+    {litUi.contactText?.split('{telegram}')[0]}
     <a
       href={contact.telegram}
       target="_blank"
       rel="noopener noreferrer"
       class="text-dp-gold-ink hover:text-dp-text transition-colors underline underline-offset-4"
     >
-      Телеграм
+      {litUi.telegramLabel}
     </a>
-    или
+    {litUi.contactText?.split('{telegram}')[1]?.split('{vk}')[0]}
     <a
       href={contact.vk}
       target="_blank"
       rel="noopener noreferrer"
       class="text-dp-gold-ink hover:text-dp-text transition-colors underline underline-offset-4"
     >
-      ВКонтакте
-    </a>.
+      {litUi.vkLabel}
+    </a>
+    {litUi.contactText?.split('{vk}')[1]}
   </p>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
     <div>
       <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
-        Ксения Котова
+        {authorsData.ksenia.name}
       </h3>
 
       <div class="flex gap-3 mt-4 flex-wrap justify-center">
@@ -68,7 +67,7 @@ const contact = linksData.contact ?? {};
 
     <div>
       <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
-        Василий Зеленков
+        {authorsData.vasily.name}
       </h3>
 
       <div class="flex gap-3 mt-4 flex-wrap justify-center">

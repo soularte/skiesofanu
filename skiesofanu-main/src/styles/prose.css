@@ -1,0 +1,79 @@
+.prose-content h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #2C2C2C;
+}
+.prose-content h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2C2C2C;
+}
+.prose-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+.prose-content strong {
+  font-weight: 700;
+  color: #1A1A2E;
+}
+.prose-content em {
+  font-style: italic;
+}
+.prose-content a {
+  color: #7A5E1A;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122, 94, 26, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.prose-content a:hover {
+  color: #C9A84C;
+  border-color: #C9A84C;
+}
+.prose-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  border: 1px solid #D4C5A9;
+  margin: 1.5rem 0;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.prose-content img:hover {
+  opacity: 0.9;
+}
+.prose-content blockquote {
+  border-left: 3px solid rgba(201, 168, 76, 0.5);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #6B6660;
+  font-style: italic;
+}
+.prose-content ul,
+.prose-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.prose-content li {
+  margin-bottom: 0.5rem;
+}
+.prose-content hr {
+  border: none;
+  border-top: 1px solid #D4C5A9;
+  margin: 2rem 0;
+}
+
+/* Унифицированный focus-ring для интерактивных элементов */
+.focus-ring:focus {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

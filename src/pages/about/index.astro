@@ -23,14 +23,18 @@ const authors = loadDataFile<AuthorsData>('src/data/authors.md', {
 
 const site = loadDataFile<SiteData>('src/data/site.md', { siteName: '', defaultDescription: '', privacyText: '' });
 
+const ui = loadDataFile<any>('src/data/ui.md', { about: {}, home: {} });
+const aboutUi = ui.about ?? {};
+const homeUi = ui.home ?? {};
+
 const kseniaPhoto = findImage(`authors/${authors.ksenia.photo}`);
 const vasilyPhoto = findImage(`authors/${authors.vasily.photo}`);
 ---
-<BaseLayout title="Об авторах" description="Об авторском дуэте Ксения Котова и Василий Зеленков — соавторская пара родом ЮФО.">
-  <div class="max-w-5xl mx-auto px-6 pt-20 pb-4">
+<BaseLayout title={aboutUi.heading} description={site.seoAbout ?? ''}>
+  <div class="max-w-5xl mx-auto px-6 pt-8 pb-4">
     <!-- Page header -->
-    <div class="text-center mb-16">
-      <h1 class="font-heading text-4xl md:text-5xl font-semibold">Об авторах</h1>
+    <div class="text-center mb-6 md:mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-semibold">{aboutUi.heading}</h1>
       <GoldLine class="mx-auto mt-4" />
       {site.aboutSubtitle && <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{site.aboutSubtitle}</p>}
     </div>
@@ -53,7 +57,7 @@ const vasilyPhoto = findImage(`authors/${authors.vasily.photo}`);
         </div>
         {authors.influences && authors.influences.length > 0 && (
           <div class="mt-8 pt-6 border-t border-dp-border">
-            <h2 class="font-heading text-xs tracking-widest uppercase text-dp-muted mb-3">Влияния и вдохновение</h2>
+            <h2 class="font-heading text-xs tracking-widest uppercase text-dp-muted mb-3">{aboutUi.inspirationHeading}</h2>
             <div class="flex flex-wrap gap-2">
               {authors.influences.map((tag: string) => (
                 <span class="text-[10px] tracking-widest uppercase px-2 py-1 border border-dp-border text-dp-muted">{tag}</span>
@@ -74,17 +78,19 @@ const vasilyPhoto = findImage(`authors/${authors.vasily.photo}`);
     </div>
 
     <!-- Divider -->
-    <div class="my-16">
+    <div class="max-w-5xl mx-auto px-6 pt-16">
       <Divider />
     </div>
 
     <!-- Literary platforms -->
-    <DecoratedBox class="max-w-2xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="font-heading text-2xl font-semibold">Площадки</h2>
-        <GoldLine class="mx-auto mt-4" />
-      </div>
-      <LitPortals ksenia={links.litportals.ksenia} vasily={links.litportals.vasily} />
-    </DecoratedBox>
+    <section class="max-w-5xl mx-auto px-6 pt-16 pb-12">
+      <DecoratedBox class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="font-heading text-2xl font-semibold">{homeUi.litportalsHeading}</h2>
+          <GoldLine class="mx-auto mt-4" />
+        </div>
+        <LitPortals ksenia={links.litportals.ksenia} vasily={links.litportals.vasily} />
+      </DecoratedBox>
+    </section>
   </div>
 </BaseLayout>

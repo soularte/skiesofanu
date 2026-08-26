@@ -5,6 +5,7 @@ import GenreChip from '../GenreChip.astro';
 import GoldLine from '../GoldLine.astro';
 import { Image } from 'astro:assets';
 import { findImage } from '../../lib/images';
+import { loadDataFile } from '../../lib/data';
 import type { CollectionEntry } from 'astro:content';
 
 type Book = NonNullable<CollectionEntry<'books'>['data']['books']>[number];
@@ -13,13 +14,14 @@ interface Props {
   books: Book[];
 }
 const { books } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title="Книги цикла">
+<Section title={ui.bookSections.booksInSeries}>
   <div class="space-y-10">
     {books.map((b, i) => {
       const bCover = findImage(b.cover);
       return (
-        <article class={`flex flex-col items-center sm:items-start sm:flex-row gap-8 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}>
+        <article id={`book-${i + 1}`} class={`flex flex-col items-center sm:items-start sm:flex-row gap-8 scroll-mt-32 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}>
           <div class={`flex-shrink-0 flex flex-col gap-4 items-center sm:items-start ${i % 2 === 1 ? 'sm:items-end' : ''}`}>
             {bCover && (
               <div class="relative">
@@ -28,7 +30,7 @@ const { books } = Astro.props;
               </div>
             )}
             {b.links && b.links.length > 0 && (
-              <div class={`w-[200px] justify-center sm:justify-start ${i % 2 === 1 ? 'sm:justify-end' : ''}`}>
+              <div class={`flex justify-center ${i % 2 === 1 ? 'sm:justify-end' : 'sm:justify-start'}`}>
                 <MarketplaceLinks links={b.links} marketplace={b.marketplace} />
               </div>
             )}

@@ -1,0 +1,9 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+const { size = 'md', class: className = '' } = Astro.props;
+const widths = { sm: 'w-8', md: 'w-12', lg: 'w-16' };
+---
+<div class={`${widths[size]} h-px bg-dp-gold ${className}`}></div>

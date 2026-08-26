@@ -10,6 +10,8 @@ import { loadDataFile } from '../../lib/data';
 import type { SiteData } from '../../lib/types';
 
 const site = loadDataFile<SiteData>('src/data/site.md', { siteName: '', defaultDescription: '', privacyText: '' });
+const ui = loadDataFile<any>('src/data/ui.md', { home: {} });
+const booksHeading = ui.home?.booksHeading ?? 'Книги';
 
 const allBooks = await getCollection('books');
 
@@ -32,15 +34,15 @@ const ordered = await Promise.all(
   })
 );
 ---
-<BaseLayout title="Книги" description="Все книги соавторского дуэта.">
-  <div class="max-w-5xl mx-auto px-6 pt-20 pb-4">
-    <div class="text-center mb-16">
-      <h1 class="font-heading text-4xl md:text-5xl font-semibold">Книги</h1>
+<BaseLayout title={booksHeading} description={site.seoBooks ?? ''}>
+  <div class="max-w-5xl mx-auto px-6 pt-8 pb-16">
+    <div class="text-center mb-6 md:mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-semibold">{booksHeading}</h1>
       <GoldLine class="mx-auto mt-4" />
       {site.booksSubtitle && <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{site.booksSubtitle}</p>}
     </div>
 
-    <div class="space-y-16">
+    <div class="space-y-10 md:space-y-16 divide-y divide-dp-border/50 md:divide-y-0 [&>*]:pt-10 md:[&>*]:pt-0 [&>*:first-child]:pt-0">
       {ordered.map(({ book, Content }, i) => {
         const coverImg = findImage(book.data.cover);
         return (

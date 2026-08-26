@@ -164,6 +164,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"placeholder-2026-08-01-worldbuilding.md": {
+	id: "placeholder-2026-08-01-worldbuilding.md";
+  slug: "placeholder-2026-08-01-worldbuilding";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"placeholder-2026-08-10-characters.md": {
+	id: "placeholder-2026-08-10-characters.md";
+  slug: "placeholder-2026-08-10-characters";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 };
 "books": {
 "aviatory.md": {
@@ -224,12 +238,56 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "lore": {
+"aviatory-magic.md": {
+	id: "aviatory-magic.md";
+  slug: "aviatory-magic";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
 "aviatory-map.md": {
 	id: "aviatory-map.md";
   slug: "aviatory-map";
   body: string;
   collection: "lore";
   data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
+"aviatory-nations.md": {
+	id: "aviatory-nations.md";
+  slug: "aviatory-nations";
+  body: string;
+  collection: "lore";
+  data: InferEntrySchema<"lore">
+} & { render(): Render[".md"] };
+};
+"paths": {
+"detyam.md": {
+	id: "detyam.md";
+  slug: "detyam";
+  body: string;
+  collection: "paths";
+  data: InferEntrySchema<"paths">
+} & { render(): Render[".md"] };
+"fantasy.md": {
+	id: "fantasy.md";
+  slug: "fantasy";
+  body: string;
+  collection: "paths";
+  data: InferEntrySchema<"paths">
+} & { render(): Render[".md"] };
+"mir-anu.md": {
+	id: "mir-anu.md";
+  slug: "mir-anu";
+  body: string;
+  collection: "paths";
+  data: InferEntrySchema<"paths">
+} & { render(): Render[".md"] };
+"romantika.md": {
+	id: "romantika.md";
+  slug: "romantika";
+  body: string;
+  collection: "paths";
+  data: InferEntrySchema<"paths">
 } & { render(): Render[".md"] };
 };
 

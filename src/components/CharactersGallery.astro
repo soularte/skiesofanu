@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { findImage } from '../lib/images';
 import GalleryArrow from './GalleryArrow.astro';
+import { loadDataFile } from '../lib/data';
 
 interface Props {
   characters: {
@@ -13,6 +14,8 @@ interface Props {
   folder?: string;
 }
 const { characters, folder } = Astro.props;
+const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
+const aria = ui.aria ?? {};
 
 function resolvePhoto(photo: string | undefined) {
   if (!photo) return undefined;
@@ -53,8 +56,8 @@ function resolvePhoto(photo: string | undefined) {
         })}
       </div>
       <!-- Tap zones -->
-      <button id="chars-mobile-prev" aria-label="Назад" class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
-      <button id="chars-mobile-next" aria-label="Вперёд" class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <button id="chars-mobile-prev" aria-label={aria.prev} class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <button id="chars-mobile-next" aria-label={aria.next} class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
     </div>
     {characters.length > 1 && (
       <div class="flex justify-center gap-2 mt-3">

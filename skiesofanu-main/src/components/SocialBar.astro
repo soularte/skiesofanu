@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import type { SocialLink } from '../lib/types';
+
+interface Props {
+  socials: SocialLink[];
+  variant?: 'topbar' | 'footer';
+}
+const { socials, variant = 'topbar' } = Astro.props;
+const isTopbar = variant === 'topbar';
+---
+<div class={`flex items-center ${isTopbar ? 'gap-5' : 'gap-4'} justify-center`}>
+  {socials.map(s => (
+    <a
+      href={s.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={s.label}
+      aria-label={s.label}
+      class={isTopbar
+        ? 'text-parchment/70 hover:text-dp-gold transition-colors'
+        : 'text-dp-muted hover:text-dp-gold transition-colors'}
+    >
+      <Icon name={s.icon} class="w-5 h-5" />
+    </a>
+  ))}
+</div>

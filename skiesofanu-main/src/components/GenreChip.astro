@@ -1,0 +1,7 @@
+---
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+<span class="text-[11px] font-body tracking-widest px-2 py-1 border border-dp-border bg-dp-border/20 text-dp-muted cursor-default select-none">{label.toUpperCase()}</span>

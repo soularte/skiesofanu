@@ -1,4 +1,7 @@
 ---
+import { loadDataFile } from '../lib/data';
+const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
+const aria = ui.aria ?? {};
 ---
 <!-- Global Lightbox overlay -->
 <div
@@ -6,12 +9,12 @@
   class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm"
   role="dialog"
   aria-modal="true"
-  aria-label="Просмотр изображения"
+  aria-label={aria.viewImage}
 >
   <!-- Close button -->
   <button
     id="lb-close"
-    aria-label="Закрыть"
+    aria-label={aria.close}
     class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -22,7 +25,7 @@
   <!-- Prev arrow -->
   <button
     id="lb-prev"
-    aria-label="Предыдущее"
+    aria-label={aria.previousImage}
     class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -33,7 +36,7 @@
   <!-- Next arrow -->
   <button
     id="lb-next"
-    aria-label="Следующее"
+    aria-label={aria.nextImage}
     class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

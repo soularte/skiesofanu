@@ -1,0 +1,18 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  reviews: Array<{ text: string; author: string }>;
+}
+const { reviews } = Astro.props;
+---
+<Section title="Отзывы">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {reviews.map(review => (
+      <div class="border border-dp-border p-6 flex flex-col gap-4">
+        <p class="text-dp-text leading-relaxed flex-1">&laquo;{review.text}&raquo;</p>
+        <p class="text-dp-muted text-xs tracking-widest uppercase text-right">&mdash; {review.author}</p>
+      </div>
+    ))}
+  </div>
+</Section>
