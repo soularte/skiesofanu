@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#2A2520"/>
-  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#C9A84C" stroke-width="2" stroke-dasharray="8,4"/>
-  <text x="400" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#C9A84C">Превью блога</text>
-  <text x="400" y="320" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8B8680">800 × 600</text>
-  <circle cx="400" cy="380" r="30" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
-  <path d="M390 375 L410 375 L400 360 Z" fill="#C9A84C" opacity="0.3"/>
-</svg>

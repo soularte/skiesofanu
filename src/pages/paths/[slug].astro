@@ -117,7 +117,7 @@ const ui = loadDataFile<any>('src/data/ui.md', { nav: [] });
 const homeLabel = ui.nav?.[0]?.label ?? 'Главная';
 ---
 
-<BaseLayout title={item.data.title}>
+<BaseLayout title={item.data.title} noindex={true}>
   <article class="max-w-4xl mx-auto px-6 py-12">
     <header class="mb-8">
       <nav class="text-xs tracking-widest uppercase text-dp-muted mb-4">

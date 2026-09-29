@@ -1,1 +1,20 @@
 node_modules
+TODO.md
+SEO-AUDIT.md
+
+# Generated output and caches
+/dist/
+/.astro/
+
+# macOS metadata
+.DS_Store
+._*
+
+# Local files that must not be built or published
+/local-only/
+/skiesofanu-main/
+
+# Local environment configuration
+.env
+.env.*
+!.env.example

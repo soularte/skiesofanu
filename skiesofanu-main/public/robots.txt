@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://skiesofanu.com/sitemap-index.xml
