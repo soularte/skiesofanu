@@ -5,8 +5,10 @@ import SocialBar from '../components/SocialBar.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { loadDataFile } from '../lib/data';
 import type { SiteData, AuthorsData, LinksData } from '../lib/types';
-import faviconImg from '../assets/images/authors/favis.jpg';
 import defaultOgImg from '../assets/images/authors/favi.jpg';
+import { schemaAuthors } from '../lib/schema';
+import socialCards from '../generated/social.json';
+import seoPages from '../data/seo.json';
 
 const site = loadDataFile<SiteData>('src/data/site.md', {
   siteName: 'Skies of Anu',
@@ -53,29 +55,34 @@ const {
 
 const ogImage = image ?? defaultOgImg.src;
 const ogImageURL = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
+// Social cards are separate from content images and structured data.
+const socialPath = Astro.url.pathname.replace(/\/?$/, '/');
+const socialCard = (socialCards as Record<string, {src: string; width: number; height: number; type: string; alt: string}>)[socialPath];
+const socialImageURL = socialCard ? new URL(socialCard.src, Astro.site ?? Astro.url.origin).href : ogImageURL;
+// For an unknown fallback, omit dimensions rather than inventing them.
+const socialWidth = socialCard?.width ?? (!image ? defaultOgImg.width : undefined);
+const socialHeight = socialCard?.height ?? (!image ? defaultOgImg.height : undefined);
+const socialType = socialCard?.type ?? (!image ? 'image/jpeg' : undefined);
 const allKeywords = keywords ? `${keywords}, ${SITE_KEYWORDS}` : SITE_KEYWORDS;
-const siteTitle = `${title} — ${site.siteName}`;
+const pageSeo = (seoPages as Record<string, {title: string; description: string}>)[socialPath];
+const siteTitle = `${pageSeo?.title ?? title} — ${site.siteName}`;
+const pageDescription = pageSeo?.description ?? description;
 
 const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': new URL('/#organization', siteOrigin).href,
   name: site.siteName,
   description: site.defaultDescription,
   url: siteOrigin,
-  logo: ogImageURL,
-  member: [
-    {
-      '@type': 'Person',
-      name: authorsData.ksenia.name,
-      url: new URL('/about/ksenia/', siteOrigin).href,
-    },
-    {
-      '@type': 'Person',
-      name: authorsData.vasily.name,
-      url: new URL('/about/vasily/', siteOrigin).href,
-    },
-  ],
+  member: schemaAuthors(siteOrigin),
+};
+const websiteSchema = {
+  '@context': 'https://schema.org', '@type': 'WebSite',
+  '@id': new URL('/#website', siteOrigin).href,
+  url: siteOrigin, name: site.siteName, inLanguage: 'ru',
+  publisher: { '@id': organizationSchema['@id'] },
 };
 
 const extraSchemas = additionalSchema
@@ -87,7 +94,7 @@ const extraSchemas = additionalSchema
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
     <meta name="keywords" content={allKeywords} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
@@ -95,27 +102,29 @@ const extraSchemas = additionalSchema
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content={site.siteName} />
-    <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={siteTitle} />
+    <meta property="og:image" content={socialImageURL} />
+    {socialWidth && <meta property="og:image:width" content={String(socialWidth)} />}
+    {socialHeight && <meta property="og:image:height" content={String(socialHeight)} />}
+    {socialType && <meta property="og:image:type" content={socialType} />}
+    <meta property="og:image:alt" content={socialCard?.alt ?? siteTitle} />
 
     <!-- Twitter/X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={socialCard?.alt ?? siteTitle} />
 
     <!-- Авторы и тема -->
     <meta name="author" content={authorNames} />
     <meta name="theme-color" content="#FAF6F0" />
 
     <title>{siteTitle}</title>
-    <link rel="icon" type="image/jpeg" href={faviconImg.src} />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -133,6 +142,7 @@ const extraSchemas = additionalSchema
 
     <!-- JSON-LD: Organization -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {Astro.url.pathname === '/' && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
     {extraSchemas.map(schema => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}

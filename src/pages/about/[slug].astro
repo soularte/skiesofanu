@@ -27,7 +27,7 @@ const personSchema = {
   name: author.data.title,
   url: canonicalURL,
   jobTitle: aboutUi.role ?? 'Писатель',
-  nationality: 'Russian',
+  '@id': `${canonicalURL}#person`,
 };
 ---
 <BaseLayout

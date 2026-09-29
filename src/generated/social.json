@@ -1,0 +1,114 @@
+{
+  "/": {
+    "src": "/social/home-18929b371f.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Бортжурнал — Ксения Котова, Василий Зеленков"
+  },
+  "/books/": {
+    "src": "/social/books-555ae0ad1a.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Книги — Ксения Котова, Василий Зеленков"
+  },
+  "/about/": {
+    "src": "/social/about-1d01ea5e06.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Об авторах — Ксения Котова, Василий Зеленков"
+  },
+  "/blog/": {
+    "src": "/social/blog-4038fbb0f3.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Блог — Ксения Котова, Василий Зеленков"
+  },
+  "/books/aviatory/": {
+    "src": "/social/books-aviatory-0c654406de.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Авиаторы Его Величества — Ксения Котова, Василий Зеленков"
+  },
+  "/books/danlin/": {
+    "src": "/social/books-danlin-30e7cd5465.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Данлин — Василий Зеленков"
+  },
+  "/books/gorod/": {
+    "src": "/social/books-gorod-17de822abe.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Город без имени — Василий Зеленков"
+  },
+  "/books/kanveron/": {
+    "src": "/social/books-kanveron-24819c6e45.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Маги Канверона — Ксения Котова, Василий Зеленков"
+  },
+  "/books/muzyka/": {
+    "src": "/social/books-muzyka-4d2a70d8df.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Пусть эта музыка стихнет — Ксения Котова"
+  },
+  "/books/ostrov/": {
+    "src": "/social/books-ostrov-bcb2eaba64.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Остров сломанных человечков — Ксения Котова, Василий Зеленков"
+  },
+  "/books/stirayushchee/": {
+    "src": "/social/books-stirayushchee-15058ac732.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Стирающее поветрие, или Бумажная лавка госпожи Анны — Ксения Котова"
+  },
+  "/books/virdolog/": {
+    "src": "/social/books-virdolog-c8597f5679.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Вирдолог — Ксения Котова, Василий Зеленков"
+  },
+  "/blog/260515my-soavtory/": {
+    "src": "/social/blog-260515my-soavtory-9957647cd9.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Мы - соавторы — Ксения Котова, Василий Зеленков"
+  },
+  "/books/aviatory/lore/aviatory-map/": {
+    "src": "/social/books-aviatory-lore-aviatory-map-7bb7c1c918.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Карта мира Ану — Ксения Котова, Василий Зеленков"
+  },
+  "/about/ksenia/": {
+    "src": "/social/about-ksenia-0c907946a9.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Ксения Котова — Бортжурнал"
+  },
+  "/about/vasily/": {
+    "src": "/social/about-vasily-ac91fd58f7.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Василий Зеленков — Бортжурнал"
+  }
+}

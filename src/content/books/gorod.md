@@ -1,4 +1,5 @@
 ---
+authors: ["vasily"]
 # === Мета / BookHero ===
 title: "Город без имени"
 cover: "06 Город без имени.jpg"

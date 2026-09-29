@@ -1,4 +1,5 @@
 ---
+import { schemaAuthors } from '../../lib/schema';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookHero from '../../components/book/BookHero.astro';
 import SeriesAbout from '../../components/book/SeriesAbout.astro';
@@ -15,7 +16,6 @@ import GoldLine from '../../components/GoldLine.astro';
 import { getCollection, render } from 'astro:content';
 import { loadDataFile } from '../../lib/data';
 import { findImage } from '../../lib/images';
-import type { AuthorsData } from '../../lib/types';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -43,12 +43,6 @@ const isSeries = !!(data.books && data.books.length > 0);
 const hasSeriesAbout = !!(data.series && (data.seriesDescription || (data.readingOrder && data.readingOrder.length > 0)));
 const coverImg = findImage(data.cover);
 
-const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
-  bio: [],
-  ksenia: { name: 'Ксения Котова', photo: 'kk.jpg' },
-  vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
-});
-
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {}, home: {} });
 
 const canonicalURL = new URL(`/books/${book.slug}/`, Astro.site ?? Astro.url.origin).href;
@@ -73,20 +67,31 @@ const coverURL = coverImg
   ? new URL(coverImg.src, Astro.site ?? Astro.url.origin).href
   : new URL('/favicon.ico', Astro.site ?? Astro.url.origin).href;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Book',
-  name: data.title,
-  description: data.logline ?? data.shortDescription ?? '',
-  genre: data.genres ?? [],
-  image: coverURL,
-  url: canonicalURL,
-  inLanguage: 'ru',
-  author: [
-    { '@type': 'Person', name: authorsData.ksenia.name },
-    { '@type': 'Person', name: authorsData.vasily.name },
-  ],
-  ...(data.series ? { isPartOf: { '@type': 'BookSeries', name: data.series } } : {}),
+const authorEntities = schemaAuthors(canonicalURL, data.authors);
+const seriesId = `${canonicalURL}#series`;
+const commonBook = {
+  inLanguage: 'ru', author: authorEntities,
+};
+const jsonLd = isSeries ? {
+  '@context': 'https://schema.org', '@type': 'BookSeries', '@id': seriesId,
+  name: data.series ?? data.title, url: canonicalURL,
+  description: data.seriesDescription ?? data.shortDescription,
+  image: coverURL, ...commonBook,
+  hasPart: (data.books ?? []).map((part, i) => {
+    const cover = findImage(part.cover);
+    return {
+      '@type': 'Book', '@id': `${canonicalURL}#book-${i + 1}`,
+      url: `${canonicalURL}#book-${i + 1}`, name: part.title,
+      ...commonBook, genre: part.genres,
+      ...(part.shortDescription || part.description ? { description: part.shortDescription ?? part.description } : {}),
+      ...(cover ? { image: new URL(cover.src, canonicalURL).href } : {}),
+      isPartOf: { '@id': seriesId },
+    };
+  }),
+} : {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${canonicalURL}#book`,
+  name: data.title, description: data.shortDescription, genre: data.genres,
+  image: coverURL, url: canonicalURL, ...commonBook,
 };
 
 const breadcrumbLd = {
@@ -121,7 +126,7 @@ const breadcrumbLd = {
 </style>
 <BaseLayout
   title={data.title}
-  description={data.logline ?? data.shortDescription ?? data.title}
+  description={data.seoDescription ?? data.shortDescription ?? data.title}
   image={coverURL}
   canonicalURL={canonicalURL}
   ogType="book"

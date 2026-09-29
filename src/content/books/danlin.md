@@ -1,4 +1,5 @@
 ---
+authors: ["vasily"]
 # === Мета / BookHero ===
 title: "Данлин"
 cover: "07 Данлин.jpg"

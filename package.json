@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "social:generate": "node scripts/generate-social.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.3.0",
@@ -13,6 +14,7 @@
     "astro": "^4.16.18",
     "gray-matter": "^4.0.3",
     "rehype-raw": "^7.0.0",
+    "sharp": "0.33.5",
     "tailwindcss": "^3.4.17"
   }
 }

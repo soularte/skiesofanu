@@ -1,4 +1,5 @@
 ---
+import { schemaAuthors } from '../../lib/schema';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageNav from '../../components/PageNav.astro';
 import TagChip from '../../components/TagChip.astro';
@@ -7,7 +8,6 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { loadDataFile } from '../../lib/data';
 import { findImage } from '../../lib/images';
-import type { AuthorsData } from '../../lib/types';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter(p => !p.data.draft).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -31,12 +31,6 @@ const coverUrl = coverSrc
   ? new URL(coverSrc.src, Astro.site ?? Astro.url.origin).href
   : undefined;
 
-const authorsData = loadDataFile<AuthorsData>('src/data/authors.md', {
-  bio: [],
-  ksenia: { name: 'Ксения Котова', photo: 'kk.jpg' },
-  vasily: { name: 'Василий Зеленков', photo: 'vz.jpg' },
-});
-
 const ui = loadDataFile<any>('src/data/ui.md', { blog: {}, pageNav: {} });
 const blogUi = ui.blog ?? {};
 const pageNav = ui.pageNav ?? {};
@@ -51,10 +45,9 @@ const articleLd = {
   datePublished: post.data.date.toISOString(),
   url: canonicalURL,
   inLanguage: 'ru',
-  author: [
-    { '@type': 'Person', name: authorsData.ksenia.name },
-    { '@type': 'Person', name: authorsData.vasily.name },
-  ],
+  author: schemaAuthors(canonicalURL),
+  '@id': `${canonicalURL}#article`,
+  mainEntityOfPage: canonicalURL,
   ...(coverUrl ? { image: coverUrl } : {}),
 };
 

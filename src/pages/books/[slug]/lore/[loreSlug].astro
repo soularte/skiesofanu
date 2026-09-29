@@ -1,4 +1,5 @@
 ---
+import { schemaAuthors } from '../../../../lib/schema';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import PageNav from '../../../../components/PageNav.astro';
 import TagChip from '../../../../components/TagChip.astro';
@@ -43,12 +44,20 @@ const bookSlug = entry.data.book;
 
 const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
 const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigin).href;
+const articleLd = {
+  '@context': 'https://schema.org', '@type': 'Article', '@id': `${canonicalURL}#article`,
+  headline: entry.data.title, description: entry.data.excerpt,
+  url: canonicalURL, mainEntityOfPage: canonicalURL, inLanguage: 'ru',
+  datePublished: entry.data.date.toISOString(), author: schemaAuthors(siteOrigin),
+  ...(entry.data.cover ? {image: new URL(entry.data.cover, siteOrigin).href} : {}),
+};
 ---
 <BaseLayout
   title={entry.data.title}
   description={entry.data.excerpt}
   image={entry.data.cover}
   canonicalURL={canonicalURL}
+  additionalSchema={articleLd}
   ogType="article"
 >
   <article class="max-w-3xl mx-auto px-6 pt-4 pb-12">
@@ -71,7 +80,9 @@ const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigi
       {entry.data.cover && (
         <div class="aspect-[4/3] overflow-hidden border border-dp-border mb-4">
           <img
-            src={entry.data.cover}
+            src={entry.data.previewCover ?? entry.data.cover}
+            data-lightbox-group={entry.slug === 'aviatory-map' ? 'lore-cover' : undefined}
+            data-lightbox-src={entry.slug === 'aviatory-map' ? '/images/lore/aviatory-map.png' : undefined}
             alt={entry.data.title}
             class="w-full h-full object-cover"
             loading="lazy"
@@ -103,7 +114,9 @@ const canonicalURL = new URL(`/books/${bookSlug}/lore/${entry.slug}/`, siteOrigi
     // Make all images in lore content clickable for lightbox
     document.querySelectorAll('.prose-content img').forEach((img) => {
       img.setAttribute('data-lightbox-group', 'lore-article');
-      img.setAttribute('data-lightbox-src', (img as HTMLImageElement).src);
+      if (!img.hasAttribute('data-lightbox-src')) {
+        img.setAttribute('data-lightbox-src', (img as HTMLImageElement).src);
+      }
     });
 
     // Patch nav hrefs when ?tag= is present
