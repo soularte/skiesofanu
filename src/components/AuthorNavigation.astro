@@ -1,0 +1,126 @@
+---
+interface Props { sections: { title: string }[] }
+const { sections } = Astro.props;
+---
+<nav class="author-navigation" aria-label="Разделы страницы автора">
+  <a href="#contests-heading" data-author-jump>Конкурсы</a>
+  <a href="#bibliography-heading" data-author-jump>Библиография</a>
+  {sections.map((section, index) => <a href={`#bibliography-${index}`} data-author-jump>{section.title.replace(/^Цикл «|»$/g, '')}</a>)}
+<span aria-hidden="true">|</span>
+  <button class="author-collapse" type="button" data-collapse-all hidden><strong>свернуть все</strong></button>
+</nav>
+<script>
+function initializeAuthorNavigation() {
+  const navigation = document.querySelector<HTMLElement>('.author-navigation');
+  if (!navigation || navigation.dataset.ready) return;
+  navigation.dataset.ready = 'true';
+  const mobile = matchMedia('(max-width: 640px)');
+  const tables = [...document.querySelectorAll<HTMLTableElement>('table.author-table')];
+  const limits = new Map<HTMLTableElement, number>();
+  const buttons = new Map<HTMLTableElement, HTMLButtonElement>();
+  const expand = (element: Element) => {
+    let parent: Element | null = element;
+    while (parent) { if (parent instanceof HTMLDetailsElement) parent.open = true; parent = parent.parentElement; }
+  };
+  const update = (table: HTMLTableElement, reset = false) => {
+    if (reset) limits.set(table, 5);
+    const rows = [...table.tBodies[0].rows];
+    let matched = 0;
+    rows.forEach(row => {
+      const eligible = !row.hidden;
+      if (eligible) matched++;
+      row.dataset.pageHidden = String(eligible && mobile.matches && matched > (limits.get(table) ?? 5));
+    });
+    const button = buttons.get(table)!;
+    button.hidden = !mobile.matches || matched <= (limits.get(table) ?? 5);
+    button.textContent = 'Показать ещё';
+  };
+  tables.forEach(table => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'author-more'; button.hidden = true;
+    button.setAttribute('aria-label', 'Показать следующие пять записей');
+    table.parentElement!.after(button); buttons.set(table, button); limits.set(table, 5);
+    button.addEventListener('click', () => { limits.set(table, (limits.get(table) ?? 5) + 5); update(table); });
+    table.addEventListener('author-table-change', () => update(table, true));
+    table.addEventListener('change', () => update(table, true));
+    update(table);
+  });
+  // Filter handlers run on the input's ancestors before this document listener.
+  document.addEventListener('change', event => {
+    const table = (event.target as Element).closest<HTMLTableElement>('table.author-table');
+    if (table) update(table, true);
+  });
+  mobile.addEventListener('change', () => tables.forEach(table => update(table)));
+  const collapse = document.querySelector<HTMLButtonElement>('[data-collapse-all]')!;
+  collapse.hidden = false;
+  const details = [...document.querySelectorAll<HTMLDetailsElement>('article details')];
+  const updateCollapseLabel = () => {
+    const allOpen = details.every(section => section.open);
+    collapse.querySelector('strong')!.textContent = allOpen ? 'свернуть все' : 'развернуть все';
+  };
+  collapse.addEventListener('click', () => {
+    const shouldOpen = !details.every(section => section.open);
+    const ordered = shouldOpen ? details : [...details].reverse();
+    ordered.forEach(section => { section.open = shouldOpen; });
+    updateCollapseLabel();
+  });
+  details.forEach(section => section.addEventListener('toggle', updateCollapseLabel));
+  updateCollapseLabel();
+  document.addEventListener('click', event => {
+    const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-publication-ref], a[data-author-jump]');
+    if (!link) return;
+    const target = document.getElementById(link.hash.slice(1));
+    if (!target) return;
+    expand(target);
+    if (target instanceof HTMLTableRowElement) {
+      const table = target.closest<HTMLTableElement>('table')!;
+      const filter = table.querySelector('[data-publication-filter]');
+      filter?.querySelectorAll<HTMLInputElement>('input').forEach(input => { input.checked = true; });
+      filter?.dispatchEvent(new Event('change', { bubbles: true }));
+      tables.forEach(t => update(t));
+      limits.set(table, Math.ceil(([...table.tBodies[0].rows].filter(row => !row.hidden).indexOf(target) + 1) / 5) * 5);
+      update(table);
+    }
+    target.classList.remove('author-target');
+    void target.offsetWidth;
+    target.classList.add('author-target');
+    setTimeout(() => target.classList.remove('author-target'), 2500);
+    requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  });
+}
+initializeAuthorNavigation();
+document.addEventListener('astro:page-load', initializeAuthorNavigation);
+</script>
+<style is:global>
+  .author-navigation { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1.5rem 0; font-size: .875rem; }
+  .author-navigation a { color: #957323; text-decoration: underline; text-underline-offset: 3px; }
+  .author-more { display: block; border: 0; border-bottom: 1px solid #c9b98e; padding: .5rem 1rem; color: #957323; font-size: .8rem; letter-spacing: .06em; background: transparent; }
+  .author-more:hover { color: #51401e; border-color: #957323; }
+  .author-more:focus-visible { outline: 1px solid #957323; outline-offset: 4px; }
+  .author-collapse { color: #957323; font: inherit; }
+  .author-collapse:focus-visible { outline: 1px solid #957323; outline-offset: 3px; }
+  .author-collapse strong { font-weight: 700; }
+  .author-collapse[hidden] { display: none; }
+  .author-more { margin: .25rem auto 1rem; }
+  [data-page-hidden="true"], .author-more[hidden] { display: none !important; }
+  .empty-platforms { display: block; text-align: center; }
+  .author-target { animation: author-highlight 2.5s ease-out; }
+  [id^="bibliography-"], #contests-heading { scroll-margin-top: 9rem; }
+  @keyframes author-highlight { from { background-color: #c9a84c40; } to { background-color: transparent; } }
+  @media (prefers-reduced-motion: reduce) { .author-target { animation: none; outline: 1px solid #c9a84c; } }
+  @media (max-width: 640px) {
+    .author-table-scroll { margin-bottom: .5rem; }
+    .bibliography .scroll-hint { display: none !important; }
+    article table.author-table { display: block; min-width: 0; width: 100%; max-width: 100%; }
+    article table.author-table thead { display: none; }
+    table.author-table th { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; width: auto !important; max-width: 100%; padding: .4rem; }
+    table.author-table th:nth-child(3) { flex-basis: 100%; }
+    table.author-table tbody { display: block; }
+    table.author-table tbody tr { display: block; border: 1px solid #c9b98e; margin: .75rem 0; padding: .75rem; background: #c9a84c05; }
+    table.author-table td { display: block; width: 100% !important; min-width: 0 !important; border: 0; padding: .35rem 0; }
+    table.author-table td:first-child { color: #777067; font-size: .8rem; }
+    table.author-table td:nth-child(2) { font-size: 1rem; }
+    table.author-table td:nth-child(3) { border-top: 1px solid #c9b98e66; margin-top: .5rem; padding-top: .6rem; }
+    table.author-table tr[hidden] { display: none !important; }
+  }
+</style>

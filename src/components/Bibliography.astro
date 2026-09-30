@@ -1,0 +1,144 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BibliographyGroup from './BibliographyGroup.astro';
+import Section from './book/Section.astro';
+import MarketplaceLinks from './MarketplaceLinks.astro';
+import { authorBookLinks } from '../lib/author-links';
+const books = await getCollection('books');
+interface Props { sections: CollectionEntry<'authors'>['data']['bibliography']; contests: CollectionEntry<'authors'>['data']['contests'] }
+const { sections: sourceSections, contests } = Astro.props;
+const cycleFor = (title: string) => {
+  const index = sourceSections.findIndex(section => section.works?.includes(title));
+  return index < 0 ? undefined : { title: sourceSections[index].title.replace(/^Цикл «|»$/g, ''), href: `#bibliography-${index}` };
+};
+const originals = sourceSections.map((section, sectionIndex) => ({
+  ...section,
+  entries: section.entries.map((entry, index) => ({ ...entry,
+    cycle: cycleFor(entry.title) ?? entry.cycle,
+    anchor: `publication-${sectionIndex}-${index}`,
+    publicationRefs: [] as { href: string; label: string }[],
+  })),
+}));
+const entries = originals.filter(section => !section.works).flatMap(section => section.entries);
+const sections = originals.map(section => section.works ? {
+  ...section,
+  entries: section.works.flatMap(title => {
+    const matches = entries.filter(entry => entry.title === title);
+    if (!matches.length) return [];
+    const base = matches.find(entry => entry.publicationTypes.includes('online')) ?? matches[0];
+    const paper = entries.filter(entry => entry.publicationTypes.includes('print') &&
+      (entry.title === title || entry.containsWorks.includes(title)));
+    return [{ ...base, anchor: undefined, cycle: undefined,
+      publication: base.publicationTypes.includes('online') ? 'Сетевая публикация' : '',
+      sources: [],
+      publicationTypes: [...new Set([...matches, ...paper].flatMap(entry => entry.publicationTypes))],
+      publicationRefs: paper.map(entry => ({ href: `#${entry.anchor}`, label: `Бумажное издание${entry.title !== title ? ` «${entry.title}»` : ''}${entry.year ? `, ${entry.year}` : ''}` })),
+    }];
+  }),
+} : section);
+const groups = [
+  { cycles: true, sections: sections.filter(section => section.works) },
+  { cycles: false, sections: sections.filter(section => !section.works) },
+];
+const collectionEntries = sections.filter(section => section.title === 'Сборники').flatMap(section => section.entries);
+const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
+  [...authorBookLinks(entry.href ? [entry.href] : [], books), ...entry.links,
+    ...entry.collections.filter(collection =>
+      collection.title !== 'Крошки к чаю' ||
+      !entry.collections.some(item => item.href === '/books/muzyka/')
+    ).flatMap(collection => {
+      const record = collectionEntries.find(item => item.title === collection.title &&
+        (item.href === collection.href || item.links.some(link => link.url === collection.href)));
+      return [...authorBookLinks(collection.href ? [collection.href] : [], books), ...(record?.links ?? [])];
+    })]
+    .filter((link, index, all) => all.findIndex(item => item.url === link.url) === index);
+---
+{sections.length > 0 && <Section class="bibliography" title="Библиография" headingId="bibliography-heading">
+  {groups.filter(group => group.sections.length).map(group => <BibliographyGroup cycles={group.cycles}>
+  {group.sections.map(section => <Section class="category" title={group.cycles ? section.title.replace(/^Цикл «|»$/g, '') : section.title} headingLevel={group.cycles ? 'h4' : 'h3'} headingId={`bibliography-${sections.indexOf(section)}`}>
+    <p class="note" data-filter-empty hidden role="status">Нет публикаций выбранного типа.</p>
+    {section.entries.length > 0 && <p class="scroll-hint">Таблицу можно прокрутить вправо →</p>}
+    {section.entries.length ? <div class="table-scroll" role="region" aria-labelledby={`bibliography-${sections.indexOf(section)}`} tabindex="0">
+      <table data-sortable class="author-table">
+        <thead><tr><th scope="col">Год</th><th scope="col">Название</th><th scope="col"><span data-sort-label>Публикация / издание</span><span class="publication-filter" data-publication-filter hidden><label title="Бумажные публикации"><input type="checkbox" value="print" checked aria-label={`Бумажные публикации: ${section.title}`} />Б</label><label title="Сетевые публикации"><input type="checkbox" value="online" checked aria-label={`Сетевые публикации: ${section.title}`} />С</label></span></th><th scope="col">Ссылки</th></tr></thead>
+        <tbody>{[...section.entries].sort((a,b) => (b.year ?? 0) - (a.year ?? 0)).map(entry => <tr id={entry.anchor} data-publication-types={entry.publicationTypes.join(' ')}>
+          <td class="year" data-sort-value={entry.year ?? ""}>{entry.year ?? '—'}</td>
+          <td class="work" data-sort-value={entry.title}>{entry.href ? <a href={entry.href}>{entry.title}</a> : <span>{entry.title}</span>}
+            {entry.readingSources.length > 0 && <div class="external-sources">{entry.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
+            {entry.coauthors && <small>Соавтор: {['Василий Зеленков', 'Зеленков Василий'].includes(entry.coauthors) ? <a href="/about/vasily/">{entry.coauthors}</a> : entry.coauthors}</small>}
+            {entry.cycle && <small>Цикл <a href={entry.cycle.href} data-publication-ref>«{entry.cycle.title}»</a></small>}
+            {entry.awards.length > 0 && <small>Конкурсы: {entry.awards.map((id, index) => {
+              const award = contests.find(contest => contest.id === id);
+              const repeated = award && contests.filter(contest => contest.shortTitle === award.shortTitle).length > 1;
+              return award && <>{index > 0 && ', '}<a href={`#${id}`} data-publication-ref>{award.shortTitle}{repeated ? ` (${award.year})` : ''}</a></>;
+            })}</small>}
+            {entry.collections.map(collection => <div class="collection-note">Входит в сборник {collection.href ? <a href={collection.href} target={collection.href.startsWith('https:') ? '_blank' : undefined} rel={collection.href.startsWith('https:') ? 'noopener noreferrer' : undefined}>«{collection.title}»</a> : <span>«{collection.title}»</span>}.</div>)}
+          </td>
+          <td class="publication">{entry.publication}
+            {entry.publicationRefs.map(ref => <div><a href={ref.href} data-publication-ref>{ref.label}</a></div>)}
+            {entry.sources.length > 0 && <div class="external-sources">{entry.sources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
+          </td>
+          <td class="platforms">{readingLinks(entry).length ? <MarketplaceLinks links={readingLinks(entry)} /> : <span class="empty-platforms">—</span>}</td>
+        </tr>)}</tbody>
+      </table>
+    </div> : <p class="note">Сведения будут добавлены.</p>}
+  </Section>)}
+  </BibliographyGroup>)}
+</Section>}
+<script>
+  function initializeBibliographyFilters() {
+    document.querySelectorAll<HTMLElement>('[data-publication-filter]').forEach(filter => {
+      if (filter.dataset.ready) return;
+      filter.dataset.ready = 'true';
+      filter.hidden = false;
+      filter.addEventListener('change', () => {
+        const selected = [...filter.querySelectorAll<HTMLInputElement>('input:checked')].map(input => input.value);
+        const category = filter.closest('.category')!;
+        const rows = [...category.querySelectorAll<HTMLTableRowElement>('tbody tr')];
+        rows.forEach(row => {
+          row.hidden = selected.length !== 2 && !selected.some(type => row.dataset.publicationTypes?.split(' ').includes(type));
+        });
+        category.querySelector<HTMLElement>('[data-filter-empty]')!.hidden = rows.some(row => !row.hidden);
+      });
+    });
+  }
+  document.addEventListener('click', event => {
+    const link = (event.target as Element).closest<HTMLAnchorElement>('[data-publication-ref]');
+    if (!link) return;
+    const row = document.getElementById(link.hash.slice(1));
+    if (!row) return;
+    let parent = row.parentElement;
+    while (parent) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+      parent = parent.parentElement;
+    }
+    const filter = row.closest('.category')?.querySelector<HTMLElement>('[data-publication-filter]');
+    filter?.querySelectorAll<HTMLInputElement>('input').forEach(input => { input.checked = true; });
+    filter?.dispatchEvent(new Event('change'));
+  });
+  initializeBibliographyFilters();
+  document.addEventListener('astro:page-load', initializeBibliographyFilters);
+</script>
+<style>
+  [hidden] { display: none !important; }
+  .publication-filter { display: inline-flex; align-items: center; gap: .4rem; margin-left: .5rem; white-space: nowrap; }
+  .publication-filter label { display: inline-flex; align-items: center; gap: .15rem; cursor: pointer; }
+  input { accent-color: #957323; }
+  input:focus-visible { outline: 2px solid #957323; outline-offset: 2px; }
+  .note, small { opacity: .72; font-size: .875rem; }
+  .scroll-hint { display: none; }
+  @media (max-width: 540px) { .scroll-hint { display: block; font-size: .75rem; opacity: .7; margin-bottom: .5rem; } }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; text-align: left; }
+  th { font-size: .75rem; font-weight: 600; letter-spacing: .025em; background: rgba(170,140,65,.08); }
+  th, td { padding: .85rem .65rem; border-bottom: 1px solid rgba(150,130,90,.23); vertical-align: top; }
+  tr[id] { scroll-margin-top: 9rem; }
+  .year { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .collection-note { margin-top: .5rem; font-size: .85rem; }
+  .platforms { min-width: 9rem; }
+
+  small { display: block; margin-top: .3rem; }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: #957323; }
+  .source { font-size: .8rem; }
+</style>

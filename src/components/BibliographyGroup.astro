@@ -1,0 +1,6 @@
+---
+import Section from './book/Section.astro';
+interface Props { cycles: boolean }
+const { cycles } = Astro.props;
+---
+{cycles ? <Section title="Циклы" headingId="bibliography-cycles" headingLevel="h3"><slot /></Section> : <slot />}

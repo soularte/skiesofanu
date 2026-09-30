@@ -4,11 +4,13 @@ import type { LinkItem } from '../lib/types';
 import { loadDataFile } from '../lib/data';
 
 interface Props {
-  ksenia: LinkItem[];
-  vasily: LinkItem[];
+  ksenia?: LinkItem[];
+  vasily?: LinkItem[];
+  personalLinks?: LinkItem[];
 }
 
-const { ksenia, vasily } = Astro.props;
+const { ksenia = [], vasily = [], personalLinks } = Astro.props;
+const personal = personalLinks !== undefined;
 
 const linksData = loadDataFile<any>('src/data/links.md', { contact: { vk: '', telegram: '' } });
 const authorsData = loadDataFile<any>('src/data/authors.md', { ksenia: { name: 'Ксения Котова' }, vasily: { name: 'Василий Зеленков' } });
@@ -19,7 +21,7 @@ const litUi = uiData.litportals ?? {};
 ---
 
 <div class="flex flex-col gap-8">
-  <p class="text-center text-sm md:text-base text-dp-muted leading-relaxed max-w-2xl mx-auto">
+  {!personal && <p class="text-center text-sm md:text-base text-dp-muted leading-relaxed max-w-2xl mx-auto">
     {litUi.contactText?.split('{telegram}')[0]}
     <a
       href={contact.telegram}
@@ -39,16 +41,16 @@ const litUi = uiData.litportals ?? {};
       {litUi.vkLabel}
     </a>
     {litUi.contactText?.split('{vk}')[1]}
-  </p>
+  </p>}
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  <div class:list={["grid grid-cols-1 gap-8", { "sm:grid-cols-2": !personal }]}>
     <div>
-      <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
+      {!personal && <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
         {authorsData.ksenia.name}
-      </h3>
+      </h3>}
 
       <div class="flex gap-3 mt-4 flex-wrap justify-center">
-        {ksenia.map(p => (
+        {(personalLinks ?? ksenia).map(p => (
           <a
             href={p.url}
             target="_blank"
@@ -65,7 +67,7 @@ const litUi = uiData.litportals ?? {};
       </div>
     </div>
 
-    <div>
+    {!personal && <div>
       <h3 class="font-heading text-base font-semibold pb-3 border-b border-dp-border text-dp-text text-center">
         {authorsData.vasily.name}
       </h3>
@@ -86,6 +88,6 @@ const litUi = uiData.litportals ?? {};
           </a>
         ))}
       </div>
-    </div>
+    </div>}
   </div>
 </div>

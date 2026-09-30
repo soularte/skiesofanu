@@ -1,0 +1,66 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Section from './book/Section.astro';
+import MarketplaceLinks from './MarketplaceLinks.astro';
+import { authorBookLinks } from '../lib/author-links';
+import { renderMarkdown } from '../lib/markdown';
+interface Props { entries: CollectionEntry<'authors'>['data']['contests'] }
+const { entries } = Astro.props;
+const books = await getCollection('books');
+const rows = [...entries].sort((a,b) => b.year-a.year).map(entry => {
+  const description = renderMarkdown(entry.description);
+  const hrefs = [...description.matchAll(/href="([^\"]+)"/g)].map(match => match[1]);
+  const links = [...authorBookLinks(hrefs, books), ...entry.links]
+    .filter((link, index, all) => all.findIndex(item => item.url === link.url) === index);
+  return { ...entry, description, links };
+});
+---
+{rows.length > 0 && <Section title="Конкурсы" headingId="contests-heading">
+  <div class="author-table-scroll" role="region" aria-labelledby="contests-heading" tabindex="0">
+    <table data-sortable class="author-table">
+      <thead><tr><th scope="col">Год</th><th scope="col">Конкурс</th><th scope="col">Описание</th><th scope="col">Ссылки</th></tr></thead>
+      <tbody>{rows.map(row => <tr id={row.id}>
+        <td>{row.year}</td><td data-sort-value={row.title}>{row.title}
+          {row.diploma && <a class="external-source diploma" href={row.diploma} data-diploma data-lightbox-group={`diploma-${encodeURIComponent(row.diploma)}`} data-lightbox-src={row.diploma} aria-label={`Диплом: ${row.title}, ${row.year}`}>Диплом</a>}
+        </td>
+        <td class="contest-description" set:html={row.description} />
+        <td class="platforms">{row.links.length ? <MarketplaceLinks links={row.links} /> : <span class="empty-platforms">—</span>}</td>
+      </tr>)}</tbody>
+    </table>
+  </div>
+</Section>}
+<style>
+  tr[id] { scroll-margin-top: 9rem; }
+  .platforms { min-width: 9rem; }
+  .contest-description { min-width: 14rem; }
+  .contest-description :global(a) { color: #957323; text-decoration: underline; text-underline-offset: 3px; }
+  :global(a.external-source) {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin-top: .5rem;
+    padding: .2rem .55rem;
+    border: 1px solid #bac6d2;
+    border-radius: .35rem;
+    background: #edf2f6;
+    color: #405b73;
+    font-size: .75rem;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  :global(.external-sources) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: .5rem;
+  }
+  :global(.external-sources a.external-source) { margin-top: 0; }
+  :global(a.external-source:hover) {
+    background: #e0e9f0;
+    border-color: #71899e;
+  }
+  :global(a.external-source:focus-visible) {
+    outline: 2px solid #405b73;
+    outline-offset: 3px;
+  }
+</style>

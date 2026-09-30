@@ -64,10 +64,14 @@ const aria = ui.aria ?? {};
   const lbNext = document.getElementById('lb-next') as HTMLButtonElement;
   const lbCounter = document.getElementById('lb-counter') as HTMLElement;
 
+  let opener: HTMLElement | null = null;
+  let previousOverflow = '';
   let gallery: string[] = [];
   let currentIndex = 0;
 
   function openLightbox(images: string[], startIndex: number) {
+    opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    previousOverflow = document.body.style.overflow;
     gallery = images;
     currentIndex = startIndex;
     showImage();
@@ -75,12 +79,14 @@ const aria = ui.aria ?? {};
     lightbox.classList.add('flex');
     document.body.style.overflow = 'hidden';
     updateArrows();
+    lbClose.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.add('hidden');
     lightbox.classList.remove('flex');
-    document.body.style.overflow = '';
+    document.body.style.overflow = previousOverflow;
+    opener?.focus({ preventScroll: true });
     gallery = [];
   }
 
@@ -92,7 +98,7 @@ const aria = ui.aria ?? {};
       const src = el.getAttribute('data-lightbox-src') || (el as HTMLImageElement).src || el.querySelector('img')?.src || '';
       return src === gallery[currentIndex];
     });
-    const altText = triggerEl?.getAttribute('alt') || triggerEl?.querySelector('img')?.getAttribute('alt') || '';
+    const altText = triggerEl?.getAttribute('alt') || triggerEl?.getAttribute('aria-label') || triggerEl?.querySelector('img')?.getAttribute('alt') || '';
     lbImg.alt = altText;
     lbCounter.textContent = gallery.length > 1 ? `${currentIndex + 1} / ${gallery.length}` : '';
   }
@@ -136,7 +142,8 @@ const aria = ui.aria ?? {};
 
   // Auto-attach to elements with data-lightbox-group
   document.querySelectorAll('[data-lightbox-group]').forEach(el => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (event) => {
+      event.preventDefault();
       const group = el.getAttribute('data-lightbox-group')!;
       const allInGroup = Array.from(document.querySelectorAll(`[data-lightbox-group="${group}"]`));
       const images = allInGroup.map(item => {

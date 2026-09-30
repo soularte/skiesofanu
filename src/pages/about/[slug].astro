@@ -1,5 +1,13 @@
 ---
+import seoPages from '../../data/seo.json';
+import { Image } from 'astro:assets';
+import { findImage } from '../../lib/images';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorNavigation from '../../components/AuthorNavigation.astro';
+import TableSorting from '../../components/TableSorting.astro';
+import Contests from '../../components/Contests.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import LitPortals from '../../components/LitPortals.astro';
 import GoldLine from '../../components/GoldLine.astro';
 import { getCollection } from 'astro:content';
 import { loadDataFile } from '../../lib/data';
@@ -13,7 +21,11 @@ export async function getStaticPaths() {
 }
 
 const { author } = Astro.props;
+const centeredHeader = author.data.headerLayout === 'centered';
 const { Content } = await author.render();
+const portrait = author.data.portrait ? findImage(author.data.portrait) : undefined;
+const books = await getCollection('books');
+const featured = author.data.featuredBooks.map((slug: string) => books.find(b => b.slug === slug)).filter(Boolean);
 
 const ui = loadDataFile<any>('src/data/ui.md', { about: {} });
 const aboutUi = ui.about ?? {};
@@ -21,6 +33,7 @@ const aboutUi = ui.about ?? {};
 const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
 const canonicalURL = new URL(`/about/${author.slug}/`, siteOrigin).href;
 
+const profileSeo = (seoPages as Record<string, { title: string; description: string }>)[`/about/${author.slug}/`];
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -28,13 +41,28 @@ const personSchema = {
   url: canonicalURL,
   jobTitle: aboutUi.role ?? 'Писатель',
   '@id': `${canonicalURL}#person`,
+  ...(author.data.profile ? {
+    description: author.data.profile.description,
+    ...(portrait ? { image: new URL(portrait.src, siteOrigin).href } : {}),
+    sameAs: author.data.profile.sameAs,
+  } : {}),
 };
+const profileSchema = author.data.profile ? {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${canonicalURL}#profile`,
+  url: canonicalURL,
+  name: profileSeo?.title ?? author.data.title,
+  description: profileSeo?.description ?? author.data.profile.description,
+  inLanguage: 'ru',
+  mainEntity: personSchema,
+} : personSchema;
 ---
 <BaseLayout
   title={author.data.title}
   canonicalURL={canonicalURL}
   ogType="profile"
-  additionalSchema={personSchema}
+  additionalSchema={profileSchema}
 >
   <article class="max-w-3xl mx-auto px-6 py-12">
     <header class="mb-8">
@@ -43,13 +71,31 @@ const personSchema = {
         <span class="mx-2">→</span>
         <span class="text-dp-text">{author.data.title}</span>
       </nav>
-      <h1 class="font-heading text-3xl font-semibold mt-2 mb-4">{author.data.title}</h1>
-      <GoldLine />
+      {portrait && <Image src={portrait} alt={author.data.title} width={centeredHeader ? 720 : 320} class={centeredHeader ? "w-full max-w-xl mx-auto h-auto rounded-sm mb-6" : "w-48 sm:w-60 h-auto rounded-sm mb-6"} loading="eager" />}
+      <h1 class:list={["font-heading text-3xl font-semibold mt-2 mb-4", { "text-center": centeredHeader }]}>{author.data.title}</h1>
+      {author.data.intro && <p class="text-lg text-dp-muted leading-relaxed max-w-xl mb-6">{author.data.intro}</p>}
+      {!centeredHeader && <GoldLine />}
     </header>
 
     <div class="prose-content max-w-none text-dp-text leading-relaxed">
       <Content />
     </div>
+
+    {author.data.portals.length > 0 && <section aria-labelledby="author-portals" class="my-8 border border-dp-border bg-dp-gold/5 px-6 py-6 rounded-sm"><h2 id="author-portals" class="font-heading text-2xl font-semibold text-center mb-4">Литпорталы</h2><LitPortals personalLinks={author.data.portals} /></section>}
+    <AuthorNavigation sections={author.data.bibliography} />
+    <Contests entries={author.data.contests} />
+    <TableSorting />
+    <Bibliography sections={author.data.bibliography} contests={author.data.contests} />
+
+    {featured.length > 0 && <section class="mt-12 pt-8 border-t border-dp-border" aria-labelledby="author-books">
+      <h2 id="author-books" class="font-heading text-2xl mb-6">Книги и циклы</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-8">
+        {featured.map(book => { const cover = findImage(book.data.cover); return <a href={`/books/${book.slug}/`} class="group">
+          {cover && <Image src={cover} alt={book.data.title} width={240} class="h-56 w-full object-contain object-left mb-3" loading="lazy" />}
+          <span class="font-heading text-lg group-hover:text-dp-gold-ink">{book.data.series ?? book.data.title}</span>
+        </a>; })}
+      </div>
+    </section>}
 
     <footer class="mt-12 pt-6 border-t border-dp-border">
       <a href="/about" class="text-xs tracking-widest uppercase text-dp-gold-ink hover:text-dp-text transition-colors">

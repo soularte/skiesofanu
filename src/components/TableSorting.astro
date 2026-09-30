@@ -1,0 +1,59 @@
+<script>
+  function initializeTables() {
+    const collator = new Intl.Collator('ru', { numeric: true, sensitivity: 'base' });
+    document.querySelectorAll<HTMLTableElement>('table[data-sortable]').forEach(table => {
+      if (table.dataset.sortReady) return;
+      table.dataset.sortReady = 'true';
+      const headers = Array.from(table.querySelectorAll<HTMLTableCellElement>('thead th'));
+      headers.forEach((header, column) => {
+        const labelNode = header.querySelector('[data-sort-label]');
+        const label = (labelNode ?? header).textContent?.trim() ?? '';
+        const button = document.createElement('button');
+        button.type = 'button';
+        const indicator = document.createElement('span');
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.textContent = column === 0 ? ' ↓' : ' ↕';
+        button.append(document.createTextNode(label), indicator);
+        if (labelNode) labelNode.replaceWith(button);
+        else header.replaceChildren(button);
+        header.setAttribute('aria-sort', column === 0 ? 'descending' : 'none');
+        button.addEventListener('click', () => {
+          const ascending = header.getAttribute('aria-sort') !== 'ascending';
+          const body = table.tBodies[0];
+          const rows = Array.from(body.rows);
+          const value = (row: HTMLTableRowElement) => row.cells[column].dataset.sortValue ?? row.cells[column].textContent?.trim() ?? '';
+          rows.sort((a, b) => {
+            const av = value(a), bv = value(b);
+            // Unknown years stay at the end in either direction.
+            if (!av || !bv) return !av === !bv ? 0 : !av ? 1 : -1;
+            return collator.compare(av, bv) * (ascending ? 1 : -1);
+          });
+          body.append(...rows);
+          table.dispatchEvent(new CustomEvent('author-table-change', { bubbles: true }));
+          headers.forEach(h => {
+            h.setAttribute('aria-sort', h === header ? ascending ? 'ascending' : 'descending' : 'none');
+            h.querySelector('button span')!.textContent = h === header ? ascending ? ' ↑' : ' ↓' : ' ↕';
+          });
+        });
+      });
+    });
+  }
+  initializeTables();
+  document.addEventListener('astro:page-load', initializeTables);
+</script>
+<style is:global>
+  table[data-sortable] th button { display: inline-flex; gap: .4rem; text-align: left; align-items: baseline; cursor: pointer; font: inherit; color: inherit; }
+  table[data-sortable] th button:focus-visible { outline: 2px solid #957323; outline-offset: 4px; }
+  .author-table-scroll { overflow-x: auto; margin: 1.5rem 0 2rem; }
+  .author-table-scroll table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: .9rem; text-align: left; }
+  .author-table-scroll th, .author-table-scroll td { padding: .85rem .65rem; border-bottom: 1px solid rgba(150,130,90,.23); vertical-align: top; }
+  .author-table-scroll th { font-size: .75rem; background: rgba(170,140,65,.08); }
+  .author-table-scroll td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  table.author-table { table-layout: fixed; width: 100%; min-width: 720px; }
+  table.author-table th:first-child, table.author-table td:first-child { width: 9%; }
+  table.author-table th:nth-child(2), table.author-table td:nth-child(2) { width: 30%; }
+  table.author-table th:nth-child(3), table.author-table td:nth-child(3) { width: 39%; }
+  table.author-table th:nth-child(4), table.author-table td:nth-child(4) { width: 22%; }
+  table.author-table th button { white-space: nowrap; }
+  table.author-table td { overflow-wrap: anywhere; }
+</style>

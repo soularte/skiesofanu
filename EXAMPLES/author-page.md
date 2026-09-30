@@ -1,4 +1,12 @@
 ---
+# headerLayout: centered # classic по умолчанию; centered — фото и имя по центру
+# portals:
+#   - label: Автор.Тудей
+#     url: https://author.today/u/your-profile/works
+# profile:
+#   description: Автор фантастики и фэнтези.
+#   sameAs:
+#     - https://author.today/u/your-profile/works
 # ═══════════════════════════════════════════════════════════════════════════════
 # ПРИМЕР: Авторская страница (src/content/authors/ваш-файл.md)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -19,6 +27,43 @@
 # ─── Имя автора (заголовок страницы) ──────────────────────────────────────────
 # Отображается как <h1> вверху страницы и в <title> браузера
 title: "Имя Фамилия"
+# Необязательные поля личной страницы (не влияют на общую /about/).
+# portrait: "authors/kk.jpg" # путь в src/assets/images
+# intro: "Короткое представление автора."
+# featuredBooks: ["aviatory", "muzyka"] # slug книг, порядок сохраняется
+# Без этих полей — обычная текстовая страница.
+
+
+# bibliography:
+#   - title: "Романы"
+#     entries:
+#       - year: 2020
+#         title: "Пылающий город"
+#         href: "/books/aviatory/#book-2"
+#         publication: "Сетевая публикация"
+#         containsWorks: [] # Для общего издания — точные title входящих произведений
+#         publicationTypes: [online] # print — бумажная; [online, print] — оба формата
+#         links: [] # Дополнительные площадки: [{ label: "Автор.Тудей", url: "https://author.today/work/106669" }]
+#         language: "Русский" # Резерв: колонка сейчас не отображается.
+#         coauthors: "Василий Зеленков"
+#         cycle: { title: "Небеса Ану", href: "/books/aviatory/" }
+#         collections: [] # [{ title: "Пусть эта музыка стихнет", href: "/books/muzyka/" }]
+#         # Порталы (Автор.Тудей, ЛитНет, ЛитГород, ЛитРес, Самиздат) — в links, колонка «Ссылки».
+#         # Фантлаб о произведении, Прочитано, SoundStream — в readingSources под названием.
+#         # Ссылки на издание — в sources под публикацией.
+#         # У collections можно опустить href, если ссылка неизвестна.
+#         readingSources: [] # [{ label: "Прочитано", url: "https://prochitano.ru/rasskazi/tri-sestry" }]
+#         sources: [] # Например: [{ label: "Название издания", url: "https://example.com/book" }]
+#   - title: "Повести"
+#     entries: []
+
+# contests:
+#   - year: 2026
+#     title: "Название конкурса"
+#     diploma: "/diplomas/contest-2026.jpg" # Сначала положите файл в public/diplomas/
+#     links: [] # Дополнительные площадки: [{ label: "Автор.Тудей", url: "https://author.today/work/528330" }]
+#     description: 'Шорт-лист с повестью [«Остров сломанных человечков»](/books/ostrov/).'
+# Площадки в колонке «Ссылки» берутся автоматически из links указанной книги.
 
 ---
 
@@ -107,3 +152,24 @@ title: "Имя Фамилия"
 <!--   bioUrl: "/about/ksenia"                                                 -->
 <!--   bioLabel: "Биография"                                                   -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Отдельная таблица цикла в bibliography:
+  - title: Цикл «Новая старая Бравия»
+    works: ["Часовой", "Анж Ансельм"]
+    entries: []
+Названия works должны точно совпадать с title записей основных разделов.
+Строки, ссылки и публикации подтягиваются автоматически; фильтр независимый.
+-->
+
+<!-- Связь результата конкурса с произведением:
+contests:
+  - id: award-example
+    year: 2026
+    title: Название конкурса
+    shortTitle: Короткое название
+    result: III место
+    description: Полное описание результата
+В соответствующей записи bibliography.entries:
+    awards: [award-example]
+Для Фантлаба используйте readingSources (под названием); АСТ/RUGRAM остаются в sources.
+-->

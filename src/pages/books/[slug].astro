@@ -113,17 +113,7 @@ const breadcrumbLd = {
   ],
 };
 ---
-<style is:global>
-  summary { display: block; }
-  summary::-webkit-details-marker { display: none; }
-  .section-chevron {
-    transition: transform 0.2s ease;
-    color: #C9A84C;
-  }
-  details[open] .section-chevron {
-    transform: rotate(90deg);
-  }
-</style>
+
 <BaseLayout
   title={data.title}
   description={data.seoDescription ?? data.shortDescription ?? data.title}
