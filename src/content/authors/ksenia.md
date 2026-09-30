@@ -509,7 +509,9 @@ bibliography:
         readingSources:
           - label: Фантлаб
             url: https://fantlab.ru/work1586550
-        links: []
+        links:
+          - label: Пролёт Фантазии
+            url: https://fancon.org/2017o_Iz_glubin_dushi/
         publicationTypes:
           - online
         awards: []
