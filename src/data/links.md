@@ -34,6 +34,8 @@ litportals:
       url: "https://links.litnet.com/go/e1dsu0gj"
     - label: "ЛитГород"
       url: "https://book-litgorod.litgorod.ru/go/hhtnh156"
+    - label: "WorldWords"
+      url: "https://worldwords.io/authors/kseniya-kotova"
   vasily:
     - label: "ЛитРес"
       url: "https://www.litres.ru/author/vasiliy-zelenkov-27629316/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1"
@@ -43,6 +45,8 @@ litportals:
       url: "https://links.litnet.com/go/c2a72qtd"
     - label: "ЛитГород"
       url: "https://book-litgorod.litgorod.ru/go/3qw0ebt4"
+    - label: "WorldWords"
+      url: "https://worldwords.io/authors/vizet"
 
 # ─── Контакты (ссылки «Связаться» в блоке Socials) ───────
 contact:

@@ -1,5 +1,8 @@
 ---
 title: "Василий Зеленков"
+portals:
+  - label: WorldWords
+    url: https://worldwords.io/authors/vizet
 ---
 
 Здесь будет страница Василия Зеленкова.

@@ -12,6 +12,8 @@ portals:
     url: https://links.litnet.com/go/e1dsu0gj
   - label: ЛитГород
     url: https://book-litgorod.litgorod.ru/go/hhtnh156
+  - label: WorldWords
+    url: https://worldwords.io/authors/kseniya-kotova
 profile:
   description: Автор фантастики и фэнтези. Пишет самостоятельно и в соавторстве с Василием Зеленковым.
   sameAs:
@@ -91,6 +93,7 @@ bibliography:
         awards:
           - award-19
       - title: Маги Канверона
+        coauthors: Василий Зеленков
         year: 2025
         href: /books/kanveron/#book-1
         publication: Сетевая публикация
@@ -100,6 +103,7 @@ bibliography:
         sources: []
         awards: []
       - title: Аудиуры Завесы
+        coauthors: Василий Зеленков
         year: 2026
         href: /books/kanveron/#book-2
         publication: Сетевая публикация
@@ -343,6 +347,17 @@ bibliography:
             url: https://author.today/work/9295
         publicationTypes:
           - print
+        awards: []
+      - title: Талисман
+        publication: Сетевая публикация
+        year: 2011
+        collections: []
+        readingSources: []
+        links:
+          - label: Пролёт Фантазии
+            url: https://fancon.org/tales/2011o_Talisman.html
+        publicationTypes:
+          - online
         awards: []
       - title: Все ответы
         publication: Сетевая публикация
@@ -757,6 +772,19 @@ bibliography:
           - print
         awards:
           - award-20
+      - title: Квинтэссенция
+        year: 2025
+        publication: Сетевая публикация
+        collections: []
+        readingSources: []
+        links:
+          - label: ЛитРес
+            url: https://www.litres.ru/book/kseniya-kotova/kvintessenciya-71588824/
+          - label: ЛитРес Аудио
+            url: https://www.litres.ru/audiobook/kseniya-kotova/kvintessenciya-71805583/
+        publicationTypes:
+          - online
+        awards: []
       - title: Мечты создателей
         publication: Сетевая публикация
         collections:
@@ -1190,6 +1218,6 @@ contests:
 
 Родилась в 1988 году в Новой Каховке; успела пожить на Крайнем Севере, в Великом Новгороде и еще семнадцать лет — в Санкт-Петербурге. Там окончила Санкт-Петербургский государственный университет технологии и дизайна, кафедру прикладной информатики, и ушла работать в IT.
 
-Ксения увлеклась фантастикой ещё в школе: до сих пор обожает читать и отдает предпочтение историям с приключенческими сюжетами, масштабными мирами и неоднозначными героями. Тогда же начала сочинять, а с 2008 г. - участвовать в литературных конкурсах.
+Ксения увлеклась фантастикой ещё в школе: до сих пор обожает читать и отдает предпочтение историям с приключенческими сюжетами, масштабными мирами и неоднозначными героями. Тогда же начала сочинять, а с 2008 г. — участвовать в литературных конкурсах.
 
 Любит свою семью, мужа и детей, хороший чай, настольные ролевые игры и игры живого действия, фотографировать и путешествовать в необычные места.
