@@ -56,7 +56,9 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
 {groups.some(group => group.sections.length) && <Section class="bibliography" title="Библиография" headingId="bibliography-heading">
   {groups.filter(group => group.sections.length).map(group => <BibliographyGroup cycles={group.cycles}>
   {group.sections.map(section => <Section class="category" title={group.cycles ? section.title.replace(/^Цикл «|»$/g, '') : section.title} headingLevel={group.cycles ? 'h4' : 'h3'} headingId={`bibliography-${sections.indexOf(section)}`}>
-    {section.readingSources.length > 0 && <div class="external-sources">{section.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
+    <Fragment slot="heading-actions">
+      {section.readingSources.length > 0 && <div class="cycle-sources external-sources">{section.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer" aria-label={`${source.label}: ${section.title} (откроется в новой вкладке)`}>{source.label} ↗</a>)}</div>}
+    </Fragment>
     <p class="note" data-filter-empty hidden role="status">Нет публикаций выбранного типа.</p>
     <p class="scroll-hint">Таблицу можно прокрутить вправо →</p>
     <div class="table-scroll" role="region" aria-labelledby={`bibliography-${sections.indexOf(section)}`} tabindex="0">
@@ -121,12 +123,16 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
   document.addEventListener('astro:page-load', initializeBibliographyFilters);
 </script>
 <style>
+  .cycle-sources { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 0; margin-left: auto; padding-right: .75rem; }
+  @media (max-width: 640px) {
+    .cycle-sources { flex-basis: 100%; margin-left: 2rem; }
+  }
   [hidden] { display: none !important; }
   .publication-filter { display: inline-flex; align-items: center; gap: .4rem; margin-left: .5rem; white-space: nowrap; }
   .publication-filter label { display: inline-flex; align-items: center; gap: .15rem; cursor: pointer; }
   input { accent-color: #957323; }
   input:focus-visible { outline: 2px solid #957323; outline-offset: 2px; }
-  .note, small { opacity: .72; font-size: .875rem; }
+  .note, small { color: #6b6660; font-size: .875rem; }
   .scroll-hint { display: none; }
   @media (max-width: 540px) { .scroll-hint { display: block; font-size: .75rem; opacity: .7; margin-bottom: .5rem; } }
   .table-scroll { overflow-x: auto; }
@@ -140,6 +146,6 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
 
   small { display: block; margin-top: .3rem; }
   a { text-decoration: underline; text-underline-offset: 3px; }
-  a:hover { color: #957323; }
+  a:hover { color: #7a5e1a; }
   .source { font-size: .8rem; }
 </style>

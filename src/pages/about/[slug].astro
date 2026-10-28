@@ -44,28 +44,41 @@ const personSchema = {
   url: canonicalURL,
   jobTitle: aboutUi.role ?? 'Писатель',
   '@id': `${canonicalURL}#person`,
-  ...(author.data.profile ? {
-    description: author.data.profile.description,
-    ...(portrait ? { image: new URL(portrait.src, siteOrigin).href } : {}),
-    sameAs: author.data.profile.sameAs,
-  } : {}),
+  description: author.data.profile?.description ?? profileSeo?.description,
+  ...(portrait ? { image: new URL(portrait.src, siteOrigin).href } : {}),
+  sameAs: [...new Set([
+    ...(author.data.profile?.sameAs ?? []),
+    ...portals.map(portal => portal.url),
+  ].map(url => {
+    const profile = new URL(url);
+    profile.search = '';
+    return profile.href;
+  }))],
 };
-const profileSchema = author.data.profile ? {
+const profileSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
   '@id': `${canonicalURL}#profile`,
   url: canonicalURL,
   name: profileSeo?.title ?? author.data.title,
-  description: profileSeo?.description ?? author.data.profile.description,
+  description: profileSeo?.description ?? author.data.profile?.description,
   inLanguage: 'ru',
   mainEntity: personSchema,
-} : personSchema;
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: aboutUi.heading ?? 'Об авторах', item: new URL('/about/', siteOrigin).href },
+    { '@type': 'ListItem', position: 2, name: author.data.title, item: canonicalURL },
+  ],
+};
 ---
 <BaseLayout
   title={author.data.title}
   canonicalURL={canonicalURL}
   ogType="profile"
-  additionalSchema={profileSchema}
+  additionalSchema={[profileSchema, breadcrumbSchema]}
 >
   <article class="author-page max-w-3xl mx-auto px-6 py-12">
     <header class="mb-8">

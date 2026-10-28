@@ -16,15 +16,18 @@ const headerMb = tightHeader ? 'mb-4' : 'mb-6';
       <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
       <div class="flex-1 h-px bg-dp-border"></div>
     </div>
-    <div class={`section-heading flex items-center gap-3 ${headerMb}`}>
+    <div class:list={[`section-heading flex items-center gap-3 ${headerMb}`, { 'has-actions': Astro.slots.has('heading-actions') }]}>
       <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       <Heading id={headingId} class="font-heading text-2xl font-semibold">{title}</Heading>
+      <slot name="heading-actions" />
     </div>
   </summary>
   <div class="section-content"><slot /></div>
 </details>
 
 <style>
+  .has-actions { flex-wrap: wrap; }
+  .has-actions > :is(h2, h3, h4) { min-width: 0; flex: 1; }
   .book-section:not([open]) > .section-content { display: none; }
   summary { display: block; }
   summary::-webkit-details-marker { display: none; }

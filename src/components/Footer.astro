@@ -14,13 +14,13 @@ const navLinks = uiData.nav ?? [];
 const aria = uiData.aria ?? {};
 ---
 <footer class="border-t border-dp-border mt-6">
-  <div class="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <nav class="flex gap-6" aria-label={aria.footerNav}>
+  <div class="max-w-5xl mx-auto px-6 py-5 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <nav class="flex flex-wrap justify-center gap-6" aria-label={aria.footerNav}>
       {navLinks.map(link => (
         <a href={link.href} class="text-xs tracking-widest uppercase text-dp-muted hover:text-dp-text transition-colors">{link.label}</a>
       ))}
     </nav>
     {socials.length > 0 && <SocialBar socials={socials} variant="footer" />}
-    <span class="font-heading text-dp-muted text-sm whitespace-nowrap">{copyright} &copy; {new Date().getFullYear()}</span>
+    <span class="font-heading text-dp-muted text-sm text-center">{copyright} &copy; {new Date().getFullYear()}</span>
   </div>
 </footer>

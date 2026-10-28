@@ -40,7 +40,7 @@ for (const group of ['books','blog','lore','authors']) {
   if (group === 'books') {route=`/books/${slug}/`; label=d.series ? `ЦИКЛ «${d.series}»` : 'КНИГА'; source=artwork(d.cover);}
   if (group === 'blog') {route=`/blog/${slug}/`; label='БЛОГ · СТАТЬЯ'; source=artwork(d.cover ?? 'authors/favi.jpg');}
   if (group === 'lore') {route=`/books/${d.book}/lore/${slug}/`; label='МИР КНИГИ'; source=artwork(d.cover ?? 'authors/favi.jpg');}
-  if (group === 'authors') {route=`/about/${slug}/`; label='ОБ АВТОРЕ'; source=artwork(`authors/${authors[slug]?.photo ?? 'favi.jpg'}`);}
+  if (group === 'authors') {route=`/about/${slug}/`; label='ОБ АВТОРЕ'; source=artwork(d.portrait ?? `authors/${authors[slug]?.photo ?? 'favi.jpg'}`);}
   cards.push({route,title:d.title,label,source,description:group==='books' ? d.shortDescription : d.excerpt,byline:group==='authors' ? [] : byline});
  }
 }
