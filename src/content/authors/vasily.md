@@ -529,9 +529,13 @@ bibliography:
             href: /books/danlin/
       - title: Тайные печати
         year: 2017
-        publication: Сетевая публикация
+        publication: >-
+          «Неназываемое»: сборник сакральной фантастики. — Международный литературный клуб
+          «Astra Nova», 2017. — № 4. — 323 с. — Рассказ на с. 274–295. — ISBN 978-3-945965-82-5.
+          Сетевая публикация.
         publicationTypes:
           - online
+          - print
         collections:
           - title: Данлин
             href: /books/danlin/
@@ -934,9 +938,11 @@ bibliography:
             url: https://samlib.ru/z/zelenkow_w_w/edges02-night_chase.shtml
       - title: Одиннадцатый ключ
         year: 2014
-        publication: Сетевая публикация
+        publication: >-
+          Фантаскоп. — 2017. — № 1. — ISSN 2220-2781. Сетевая публикация.
         publicationTypes:
           - online
+          - print
         links:
           - label: Дзен
             url: https://dzen.ru/a/ag-BMo3Z5AJ2AtrK
