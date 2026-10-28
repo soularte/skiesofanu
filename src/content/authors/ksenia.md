@@ -2,18 +2,6 @@
 title: Ксения Котова
 portrait: authors/ksenia-kotova-bio.jpg
 headerLayout: centered
-portals:
-  - label: ЛитРес
-    url: >-
-      https://www.litres.ru/author/kseniya-kotova/?utm_source=advcake&utm_medium=cpa&utm_campaign=affiliate&utm_content=9f4cbd85&advcake_params=&utm_term=&erid=2VfnxyNkZrY&advcake_method=1&m=1
-  - label: Автор.Тудей
-    url: https://author.today/u/soularte/works
-  - label: ЛитНет
-    url: https://links.litnet.com/go/e1dsu0gj
-  - label: ЛитГород
-    url: https://book-litgorod.litgorod.ru/go/hhtnh156
-  - label: WorldWords
-    url: https://worldwords.io/authors/kseniya-kotova
 profile:
   description: Автор фантастики и фэнтези. Пишет самостоятельно и в соавторстве с Василием Зеленковым.
   sameAs:

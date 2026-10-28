@@ -107,6 +107,7 @@ const authors = defineCollection({
     bibliography: z.array(z.object({
       title: z.string(),
       works: z.array(z.string()).optional(),
+      readingSources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
       entries: z.array(z.object({
         year: z.number().int().optional(),
         title: z.string(),

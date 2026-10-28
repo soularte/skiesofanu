@@ -11,6 +11,7 @@ import LitPortals from '../../components/LitPortals.astro';
 import GoldLine from '../../components/GoldLine.astro';
 import { getCollection } from 'astro:content';
 import { loadDataFile } from '../../lib/data';
+import type { LinkItem } from '../../lib/types';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors');
@@ -29,6 +30,8 @@ const featured = author.data.featuredBooks.map((slug: string) => books.find(b =>
 
 const ui = loadDataFile<any>('src/data/ui.md', { about: {} });
 const aboutUi = ui.about ?? {};
+const links = loadDataFile<{ litportals: Record<string, LinkItem[]> }>('src/data/links.md', { litportals: {} });
+const portals = links.litportals[author.slug] ?? [];
 
 const siteOrigin = (Astro.site ?? new URL(Astro.url.origin)).href;
 const canonicalURL = new URL(`/about/${author.slug}/`, siteOrigin).href;
@@ -64,7 +67,7 @@ const profileSchema = author.data.profile ? {
   ogType="profile"
   additionalSchema={profileSchema}
 >
-  <article class="max-w-3xl mx-auto px-6 py-12">
+  <article class="author-page max-w-3xl mx-auto px-6 py-12">
     <header class="mb-8">
       <nav class="text-xs tracking-widest uppercase text-dp-muted mb-4">
         <a href="/about" class="hover:text-dp-gold transition-colors">{aboutUi.heading}</a>
@@ -81,7 +84,7 @@ const profileSchema = author.data.profile ? {
       <Content />
     </div>
 
-    {author.data.portals.length > 0 && <section aria-labelledby="author-portals" class="my-8 border border-dp-border bg-dp-gold/5 px-6 py-6 rounded-sm"><h2 id="author-portals" class="font-heading text-2xl font-semibold text-center mb-4">Литпорталы</h2><LitPortals personalLinks={author.data.portals} /></section>}
+    {portals.length > 0 && <section aria-labelledby="author-portals" class="my-8 border border-dp-border bg-dp-gold/5 px-6 py-6 rounded-sm"><h2 id="author-portals" class="font-heading text-2xl font-semibold text-center mb-4">Литпорталы</h2><LitPortals personalLinks={portals} /></section>}
     <AuthorNavigation sections={author.data.bibliography} />
     <Contests entries={author.data.contests} />
     <TableSorting />
@@ -104,3 +107,40 @@ const profileSchema = author.data.profile ? {
     </footer>
   </article>
 </BaseLayout>
+
+<style>
+  /* Only heading rows are tinted; content keeps the page's parchment background. */
+  .author-page :global(.book-section .book-section) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .author-page :global(.book-section > .section-content) {
+    display: flow-root;
+  }
+  .author-page :global(.bibliography .category[open] > .section-content) {
+    padding-bottom: 1.5rem;
+  }
+  .author-page :global(.book-section:not([open]) > .section-content) {
+    display: none;
+  }
+  .author-page :global(.book-section .book-section > summary .section-heading) {
+    margin-bottom: 0;
+    padding-block: .65rem;
+    background-color: rgba(201, 168, 76, .055);
+  }
+  .author-page :global(.book-section .book-section .book-section > summary .section-heading) {
+    background-color: rgba(64, 91, 115, .035);
+  }
+  /* Individual cycles use a quiet continuous rule instead of the group ornament. */
+  .author-page :global(.book-section .book-section .book-section > summary .section-divider) {
+    height: 1px;
+    margin-bottom: 0;
+    background-color: #d4c5a980;
+  }
+  .author-page :global(.book-section .book-section .book-section > summary .section-divider > div) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .author-page :global(.section-chevron) { transition: none; }
+  }
+</style>

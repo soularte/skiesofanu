@@ -1,11 +1,16 @@
 ---
-interface Props { sections: { title: string }[] }
+interface Props { sections: { title: string; works?: string[]; entries: { title: string }[] }[] }
 const { sections } = Astro.props;
+const titles = new Set(sections.filter(section => !section.works).flatMap(section => section.entries.map(entry => entry.title)));
+const visibleSections = sections.map((section, index) => ({ ...section, index })).filter(section =>
+  section.works ? section.works.some(title => titles.has(title)) : section.entries.length > 0
+);
 ---
 <nav class="author-navigation" aria-label="Разделы страницы автора">
   <a href="#contests-heading" data-author-jump>Конкурсы</a>
-  <a href="#bibliography-heading" data-author-jump>Библиография</a>
-  {sections.map((section, index) => <a href={`#bibliography-${index}`} data-author-jump>{section.title.replace(/^Цикл «|»$/g, '')}</a>)}
+  {visibleSections.length > 0 && <a href="#bibliography-heading" data-author-jump>Библиография</a>}
+  {visibleSections.some(section => section.works) && <a href="#bibliography-cycles" data-author-jump>Циклы</a>}
+  {visibleSections.filter(section => !section.works).map(section => <a href={`#bibliography-${section.index}`} data-author-jump>{section.title}</a>)}
 <span aria-hidden="true">|</span>
   <button class="author-collapse" type="button" data-collapse-all hidden><strong>свернуть все</strong></button>
 </nav>

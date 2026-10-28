@@ -29,7 +29,7 @@ const sections = originals.map(section => section.works ? {
     const paper = entries.filter(entry => entry.publicationTypes.includes('print') &&
       (entry.title === title || entry.containsWorks.includes(title)));
     return [{ ...base, anchor: undefined, cycle: undefined,
-      publication: base.publicationTypes.includes('online') ? 'Сетевая публикация' : '',
+      publication: base.publicationTypes.includes('online') ? base.publication : '',
       sources: [],
       publicationTypes: [...new Set([...matches, ...paper].flatMap(entry => entry.publicationTypes))],
       publicationRefs: paper.map(entry => ({ href: `#${entry.anchor}`, label: `Бумажное издание${entry.title !== title ? ` «${entry.title}»` : ''}${entry.year ? `, ${entry.year}` : ''}` })),
@@ -37,8 +37,8 @@ const sections = originals.map(section => section.works ? {
   }),
 } : section);
 const groups = [
-  { cycles: true, sections: sections.filter(section => section.works) },
-  { cycles: false, sections: sections.filter(section => !section.works) },
+  { cycles: true, sections: sections.filter(section => section.works && section.entries.length) },
+  { cycles: false, sections: sections.filter(section => !section.works && section.entries.length) },
 ];
 const collectionEntries = sections.filter(section => section.title === 'Сборники').flatMap(section => section.entries);
 const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
@@ -53,19 +53,20 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
     })]
     .filter((link, index, all) => all.findIndex(item => item.url === link.url) === index);
 ---
-{sections.length > 0 && <Section class="bibliography" title="Библиография" headingId="bibliography-heading">
+{groups.some(group => group.sections.length) && <Section class="bibliography" title="Библиография" headingId="bibliography-heading">
   {groups.filter(group => group.sections.length).map(group => <BibliographyGroup cycles={group.cycles}>
   {group.sections.map(section => <Section class="category" title={group.cycles ? section.title.replace(/^Цикл «|»$/g, '') : section.title} headingLevel={group.cycles ? 'h4' : 'h3'} headingId={`bibliography-${sections.indexOf(section)}`}>
+    {section.readingSources.length > 0 && <div class="external-sources">{section.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
     <p class="note" data-filter-empty hidden role="status">Нет публикаций выбранного типа.</p>
-    {section.entries.length > 0 && <p class="scroll-hint">Таблицу можно прокрутить вправо →</p>}
-    {section.entries.length ? <div class="table-scroll" role="region" aria-labelledby={`bibliography-${sections.indexOf(section)}`} tabindex="0">
+    <p class="scroll-hint">Таблицу можно прокрутить вправо →</p>
+    <div class="table-scroll" role="region" aria-labelledby={`bibliography-${sections.indexOf(section)}`} tabindex="0">
       <table data-sortable class="author-table">
         <thead><tr><th scope="col">Год</th><th scope="col">Название</th><th scope="col"><span data-sort-label>Публикация / издание</span><span class="publication-filter" data-publication-filter hidden><label title="Бумажные публикации"><input type="checkbox" value="print" checked aria-label={`Бумажные публикации: ${section.title}`} />Б</label><label title="Сетевые публикации"><input type="checkbox" value="online" checked aria-label={`Сетевые публикации: ${section.title}`} />С</label></span></th><th scope="col">Ссылки</th></tr></thead>
         <tbody>{[...section.entries].sort((a,b) => (b.year ?? 0) - (a.year ?? 0)).map(entry => <tr id={entry.anchor} data-publication-types={entry.publicationTypes.join(' ')}>
           <td class="year" data-sort-value={entry.year ?? ""}>{entry.year ?? '—'}</td>
           <td class="work" data-sort-value={entry.title}>{entry.href ? <a href={entry.href}>{entry.title}</a> : <span>{entry.title}</span>}
             {entry.readingSources.length > 0 && <div class="external-sources">{entry.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
-            {entry.coauthors && <small>Соавтор: {['Василий Зеленков', 'Зеленков Василий'].includes(entry.coauthors) ? <a href="/about/vasily/">{entry.coauthors}</a> : entry.coauthors}</small>}
+            {entry.coauthors && <small>Соавтор: {['Василий Зеленков', 'Зеленков Василий'].includes(entry.coauthors) ? <a href="/about/vasily/">{entry.coauthors}</a> : ['Ксения Котова', 'Котова Ксения'].includes(entry.coauthors) ? <a href="/about/ksenia/">{entry.coauthors}</a> : entry.coauthors}</small>}
             {entry.cycle && <small>Цикл <a href={entry.cycle.href} data-publication-ref>«{entry.cycle.title}»</a></small>}
             {entry.awards.length > 0 && <small>Конкурсы: {entry.awards.map((id, index) => {
               const award = contests.find(contest => contest.id === id);
@@ -81,7 +82,7 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
           <td class="platforms">{readingLinks(entry).length ? <MarketplaceLinks links={readingLinks(entry)} /> : <span class="empty-platforms">—</span>}</td>
         </tr>)}</tbody>
       </table>
-    </div> : <p class="note">Сведения будут добавлены.</p>}
+    </div>
   </Section>)}
   </BibliographyGroup>)}
 </Section>}
