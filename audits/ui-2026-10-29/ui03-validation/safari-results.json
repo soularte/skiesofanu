@@ -1,0 +1,421 @@
+[
+  {
+    "path": "/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      },
+      {
+        "prefix": "chars",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "chars",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425.3125,
+            "y": 373.3125,
+            "width": 52,
+            "left": 524,
+            "top": 373.3125,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      },
+      {
+        "prefix": "cards",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425.0625,
+            "y": 373.0625,
+            "width": 52,
+            "left": 524,
+            "top": 373.0625,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "geometry": {
+          "imageEdgeHitsButton": false,
+          "hitArea": {
+            "x": 524,
+            "height": 52,
+            "bottom": 425,
+            "y": 373,
+            "width": 52,
+            "left": 524,
+            "top": 373,
+            "right": 576
+          },
+          "centerError": 0
+        },
+        "paddingClick": true,
+        "dots": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "scroll": {
+          "canScroll": true,
+          "position": 240
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "scroll": {
+          "canScroll": true,
+          "position": 300
+        },
+        "passed": true
+      },
+      {
+        "prefix": "chars",
+        "scroll": {
+          "canScroll": false,
+          "position": 0
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "scroll": {
+          "canScroll": true,
+          "position": 300
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "cards",
+        "scroll": {
+          "canScroll": true,
+          "position": 300
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "chars",
+        "scroll": {
+          "canScroll": true,
+          "position": 280
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "scroll": {
+          "canScroll": true,
+          "position": 56
+        },
+        "passed": true
+      },
+      {
+        "prefix": "cards",
+        "scroll": {
+          "canScroll": true,
+          "position": 300
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "scroll": {
+          "canScroll": true,
+          "position": 240
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "scroll": {
+          "canScroll": false,
+          "position": 0
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 600,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "singleSlideNoArrows": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 1440,
+    "galleries": [
+      {
+        "prefix": "covers",
+        "scroll": {
+          "canScroll": false,
+          "position": 0
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  }
+]

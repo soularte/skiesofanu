@@ -24,9 +24,13 @@ const aria = ui.aria ?? {};
           </div>
         ))}
       </div>
-      <!-- Tap zones -->
-      <button id="cards-mobile-prev" aria-label={aria.prev} class="absolute left-0 top-0 bottom-0 w-1/4 z-10"></button>
-      <button id="cards-mobile-next" aria-label={aria.next} class="absolute right-0 top-0 bottom-0 w-1/4 z-10"></button>
+      <!-- Compact controls share the desktop arrow component. -->
+      {images.length > 1 && (
+        <>
+        <GalleryArrow direction="left" id="cards-mobile-prev" mobile />
+        <GalleryArrow direction="right" id="cards-mobile-next" mobile />
+        </>
+      )}
     </div>
     {images.length > 1 && (
       <div class="flex justify-center gap-2 mt-3">

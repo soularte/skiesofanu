@@ -31,6 +31,15 @@ export function initSlider({ prefix, step }: SliderOptions) {
   let current = 0;
   const dots = document.querySelectorAll(`.${prefix}-dot`);
 
+  function updateArrowPosition() {
+    const image = slides[current]?.querySelector('img');
+    const container = slider!.parentElement;
+    if (!image || !container) return;
+    const bounds = image.getBoundingClientRect();
+    if (!bounds.height) return;
+    container.style.setProperty('--gallery-arrow-top', `${bounds.top + bounds.height / 2 - container.getBoundingClientRect().top}px`);
+  }
+
   function goTo(index: number) {
     if (index < 0) index = 0;
     if (index >= total) index = total - 1;
@@ -40,11 +49,15 @@ export function initSlider({ prefix, step }: SliderOptions) {
     // Inert does not affect their dimensions or the existing swipe handlers.
     slides.forEach((slide, i) => { slide.inert = originalInert[i] || i !== current; });
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    updateArrowPosition();
   }
 
   goTo(0);
+  slider.addEventListener('load', updateArrowPosition, true);
+  const resizeObserver = new ResizeObserver(updateArrowPosition);
+  resizeObserver.observe(slider);
 
-  // Tap zones
+  // Compact arrow buttons
   document.getElementById(`${prefix}-mobile-prev`)?.addEventListener('click', () => goTo(current - 1));
   document.getElementById(`${prefix}-mobile-next`)?.addEventListener('click', () => goTo(current + 1));
 

@@ -1,0 +1,1679 @@
+[
+  {
+    "width": 320,
+    "path": "/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 60,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 260,
+            "bottom": 564,
+            "left": 60
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 296,
+            "bottom": 448,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/books/aviatory/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 40,
+            "y": 246.5,
+            "width": 240,
+            "height": 350,
+            "top": 246.5,
+            "right": 280,
+            "bottom": 596.5,
+            "left": 40
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 296,
+            "bottom": 447.5,
+            "left": 244
+          }
+        }
+      },
+      {
+        "prefix": "chars",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 36,
+            "y": 247.5,
+            "width": 248,
+            "height": 348,
+            "top": 247.5,
+            "right": 284,
+            "bottom": 595.5,
+            "left": 36
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 296,
+            "bottom": 447.5,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/books/danlin/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 40,
+            "y": 246.5,
+            "width": 240,
+            "height": 350,
+            "top": 246.5,
+            "right": 280,
+            "bottom": 596.5,
+            "left": 40
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 296,
+            "bottom": 447.5,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/books/gorod/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 40,
+            "y": 246.5,
+            "width": 240,
+            "height": 350,
+            "top": 246.5,
+            "right": 280,
+            "bottom": 596.5,
+            "left": 40
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 296,
+            "bottom": 447.5,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/books/stirayushchee/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "chars",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 36,
+            "y": 247.5,
+            "width": 248,
+            "height": 348,
+            "top": 247.5,
+            "right": 284,
+            "bottom": 595.5,
+            "left": 36
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 296,
+            "bottom": 447.5,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/paths/detyam/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "single slide has no mobile arrows"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/paths/mir-anu/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 60,
+            "y": 280.25,
+            "width": 200,
+            "height": 284,
+            "top": 280.25,
+            "right": 260,
+            "bottom": 564.25,
+            "left": 60
+          },
+          "prev": {
+            "x": 24,
+            "y": 396.25,
+            "width": 52,
+            "height": 52,
+            "top": 396.25,
+            "right": 76,
+            "bottom": 448.25,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 396.25,
+            "width": 52,
+            "height": 52,
+            "top": 396.25,
+            "right": 296,
+            "bottom": 448.25,
+            "left": 244
+          }
+        }
+      },
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 40,
+            "y": 246.75,
+            "width": 240,
+            "height": 350,
+            "top": 246.75,
+            "right": 280,
+            "bottom": 596.75,
+            "left": 40
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.75,
+            "width": 52,
+            "height": 52,
+            "top": 395.75,
+            "right": 76,
+            "bottom": 447.75,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 395.75,
+            "width": 52,
+            "height": 52,
+            "top": 395.75,
+            "right": 296,
+            "bottom": 447.75,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/paths/fantasy/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 60,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 260,
+            "bottom": 564,
+            "left": 60
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 296,
+            "bottom": 448,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 320,
+    "path": "/paths/romantika/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 60,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 260,
+            "bottom": 564,
+            "left": 60
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 244,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 296,
+            "bottom": 448,
+            "left": 244
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 95,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 295,
+            "bottom": 564,
+            "left": 95
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 366,
+            "bottom": 448,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/books/aviatory/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 63.75,
+            "y": 246.5,
+            "width": 262.5,
+            "height": 350,
+            "top": 246.5,
+            "right": 326.25,
+            "bottom": 596.5,
+            "left": 63.75
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 366,
+            "bottom": 447.5,
+            "left": 314
+          }
+        }
+      },
+      {
+        "prefix": "chars",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 71,
+            "y": 248,
+            "width": 248,
+            "height": 348,
+            "top": 248,
+            "right": 319,
+            "bottom": 596,
+            "left": 71
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 366,
+            "bottom": 448,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/books/danlin/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 63.75,
+            "y": 246.5,
+            "width": 262.5,
+            "height": 350,
+            "top": 246.5,
+            "right": 326.25,
+            "bottom": 596.5,
+            "left": 63.75
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 366,
+            "bottom": 447.5,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/books/gorod/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 63.75,
+            "y": 247,
+            "width": 262.5,
+            "height": 350,
+            "top": 247,
+            "right": 326.25,
+            "bottom": 597,
+            "left": 63.75
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 366,
+            "bottom": 448,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/books/stirayushchee/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "chars",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 71,
+            "y": 247.5,
+            "width": 248,
+            "height": 348,
+            "top": 247.5,
+            "right": 319,
+            "bottom": 595.5,
+            "left": 71
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 76,
+            "bottom": 447.5,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 395.5,
+            "width": 52,
+            "height": 52,
+            "top": 395.5,
+            "right": 366,
+            "bottom": 447.5,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/paths/detyam/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "single slide has no mobile arrows"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/paths/mir-anu/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 95,
+            "y": 279.65625,
+            "width": 200,
+            "height": 284,
+            "top": 279.65625,
+            "right": 295,
+            "bottom": 563.65625,
+            "left": 95
+          },
+          "prev": {
+            "x": 24,
+            "y": 395.65625,
+            "width": 52,
+            "height": 52,
+            "top": 395.65625,
+            "right": 76,
+            "bottom": 447.65625,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 395.65625,
+            "width": 52,
+            "height": 52,
+            "top": 395.65625,
+            "right": 366,
+            "bottom": 447.65625,
+            "left": 314
+          }
+        }
+      },
+      {
+        "prefix": "cards",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "image edge opens Lightbox",
+          "Escape closes and restores focus"
+        ],
+        "positions": {
+          "image": {
+            "x": 63.75,
+            "y": 247.15625,
+            "width": 262.5,
+            "height": 350,
+            "top": 247.15625,
+            "right": 326.25,
+            "bottom": 597.15625,
+            "left": 63.75
+          },
+          "prev": {
+            "x": 24,
+            "y": 396.15625,
+            "width": 52,
+            "height": 52,
+            "top": 396.15625,
+            "right": 76,
+            "bottom": 448.15625,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396.15625,
+            "width": 52,
+            "height": 52,
+            "top": 396.15625,
+            "right": 366,
+            "bottom": 448.15625,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/paths/fantasy/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 95,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 295,
+            "bottom": 564,
+            "left": 95
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 366,
+            "bottom": 448,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "path": "/paths/romantika/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "52px hit area, 36px icon and image-centered arrows",
+          "button padding advances slide",
+          "previous arrow returns to first slide",
+          "image edge is not a scroll button",
+          "edge swipe advances without opening or navigation",
+          "reverse swipe returns",
+          "dots and active slide accessibility preserved",
+          "cover edge follows book link"
+        ],
+        "positions": {
+          "image": {
+            "x": 95,
+            "y": 280,
+            "width": 200,
+            "height": 284,
+            "top": 280,
+            "right": 295,
+            "bottom": 564,
+            "left": 95
+          },
+          "prev": {
+            "x": 24,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 76,
+            "bottom": 448,
+            "left": 24
+          },
+          "next": {
+            "x": 314,
+            "y": 396,
+            "width": 52,
+            "height": 52,
+            "top": 396,
+            "right": 366,
+            "bottom": 448,
+            "left": 314
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/books/aviatory/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/books/danlin/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/books/gorod/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/books/stirayushchee/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/paths/detyam/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/paths/mir-anu/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/paths/fantasy/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 640,
+    "path": "/paths/romantika/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/books/aviatory/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/books/danlin/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/books/gorod/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/books/stirayushchee/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/paths/detyam/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/paths/mir-anu/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/paths/fantasy/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 768,
+    "path": "/paths/romantika/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/books/aviatory/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/books/danlin/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/books/gorod/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/books/stirayushchee/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "chars",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/paths/detyam/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/paths/mir-anu/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      },
+      {
+        "prefix": "cards",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/paths/fantasy/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus",
+          "desktop arrow advances gallery"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "path": "/paths/romantika/",
+    "checks": [
+      "no duplicate slider IDs",
+      "no document overflow"
+    ],
+    "galleries": [
+      {
+        "prefix": "covers",
+        "checks": [
+          "desktop button hit area is compact",
+          "desktop arrows visible on keyboard focus"
+        ]
+      }
+    ],
+    "passed": true
+  }
+]

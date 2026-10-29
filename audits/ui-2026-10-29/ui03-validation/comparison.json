@@ -1,0 +1,3323 @@
+{
+  "geometry": [
+    {
+      "path": "/",
+      "width": 320,
+      "documentHeight": [
+        2963,
+        2963
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 991,
+          "width": 52,
+          "height": 52,
+          "top": 991,
+          "right": 76,
+          "bottom": 1043,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 244,
+          "y": 991,
+          "width": 52,
+          "height": 52,
+          "top": 991,
+          "right": 296,
+          "bottom": 1043,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "documentHeight": [
+        2676,
+        2676
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 897,
+          "width": 52,
+          "height": 52,
+          "top": 897,
+          "right": 76,
+          "bottom": 949,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 314,
+          "y": 897,
+          "width": 52,
+          "height": 52,
+          "top": 897,
+          "right": 366,
+          "bottom": 949,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "documentHeight": [
+        2392,
+        2392
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 929.25,
+          "width": 52,
+          "height": 52,
+          "top": 929.25,
+          "right": 76,
+          "bottom": 981.25,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 692,
+          "y": 929.25,
+          "width": 52,
+          "height": 52,
+          "top": 929.25,
+          "right": 744,
+          "bottom": 981.25,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "documentHeight": [
+        2365,
+        2365
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 232,
+          "y": 929.25,
+          "width": 52,
+          "height": 52,
+          "top": 929.25,
+          "right": 284,
+          "bottom": 981.25,
+          "left": 232
+        },
+        {
+          "id": "covers-next",
+          "x": 1156,
+          "y": 929.25,
+          "width": 52,
+          "height": 52,
+          "top": 929.25,
+          "right": 1208,
+          "bottom": 981.25,
+          "left": 1156
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 720,
+      "documentHeight": [
+        2588,
+        2588
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 860.25,
+          "width": 52,
+          "height": 52,
+          "top": 860.25,
+          "right": 76,
+          "bottom": 912.25,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 644,
+          "y": 860.25,
+          "width": 52,
+          "height": 52,
+          "top": 860.25,
+          "right": 696,
+          "bottom": 912.25,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 360,
+      "documentHeight": [
+        2783,
+        2783
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 923,
+          "width": 52,
+          "height": 52,
+          "top": 923,
+          "right": 76,
+          "bottom": 975,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 284,
+          "y": 923,
+          "width": 52,
+          "height": 52,
+          "top": 923,
+          "right": 336,
+          "bottom": 975,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "width": 320,
+      "documentHeight": [
+        3080,
+        3080
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/",
+      "width": 390,
+      "documentHeight": [
+        2644,
+        2644
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/",
+      "width": 768,
+      "documentHeight": [
+        1922,
+        1922
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/",
+      "width": 1440,
+      "documentHeight": [
+        1428,
+        1428
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/",
+      "width": 720,
+      "documentHeight": [
+        2178,
+        2178
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/",
+      "width": 360,
+      "documentHeight": [
+        2719,
+        2719
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 320,
+      "documentHeight": [
+        13966,
+        13966
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 390,
+      "documentHeight": [
+        12856,
+        12856
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 768,
+      "documentHeight": [
+        17093,
+        17093
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 1440,
+      "documentHeight": [
+        17025,
+        17025
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 720,
+      "documentHeight": [
+        17093,
+        17093
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 360,
+      "documentHeight": [
+        13047,
+        13047
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 320,
+      "documentHeight": [
+        17264,
+        17264
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 390,
+      "documentHeight": [
+        16036,
+        16036
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 768,
+      "documentHeight": [
+        20118,
+        20118
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 1440,
+      "documentHeight": [
+        20050,
+        20050
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 720,
+      "documentHeight": [
+        20118,
+        20118
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 360,
+      "documentHeight": [
+        16170,
+        16170
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 320,
+      "documentHeight": [
+        1123,
+        1123
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 390,
+      "documentHeight": [
+        1077,
+        1077
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 768,
+      "documentHeight": [
+        1104,
+        1104
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 1440,
+      "documentHeight": [
+        1006,
+        1006
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 720,
+      "documentHeight": [
+        1276,
+        1276
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/",
+      "width": 360,
+      "documentHeight": [
+        1055,
+        1055
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 320,
+      "documentHeight": [
+        6375,
+        6375
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 390,
+      "documentHeight": [
+        5455,
+        5455
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 768,
+      "documentHeight": [
+        3807,
+        3807
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 1440,
+      "documentHeight": [
+        3739,
+        3739
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 720,
+      "documentHeight": [
+        3911,
+        3911
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 360,
+      "documentHeight": [
+        5825,
+        5825
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 320,
+      "documentHeight": [
+        8592,
+        8592
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 390,
+      "documentHeight": [
+        7688,
+        7688
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 768,
+      "documentHeight": [
+        4149,
+        4149
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 1440,
+      "documentHeight": [
+        3627,
+        3627
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 720,
+      "documentHeight": [
+        6548,
+        6548
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/",
+      "width": 360,
+      "documentHeight": [
+        7905,
+        7905
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 320,
+      "documentHeight": [
+        12339,
+        12339
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1917.5,
+          "width": 52,
+          "height": 52,
+          "top": 1917.5,
+          "right": 76,
+          "bottom": 1969.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 244,
+          "y": 1917.5,
+          "width": 52,
+          "height": 52,
+          "top": 1917.5,
+          "right": 296,
+          "bottom": 1969.5,
+          "left": 244
+        },
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 9702.5,
+          "width": 52,
+          "height": 52,
+          "top": 9702.5,
+          "right": 76,
+          "bottom": 9754.5,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 244,
+          "y": 9702.5,
+          "width": 52,
+          "height": 52,
+          "top": 9702.5,
+          "right": 296,
+          "bottom": 9754.5,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 390,
+      "documentHeight": [
+        10812,
+        10812
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1710.5,
+          "width": 52,
+          "height": 52,
+          "top": 1710.5,
+          "right": 76,
+          "bottom": 1762.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 314,
+          "y": 1710.5,
+          "width": 52,
+          "height": 52,
+          "top": 1710.5,
+          "right": 366,
+          "bottom": 1762.5,
+          "left": 314
+        },
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 8417,
+          "width": 52,
+          "height": 52,
+          "top": 8417,
+          "right": 76,
+          "bottom": 8469,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 314,
+          "y": 8417,
+          "width": 52,
+          "height": 52,
+          "top": 8417,
+          "right": 366,
+          "bottom": 8469,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 768,
+      "documentHeight": [
+        7300,
+        7300
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1171.5,
+          "width": 52,
+          "height": 52,
+          "top": 1171.5,
+          "right": 76,
+          "bottom": 1223.5,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 692,
+          "y": 1171.5,
+          "width": 52,
+          "height": 52,
+          "top": 1171.5,
+          "right": 744,
+          "bottom": 1223.5,
+          "left": 692
+        },
+        {
+          "id": "chars-prev",
+          "x": 24,
+          "y": 5494.8125,
+          "width": 52,
+          "height": 52,
+          "top": 5494.8125,
+          "right": 76,
+          "bottom": 5546.8125,
+          "left": 24
+        },
+        {
+          "id": "chars-next",
+          "x": 692,
+          "y": 5494.8125,
+          "width": 52,
+          "height": 52,
+          "top": 5494.8125,
+          "right": 744,
+          "bottom": 5546.8125,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 1440,
+      "documentHeight": [
+        6315,
+        6315
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 232,
+          "y": 1041.5,
+          "width": 52,
+          "height": 52,
+          "top": 1041.5,
+          "right": 284,
+          "bottom": 1093.5,
+          "left": 232
+        },
+        {
+          "id": "cards-next",
+          "x": 1156,
+          "y": 1041.5,
+          "width": 52,
+          "height": 52,
+          "top": 1041.5,
+          "right": 1208,
+          "bottom": 1093.5,
+          "left": 1156
+        },
+        {
+          "id": "chars-prev",
+          "x": 232,
+          "y": 4710.3125,
+          "width": 52,
+          "height": 52,
+          "top": 4710.3125,
+          "right": 284,
+          "bottom": 4762.3125,
+          "left": 232
+        },
+        {
+          "id": "chars-next",
+          "x": 1156,
+          "y": 4710.3125,
+          "width": 52,
+          "height": 52,
+          "top": 4710.3125,
+          "right": 1208,
+          "bottom": 4762.3125,
+          "left": 1156
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 720,
+      "documentHeight": [
+        7640,
+        7640
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1383,
+          "width": 52,
+          "height": 52,
+          "top": 1383,
+          "right": 76,
+          "bottom": 1435,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 644,
+          "y": 1383,
+          "width": 52,
+          "height": 52,
+          "top": 1383,
+          "right": 696,
+          "bottom": 1435,
+          "left": 644
+        },
+        {
+          "id": "chars-prev",
+          "x": 24,
+          "y": 5826.3125,
+          "width": 52,
+          "height": 52,
+          "top": 5826.3125,
+          "right": 76,
+          "bottom": 5878.3125,
+          "left": 24
+        },
+        {
+          "id": "chars-next",
+          "x": 644,
+          "y": 5826.3125,
+          "width": 52,
+          "height": 52,
+          "top": 5826.3125,
+          "right": 696,
+          "bottom": 5878.3125,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 360,
+      "documentHeight": [
+        11298,
+        11298
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1767,
+          "width": 52,
+          "height": 52,
+          "top": 1767,
+          "right": 76,
+          "bottom": 1819,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 284,
+          "y": 1767,
+          "width": 52,
+          "height": 52,
+          "top": 1767,
+          "right": 336,
+          "bottom": 1819,
+          "left": 284
+        },
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 8821,
+          "width": 52,
+          "height": 52,
+          "top": 8821,
+          "right": 76,
+          "bottom": 8873,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 284,
+          "y": 8821,
+          "width": 52,
+          "height": 52,
+          "top": 8821,
+          "right": 336,
+          "bottom": 8873,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 320,
+      "documentHeight": [
+        1273,
+        1273
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 390,
+      "documentHeight": [
+        1260,
+        1260
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 768,
+      "documentHeight": [
+        1719,
+        1719
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 1440,
+      "documentHeight": [
+        1651,
+        1651
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 720,
+      "documentHeight": [
+        1657,
+        1657
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 360,
+      "documentHeight": [
+        1221,
+        1221
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 320,
+      "documentHeight": [
+        4643,
+        4643
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1522.5,
+          "width": 52,
+          "height": 52,
+          "top": 1522.5,
+          "right": 76,
+          "bottom": 1574.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 244,
+          "y": 1522.5,
+          "width": 52,
+          "height": 52,
+          "top": 1522.5,
+          "right": 296,
+          "bottom": 1574.5,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 390,
+      "documentHeight": [
+        3999,
+        3999
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1402.5,
+          "width": 52,
+          "height": 52,
+          "top": 1402.5,
+          "right": 76,
+          "bottom": 1454.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 314,
+          "y": 1402.5,
+          "width": 52,
+          "height": 52,
+          "top": 1402.5,
+          "right": 366,
+          "bottom": 1454.5,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 768,
+      "documentHeight": [
+        2597,
+        2597
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 882.5,
+          "width": 52,
+          "height": 52,
+          "top": 882.5,
+          "right": 76,
+          "bottom": 934.5,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 692,
+          "y": 882.5,
+          "width": 52,
+          "height": 52,
+          "top": 882.5,
+          "right": 744,
+          "bottom": 934.5,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 1440,
+      "documentHeight": [
+        2244,
+        2244
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 232,
+          "y": 848,
+          "width": 52,
+          "height": 52,
+          "top": 848,
+          "right": 284,
+          "bottom": 900,
+          "left": 232
+        },
+        {
+          "id": "cards-next",
+          "x": 1156,
+          "y": 848,
+          "width": 52,
+          "height": 52,
+          "top": 848,
+          "right": 1208,
+          "bottom": 900,
+          "left": 1156
+        }
+      ]
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 720,
+      "documentHeight": [
+        3132,
+        3132
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1250,
+          "width": 52,
+          "height": 52,
+          "top": 1250,
+          "right": 76,
+          "bottom": 1302,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 644,
+          "y": 1250,
+          "width": 52,
+          "height": 52,
+          "top": 1250,
+          "right": 696,
+          "bottom": 1302,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 360,
+      "documentHeight": [
+        4207,
+        4207
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1454.5,
+          "width": 52,
+          "height": 52,
+          "top": 1454.5,
+          "right": 76,
+          "bottom": 1506.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 284,
+          "y": 1454.5,
+          "width": 52,
+          "height": 52,
+          "top": 1454.5,
+          "right": 336,
+          "bottom": 1506.5,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 320,
+      "documentHeight": [
+        5795,
+        5795
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1654.5,
+          "width": 52,
+          "height": 52,
+          "top": 1654.5,
+          "right": 76,
+          "bottom": 1706.5,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 244,
+          "y": 1654.5,
+          "width": 52,
+          "height": 52,
+          "top": 1654.5,
+          "right": 296,
+          "bottom": 1706.5,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 390,
+      "documentHeight": [
+        4873,
+        4873
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1511,
+          "width": 52,
+          "height": 52,
+          "top": 1511,
+          "right": 76,
+          "bottom": 1563,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 314,
+          "y": 1511,
+          "width": 52,
+          "height": 52,
+          "top": 1511,
+          "right": 366,
+          "bottom": 1563,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 768,
+      "documentHeight": [
+        3113,
+        3113
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 908.5,
+          "width": 52,
+          "height": 52,
+          "top": 908.5,
+          "right": 76,
+          "bottom": 960.5,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 692,
+          "y": 908.5,
+          "width": 52,
+          "height": 52,
+          "top": 908.5,
+          "right": 744,
+          "bottom": 960.5,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 1440,
+      "documentHeight": [
+        2651,
+        2651
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 232,
+          "y": 878.5,
+          "width": 52,
+          "height": 52,
+          "top": 878.5,
+          "right": 284,
+          "bottom": 930.5,
+          "left": 232
+        },
+        {
+          "id": "cards-next",
+          "x": 1156,
+          "y": 878.5,
+          "width": 52,
+          "height": 52,
+          "top": 878.5,
+          "right": 1208,
+          "bottom": 930.5,
+          "left": 1156
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 720,
+      "documentHeight": [
+        3544,
+        3544
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1250,
+          "width": 52,
+          "height": 52,
+          "top": 1250,
+          "right": 76,
+          "bottom": 1302,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 644,
+          "y": 1250,
+          "width": 52,
+          "height": 52,
+          "top": 1250,
+          "right": 696,
+          "bottom": 1302,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 360,
+      "documentHeight": [
+        5133,
+        5133
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 1511,
+          "width": 52,
+          "height": 52,
+          "top": 1511,
+          "right": 76,
+          "bottom": 1563,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 284,
+          "y": 1511,
+          "width": 52,
+          "height": 52,
+          "top": 1511,
+          "right": 336,
+          "bottom": 1563,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 320,
+      "documentHeight": [
+        4788,
+        4788
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 390,
+      "documentHeight": [
+        4257,
+        4257
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 768,
+      "documentHeight": [
+        2884,
+        2884
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 1440,
+      "documentHeight": [
+        2731,
+        2731
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 720,
+      "documentHeight": [
+        3214,
+        3214
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 360,
+      "documentHeight": [
+        4419,
+        4419
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 320,
+      "documentHeight": [
+        2530,
+        2530
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 390,
+      "documentHeight": [
+        2062,
+        2062
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 768,
+      "documentHeight": [
+        1433,
+        1433
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 1440,
+      "documentHeight": [
+        1109,
+        1109
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 720,
+      "documentHeight": [
+        1622,
+        1622
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 360,
+      "documentHeight": [
+        2192,
+        2192
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 320,
+      "documentHeight": [
+        1845,
+        1845
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 390,
+      "documentHeight": [
+        1646,
+        1646
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 768,
+      "documentHeight": [
+        1143,
+        1143
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 1440,
+      "documentHeight": [
+        1000,
+        1000
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 720,
+      "documentHeight": [
+        1414,
+        1414
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 360,
+      "documentHeight": [
+        1743,
+        1743
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 320,
+      "documentHeight": [
+        5410,
+        5410
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 3511.5,
+          "width": 52,
+          "height": 52,
+          "top": 3511.5,
+          "right": 76,
+          "bottom": 3563.5,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 244,
+          "y": 3511.5,
+          "width": 52,
+          "height": 52,
+          "top": 3511.5,
+          "right": 296,
+          "bottom": 3563.5,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 390,
+      "documentHeight": [
+        4598,
+        4598
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 2993.5,
+          "width": 52,
+          "height": 52,
+          "top": 2993.5,
+          "right": 76,
+          "bottom": 3045.5,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 314,
+          "y": 2993.5,
+          "width": 52,
+          "height": 52,
+          "top": 2993.5,
+          "right": 366,
+          "bottom": 3045.5,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 768,
+      "documentHeight": [
+        3271,
+        3271
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-prev",
+          "x": 24,
+          "y": 2135.125,
+          "width": 52,
+          "height": 52,
+          "top": 2135.125,
+          "right": 76,
+          "bottom": 2187.125,
+          "left": 24
+        },
+        {
+          "id": "chars-next",
+          "x": 692,
+          "y": 2135.125,
+          "width": 52,
+          "height": 52,
+          "top": 2135.125,
+          "right": 744,
+          "bottom": 2187.125,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 1440,
+      "documentHeight": [
+        2667,
+        2667
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-prev",
+          "x": 232,
+          "y": 1676.625,
+          "width": 52,
+          "height": 52,
+          "top": 1676.625,
+          "right": 284,
+          "bottom": 1728.625,
+          "left": 232
+        },
+        {
+          "id": "chars-next",
+          "x": 1156,
+          "y": 1676.625,
+          "width": 52,
+          "height": 52,
+          "top": 1676.625,
+          "right": 1208,
+          "bottom": 1728.625,
+          "left": 1156
+        }
+      ]
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 720,
+      "documentHeight": [
+        3469,
+        3469
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-prev",
+          "x": 24,
+          "y": 2307.125,
+          "width": 52,
+          "height": 52,
+          "top": 2307.125,
+          "right": 76,
+          "bottom": 2359.125,
+          "left": 24
+        },
+        {
+          "id": "chars-next",
+          "x": 644,
+          "y": 2307.125,
+          "width": 52,
+          "height": 52,
+          "top": 2307.125,
+          "right": 696,
+          "bottom": 2359.125,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 360,
+      "documentHeight": [
+        4810,
+        4810
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "chars-mobile-prev",
+          "x": 24,
+          "y": 3128,
+          "width": 52,
+          "height": 52,
+          "top": 3128,
+          "right": 76,
+          "bottom": 3180,
+          "left": 24
+        },
+        {
+          "id": "chars-mobile-next",
+          "x": 284,
+          "y": 3128,
+          "width": 52,
+          "height": 52,
+          "top": 3128,
+          "right": 336,
+          "bottom": 3180,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 320,
+      "documentHeight": [
+        1901,
+        1901
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 390,
+      "documentHeight": [
+        1721,
+        1721
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 768,
+      "documentHeight": [
+        1141,
+        1141
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 1440,
+      "documentHeight": [
+        1000,
+        1000
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 720,
+      "documentHeight": [
+        1482,
+        1482
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 360,
+      "documentHeight": [
+        1747,
+        1747
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 320,
+      "documentHeight": [
+        1279,
+        1279
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 390,
+      "documentHeight": [
+        1175,
+        1175
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 768,
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 76,
+          "bottom": 681.5,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 692,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 744,
+          "bottom": 681.5,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 1440,
+      "documentHeight": [
+        1135,
+        1135
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 296,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 348,
+          "bottom": 681.5,
+          "left": 296
+        },
+        {
+          "id": "covers-next",
+          "x": 1092,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 1144,
+          "bottom": 681.5,
+          "left": 1092
+        }
+      ]
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 720,
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 76,
+          "bottom": 681.5,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 644,
+          "y": 629.5,
+          "width": 52,
+          "height": 52,
+          "top": 629.5,
+          "right": 696,
+          "bottom": 681.5,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 360,
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 320,
+      "documentHeight": [
+        2879,
+        2879
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 1757.25,
+          "width": 52,
+          "height": 52,
+          "top": 1757.25,
+          "right": 76,
+          "bottom": 1809.25,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 244,
+          "y": 1757.25,
+          "width": 52,
+          "height": 52,
+          "top": 1757.25,
+          "right": 296,
+          "bottom": 1809.25,
+          "left": 244
+        },
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 2299.75,
+          "width": 52,
+          "height": 52,
+          "top": 2299.75,
+          "right": 76,
+          "bottom": 2351.75,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 244,
+          "y": 2299.75,
+          "width": 52,
+          "height": 52,
+          "top": 2299.75,
+          "right": 296,
+          "bottom": 2351.75,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 390,
+      "documentHeight": [
+        2609,
+        2609
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 1547.65625,
+          "width": 52,
+          "height": 52,
+          "top": 1547.65625,
+          "right": 76,
+          "bottom": 1599.65625,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 314,
+          "y": 1547.65625,
+          "width": 52,
+          "height": 52,
+          "top": 1547.65625,
+          "right": 366,
+          "bottom": 1599.65625,
+          "left": 314
+        },
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 2090.15625,
+          "width": 52,
+          "height": 52,
+          "top": 2090.15625,
+          "right": 76,
+          "bottom": 2142.15625,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 314,
+          "y": 2090.15625,
+          "width": 52,
+          "height": 52,
+          "top": 2090.15625,
+          "right": 366,
+          "bottom": 2142.15625,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 768,
+      "documentHeight": [
+        2376,
+        2376
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 1393.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1393.0625,
+          "right": 76,
+          "bottom": 1445.0625,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 692,
+          "y": 1393.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1393.0625,
+          "right": 744,
+          "bottom": 1445.0625,
+          "left": 692
+        },
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1868.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1868.8125,
+          "right": 76,
+          "bottom": 1920.8125,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 692,
+          "y": 1868.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1868.8125,
+          "right": 744,
+          "bottom": 1920.8125,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 1440,
+      "documentHeight": [
+        2252,
+        2252
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 296,
+          "y": 1337.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1337.0625,
+          "right": 348,
+          "bottom": 1389.0625,
+          "left": 296
+        },
+        {
+          "id": "covers-next",
+          "x": 1092,
+          "y": 1337.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1337.0625,
+          "right": 1144,
+          "bottom": 1389.0625,
+          "left": 1092
+        },
+        {
+          "id": "cards-prev",
+          "x": 296,
+          "y": 1812.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1812.8125,
+          "right": 348,
+          "bottom": 1864.8125,
+          "left": 296
+        },
+        {
+          "id": "cards-next",
+          "x": 1092,
+          "y": 1812.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1812.8125,
+          "right": 1144,
+          "bottom": 1864.8125,
+          "left": 1092
+        }
+      ]
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 720,
+      "documentHeight": [
+        2376,
+        2376
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 1393.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1393.0625,
+          "right": 76,
+          "bottom": 1445.0625,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 644,
+          "y": 1393.0625,
+          "width": 52,
+          "height": 52,
+          "top": 1393.0625,
+          "right": 696,
+          "bottom": 1445.0625,
+          "left": 644
+        },
+        {
+          "id": "cards-prev",
+          "x": 24,
+          "y": 1868.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1868.8125,
+          "right": 76,
+          "bottom": 1920.8125,
+          "left": 24
+        },
+        {
+          "id": "cards-next",
+          "x": 644,
+          "y": 1868.8125,
+          "width": 52,
+          "height": 52,
+          "top": 1868.8125,
+          "right": 696,
+          "bottom": 1920.8125,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 360,
+      "documentHeight": [
+        2660,
+        2660
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 1598.40625,
+          "width": 52,
+          "height": 52,
+          "top": 1598.40625,
+          "right": 76,
+          "bottom": 1650.40625,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 284,
+          "y": 1598.40625,
+          "width": 52,
+          "height": 52,
+          "top": 1598.40625,
+          "right": 336,
+          "bottom": 1650.40625,
+          "left": 284
+        },
+        {
+          "id": "cards-mobile-prev",
+          "x": 24,
+          "y": 2140.90625,
+          "width": 52,
+          "height": 52,
+          "top": 2140.90625,
+          "right": 76,
+          "bottom": 2192.90625,
+          "left": 24
+        },
+        {
+          "id": "cards-mobile-next",
+          "x": 284,
+          "y": 2140.90625,
+          "width": 52,
+          "height": 52,
+          "top": 2140.90625,
+          "right": 336,
+          "bottom": 2192.90625,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 320,
+      "documentHeight": [
+        1423,
+        1423
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 650,
+          "width": 52,
+          "height": 52,
+          "top": 650,
+          "right": 76,
+          "bottom": 702,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 244,
+          "y": 650,
+          "width": 52,
+          "height": 52,
+          "top": 650,
+          "right": 296,
+          "bottom": 702,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 390,
+      "documentHeight": [
+        1319,
+        1319
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 76,
+          "bottom": 658,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 314,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 366,
+          "bottom": 658,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 768,
+      "documentHeight": [
+        1299,
+        1299
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 76,
+          "bottom": 743.25,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 692,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 744,
+          "bottom": 743.25,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 1440,
+      "documentHeight": [
+        1231,
+        1231
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 296,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 348,
+          "bottom": 743.25,
+          "left": 296
+        },
+        {
+          "id": "covers-next",
+          "x": 1092,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 1144,
+          "bottom": 743.25,
+          "left": 1092
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 720,
+      "documentHeight": [
+        1299,
+        1299
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 76,
+          "bottom": 743.25,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 644,
+          "y": 691.25,
+          "width": 52,
+          "height": 52,
+          "top": 691.25,
+          "right": 696,
+          "bottom": 743.25,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 360,
+      "documentHeight": [
+        1347,
+        1347
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 634,
+          "width": 52,
+          "height": 52,
+          "top": 634,
+          "right": 76,
+          "bottom": 686,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 284,
+          "y": 634,
+          "width": 52,
+          "height": 52,
+          "top": 634,
+          "right": 336,
+          "bottom": 686,
+          "left": 284
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 320,
+      "documentHeight": [
+        1410,
+        1410
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 650,
+          "width": 52,
+          "height": 52,
+          "top": 650,
+          "right": 76,
+          "bottom": 702,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 244,
+          "y": 650,
+          "width": 52,
+          "height": 52,
+          "top": 650,
+          "right": 296,
+          "bottom": 702,
+          "left": 244
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 390,
+      "documentHeight": [
+        1306,
+        1306
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 76,
+          "bottom": 658,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 314,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 366,
+          "bottom": 658,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 768,
+      "documentHeight": [
+        1286,
+        1286
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 76,
+          "bottom": 736.75,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 692,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 744,
+          "bottom": 736.75,
+          "left": 692
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 1440,
+      "documentHeight": [
+        1218,
+        1218
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 296,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 348,
+          "bottom": 736.75,
+          "left": 296
+        },
+        {
+          "id": "covers-next",
+          "x": 1092,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 1144,
+          "bottom": 736.75,
+          "left": 1092
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 720,
+      "documentHeight": [
+        1286,
+        1286
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-prev",
+          "x": 24,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 76,
+          "bottom": 736.75,
+          "left": 24
+        },
+        {
+          "id": "covers-next",
+          "x": 644,
+          "y": 684.75,
+          "width": 52,
+          "height": 52,
+          "top": 684.75,
+          "right": 696,
+          "bottom": 736.75,
+          "left": 644
+        }
+      ]
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 360,
+      "documentHeight": [
+        1306,
+        1306
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "changes": [],
+      "controls": [
+        {
+          "id": "covers-mobile-prev",
+          "x": 24,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 76,
+          "bottom": 658,
+          "left": 24
+        },
+        {
+          "id": "covers-mobile-next",
+          "x": 284,
+          "y": 606,
+          "width": 52,
+          "height": 52,
+          "top": 606,
+          "right": 336,
+          "bottom": 658,
+          "left": 284
+        }
+      ]
+    }
+  ],
+  "pixels": [
+    {
+      "file": "about--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "about--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "about__ksenia--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "about__ksenia--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "about__vasily--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "about__vasily--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "blog--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "blog--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "blog__260515my-soavtory--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "blog__260515my-soavtory--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__aviatory--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__aviatory--390.png",
+      "changedPixels": 6768,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__aviatory__lore__aviatory-map--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__aviatory__lore__aviatory-map--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__danlin--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__danlin--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__gorod--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__gorod--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__kanveron--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__kanveron--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__muzyka--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__muzyka--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__ostrov--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__ostrov--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__stirayushchee--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__stirayushchee--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__virdolog--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "books__virdolog--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "home--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "home--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__detyam--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__detyam--390.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__fantasy--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__fantasy--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__mir-anu--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__mir-anu--390.png",
+      "changedPixels": 6768,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__romantika--1440.png",
+      "changedPixels": 0,
+      "changedOutsideButtons": 0
+    },
+    {
+      "file": "paths__romantika--390.png",
+      "changedPixels": 3384,
+      "changedOutsideButtons": 0
+    }
+  ]
+}
