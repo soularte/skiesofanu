@@ -1,0 +1,98 @@
+[
+  {
+    "height": 948,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+    "overlay": {
+      "x": 0,
+      "height": 948,
+      "bottom": 948,
+      "y": 0,
+      "width": 1440,
+      "left": 0,
+      "top": 0,
+      "right": 1440
+    },
+    "counter": "1 / 3",
+    "ratio": 0.7499505537974683
+  },
+  {
+    "height": 948,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+    "overlay": {
+      "x": 0,
+      "height": 948,
+      "bottom": 948,
+      "y": 0,
+      "width": 1440,
+      "left": 0,
+      "top": 0,
+      "right": 1440
+    },
+    "counter": "2 / 3",
+    "ratio": 0.7499505537974683
+  },
+  {
+    "height": 948,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+    "overlay": {
+      "x": 0,
+      "height": 948,
+      "bottom": 948,
+      "y": 0,
+      "width": 1440,
+      "left": 0,
+      "top": 0,
+      "right": 1440
+    },
+    "counter": "3 / 3",
+    "ratio": 0.7499505537974683
+  }
+]

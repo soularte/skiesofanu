@@ -1,0 +1,3116 @@
+[
+  {
+    "height": 948,
+    "widthRatio": 0.34912109375,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.625,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.734375,
+      "left": 468.625,
+      "top": 118.515625,
+      "right": 971.359375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6920789930555555,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 221.703125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 996.59375,
+      "left": 221.703125,
+      "top": 118.515625,
+      "right": 1218.296875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6983181423611111,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 217.203125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 1005.578125,
+      "left": 217.203125,
+      "top": 118.515625,
+      "right": 1222.78125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34908854166666664,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.65625,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.6875,
+      "left": 468.65625,
+      "top": 118.515625,
+      "right": 971.34375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Furalskiy-knigohod-2025-kotova.jpeg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34892578125,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.765625,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.453125,
+      "left": 468.765625,
+      "top": 118.515625,
+      "right": 971.21875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fogni-zolotye-2025-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34329427083333336,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 472.828125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 494.34375,
+      "left": 472.828125,
+      "top": 118.515625,
+      "right": 967.171875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fdrama-na-treh-stranicah-2025-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6920789930555555,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 221.703125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 996.59375,
+      "left": 221.703125,
+      "top": 118.515625,
+      "right": 1218.296875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2025-kotova-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3490451388888889,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.6875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.625,
+      "left": 468.6875,
+      "top": 118.515625,
+      "right": 971.3125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fagniya-barto-2025-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34918619791666666,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.578125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.828125,
+      "left": 468.578125,
+      "top": 118.515625,
+      "right": 971.40625
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fmuza-2025-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3510959201388889,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 467.203125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 505.578125,
+      "left": 467.203125,
+      "top": 118.515625,
+      "right": 972.78125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fkubok-bredberi-2022-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34912109375,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.625,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.734375,
+      "left": 468.625,
+      "top": 118.515625,
+      "right": 971.359375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6920789930555555,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 221.703125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 996.59375,
+      "left": 221.703125,
+      "top": 118.515625,
+      "right": 1218.296875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6920789930555555,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 221.703125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 996.59375,
+      "left": 221.703125,
+      "top": 118.515625,
+      "right": 1218.296875
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "cards",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.356640625,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "ratio": 0.7499505537974683,
+    "path": "/books/aviatory/",
+    "group": "characters",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.356640625,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "ratio": 0.7499505537974683,
+    "path": "/books/aviatory/",
+    "group": "characters",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.356640625,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 463.21875,
+      "height": 710.953125,
+      "bottom": 829.46875,
+      "y": 118.515625,
+      "width": 513.5625,
+      "left": 463.21875,
+      "top": 118.515625,
+      "right": 976.78125
+    },
+    "fits": true,
+    "ratio": 0.7499505537974683,
+    "path": "/books/aviatory/",
+    "group": "characters",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.6583116319444444,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 246.015625,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 947.96875,
+      "left": 246.015625,
+      "top": 118.515625,
+      "right": 1193.984375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "group": "lore-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 1440,
+    "image": {
+      "x": 144,
+      "height": 622.078125,
+      "bottom": 785.03125,
+      "y": 162.953125,
+      "width": 1152,
+      "left": 144,
+      "top": 162.953125,
+      "right": 1296
+    },
+    "fits": true,
+    "ratio": 0.6562005537974683,
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "group": "lore-article",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3480034722222222,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.4375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.125,
+      "left": 469.4375,
+      "top": 118.515625,
+      "right": 970.5625
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/danlin/",
+    "group": "cards",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/gorod/",
+    "group": "cards",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/kanveron/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/muzyka/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3480034722222222,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.4375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.125,
+      "left": 469.4375,
+      "top": 118.515625,
+      "right": 970.5625
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/ostrov/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.34797092013888886,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.453125,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.078125,
+      "left": 469.453125,
+      "top": 118.515625,
+      "right": 970.53125
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3492296006944444,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.546875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.890625,
+      "left": 468.546875,
+      "top": 118.515625,
+      "right": 971.4375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "characters",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3492296006944444,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.546875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.890625,
+      "left": 468.546875,
+      "top": 118.515625,
+      "right": 971.4375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "characters",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3492296006944444,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.546875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.890625,
+      "left": 468.546875,
+      "top": 118.515625,
+      "right": 971.4375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "characters",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3492296006944444,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.546875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.890625,
+      "left": 468.546875,
+      "top": 118.515625,
+      "right": 971.4375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "characters",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3492296006944444,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 468.546875,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 502.890625,
+      "left": 468.546875,
+      "top": 118.515625,
+      "right": 971.4375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/stirayushchee/",
+    "group": "characters",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3480034722222222,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 469.4375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 501.125,
+      "left": 469.4375,
+      "top": 118.515625,
+      "right": 970.5625
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/books/virdolog/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.20833333333333334,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 570,
+      "height": 450,
+      "bottom": 699,
+      "y": 249,
+      "width": 300,
+      "left": 570,
+      "top": 249,
+      "right": 870
+    },
+    "fits": true,
+    "ratio": 0.47468354430379744,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.3472222222222222,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 470,
+      "height": 300,
+      "bottom": 624,
+      "y": 324,
+      "width": 500,
+      "left": 470,
+      "top": 324,
+      "right": 970
+    },
+    "fits": true,
+    "ratio": 0.31645569620253167,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.24305555555555555,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 545,
+      "height": 350,
+      "bottom": 649,
+      "y": 299,
+      "width": 350,
+      "left": 545,
+      "top": 299,
+      "right": 895
+    },
+    "fits": true,
+    "ratio": 0.3691983122362869,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 948,
+    "widthRatio": 0.37030164930555554,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 1440,
+    "image": {
+      "x": 453.375,
+      "height": 710.96875,
+      "bottom": 829.484375,
+      "y": 118.515625,
+      "width": 533.234375,
+      "left": 453.375,
+      "top": 118.515625,
+      "right": 986.609375
+    },
+    "fits": true,
+    "ratio": 0.7499670358649789,
+    "path": "/paths/mir-anu/",
+    "group": "cards",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.572734375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.171875,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.640625,
+      "left": 128.171875,
+      "top": 81,
+      "right": 471.8125
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 342.421875,
+      "bottom": 495.203125,
+      "y": 152.78125,
+      "width": 480,
+      "left": 60,
+      "top": 152.78125,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.5284288194444444,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 339.375,
+      "bottom": 493.6875,
+      "y": 154.3125,
+      "width": 480,
+      "left": 60,
+      "top": 154.3125,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.5237268518518519,
+    "path": "/about/ksenia/",
+    "group": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.572734375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.171875,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.640625,
+      "left": 128.171875,
+      "top": 81,
+      "right": 471.8125
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 342.421875,
+      "bottom": 495.203125,
+      "y": 152.78125,
+      "width": 480,
+      "left": 60,
+      "top": 152.78125,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.5284288194444444,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 342.421875,
+      "bottom": 495.203125,
+      "y": 152.78125,
+      "width": 480,
+      "left": 60,
+      "top": 152.78125,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.5284288194444444,
+    "path": "/about/vasily/",
+    "group": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/aviatory/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/aviatory/",
+    "group": "cards-mobile",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/aviatory/",
+    "group": "series-covers",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.585078125,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 124.46875,
+      "height": 485.96875,
+      "bottom": 566.984375,
+      "y": 81.015625,
+      "width": 351.046875,
+      "left": 124.46875,
+      "top": 81.015625,
+      "right": 475.515625
+    },
+    "fits": true,
+    "ratio": 0.749951774691358,
+    "path": "/books/aviatory/",
+    "group": "characters-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.585078125,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 124.46875,
+      "height": 485.96875,
+      "bottom": 566.984375,
+      "y": 81.015625,
+      "width": 351.046875,
+      "left": 124.46875,
+      "top": 81.015625,
+      "right": 475.515625
+    },
+    "fits": true,
+    "ratio": 0.749951774691358,
+    "path": "/books/aviatory/",
+    "group": "characters-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.585078125,
+    "centerError": [
+      -0.0078125,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 124.46875,
+      "height": 485.96875,
+      "bottom": 566.984375,
+      "y": 81.015625,
+      "width": 351.046875,
+      "left": 124.46875,
+      "top": 81.015625,
+      "right": 475.515625
+    },
+    "fits": true,
+    "ratio": 0.749951774691358,
+    "path": "/books/aviatory/",
+    "group": "characters-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 360,
+      "bottom": 504,
+      "y": 144,
+      "width": 480,
+      "left": 60,
+      "top": 144,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.5555555555555556,
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "group": "lore-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 259.1875,
+      "bottom": 453.59375,
+      "y": 194.40625,
+      "width": 480,
+      "left": 60,
+      "top": 194.40625,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.3999807098765432,
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "group": "lore-article",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5709114583333333,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.71875,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.546875,
+      "left": 128.71875,
+      "top": 81,
+      "right": 471.265625
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/danlin/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/danlin/",
+    "group": "cards-mobile",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/gorod/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/books/gorod/",
+    "group": "cards-mobile",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/kanveron/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/kanveron/",
+    "group": "series-covers",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/muzyka/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5709114583333333,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.71875,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.546875,
+      "left": 128.71875,
+      "top": 81,
+      "right": 471.265625
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/ostrov/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.570859375,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.734375,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.515625,
+      "left": 128.734375,
+      "top": 81,
+      "right": 471.25
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5729166666666666,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.125,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.75,
+      "left": 128.125,
+      "top": 81,
+      "right": 471.875
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "characters-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5729166666666666,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.125,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.75,
+      "left": 128.125,
+      "top": 81,
+      "right": 471.875
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "characters-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5729166666666666,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.125,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.75,
+      "left": 128.125,
+      "top": 81,
+      "right": 471.875
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "characters-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5729166666666666,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.125,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.75,
+      "left": 128.125,
+      "top": 81,
+      "right": 471.875
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "characters-mobile",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5729166666666666,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.125,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 343.75,
+      "left": 128.125,
+      "top": 81,
+      "right": 471.875
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/stirayushchee/",
+    "group": "characters-mobile",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5709114583333333,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "width": 600,
+    "image": {
+      "x": 128.71875,
+      "height": 485.984375,
+      "bottom": 566.984375,
+      "y": 81,
+      "width": 342.546875,
+      "left": 128.71875,
+      "top": 81,
+      "right": 471.265625
+    },
+    "fits": true,
+    "ratio": 0.749975887345679,
+    "path": "/books/virdolog/",
+    "group": "book-cover",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 150,
+      "height": 450,
+      "bottom": 549,
+      "y": 99,
+      "width": 300,
+      "left": 150,
+      "top": 99,
+      "right": 450
+    },
+    "fits": true,
+    "ratio": 0.6944444444444444,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.8,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 60,
+      "height": 288,
+      "bottom": 468,
+      "y": 180,
+      "width": 480,
+      "left": 60,
+      "top": 180,
+      "right": 540
+    },
+    "fits": true,
+    "ratio": 0.4444444444444444,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.5833333333333334,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 125,
+      "height": 350,
+      "bottom": 499,
+      "y": 149,
+      "width": 350,
+      "left": 125,
+      "top": 149,
+      "right": 475
+    },
+    "fits": true,
+    "ratio": 0.5401234567901234,
+    "path": "/paths/mir-anu/",
+    "group": "path-inline",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 0,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 1,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 2,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 3,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 4,
+    "passed": true
+  },
+  {
+    "height": 648,
+    "widthRatio": 0.6075,
+    "centerError": [
+      0,
+      0
+    ],
+    "width": 600,
+    "image": {
+      "x": 117.75,
+      "height": 486,
+      "bottom": 567,
+      "y": 81,
+      "width": 364.5,
+      "left": 117.75,
+      "top": 81,
+      "right": 482.25
+    },
+    "fits": true,
+    "ratio": 0.75,
+    "path": "/paths/mir-anu/",
+    "group": "cards-mobile",
+    "index": 5,
+    "passed": true
+  },
+  {
+    "height": 598,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "widthRatio": 0.2699739583333333,
+    "ratio": 0.7499738712374582,
+    "fits": true,
+    "width": 1200,
+    "test": "resize-open",
+    "passed": true
+  },
+  {
+    "height": 448,
+    "centerError": [
+      -0.0078125,
+      -0.0078125
+    ],
+    "widthRatio": 0.4045052083333333,
+    "ratio": 0.7499651227678571,
+    "fits": true,
+    "width": 600,
+    "test": "resize-open",
+    "passed": true
+  },
+  {
+    "height": 948,
+    "centerError": [
+      0,
+      -0.0078125
+    ],
+    "widthRatio": 0.356640625,
+    "ratio": 0.7499505537974683,
+    "fits": true,
+    "width": 1440,
+    "test": "resize-open",
+    "passed": true
+  }
+]

@@ -1,0 +1,547 @@
+[
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/",
+    "result": {
+      "active": [
+        "Главная",
+        "Главная"
+      ],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 4668
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/about/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/about/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 3897
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/about/ksenia/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/about/ksenia/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 34777
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/about/vasily/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/about/vasily/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 37038
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/blog/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/blog/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 1912
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/blog/260515my-soavtory/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/blog/260515my-soavtory/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 7709
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 0,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 8131
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/aviatory/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 23,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/aviatory/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 12386
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 2,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 3201
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/danlin/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 13,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/danlin/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 4919
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/gorod/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 13,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/gorod/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 5867
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/kanveron/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 4,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/kanveron/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 4694
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/muzyka/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 1,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/muzyka/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 2651
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/ostrov/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 1,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/ostrov/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 2027
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/stirayushchee/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 11,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/stirayushchee/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 5888
+    }
+  },
+  {
+    "test": "navigation-and-anchors",
+    "url": "https://skiesofanu.ru/books/virdolog/",
+    "result": {
+      "active": [],
+      "missingAnchors": [],
+      "unfocusableImageTriggers": 1,
+      "video": [],
+      "sticky": [
+        {
+          "height": 125,
+          "top": "0px"
+        }
+      ]
+    }
+  },
+  {
+    "test": "text200",
+    "url": "https://skiesofanu.ru/books/virdolog/",
+    "result": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 2119
+    }
+  },
+  {
+    "test": "mobile-cover-hit-targets",
+    "result": [
+      {
+        "portion": 0.05,
+        "hit": "<button id=\"covers-mobile-prev\" aria-label=\"Назад\" class=\"absolute left-0 top-0 bottom-0 w-1/4 z-10\" data-astro-cid-w4fhw64p=\"\"></button>"
+      },
+      {
+        "portion": 0.5,
+        "hit": "<a href=\"/books/aviatory\" class=\"group block relative shadow-md\" style=\"width: 200px;\" draggable=\"false\" data-astro-cid-w4fhw64p=\"\"> <img src=\"/_astro/mir-anu.CX1IRocp_JS1XU.webp\" srcset=\"/_astro/mir-anu.CX1IRocp_ugkbs.w"
+      },
+      {
+        "portion": 0.95,
+        "hit": "<button id=\"covers-mobile-next\" aria-label=\"Вперёд\" class=\"absolute right-0 top-0 bottom-0 w-1/4 z-10\" data-astro-cid-w4fhw64p=\"\"></button>"
+      }
+    ]
+  },
+  {
+    "test": "gallery-dot-change",
+    "result": {
+      "transform": "translateX(-100%)",
+      "active": [
+        1
+      ],
+      "pressed": null,
+      "label": null
+    }
+  },
+  {
+    "test": "gallery-keyboard-focus",
+    "result": {
+      "focused": true,
+      "opacity": "0",
+      "outline": "rgb(44, 44, 44) none 3px"
+    }
+  },
+  {
+    "test": "lightbox-open",
+    "result": {
+      "open": true,
+      "focus": "lb-close",
+      "alt": "Авиаторы Его Величества"
+    }
+  },
+  {
+    "test": "lightbox-tab-sequence",
+    "result": [
+      {
+        "id": "back-to-top",
+        "tag": "BUTTON",
+        "inDialog": false
+      },
+      {
+        "id": "",
+        "tag": "A",
+        "inDialog": false
+      },
+      {
+        "id": "",
+        "tag": "A",
+        "inDialog": false
+      },
+      {
+        "id": "",
+        "tag": "A",
+        "inDialog": false
+      },
+      {
+        "id": "",
+        "tag": "A",
+        "inDialog": false
+      }
+    ]
+  },
+  {
+    "test": "lightbox-escape",
+    "result": true
+  },
+  {
+    "test": "author-more-ksenia",
+    "result": {
+      "before": 5,
+      "after": 10,
+      "button": "Показать ещё"
+    }
+  },
+  {
+    "test": "author-anchor-ksenia",
+    "result": {
+      "top": 143.828125,
+      "open": true,
+      "stickyBottom": 125
+    }
+  },
+  {
+    "test": "author-more-vasily",
+    "result": {
+      "before": 5,
+      "after": 10,
+      "button": "Показать ещё"
+    }
+  },
+  {
+    "test": "author-anchor-vasily",
+    "result": {
+      "top": 144.296875,
+      "open": true,
+      "stickyBottom": 125
+    }
+  },
+  {
+    "test": "blog-filter",
+    "result": {
+      "active": "filter-btn text-[11px] tracking-widest uppercase px-2 py-1 transition-colors cursor-pointer hover:border-dp-gold hover:text-dp-text bg-dp-gold text-dp-dark",
+      "pressed": null,
+      "cards": [
+        {
+          "text": "      15 мая 2026 г.    Мы - соавторы    Мы - создатели миров и соавторы уже много лет, и ",
+          "display": "flex"
+        }
+      ]
+    }
+  },
+  {
+    "test": "low-height-reflow",
+    "result": {
+      "height": 250,
+      "headerBottom": 125,
+      "bannerTop": 140,
+      "freeSpace": 15,
+      "closeRect": {
+        "x": 308,
+        "y": 181,
+        "width": 28,
+        "height": 28,
+        "top": 181,
+        "right": 336,
+        "bottom": 209,
+        "left": 308
+      }
+    }
+  }
+]

@@ -1,0 +1,2566 @@
+{
+  "geometry": [
+    {
+      "path": "/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2963,
+        2963
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2676,
+        2676
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2392,
+        2392
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2365,
+        2365
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2588,
+        2588
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 453,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2783,
+        2783
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3080,
+        3080
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2644,
+        2644
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1922,
+        1922
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1428,
+        1428
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2178,
+        2178
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 198,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2719,
+        2719
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        13966,
+        13966
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        12856,
+        12856
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        17093,
+        17093
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        17025,
+        17025
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        17093,
+        17093
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/ksenia/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 1772,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        13047,
+        13047
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        17264,
+        17264
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        16036,
+        16036
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        20118,
+        20118
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        20050,
+        20050
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        20118,
+        20118
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/about/vasily/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 2294,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        16170,
+        16170
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1123,
+        1123
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1077,
+        1077
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1104,
+        1104
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1006,
+        1006
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1276,
+        1276
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 104,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1055,
+        1055
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        6375,
+        6375
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        5455,
+        5455
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3807,
+        3807
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3739,
+        3739
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3911,
+        3911
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/blog/260515my-soavtory/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 146,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        5825,
+        5825
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        8592,
+        8592
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        7688,
+        7688
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4149,
+        4149
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3627,
+        3627
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        6548,
+        6548
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        7905,
+        7905
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        12339,
+        12339
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        10812,
+        10812
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        7300,
+        7300
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        6315,
+        6315
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        7640,
+        7640
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 451,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        11298,
+        11298
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1273,
+        1273
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1260,
+        1260
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1719,
+        1719
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1651,
+        1651
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1657,
+        1657
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/aviatory/lore/aviatory-map/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 114,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1221,
+        1221
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4643,
+        4643
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3999,
+        3999
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2597,
+        2597
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2244,
+        2244
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3132,
+        3132
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/danlin/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 209,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4207,
+        4207
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        5795,
+        5795
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4873,
+        4873
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3113,
+        3113
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2651,
+        2651
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3544,
+        3544
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/gorod/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 220,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        5133,
+        5133
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4788,
+        4788
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4257,
+        4257
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2884,
+        2884
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2731,
+        2731
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3214,
+        3214
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/kanveron/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 237,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4419,
+        4419
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2530,
+        2530
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2062,
+        2062
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1433,
+        1433
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1109,
+        1109
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1622,
+        1622
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/muzyka/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 137,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2192,
+        2192
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1845,
+        1845
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1646,
+        1646
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1143,
+        1143
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1000,
+        1000
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1414,
+        1414
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/ostrov/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 133,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1743,
+        1743
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        5410,
+        5410
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4598,
+        4598
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3271,
+        3271
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2667,
+        2667
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        3469,
+        3469
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/stirayushchee/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 292,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        4810,
+        4810
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1901,
+        1901
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1721,
+        1721
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1141,
+        1141
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1000,
+        1000
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1482,
+        1482
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/books/virdolog/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 135,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1747,
+        1747
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1279,
+        1279
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1175,
+        1175
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1135,
+        1135
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/detyam/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 136,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1203,
+        1203
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2879,
+        2879
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2609,
+        2609
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2376,
+        2376
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2252,
+        2252
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2376,
+        2376
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/mir-anu/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 269,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        2660,
+        2660
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1423,
+        1423
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1319,
+        1319
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1299,
+        1299
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1231,
+        1231
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1299,
+        1299
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/fantasy/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 285,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1347,
+        1347
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 320,
+      "viewportHeight": 740,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1410,
+        1410
+      ],
+      "scrollWidth": [
+        320,
+        320
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 390,
+      "viewportHeight": 844,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1306,
+        1306
+      ],
+      "scrollWidth": [
+        390,
+        390
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 768,
+      "viewportHeight": 1024,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1286,
+        1286
+      ],
+      "scrollWidth": [
+        768,
+        768
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 1440,
+      "viewportHeight": 1000,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1218,
+        1218
+      ],
+      "scrollWidth": [
+        1440,
+        1440
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 720,
+      "viewportHeight": 500,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1286,
+        1286
+      ],
+      "scrollWidth": [
+        720,
+        720
+      ],
+      "errors": []
+    },
+    {
+      "path": "/paths/romantika/",
+      "width": 360,
+      "viewportHeight": 250,
+      "nodeCount": 200,
+      "changedCount": 0,
+      "changes": [],
+      "documentHeight": [
+        1306,
+        1306
+      ],
+      "scrollWidth": [
+        360,
+        360
+      ],
+      "errors": []
+    }
+  ],
+  "pixels": [
+    {
+      "file": "about--1440.png",
+      "before": [
+        1440,
+        1428
+      ],
+      "after": [
+        1440,
+        1428
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "about--390.png",
+      "before": [
+        390,
+        2644
+      ],
+      "after": [
+        390,
+        2644
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "about__ksenia--1440.png",
+      "before": [
+        1440,
+        17025
+      ],
+      "after": [
+        1440,
+        17025
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "about__ksenia--390.png",
+      "before": [
+        390,
+        12856
+      ],
+      "after": [
+        390,
+        12856
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "about__vasily--1440.png",
+      "before": [
+        1440,
+        20050
+      ],
+      "after": [
+        1440,
+        20050
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "about__vasily--390.png",
+      "before": [
+        390,
+        16036
+      ],
+      "after": [
+        390,
+        16036
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "blog--1440.png",
+      "before": [
+        1440,
+        1006
+      ],
+      "after": [
+        1440,
+        1006
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "blog--390.png",
+      "before": [
+        390,
+        1077
+      ],
+      "after": [
+        390,
+        1077
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "blog__260515my-soavtory--1440.png",
+      "before": [
+        1440,
+        3739
+      ],
+      "after": [
+        1440,
+        3739
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "blog__260515my-soavtory--390.png",
+      "before": [
+        390,
+        5455
+      ],
+      "after": [
+        390,
+        5455
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books--1440.png",
+      "before": [
+        1440,
+        3627
+      ],
+      "after": [
+        1440,
+        3627
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books--390.png",
+      "before": [
+        390,
+        7688
+      ],
+      "after": [
+        390,
+        7688
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__aviatory--1440.png",
+      "before": [
+        1440,
+        6315
+      ],
+      "after": [
+        1440,
+        6315
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__aviatory--390.png",
+      "before": [
+        390,
+        10812
+      ],
+      "after": [
+        390,
+        10812
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__aviatory__lore__aviatory-map--1440.png",
+      "before": [
+        1440,
+        1651
+      ],
+      "after": [
+        1440,
+        1651
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__aviatory__lore__aviatory-map--390.png",
+      "before": [
+        390,
+        1260
+      ],
+      "after": [
+        390,
+        1260
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__danlin--1440.png",
+      "before": [
+        1440,
+        2244
+      ],
+      "after": [
+        1440,
+        2244
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__danlin--390.png",
+      "before": [
+        390,
+        3999
+      ],
+      "after": [
+        390,
+        3999
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__gorod--1440.png",
+      "before": [
+        1440,
+        2651
+      ],
+      "after": [
+        1440,
+        2651
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__gorod--390.png",
+      "before": [
+        390,
+        4873
+      ],
+      "after": [
+        390,
+        4873
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__kanveron--1440.png",
+      "before": [
+        1440,
+        2731
+      ],
+      "after": [
+        1440,
+        2731
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__kanveron--390.png",
+      "before": [
+        390,
+        4257
+      ],
+      "after": [
+        390,
+        4257
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__muzyka--1440.png",
+      "before": [
+        1440,
+        1109
+      ],
+      "after": [
+        1440,
+        1109
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__muzyka--390.png",
+      "before": [
+        390,
+        2062
+      ],
+      "after": [
+        390,
+        2062
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__ostrov--1440.png",
+      "before": [
+        1440,
+        1000
+      ],
+      "after": [
+        1440,
+        1000
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__ostrov--390.png",
+      "before": [
+        390,
+        1646
+      ],
+      "after": [
+        390,
+        1646
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__stirayushchee--1440.png",
+      "before": [
+        1440,
+        2667
+      ],
+      "after": [
+        1440,
+        2667
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__stirayushchee--390.png",
+      "before": [
+        390,
+        4598
+      ],
+      "after": [
+        390,
+        4598
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__virdolog--1440.png",
+      "before": [
+        1440,
+        1000
+      ],
+      "after": [
+        1440,
+        1000
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "books__virdolog--390.png",
+      "before": [
+        390,
+        1721
+      ],
+      "after": [
+        390,
+        1721
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "home--1440.png",
+      "before": [
+        1440,
+        2365
+      ],
+      "after": [
+        1440,
+        2365
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "home--390.png",
+      "before": [
+        390,
+        2676
+      ],
+      "after": [
+        390,
+        2676
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__detyam--1440.png",
+      "before": [
+        1440,
+        1135
+      ],
+      "after": [
+        1440,
+        1135
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__detyam--390.png",
+      "before": [
+        390,
+        1175
+      ],
+      "after": [
+        390,
+        1175
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__fantasy--1440.png",
+      "before": [
+        1440,
+        1231
+      ],
+      "after": [
+        1440,
+        1231
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__fantasy--390.png",
+      "before": [
+        390,
+        1319
+      ],
+      "after": [
+        390,
+        1319
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__mir-anu--1440.png",
+      "before": [
+        1440,
+        2252
+      ],
+      "after": [
+        1440,
+        2252
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__mir-anu--390.png",
+      "before": [
+        390,
+        2609
+      ],
+      "after": [
+        390,
+        2609
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__romantika--1440.png",
+      "before": [
+        1440,
+        1218
+      ],
+      "after": [
+        1440,
+        1218
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    },
+    {
+      "file": "paths__romantika--390.png",
+      "before": [
+        390,
+        1306
+      ],
+      "after": [
+        390,
+        1306
+      ],
+      "changedPixels": 0,
+      "percentage": 0
+    }
+  ]
+}

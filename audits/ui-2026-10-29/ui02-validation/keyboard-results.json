@@ -1,0 +1,2630 @@
+[
+  {
+    "path": "/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state",
+      "chars slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory__lore__aviatory-map--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__danlin--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__gorod--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__kanveron--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__muzyka--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__ostrov--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "chars slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__stirayushchee--320.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__virdolog--320.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "path-inline",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-paths__mir-anu--320.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 320,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state",
+      "chars slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory__lore__aviatory-map--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__danlin--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__gorod--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__kanveron--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__muzyka--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__ostrov--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "chars slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__stirayushchee--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__virdolog--390.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state",
+      "cards slide changes inert state"
+    ],
+    "groups": [
+      {
+        "name": "path-inline",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-paths__mir-anu--390.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 390,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert",
+      "covers slide changes inert state"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Furalskiy-knigohod-2025-kotova.jpeg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fogni-zolotye-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fdrama-na-treh-stranicah-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fagniya-barto-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fmuza-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fkubok-bredberi-2022-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory__lore__aviatory-map--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__danlin--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__gorod--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__kanveron--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__muzyka--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__ostrov--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__stirayushchee--768.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__virdolog--768.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "path-inline",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-paths__mir-anu--768.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 768,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Furalskiy-knigohod-2025-kotova.jpeg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fogni-zolotye-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fdrama-na-treh-stranicah-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fagniya-barto-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fmuza-2025-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fkubok-bredberi-2022-kotova.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__aviatory__lore__aviatory-map--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__danlin--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__gorod--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__kanveron--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__muzyka--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__ostrov--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__stirayushchee--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-books__virdolog--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/detyam/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/mir-anu/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [
+      {
+        "name": "path-inline",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "trigger accepts focus",
+          "Enter opens",
+          "Shift Tab stays in modal",
+          "Tab stays in modal",
+          "keyboard arrows round trip",
+          "Escape restores focus and scrolling",
+          "Space keydown does not scroll or open early",
+          "Space keyup opens",
+          "close restores focus again",
+          "real Tab traversal reaches trigger"
+        ]
+      }
+    ],
+    "nestedInteractive": [],
+    "focusScreenshot": "focus-paths__mir-anu--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/paths/fantasy/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  },
+  {
+    "path": "/paths/romantika/",
+    "width": 1440,
+    "checks": [
+      "all triggers have semantics and names",
+      "no horizontal document overflow",
+      "inactive mobile slides are inert"
+    ],
+    "groups": [],
+    "nestedInteractive": [],
+    "passed": true
+  }
+]

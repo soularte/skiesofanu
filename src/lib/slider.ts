@@ -25,7 +25,9 @@ export function initSlider({ prefix, step }: SliderOptions) {
   const slider = document.getElementById(`${prefix}-slider`) as HTMLElement | null;
   if (!slider) return;
 
-  const total = slider.children.length;
+  const slides = Array.from(slider.children) as HTMLElement[];
+  const originalInert = slides.map(slide => slide.inert);
+  const total = slides.length;
   let current = 0;
   const dots = document.querySelectorAll(`.${prefix}-dot`);
 
@@ -34,6 +36,9 @@ export function initSlider({ prefix, step }: SliderOptions) {
     if (index >= total) index = total - 1;
     current = index;
     slider!.style.transform = `translateX(-${current * 100}%)`;
+    // Translated slides remain in the DOM; only the visible slide is interactive.
+    // Inert does not affect their dimensions or the existing swipe handlers.
+    slides.forEach((slide, i) => { slide.inert = originalInert[i] || i !== current; });
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
   }
 

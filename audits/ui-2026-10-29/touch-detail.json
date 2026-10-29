@@ -1,0 +1,14 @@
+[
+  {
+    "start": 280,
+    "y": 317,
+    "hit": "<button id=\"covers-mobile-next\" aria-label=\"Вперёд\" class=\"absolute right-0 top-0 bottom-0 w-1/4 z-10\" data-astro-cid-w4fhw64p=\"\"></button>",
+    "transform": "translateX(0%)"
+  },
+  {
+    "start": 220,
+    "y": 317,
+    "hit": "<div class=\"absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300\" data-astro-cid-w4fhw64p=\"\"></div>",
+    "transform": "translateX(-100%)"
+  }
+]

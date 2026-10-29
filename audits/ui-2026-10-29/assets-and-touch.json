@@ -1,0 +1,214 @@
+[
+  {
+    "url": "https://skiesofanu.ru/",
+    "result": {
+      "broken": [],
+      "pending": [
+        "/_astro/detyam.Dv1HU9cO_2wkveS.webp",
+        "/_astro/romantika.CcYBhPP-_1St3pn.webp",
+        "/_astro/04%20%D0%9F%D1%83%D1%81%D1%82%D1%8C%20%D1%8D%D1%82%D0%B0%20%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0%20%D1%81%D1%82%D0%B8%D1%85%D0%BD%D0%B5%D1%82.DTp10WSl_Y9whF.webp",
+        "/_astro/06%20%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20%D0%B1%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8.CGJhj7ja_1yYRM1.webp",
+        "/_astro/07%20%D0%94%D0%B0%D0%BD%D0%BB%D0%B8%D0%BD.CQkJgeUo_Z2eDlVc.webp",
+        "/_astro/mir-anu.CX1IRocp_JS1XU.webp",
+        "/_astro/%D0%9C%D0%9A1.meLYkOeo_Z1C95BJ.webp",
+        "/_astro/02%20%D0%92%D0%B8%D1%80%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%20.YuaiA_Ln_Z1M4ng8.webp",
+        "/_astro/detyam.Dv1HU9cO_2wkveS.webp",
+        "/_astro/romantika.CcYBhPP-_1St3pn.webp",
+        "/_astro/04%20%D0%9F%D1%83%D1%81%D1%82%D1%8C%20%D1%8D%D1%82%D0%B0%20%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0%20%D1%81%D1%82%D0%B8%D1%85%D0%BD%D0%B5%D1%82.DTp10WSl_Y9whF.webp",
+        "/_astro/06%20%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20%D0%B1%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8.CGJhj7ja_1yYRM1.webp",
+        "/_astro/07%20%D0%94%D0%B0%D0%BD%D0%BB%D0%B8%D0%BD.CQkJgeUo_Z2eDlVc.webp"
+      ],
+      "mainOverflow": false,
+      "bodyHeight": 2676
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/about/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 2644
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/about/ksenia/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 12856
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/about/vasily/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 16036
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/blog/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 1077
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/blog/260515my-soavtory/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 5455
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 7688
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/aviatory/",
+    "result": {
+      "broken": [],
+      "pending": [
+        "/cards/Aviators/4.png",
+        "/cards/Aviators/5.png",
+        "/cards/Aviators/6.png",
+        "/cards/Aviators/1.png",
+        "/cards/Aviators/2.png",
+        "/cards/Aviators/3.png",
+        "/cards/Aviators/4.png",
+        "/cards/Aviators/5.png",
+        "/cards/Aviators/6.png",
+        "/_astro/lem.B7IcJYEe_1YpPFY.webp",
+        "/_astro/leoven.-n3zAatq_1DcVTG.webp",
+        "/_astro/sevan.CVDoYsie_Z12QGy0.webp"
+      ],
+      "mainOverflow": false,
+      "bodyHeight": 10812
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 1260
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/danlin/",
+    "result": {
+      "broken": [],
+      "pending": [
+        "/cards/Danlin/4.jpg",
+        "/cards/Danlin/5.jpg",
+        "/cards/Danlin/6.jpg",
+        "/cards/Danlin/1.jpg",
+        "/cards/Danlin/2.jpg",
+        "/cards/Danlin/3.jpg",
+        "/cards/Danlin/4.jpg",
+        "/cards/Danlin/5.jpg",
+        "/cards/Danlin/6.jpg"
+      ],
+      "mainOverflow": false,
+      "bodyHeight": 3999
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/gorod/",
+    "result": {
+      "broken": [],
+      "pending": [
+        "/cards/Gorod/4.jpg",
+        "/cards/Gorod/5.jpg",
+        "/cards/Gorod/6.jpg",
+        "/cards/Gorod/1.jpg",
+        "/cards/Gorod/2.jpg",
+        "/cards/Gorod/3.jpg",
+        "/cards/Gorod/4.jpg",
+        "/cards/Gorod/5.jpg",
+        "/cards/Gorod/6.jpg"
+      ],
+      "mainOverflow": false,
+      "bodyHeight": 4873
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/kanveron/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 4257
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/muzyka/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 2062
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/ostrov/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 1646
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/stirayushchee/",
+    "result": {
+      "broken": [],
+      "pending": [
+        "/_astro/tma.BDISajoU_ZUMqF2.webp",
+        "/_astro/angel.RFPki7g__GrI9C.webp",
+        "/_astro/anna.CoKQ3j-J_1DPy56.webp",
+        "/_astro/dream.CVLR9oos_bs8PK.webp",
+        "/_astro/blackman.BhSWDLnA_Z2iQFBu.webp",
+        "/_astro/tma.BDISajoU_ZUMqF2.webp",
+        "/_astro/angel.RFPki7g__GrI9C.webp"
+      ],
+      "mainOverflow": false,
+      "bodyHeight": 4598
+    }
+  },
+  {
+    "url": "https://skiesofanu.ru/books/virdolog/",
+    "result": {
+      "broken": [],
+      "pending": [],
+      "mainOverflow": false,
+      "bodyHeight": 1721
+    }
+  },
+  {
+    "test": "touch-swipe",
+    "result": {
+      "transform": "translateX(0%)"
+    }
+  },
+  {
+    "test": "carousel-offscreen-tab-targets",
+    "result": {
+      "active": 0,
+      "inactiveFocusable": 40
+    }
+  }
+]

@@ -49,7 +49,7 @@ const aria = ui.aria ?? {};
     id="lb-img"
     src=""
     alt=""
-    class="max-h-[90vh] max-w-[90vw] object-contain select-none"
+    class="object-contain select-none"
   />
 
   <!-- Counter -->
@@ -68,25 +68,51 @@ const aria = ui.aria ?? {};
   let previousOverflow = '';
   let gallery: string[] = [];
   let currentIndex = 0;
+  const backgroundState = new Map<HTMLElement, boolean>();
 
-  function openLightbox(images: string[], startIndex: number) {
-    opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    previousOverflow = document.body.style.overflow;
+  function openLightbox(images: string[], startIndex: number, trigger?: HTMLElement) {
+    if (!images.length) return;
+    if (lightbox.classList.contains('hidden')) {
+      opener = trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+      previousOverflow = document.body.style.overflow;
+      // The overlay is a direct child of body. Preserve existing inert states.
+      for (const sibling of document.body.children) {
+        if (sibling instanceof HTMLElement && sibling !== lightbox) {
+          backgroundState.set(sibling, sibling.inert);
+          sibling.inert = true;
+        }
+      }
+    }
     gallery = images;
-    currentIndex = startIndex;
+    currentIndex = Math.max(0, Math.min(startIndex, images.length - 1));
     showImage();
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
     document.body.style.overflow = 'hidden';
     updateArrows();
-    lbClose.focus();
+    lbClose.focus({ preventScroll: true });
   }
 
   function closeLightbox() {
+    if (lightbox.classList.contains('hidden')) return;
     lightbox.classList.add('hidden');
     lightbox.classList.remove('flex');
     document.body.style.overflow = previousOverflow;
-    opener?.focus({ preventScroll: true });
+    backgroundState.forEach((wasInert, element) => { element.inert = wasInert; });
+    backgroundState.clear();
+    if (opener?.isConnected) {
+      // Images and gallery containers are clickable but not normally focusable.
+      // Return focus without introducing a permanent extra Tab stop.
+      const temporaryTabIndex = opener.tabIndex < 0 && !opener.hasAttribute('tabindex');
+      if (temporaryTabIndex) {
+        const target = opener;
+        target.setAttribute('tabindex', '-1');
+        // Removing tabindex while an image is focused blurs it in Chrome.
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+      }
+      opener.focus({ preventScroll: true });
+    }
+    opener = null;
     gallery = [];
   }
 
@@ -98,7 +124,7 @@ const aria = ui.aria ?? {};
       const src = el.getAttribute('data-lightbox-src') || (el as HTMLImageElement).src || el.querySelector('img')?.src || '';
       return src === gallery[currentIndex];
     });
-    const altText = triggerEl?.getAttribute('alt') || triggerEl?.getAttribute('aria-label') || triggerEl?.querySelector('img')?.getAttribute('alt') || '';
+    const altText = triggerEl ? imageDescription(triggerEl) : '';
     lbImg.alt = altText;
     lbCounter.textContent = gallery.length > 1 ? `${currentIndex + 1} / ${gallery.length}` : '';
   }
@@ -132,28 +158,90 @@ const aria = ui.aria ?? {};
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('hidden')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') goNext();
-    if (e.key === 'ArrowLeft') goPrev();
+    if (e.key === 'Tab') {
+      const controls = [lbClose, lbPrev, lbNext].filter(button => !button.disabled && button.getClientRects().length > 0);
+      const index = controls.indexOf(document.activeElement as HTMLButtonElement);
+      const next = index < 0 ? (e.shiftKey ? controls.length - 1 : 0)
+        : (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length;
+      e.preventDefault();
+      controls[next].focus({ preventScroll: true });
+    }
+    if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
   });
 
   // Expose global open function for galleries
   (window as any).__openLightbox = openLightbox;
 
-  // Auto-attach to elements with data-lightbox-group
-  document.querySelectorAll('[data-lightbox-group]').forEach(el => {
-    el.addEventListener('click', (event) => {
-      event.preventDefault();
-      const group = el.getAttribute('data-lightbox-group')!;
-      const allInGroup = Array.from(document.querySelectorAll(`[data-lightbox-group="${group}"]`));
-      const images = allInGroup.map(item => {
-        return item.getAttribute('data-lightbox-src')
-          || (item as HTMLImageElement).src
-          || item.querySelector('img')?.src
-          || '';
-      }).filter(Boolean);
-      const index = allInGroup.indexOf(el);
-      openLightbox(images, index >= 0 ? index : 0);
+  function imageDescription(element: Element) {
+    return element.getAttribute('alt') || element.querySelector('img')?.getAttribute('alt')
+      || element.getAttribute('aria-label') || element.textContent?.trim() || 'Изображение';
+  }
+
+  const initializedTriggers = new WeakSet<HTMLElement>();
+  function initializeTriggers() {
+    document.querySelectorAll<HTMLElement>('[data-lightbox-group]').forEach(el => {
+      if (initializedTriggers.has(el)) return;
+      initializedTriggers.add(el);
+      el.setAttribute('aria-haspopup', 'dialog');
+      el.setAttribute('aria-controls', 'lightbox');
+
+      // Preserve the existing layout: no wrapper, padding or display changes.
+      // Existing links/buttons retain their native keyboard interaction.
+      if (!el.matches('a[href], button')) {
+        el.setAttribute('role', 'button');
+        el.tabIndex = 0;
+        el.setAttribute('aria-label', `Увеличить: ${imageDescription(el)}`);
+        let spacePressed = false;
+        el.addEventListener('keydown', event => {
+          if (event.target !== el || event.altKey || event.ctrlKey || event.metaKey) return;
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            if (!event.repeat) el.click();
+          }
+          if (event.key === ' ') {
+            event.preventDefault();
+            spacePressed = true;
+          }
+        });
+        el.addEventListener('keyup', event => {
+          if (event.target !== el || event.key !== ' ') return;
+          event.preventDefault();
+          if (spacePressed && document.activeElement === el) el.click();
+          spacePressed = false;
+        });
+        el.addEventListener('blur', () => { spacePressed = false; });
+      }
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const group = el.getAttribute('data-lightbox-group')!;
+        const allInGroup = Array.from(document.querySelectorAll(`[data-lightbox-group="${group}"]`));
+        const images = allInGroup.map(item => {
+          return item.getAttribute('data-lightbox-src')
+            || (item as HTMLImageElement).src
+            || item.querySelector('img')?.src
+            || '';
+        }).filter(Boolean);
+        const index = allInGroup.indexOf(el);
+        openLightbox(images, index >= 0 ? index : 0, el instanceof HTMLElement ? el : undefined);
+      });
     });
-  });
+  }
+  initializeTriggers();
+  // Page scripts also mark images rendered from Markdown as lightbox triggers.
+  if (document.readyState !== 'complete') window.addEventListener('load', initializeTriggers, { once: true });
 </script>
+
+<style is:global>
+  #lb-img {
+    max-height: 75vh;
+    max-height: 75dvh;
+    max-width: 80vw;
+  }
+
+  [data-lightbox-group][role="button"]:focus-visible {
+    outline: 3px solid #7A5E1A;
+    outline-offset: -3px;
+  }
+</style>

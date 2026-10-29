@@ -1,0 +1,332 @@
+[
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/",
+    "prefix": "covers",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/books/aviatory/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/books/aviatory/",
+    "prefix": "chars",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/books/danlin/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/books/gorod/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 390,
+    "path": "/books/stirayushchee/",
+    "prefix": "chars",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/",
+    "prefix": "covers",
+    "result": {
+      "scrollLeft": 300,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/books/aviatory/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/books/aviatory/",
+    "prefix": "chars",
+    "result": {
+      "canScroll": false,
+      "scrollLeft": 0,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/books/danlin/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/books/gorod/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "before",
+    "width": 1440,
+    "path": "/books/stirayushchee/",
+    "prefix": "chars",
+    "result": {
+      "scrollLeft": 370,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/",
+    "prefix": "covers",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/books/aviatory/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/books/aviatory/",
+    "prefix": "chars",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/books/danlin/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/books/gorod/",
+    "prefix": "cards",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 390,
+    "path": "/books/stirayushchee/",
+    "prefix": "chars",
+    "result": {
+      "transform": "translateX(-100%)",
+      "dialogClosed": true,
+      "activeSlides": [
+        1
+      ]
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/",
+    "prefix": "covers",
+    "result": {
+      "scrollLeft": 300,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/books/aviatory/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/books/aviatory/",
+    "prefix": "chars",
+    "result": {
+      "canScroll": false,
+      "scrollLeft": 0,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/books/danlin/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/books/gorod/",
+    "prefix": "cards",
+    "result": {
+      "scrollLeft": 200,
+      "dialogClosed": true
+    },
+    "passed": true
+  },
+  {
+    "phase": "after",
+    "width": 1440,
+    "path": "/books/stirayushchee/",
+    "prefix": "chars",
+    "result": {
+      "scrollLeft": 370,
+      "dialogClosed": true
+    },
+    "passed": true
+  }
+]

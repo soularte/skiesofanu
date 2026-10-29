@@ -1,0 +1,1575 @@
+[
+  {
+    "path": "/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-about__ksenia--390.png",
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-about__vasily--390.png",
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__aviatory--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__aviatory__lore__aviatory-map--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__danlin--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards-mobile",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__gorod--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__kanveron--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__muzyka--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__ostrov--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "characters-mobile",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__stirayushchee--390.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 390,
+    "checks": [
+      "no document overflow",
+      "mobile menu opens and closes",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "touch close",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__virdolog--390.png",
+    "passed": true
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/about/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/about/ksenia/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fsiniy-burivuh-2026-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Furalskiy-knigohod-2025-kotova.jpeg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fogni-zolotye-2025-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fdrama-na-treh-stranicah-2025-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-kotova-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fagniya-barto-2025-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fmuza-2025-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Fkubok-bredberi-2022-kotova.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-about__ksenia--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/about/vasily/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "diploma-%2Fdiplomas%2Fpleshcheev-2026-kotova-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2026-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "diploma-%2Fdiplomas%2Falisa-2025-zelenkov.jpg",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-about__vasily--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/blog/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/blog/260515my-soavtory/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/books/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [],
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__aviatory--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/aviatory/lore/aviatory-map/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "lore-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "lore-article",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__aviatory__lore__aviatory-map--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/danlin/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__danlin--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/gorod/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "cards",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__gorod--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/kanveron/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "series-covers",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__kanveron--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/muzyka/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__muzyka--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/ostrov/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__ostrov--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/stirayushchee/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      },
+      {
+        "name": "characters",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "arrow buttons round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": true
+      }
+    ],
+    "screenshot": "modal-books__stirayushchee--1440.png",
+    "passed": true
+  },
+  {
+    "path": "/books/virdolog/",
+    "width": 1440,
+    "checks": [
+      "no document overflow",
+      "sliders still respond after closing",
+      "global API compatibility",
+      "single-image Tab stays on close",
+      "single-image Shift Tab stays on close"
+    ],
+    "groups": [
+      {
+        "name": "book-cover",
+        "checks": [
+          "open, initial focus and scroll lock",
+          "background inert",
+          "Shift Tab wraps",
+          "Tab wraps to close",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "Tab stays in dialog",
+          "keyboard arrows round trip",
+          "Escape restores focus, scroll and inert states",
+          "temporary tabindex cleaned on blur",
+          "reopen and close button restores state",
+          "backdrop pointer closes and restores state"
+        ],
+        "multi": false
+      }
+    ],
+    "screenshot": "modal-books__virdolog--1440.png",
+    "passed": true
+  }
+]
