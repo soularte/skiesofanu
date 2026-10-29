@@ -2,8 +2,30 @@
   command = "npm run build"
   publish = "dist"
 
-# Keep .com serving the site until GitHub Pages on .ru is verified.
-# Enable domain redirects later using DEPLOY.md.
+# The primary site is hosted on GitHub Pages at skiesofanu.ru.
+[[redirects]]
+  from = "https://skiesofanu.com/*"
+  to = "https://skiesofanu.ru/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.skiesofanu.com/*"
+  to = "https://skiesofanu.ru/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://skiesofanu.com/*"
+  to = "https://skiesofanu.ru/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.skiesofanu.com/*"
+  to = "https://skiesofanu.ru/:splat"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"
