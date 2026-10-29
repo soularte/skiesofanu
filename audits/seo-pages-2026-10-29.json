@@ -1,0 +1,468 @@
+[
+  {
+    "url": "https://skiesofanu.ru/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/"
+    ],
+    "title": "Ксения Котова и Василий Зеленков — официальный сайт — Бортжурнал",
+    "description": "Карманные вселенные, забытые легенды и латунные сердца, бьющиеся вопреки. Книги Ксении Котовой и Василия Зеленкова, фантастические миры и блог авторов.",
+    "h1": [
+      " Соавторский дуэт:"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "WebSite"
+    ],
+    "missingAlt": 0,
+    "bytes": 86930
+  },
+  {
+    "url": "https://skiesofanu.ru/about/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/about/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/about/"
+    ],
+    "title": "Об авторах — Ксения Котова и Василий Зеленков — Бортжурнал",
+    "description": "Ксения Котова и Василий Зеленков: об авторах, их соавторстве и творчестве. Знакомство с создателями фантастических миров и ссылки на авторские страницы.",
+    "h1": [
+      "Об авторах"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 36745
+  },
+  {
+    "url": "https://skiesofanu.ru/about/ksenia/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/about/ksenia/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/about/ksenia/"
+    ],
+    "title": "Ксения Котова — биография, библиография и конкурсы — Бортжурнал",
+    "description": "Ксения Котова — автор фантастики и фэнтези. Биография, книги и циклы, библиография рассказов, бумажные публикации, литературные конкурсы и ссылки для чтения.",
+    "h1": [
+      "Ксения Котова"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "ProfilePage",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 231826
+  },
+  {
+    "url": "https://skiesofanu.ru/about/vasily/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/about/vasily/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/about/vasily/"
+    ],
+    "title": "Василий Зеленков — биография, библиография и конкурсы — Бортжурнал",
+    "description": "Василий Зеленков — автор фантастики и фэнтези. Биография, романы, рассказы, сборники и фанфикшен, литературные конкурсы, дипломы и ссылки для чтения.",
+    "h1": [
+      "Василий Зеленков"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "ProfilePage",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 268854
+  },
+  {
+    "url": "https://skiesofanu.ru/blog/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/blog/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/blog/"
+    ],
+    "title": "Блог Ксении Котовой и Василия Зеленкова — Бортжурнал",
+    "description": "О книгах, наших мирах и совместном творчестве. Заметки Ксении Котовой и Василия Зеленкова об историях и их создании.",
+    "h1": [
+      "Блог"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 26652
+  },
+  {
+    "url": "https://skiesofanu.ru/blog/260515my-soavtory/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/blog/260515my-soavtory/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/blog/260515my-soavtory/"
+    ],
+    "title": "Мы — соавторы — Бортжурнал",
+    "description": "Ксения Котова, Василий Зеленков: как мы познакомились и стали создавать миры вместе.",
+    "h1": [
+      "Мы - соавторы"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Article",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 35170
+  },
+  {
+    "url": "https://skiesofanu.ru/books/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/"
+    ],
+    "title": "Книги Ксении Котовой и Василия Зеленкова — Бортжурнал",
+    "description": "Циклы, самостоятельные романы и сборники рассказов Ксении Котовой и Василия Зеленкова. Аннотации, обложки и ссылки, где купить или читать книги.",
+    "h1": [
+      "Книги"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 55484
+  },
+  {
+    "url": "https://skiesofanu.ru/books/aviatory/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/aviatory/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/aviatory/"
+    ],
+    "title": "Авиаторы Его Величества — Бортжурнал",
+    "description": "Цикл приключенческих романов в антураже дизельпанка.",
+    "h1": [
+      "Небеса Ану",
+      "Авиаторы Его Величества"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "BookSeries",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 90103
+  },
+  {
+    "url": "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/aviatory/lore/aviatory-map/"
+    ],
+    "title": "Карта мира Ану — Бортжурнал",
+    "description": "Карта материка Ану, где разворачиваются события «Авиаторов Его Величества».",
+    "h1": [
+      "Карта мира Ану"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Article"
+    ],
+    "missingAlt": 0,
+    "bytes": 26591
+  },
+  {
+    "url": "https://skiesofanu.ru/books/danlin/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/danlin/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/danlin/"
+    ],
+    "title": "Данлин — Бортжурнал",
+    "description": "Истории Данлина, где слиты магия, стимпанк и азиатские мотивы.",
+    "h1": [
+      "Данлин"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 43806
+  },
+  {
+    "url": "https://skiesofanu.ru/books/gorod/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/gorod/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/gorod/"
+    ],
+    "title": "Город без имени — Бортжурнал",
+    "description": "Сборник уютных рассказов в жанре городского фэнтези по одноимённому миру.",
+    "h1": [
+      "Город без имени"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 47349
+  },
+  {
+    "url": "https://skiesofanu.ru/books/kanveron/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/kanveron/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/kanveron/"
+    ],
+    "title": "Маги Канверона — Бортжурнал",
+    "description": "Дилогия, где магия вплетена в улицы, а интриги опаснее демонов.",
+    "h1": [
+      "Канверон",
+      "Маги Канверона"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "BookSeries",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 46569
+  },
+  {
+    "url": "https://skiesofanu.ru/books/muzyka/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/muzyka/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/muzyka/"
+    ],
+    "title": "Пусть эта музыка стихнет — Бортжурнал",
+    "description": "Сборник фантастических рассказов, где каждая история — вселенная.",
+    "h1": [
+      "Пусть эта музыка стихнет"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 33970
+  },
+  {
+    "url": "https://skiesofanu.ru/books/ostrov/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/ostrov/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/ostrov/"
+    ],
+    "title": "Остров сломанных человечков — Бортжурнал",
+    "description": "Cветлая история для детей и родителей о смелости, дружбе, сострадании и чуде.",
+    "h1": [
+      "Остров сломанных человечков"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 31606
+  },
+  {
+    "url": "https://skiesofanu.ru/books/stirayushchee/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/stirayushchee/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/stirayushchee/"
+    ],
+    "title": "Стирающее поветрие, или Бумажная лавка госпожи Анны — Бортжурнал",
+    "description": "Исцеляющая проза о проживании утраты, поиске себя и выборе нового пути.",
+    "h1": [
+      "Стирающее поветрие, или Бумажная лавка госпожи Анны"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 57167
+  },
+  {
+    "url": "https://skiesofanu.ru/books/virdolog/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/books/virdolog/",
+    "robots": "",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/books/virdolog/"
+    ],
+    "title": "Вирдолог — Бортжурнал",
+    "description": "Магический детектив и служебный роман с вайбами киносериалов начала 2000-х.",
+    "h1": [
+      "Вирдолог"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization",
+      "Book",
+      "BreadcrumbList"
+    ],
+    "missingAlt": 0,
+    "bytes": 31732
+  },
+  {
+    "url": "https://skiesofanu.ru/paths/detyam/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/paths/detyam/",
+    "robots": "noindex, nofollow",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/paths/detyam/"
+    ],
+    "title": "Детям — Бортжурнал",
+    "description": "Создатели миров: Ксения Котова и Василий Зеленков. Фантастика, приключения, романтика.",
+    "h1": [
+      "Детям"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 30354
+  },
+  {
+    "url": "https://skiesofanu.ru/paths/mir-anu/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/paths/mir-anu/",
+    "robots": "noindex, nofollow",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/paths/mir-anu/"
+    ],
+    "title": "Мир Ану — Бортжурнал",
+    "description": "Создатели миров: Ксения Котова и Василий Зеленков. Фантастика, приключения, романтика.",
+    "h1": [
+      "Мир Ану"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 53317
+  },
+  {
+    "url": "https://skiesofanu.ru/paths/fantasy/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/paths/fantasy/",
+    "robots": "noindex, nofollow",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/paths/fantasy/"
+    ],
+    "title": "Приключения — Бортжурнал",
+    "description": "Создатели миров: Ксения Котова и Василий Зеленков. Фантастика, приключения, романтика.",
+    "h1": [
+      "Приключения"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 61747
+  },
+  {
+    "url": "https://skiesofanu.ru/paths/romantika/",
+    "status": 200,
+    "end": "https://skiesofanu.ru/paths/romantika/",
+    "robots": "noindex, nofollow",
+    "xrobots": "",
+    "canonical": [
+      "https://skiesofanu.ru/paths/romantika/"
+    ],
+    "title": "Романтика — Бортжурнал",
+    "description": "Создатели миров: Ксения Котова и Василий Зеленков. Фантастика, приключения, романтика.",
+    "h1": [
+      "Романтика"
+    ],
+    "metrics": 1,
+    "metricsId": true,
+    "schema": [
+      "Organization"
+    ],
+    "missingAlt": 0,
+    "bytes": 43885
+  }
+]

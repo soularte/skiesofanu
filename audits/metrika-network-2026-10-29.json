@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-29",
+  "page": "https://skiesofanu.ru/",
+  "counter": "109339298",
+  "browser": "Chrome headless, isolated profile",
+  "note": "Query strings and cookies omitted. Report inclusion not verified.",
+  "requests": [
+    {
+      "endpoint": "https://mc.yandex.ru/metrika/tag.js",
+      "responses": [
+        "HTTP/1.1 200"
+      ]
+    },
+    {
+      "endpoint": "https://mc.yandex.com/watch/109339298/1",
+      "responses": [
+        "HTTP/1.1 302",
+        "HTTP/1.1 200"
+      ]
+    },
+    {
+      "endpoint": "https://mc.yandex.com/watch/109339298",
+      "responses": [
+        "HTTP/1.1 200"
+      ]
+    }
+  ]
+}
