@@ -1197,7 +1197,7 @@ contests:
   - year: 2025
     title: Кубок Брэдбери
     description: >-
-      <strong>финалист</strong> с рассказом «Закон восьмёрки». <small><a class="external-source"
+      <strong>финалист</strong> номинации «Фантастика» с рассказом «Закон восьмёрки». <small><a class="external-source"
       href="https://author.today/post/717997" target="_blank" rel="noopener noreferrer"
       aria-label="Результаты конкурса Кубок Брэдбери (откроется в новой вкладке)">Автор.Тудей
       ↗</a></small>

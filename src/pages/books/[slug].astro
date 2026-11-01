@@ -1,5 +1,6 @@
 ---
 import { schemaAuthors } from '../../lib/schema';
+import { compareLoreEntries } from '../../lib/lore';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookHero from '../../components/book/BookHero.astro';
 import SeriesAbout from '../../components/book/SeriesAbout.astro';
@@ -50,7 +51,7 @@ const canonicalURL = new URL(`/books/${book.slug}/`, Astro.site ?? Astro.url.ori
 const allLore = await getCollection('lore');
 const bookLore = allLore
   .filter(l => l.data.book === book.slug && !l.data.draft)
-  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'ru'));
+  .sort(compareLoreEntries);
 
 let cardImages: string[] = [];
 if (data.cardsFolder) {

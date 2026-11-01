@@ -15,6 +15,11 @@ links:
     url: "https://book-litgorod.litgorod.ru/go/or0howl5"
   - label: "ЛитНет"
     url: "https://links.litnet.com/go/njz90lnw"
+extraLinks:
+  - label: "LiveLib — отзывы"
+    url: "https://www.livelib.ru/book/1012673437-virdolog-kseniya-kotova"
+  - label: "Pinterest — арты по книге"
+    url: "https://ca.pinterest.com/kseniakotova14/вирдолог/"
 ---
 Есть семьи, чья кровь хранит нечто большее, чем обыкновенную жизнь. Сверхъестественные дары вирдов переходят из поколения в поколение: одни пленяют красотой, другие несут смерть.
 

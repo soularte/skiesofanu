@@ -1,5 +1,6 @@
 ---
 import { schemaAuthors } from '../../../../lib/schema';
+import { compareLoreEntries } from '../../../../lib/lore';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import PageNav from '../../../../components/PageNav.astro';
 import TagChip from '../../../../components/TagChip.astro';
@@ -10,13 +11,13 @@ export async function getStaticPaths() {
   const loreEntries = (await getCollection('lore')).filter(l => !l.data.draft);
   const books = await getCollection('books');
 
-  // Group by book and sort alphabetically within each group
+  // Use the same order as the material cards on the book page
   const byBook: Record<string, typeof loreEntries> = {};
   for (const entry of loreEntries) {
     (byBook[entry.data.book] ??= []).push(entry);
   }
   for (const slug of Object.keys(byBook)) {
-    byBook[slug].sort((a, b) => a.data.title.localeCompare(b.data.title, 'ru'));
+    byBook[slug].sort(compareLoreEntries);
   }
 
   return loreEntries.map(entry => {
@@ -29,6 +30,7 @@ export async function getStaticPaths() {
       params: { slug: entry.data.book, loreSlug: entry.slug },
       props: {
         entry,
+        bookAuthors: book?.data.authors,
         bookTitle: book?.data.series ?? book?.data.title ?? entry.data.book,
         allItems: siblings.map(s => ({ slug: s.slug, title: s.data.title, tags: s.data.tags ?? [] })),
         prev,
@@ -38,7 +40,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { entry, bookTitle, allItems, prev, next } = Astro.props;
+const { entry, bookTitle, bookAuthors, allItems, prev, next } = Astro.props;
 const { Content } = await entry.render();
 const bookSlug = entry.data.book;
 
@@ -48,7 +50,7 @@ const articleLd = {
   '@context': 'https://schema.org', '@type': 'Article', '@id': `${canonicalURL}#article`,
   headline: entry.data.title, description: entry.data.excerpt,
   url: canonicalURL, mainEntityOfPage: canonicalURL, inLanguage: 'ru',
-  datePublished: entry.data.date.toISOString(), author: schemaAuthors(siteOrigin),
+  datePublished: entry.data.date.toISOString(), author: schemaAuthors(siteOrigin, bookAuthors),
   ...(entry.data.cover ? {image: new URL(entry.data.cover, siteOrigin).href} : {}),
 };
 ---

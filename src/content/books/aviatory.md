@@ -132,7 +132,11 @@ characters:
     photo: "sevan.jpg"
 
 # === Дополнительные ссылки ===
-extraLinks: []
+extraLinks:
+  - label: "LiveLib — отзывы"
+    url: "https://www.livelib.ru/book/1007172712-aviatory-ego-velichestva-kseniya-kotova"
+  - label: "Pinterest — арты по циклу"
+    url: "https://ca.pinterest.com/kseniakotova14/steampunk-dieselpunk-авиаторы-его-величества/"
 
 # === Мир ===
 world: |

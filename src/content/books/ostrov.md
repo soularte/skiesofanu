@@ -13,6 +13,9 @@ links:
     url: "https://www.litres.ru/book/kseniya-kotova/ostrov-slomannyh-chelovechkov-73769739"
   - label: "ЛитРес Аудио"
     url: "https://www.litres.ru/audiobook/kseniya-kotova/ostrov-slomannyh-chelovechkov-73771236"
+extraLinks:
+  - label: "LiveLib — отзывы"
+    url: "https://www.livelib.ru/book/1018075594-ostrov-slomannyh-chelovechkov-kseniya-kotova"
 ---
 Таинственный остров, полосатый маяк, живая кукла и мальчик, не помнящий своего прошлого. Чтобы вернуться домой, Петру придётся преодолеть опасности, разгадать тайну сломанных человечков и понять, почему иногда самая большая сила это доброта.
 
