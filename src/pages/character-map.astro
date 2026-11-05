@@ -1,0 +1,589 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import portraitFiles from '../data/character-map-portraits.json';
+import { characterMap, portraits, characterArcs } from '../data/character-map';
+import leoven from '../assets/images/characters/leoven.jpg';
+import sevan from '../assets/images/characters/sevan.jpg';
+import lem from '../assets/images/characters/lem.jpg';
+const photos: Record<string, string> = { leoven: leoven.src, sevan: sevan.src, lem: lem.src };
+const fullPhotos: Record<string, string> = {};
+const portraitAssets = import.meta.glob<{ default: ImageMetadata }>('../assets/images/character-map/*.png', { eager: true });
+await Promise.all(Object.entries(portraitFiles).map(async ([name, filename]) => {
+  const asset = portraitAssets[`../assets/images/character-map/${filename}`]?.default;
+  if (!asset) throw new Error(`Не найден портрет: ${filename}`);
+  photos[name] = (await getImage({ src: asset, width: 256, format: 'webp', quality: 85 })).src;
+  fullPhotos[name] = (await getImage({ src: asset, width: Math.min(1024, asset.width), format: 'webp', quality: 90 })).src;
+}));
+const data = characterMap.map(group => group);
+function listCharacters(group: (typeof characterMap)[number]): import('../data/character-map').MapCharacter[] {
+  return [...(group.characters ?? []), ...(group.children ?? []).flatMap(listCharacters)];
+}
+const filterLabels: Record<string, string> = {
+  'Королевство Альконт': 'Альконт',
+  '«Аве Асандаро»': 'Аве Асандаро',
+  'Республика Джаллия': 'Джаллия',
+  'Королевский флот Его Величества': 'Флот',
+  'Лётная академия Его Величества': 'Лётная академия',
+  'Служба государственного спокойствия Альконта': 'Служба',
+};
+const filterLabel = (title: string) => filterLabels[title] ?? title;
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Интерактивная карта персонажей цикла «Авиаторы Его Величества» и «Авиаторы Нелегального неба»: портреты героев, экипажи, семьи и организации мира Небес Ану." />
+  <link rel="canonical" href={new URL('/character-map/', Astro.site ?? Astro.url.origin)} />
+  <title>Карта персонажей — Небеса Ану</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="branch-nav" aria-label="Навигация карты">
+    <a class="return-to-cycle" href="/books/aviatory/" aria-label="Вернуться к циклу"><span aria-hidden="true">←</span><span class="return-label">Вернуться к циклу</span></a>
+    <button id="mobile-branches-toggle" class="mobile-panel-toggle" type="button" aria-expanded="false" aria-controls="branch-options">Ветки<svg class="panel-chevron" aria-hidden="true" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+    <button id="mobile-arcs-toggle" class="mobile-panel-toggle" type="button" aria-expanded="false" aria-controls="arc-options">Арки<svg class="panel-chevron" aria-hidden="true" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+    <div id="filter-options" class="filter-options">
+    <div id="branch-options" class="branch-options">
+
+      <button type="button" data-filter="all" aria-pressed="false">Все</button>
+      {data.map(group => <button type="button" data-filter={group.title} aria-pressed="false">{group.title}</button>)}
+
+      {data.flatMap(group => (group.children ?? []).filter(child => (child.children?.length ?? 0) > 0 && child.title !== 'Высший круг').map(child => <button type="button" data-filter={child.title} aria-pressed="false" title={`${group.title} | ${child.title}`}>{filterLabel(group.title)} | {filterLabel(child.title)}</button>))}
+    </div>
+    <div id="arc-options" class="arc-filters" role="group" aria-label="Арка персонажей">
+      <button type="button" data-arc="all" aria-pressed="false">Все арки</button>
+      {characterArcs.map(arc => <button type="button" data-arc={arc.id} aria-pressed={arc.id === characterArcs[0].id ? "true" : "false"} style={`--arc-color:${arc.color}`}><span class="arc-dot" aria-hidden="true"></span>{arc.title}</button>)}
+    </div>
+    </div>
+  </nav>
+  <div class="controls" aria-label="Масштаб карты"><button id="out" aria-label="Уменьшить">−</button><output id="zoom">100%</output><button id="in" aria-label="Увеличить">+</button><button id="fit" title="Показать всю карту">Вся карта</button></div>
+  <h1 class="visually-hidden">Интерактивная карта персонажей Небес Ану</h1>
+  <main id="viewport" tabindex="0" aria-label="Майнд-карта персонажей. Перетаскивайте поле, используйте кнопки масштаба или клавиши плюс и минус. Стрелки перемещают карту.">
+    <div id="canvas"><svg id="connections" aria-label="Связи между блоками"></svg><div id="nodes"></div></div>
+  </main>
+  <noscript>
+    <section class="map-fallback" aria-label="Персонажи цикла">
+      <h2>Персонажи «Авиаторов»</h2>
+      <p>Включите JavaScript для просмотра интерактивной карты. Список персонажей доступен ниже.</p>
+      {data.map(branch => <section><h3>{branch.title}</h3><ul>{listCharacters(branch).map(person => <li><strong>{person.name}</strong>{person.role && ` — ${person.role}`}</li>)}</ul></section>)}
+    </section>
+  </noscript>
+  <footer>Нажмите на ветку, чтобы раскрыть · Перетаскивайте карту · Колесо — масштаб <span>Возможны спойлеры</span></footer>
+  <dialog id="portrait-viewer" aria-labelledby="portrait-caption">
+    <button id="portrait-close" type="button" aria-label="Закрыть портрет">×</button>
+    <img id="portrait-large" alt="" />
+    <p id="portrait-caption"></p>
+  </dialog>
+  <script define:vars={{data, photos, portraits, fullPhotos, characterArcs}} type="module">
+    const viewport = document.querySelector('#viewport');
+    const canvas = document.querySelector('#canvas');
+    const nodes = document.querySelector('#nodes');
+    const svg = document.querySelector('#connections');
+    const output = document.querySelector('#zoom');
+    const NS = 'http://www.w3.org/2000/svg';
+    const centers = [];
+    const expanded = new Set();
+    const selectedBranches = new Set(data.map(group=>group.title));
+    const selectedArcs = new Set([characterArcs[0].id]);
+    function matchesArc(person){ return person.arcs.some(id=>selectedArcs.has(id)); }
+    function hasArc(group){ return selectedArcs.size===characterArcs.length || group.characters?.some(matchesArc) || group.children?.some(hasArc); }
+    function visibleRoot(group) {
+      // Branch filters collapse contents; keep first-level landmarks visible.
+      return hasArc(group);
+    }
+    const groups = new Map();
+    function register(items) { for (const group of items) { groups.set(group.title, group); register(group.children ?? []); } }
+    register(data);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobileLayout=()=>window.matchMedia('(max-width: 650px)').matches;
+    let cardColumns=mobileLayout()?2:4;
+    let x = 0, y = 0, scale = 0.65;
+    const colors = ['#A68B53', '#B87333', '#897A64', '#9E8057', '#85816E', '#978E7B'];
+    function node(text, cx, cy, width, height, kind, color) {
+      const el = document.createElement('div'); el.className = `node ${kind}`;
+      el.style.cssText = `left:${cx-width/2}px;top:${cy-height/2}px;width:${width}px;height:${height}px;--branch-color:${color}`;
+      if (text) el.textContent = text;
+      nodes.append(el); return el;
+    }
+    function connect(ax, ay, bx, by, color, thick = false) {
+      const path = document.createElementNS(NS, 'path'); const mid = (ax+bx)/2;
+      path.setAttribute('d', `M${ax},${ay} C${mid},${ay} ${mid},${by} ${bx},${by}`);
+      path.setAttribute('stroke', color); path.setAttribute('stroke-width', thick ? '5' : '2'); path.setAttribute('fill', 'none'); svg.append(path);
+    }
+    // Pack siblings against their occupied contours at each depth, rather
+    // than reserving an empty rectangle around every complete subtree.
+    function measure(group, depth = 0) {
+      const characters = group.characters?.filter(matchesArc) ?? [];
+      const count = characters.length;
+      const width = count ? Math.max(265, Math.min(cardColumns, count) * 136 + 32) : 245;
+      const own = count ? Math.ceil(count / cardColumns) * 230 + 65 : Math.max(64, Math.ceil(group.title.length / 22) * 24 + 32);
+      const eligibleChildren = (group.children ?? []).filter(child => hasArc(child) && (depth!==1 || selectedBranches.has(group.title) || selectedBranches.has(child.title)));
+      const children = (group.title === 'Персонажи' || expanded.has(group.title)) ? eligibleChildren.map(child=>measure(child,depth+1)) : [];
+      const occupied = [];
+      for (const child of children) {
+        let shift = 0;
+        child.contour.forEach((range, depth) => {
+          if (occupied[depth]) shift = Math.max(shift, occupied[depth][1] + 38 - range[0]);
+        });
+        child.offset = shift;
+        child.contour.forEach((range, depth) => {
+          const low = range[0] + shift, high = range[1] + shift;
+          occupied[depth] = occupied[depth] ? [Math.min(occupied[depth][0], low), Math.max(occupied[depth][1], high)] : [low, high];
+        });
+      }
+      const middle = children.length ? (children[0].offset + children[children.length - 1].offset) / 2 : 0;
+      children.forEach(child => child.offset -= middle);
+      // This pair shares vertical space: former crew sits to the right of the current crew.
+      if (group.title === '«Аве Асандаро»' && children.length >= 2) {
+        const team=children.find(child=>child.group.title==='Команда корабля');
+        const former=children.find(child=>child.group.title==='Прежние члены экипажа');
+        team.offset = -60;
+        former.offset = 40;
+        former.extraX = 570;
+        occupied[0] = [Math.min(...children.map(child => child.offset - child.own / 2)) + middle,
+          Math.max(...children.map(child => child.offset + child.own / 2)) + middle];
+      }
+      if (group.title === 'Служба государственного спокойствия Альконта' && children.length === 3) {
+        const [leadership, gentlemen, agents] = children;
+        const topHeight = leadership.own;
+        const bottomHeight = Math.max(gentlemen.own, agents.own);
+        const totalHeight = topHeight + bottomHeight + 70;
+        leadership.offset = -totalHeight / 2 + topHeight / 2;
+        gentlemen.offset = agents.offset = totalHeight / 2 - bottomHeight / 2;
+        agents.extraX = 720;
+        agents.routeSide = 1;
+        const low = Math.min(...children.map(child => child.offset - child.own / 2)) - 80;
+        const high = Math.max(...children.map(child => child.offset + child.own / 2)) + 80;
+        occupied[0] = [low + middle, high + middle];
+        occupied[1] = [low + middle, high + middle];
+      }
+      if (group.title === 'Аристократия' && children.length === 5) {
+        const [alemands, alcont, royal, git, venetra] = children;
+        const topHeight=Math.max(alemands.own,royal.own), middleHeight=Math.max(git.own,venetra.own);
+        const topY=-(middleHeight/2+70+topHeight/2);
+        const bottomY=middleHeight/2+70+alcont.own/2;
+        alemands.offset = royal.offset = topY;
+        git.offset = venetra.offset = 0;
+        alcont.offset = bottomY;
+        royal.extraX = venetra.extraX = 720;
+        royal.routeCorridor = topY-topHeight/2-38;
+        venetra.routeCorridor = -middleHeight/2-35;
+        occupied[0] = [topY-topHeight/2-80+middle, bottomY+alcont.own/2+80+middle];
+        occupied[1] = [...occupied[0]];
+      }
+      if (group.title === '«Вентас Аэрис»' && children.length === 4) {
+        const topHeight = Math.max(children[0].own, children[1].own);
+        const bottomHeight = Math.max(children[2].own, children[3].own);
+        const totalHeight = topHeight + bottomHeight + 70;
+        children[0].offset = children[1].offset = -totalHeight / 2 + topHeight / 2;
+        children[2].offset = children[3].offset = totalHeight / 2 - bottomHeight / 2;
+        children[1].extraX = children[3].extraX = 720;
+        children[1].routeSide = -1;
+        children[3].routeSide = 1;
+        const range = [-totalHeight / 2 - 45 + middle, totalHeight / 2 + 45 + middle];
+        occupied[0] = [...range];
+        occupied[1] = [...range];
+      }
+      const contour = [[-own / 2 - 40, own / 2 + 40], ...occupied.map(range => [range[0] - middle, range[1] - middle])];
+      // Bypass curves already occupy space beside their parent, not only at
+      // the children's columns. Reserve that corridor when packing siblings.
+      const nearChildren = children.filter(child => !child.extraX);
+      for (const child of children.filter(child => child.extraX)) {
+        const lane = child.routeCorridor ?? ((child.routeSide ?? 1) < 0
+          ? Math.min(...nearChildren.map(near => near.offset - near.own / 2)) - 38
+          : Math.max(...nearChildren.map(near => near.offset + near.own / 2)) + 38);
+        contour[0][0] = Math.min(contour[0][0], lane - 40);
+        contour[0][1] = Math.max(contour[0][1], lane + 40);
+      }
+
+      return { group, characters, width, own, children, contour, offset: 0 };
+    }
+    function draw(tree, cx, cy, direction, color) {
+      const el = node('', cx, cy, tree.width, tree.own, 'group', color);
+      el.dataset.title = tree.group.title;
+      if (tree.group.children?.length) {
+        el.setAttribute('role', 'button'); el.tabIndex = 0;
+        el.setAttribute('aria-expanded', String(expanded.has(tree.group.title)));
+        el.setAttribute('aria-label', `${tree.group.title}: ${expanded.has(tree.group.title) ? 'свернуть' : 'раскрыть'} ветку`);
+      }
+      const title = document.createElement('h2'); title.textContent = tree.group.title; el.append(title);
+      if(tree.group.children?.length){const badge=document.createElement('span');badge.className='branch-toggle';badge.textContent=expanded.has(tree.group.title)?'−':'+';badge.setAttribute('aria-hidden','true');el.append(badge);}
+      if (tree.characters.length) {
+        const grid = document.createElement('div'); grid.className='people';
+        for (const person of tree.characters) {
+          const card = document.createElement('div'); card.className='person';
+          const frame = document.createElement('div'); frame.className='portrait';
+          const firstArc=characterArcs.find(arc=>arc.id===person.firstAppearance);
+          frame.style.borderColor=firstArc.color; frame.style.borderWidth='3px'; frame.style.boxShadow=`0 0 0 1px ${firstArc.color}66`;
+          frame.title=`Первое появление: ${firstArc.title}. Арки: ${person.arcs.map(id=>characterArcs.find(arc=>arc.id===id).title).join(', ')}`;
+          const src = person.portrait || photos[person.name] || photos[portraits[person.name]];
+          if (src) { const img = document.createElement('img'); img.src=src; img.alt=person.name; img.loading='lazy'; img.decoding='async'; img.draggable=false; frame.append(img); frame.dataset.full=fullPhotos[person.name] || src; frame.dataset.name=person.name; frame.setAttribute('role','button'); frame.tabIndex=0; frame.setAttribute('aria-label', `Увеличить портрет: ${person.name}`); }
+          else { const initials = document.createElement('span'); initials.textContent=person.name.split(' ').slice(0,2).map(w=>w[0]).join(''); frame.append(initials); }
+          const name = document.createElement('h3');
+          const parts = person.name.match(/^(.*?)\s*(\([^)]*\))$/);
+          name.textContent=parts ? parts[1] : person.name;
+          if(parts){const nickname=document.createElement('span');nickname.className='nickname';nickname.textContent=parts[2];name.append(nickname);}
+          const role = document.createElement('p'); role.textContent=person.role;
+          card.append(frame,name,role); grid.append(card);
+        }
+        el.append(grid);
+      }
+      if (tree.characters.length) el.querySelector('.people').style.gridTemplateColumns = `repeat(${Math.min(cardColumns, tree.characters.length)}, minmax(0, 1fr))`;
+      for (const child of tree.children) {
+        const childX = cx + direction * (720 + (child.extraX ?? 0));
+        const childY = cy + child.offset;
+        if (tree.group.title === 'Аристократия') {
+          const start = tree.width / 2;
+          const end = direction * (childX - cx) - child.width / 2;
+          const lane = child.routeCorridor ?? child.offset;
+          const ordered = [...tree.children].sort((a, b) => (a.routeCorridor ?? a.offset) - (b.routeCorridor ?? b.offset));
+          const port = (ordered.indexOf(child) - 2) * 10;
+          const relativeY = childY - cy;
+          const path = document.createElementNS(NS, 'path');
+          path.setAttribute('transform', `translate(${cx} ${cy}) scale(${direction} 1)`);
+          const entry = `M${start},${port} C${start+100},${port} ${start+90},${lane} ${start+230},${lane}`;
+          const finish = child.extraX
+            ? ` C${start+360},${lane} ${end-170},${lane} ${end-110},${lane} C${end-40},${lane} ${end-70},${relativeY} ${end},${relativeY}`
+            : ` C${start+280},${lane} ${end-50},${relativeY} ${end},${relativeY}`;
+          path.setAttribute('d', entry + finish);
+          path.setAttribute('stroke', color); path.setAttribute('stroke-width', '2'); path.setAttribute('fill', 'none'); svg.append(path);
+        } else if (child.extraX) {
+          const start = tree.width / 2;
+          const end = direction * (childX - cx) - child.width / 2;
+          const side = child.routeSide ?? 1;
+          const siblings = tree.children.filter(sibling => !sibling.extraX);
+          const corridor = child.routeCorridor ?? (side < 0
+            ? Math.min(...siblings.map(sibling => sibling.offset - sibling.own / 2)) - 38
+            : Math.max(...siblings.map(sibling => sibling.offset + sibling.own / 2)) + 38);
+          const relativeY = childY - cy;
+          const path = document.createElementNS(NS, 'path');
+          path.setAttribute('transform', `translate(${cx} ${cy}) scale(${direction} 1)`);
+          path.setAttribute('d', `M${start},0 C${start+100},0 ${start+90},${corridor} ${start+230},${corridor} C${start+360},${corridor} ${end-170},${corridor} ${end-110},${corridor} C${end-40},${corridor} ${end-70},${relativeY} ${end},${relativeY}`);
+          path.setAttribute('stroke', color); path.setAttribute('stroke-width', '2'); path.setAttribute('fill', 'none'); svg.append(path);
+        } else {
+          connect(cx + direction * tree.width / 2, cy, childX - direction * child.width / 2, childY, color);
+        }
+        svg.lastElementChild.dataset.target = child.group.title;
+        svg.lastElementChild.dataset.parent = tree.group.title;
+        draw(child, childX, childY, direction, color);
+      }
+    }
+    function buildScene() {
+    centers.length = 0;
+    nodes.replaceChildren(); svg.replaceChildren();
+    const leftTree = measure(data[0], 1);
+    const rightTree = measure({ title: 'Персонажи', children: data.slice(1).filter(visibleRoot) });
+    const rootX = 4300, rootY = 4000;
+    const root = node('Персонажи', rootX, rootY, 220, 70, 'root', '#1A1A2E');
+    root.dataset.title = 'Персонажи'; root.setAttribute('role', 'button'); root.tabIndex = 0; root.setAttribute('aria-label', 'Свернуть карту к основным веткам');
+    if(visibleRoot(data[0])){
+      draw(leftTree, rootX - 470, rootY, -1, colors[0]);
+      connect(rootX - 110, rootY, rootX - 470 + leftTree.width / 2, rootY, colors[0], true);
+    }
+    const recordCenter = (tree, cx, cy) => {
+      const low = Math.min(...tree.contour.map(range => range[0]));
+      const high = Math.max(...tree.contour.map(range => range[1]));
+      centers.push({ x: cx, y: cy, height: high - low });
+    };
+    recordCenter(leftTree, rootX - 470, rootY);
+    rightTree.children.forEach((tree, index) => {
+      const cx = rootX + 470, cy = rootY + tree.offset;
+      connect(rootX + 110, rootY, cx - tree.width / 2, cy, colors[data.indexOf(tree.group)], true);
+      draw(tree, cx, cy, 1, colors[data.indexOf(tree.group)]);
+      recordCenter(tree, cx, cy);
+    });
+    for (const path of [...svg.children]) {
+      if (!path.dataset.parent) path.dataset.parent = 'Персонажи';
+      const hit = path.cloneNode(false);
+      hit.dataset.hit = 'true'; hit.setAttribute('class', 'connection-hit');
+      hit.setAttribute('stroke', 'transparent'); hit.setAttribute('stroke-width', '20');
+      hit.setAttribute('vector-effect', 'non-scaling-stroke');
+      hit.setAttribute('role', 'button'); hit.setAttribute('tabindex', '0');
+      hit.setAttribute('aria-label', `Вернуться к блоку «${path.dataset.parent}»`);
+      svg.append(hit);
+    }
+    bounds = [...nodes.children].reduce((b, el)=>({left:Math.min(b.left,parseFloat(el.style.left)),top:Math.min(b.top,parseFloat(el.style.top)),right:Math.max(b.right,parseFloat(el.style.left)+parseFloat(el.style.width)),bottom:Math.max(b.bottom,parseFloat(el.style.top)+parseFloat(el.style.height))}),{left:Infinity,top:Infinity,right:0,bottom:0});
+    // Keep the SVG surface local to the actual map, avoiding a huge empty
+    // origin area that can be clipped when Safari composites the zoomed layer.
+    const svgLeft = bounds.left - 100, svgTop = bounds.top - 100;
+    const svgWidth = bounds.right - bounds.left + 200, svgHeight = bounds.bottom - bounds.top + 200;
+    svg.setAttribute('viewBox', `${svgLeft} ${svgTop} ${svgWidth} ${svgHeight}`);
+    svg.style.left=`${svgLeft}px`; svg.style.top=`${svgTop}px`;
+    svg.style.width=`${svgWidth}px`; svg.style.height=`${svgHeight}px`;
+    syncBranchButtons();
+    }
+    let bounds;
+    buildScene();
+    function render(){canvas.getAnimations().forEach(animation=>animation.cancel());canvas.style.transform=`translate(${x}px,${y}px) scale(${scale})`;output.textContent=`${Math.round(scale*100)}%`;}
+    function zoom(next,px=viewport.clientWidth/2,py=viewport.clientHeight/2){next=Math.max(.08,Math.min(2,next));x=px-(px-x)*next/scale;y=py-(py-y)*next/scale;scale=next;render();}
+    function fit(){scale=Math.min(viewport.clientWidth/(bounds.right-bounds.left+160),viewport.clientHeight/(bounds.bottom-bounds.top+160));x=viewport.clientWidth/2-(bounds.left+bounds.right)/2*scale;y=viewport.clientHeight/2-(bounds.top+bounds.bottom)/2*scale;render();}
+    document.querySelector('#in').onclick=()=>zoom(scale*1.25);
+    document.querySelector('#out').onclick=()=>zoom(scale/1.25);
+    document.querySelector('#fit').onclick=()=>fit();
+    function branchIncluded(title) {
+      const root=data.find(group=>group.title===title || group.children?.some(child=>child.title===title));
+      if(!root)return false;
+      if(title===root.title)return selectedBranches.has(title) || (!!root.children?.length && root.children.every(child=>selectedBranches.has(child.title)));
+      return selectedBranches.has(root.title) || selectedBranches.has(title);
+    }
+    function branchSelected(title) {
+      const root=data.find(group=>group.title===title || group.children?.some(child=>child.title===title));
+      const group=groups.get(title);
+      return !!root && !!group && hasArc(group) && expanded.has(root.title) && expanded.has(title) && (title===root.title || branchIncluded(title));
+    }
+    function allBranchesExpanded() {
+      const visible=[];
+      function collect(items){for(const group of items)if(hasArc(group)&&group.children?.length){visible.push(group);collect(group.children);}}
+      collect(data);
+      return visible.length>0 && data.filter(hasArc).every(group=>branchIncluded(group.title)) && visible.every(group=>expanded.has(group.title));
+    }
+    function syncBranchButtons() {
+      document.querySelectorAll('[data-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.filter==='all' ? allBranchesExpanded() : branchSelected(button.dataset.filter))));
+    }
+    syncBranchButtons();
+    document.querySelector('.branch-nav').addEventListener('click', event => {
+      const chip=event.target.closest('[data-filter]');if(!chip)return;
+      const title=chip.dataset.filter;
+      if(title==='all') {
+        const expandable=[];
+        function collect(items){for(const group of items)if(group.children?.length && hasArc(group)){expandable.push(group);collect(group.children);}}
+        collect(data);
+        const collapse=allBranchesExpanded();
+        selectedBranches.clear();
+        if(collapse){expanded.clear();for(const group of data)selectedBranches.add(group.title);}
+        else {for(const group of data)selectedBranches.add(group.title);for(const group of expandable)expanded.add(group.title);}
+      } else {
+        const root=data.find(group=>group.title===title || group.children?.some(child=>child.title===title));
+        const wasSelected=branchSelected(title);
+        if(root.title===title){
+          selectedBranches.delete(title);
+          for(const child of root.children??[])selectedBranches.delete(child.title);
+          if(!wasSelected){selectedBranches.add(title);expanded.add(title);}
+          else expanded.delete(title);
+        } else {
+          // Split a selected parent into its children before deselecting one.
+          if(selectedBranches.delete(root.title))for(const child of root.children??[])selectedBranches.add(child.title);
+          if(wasSelected){selectedBranches.delete(title);expanded.delete(title);}
+          else {selectedBranches.add(title);expanded.add(root.title);expanded.add(title);}
+        }
+      }
+      syncBranchButtons();
+      const before=canvas.style.transform;buildScene();fit();
+      if(!reducedMotion)canvas.animate([{transform:before},{transform:canvas.style.transform}],{duration:650,easing:'cubic-bezier(.22,1,.36,1)'});
+    });
+    document.querySelector('.arc-filters').addEventListener('click', event => {
+      const chip=event.target.closest('[data-arc]');if(!chip)return;
+      const id=chip.dataset.arc;
+      if(id==='all') {
+        if(selectedArcs.size===characterArcs.length)selectedArcs.clear();
+        else for(const arc of characterArcs)selectedArcs.add(arc.id);
+      } else if(selectedArcs.has(id))selectedArcs.delete(id);
+      else selectedArcs.add(id);
+      syncBranchButtons();
+      document.querySelectorAll('[data-arc]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.arc==='all' ? selectedArcs.size===characterArcs.length : selectedArcs.has(button.dataset.arc))));
+      if(selectedArcs.size>0){function reveal(items){for(const group of items)if(hasArc(group)){if(group.children?.length){expanded.add(group.title);reveal(group.children);}}}reveal(data);}
+      const before=canvas.style.transform;buildScene();fit();
+      if(!reducedMotion)canvas.animate([{transform:before},{transform:canvas.style.transform}],{duration:650,easing:'cubic-bezier(.22,1,.36,1)'});
+    });
+    function openGroup(title, force = false) {
+      const previous = new Set([...nodes.children].map(el => el.dataset.title));
+      const before = canvas.style.transform;
+      if (title === 'Персонажи') {expanded.clear();selectedBranches.clear();for(const group of data)selectedBranches.add(group.title);syncBranchButtons();}
+      else if (!force && expanded.has(title)) expanded.delete(title);
+      else expanded.add(title);
+      const topLevel = data.find(group=>group.title===title);
+      if(topLevel && expanded.has(title)) {selectedBranches.add(title);syncBranchButtons();}
+      buildScene();
+      const parent = [...nodes.children].find(el => el.dataset.title === title);
+      const group = groups.get(title);
+      let targets = title === 'Персонажи' ? [...nodes.children] : [...nodes.children].filter(el => el === parent || (expanded.has(title) && group?.children?.some(child => child.title === el.dataset.title)));
+      if(mobileLayout() && title!=='Персонажи' && targets.length>1)targets=[targets.find(el=>el!==parent)];
+      if (targets.length) {
+        const rect = targets.reduce((b, el) => {const px=parseFloat(el.style.left), py=parseFloat(el.style.top);return {left:Math.min(b.left,px),top:Math.min(b.top,py),right:Math.max(b.right,px+parseFloat(el.style.width)),bottom:Math.max(b.bottom,py+parseFloat(el.style.height))};},{left:Infinity,top:Infinity,right:-Infinity,bottom:-Infinity});
+        scale=Math.min(.95,viewport.clientWidth/(rect.right-rect.left+140),viewport.clientHeight/(rect.bottom-rect.top+140));
+        x=viewport.clientWidth/2-(rect.left+rect.right)/2*scale;y=viewport.clientHeight/2-(rect.top+rect.bottom)/2*scale;render();
+      }
+      if (!reducedMotion) {
+        canvas.animate([{transform:before},{transform:canvas.style.transform}],{duration:700,easing:'cubic-bezier(.22,1,.36,1)'});
+        for (const path of svg.children) if (!path.dataset.hit && path.dataset.target && !previous.has(path.dataset.target)) {
+          const length=path.getTotalLength();
+          path.animate([{strokeDasharray:`${length}`,strokeDashoffset:length},{strokeDasharray:`${length}`,strokeDashoffset:0}],{duration:650,easing:'ease-in-out'});
+        }
+        for (const el of nodes.children) if (!previous.has(el.dataset.title)) el.animate([{opacity:0},{opacity:1}],{duration:450,delay:250,fill:'backwards'});
+      }
+    }
+    function returnAlongLink(event) {
+      const hit = event.target.closest('.connection-hit');
+      if (!hit) return;
+      event.preventDefault(); event.stopPropagation();
+      const parentTitle = hit.dataset.parent;
+      const before = canvas.style.transform;
+      function collapseBranch(group) {
+        expanded.delete(group.title);
+        for (const child of group.children ?? []) collapseBranch(child);
+      }
+      if (parentTitle === 'Персонажи') {expanded.clear();selectedBranches.clear();for(const group of data)selectedBranches.add(group.title);syncBranchButtons();}
+      else {
+        const group = groups.get(parentTitle);
+        if (!group) return;
+        collapseBranch(group);
+      }
+      buildScene();
+      const parent = [...nodes.children].find(el => el.dataset.title === parentTitle);
+      if (!parent) return;
+      const cx = parseFloat(parent.style.left) + parseFloat(parent.style.width) / 2;
+      const cy = parseFloat(parent.style.top) + parseFloat(parent.style.height) / 2;
+      scale = Math.min(.95, viewport.clientWidth / (parseFloat(parent.style.width) + 160), viewport.clientHeight / (parseFloat(parent.style.height) + 160));
+      x = viewport.clientWidth / 2 - cx * scale;
+      y = viewport.clientHeight / 2 - cy * scale;
+      render();
+      if (event.type === 'keydown') parent.focus({ preventScroll: true });
+      else if (document.activeElement instanceof HTMLElement || document.activeElement instanceof SVGElement) document.activeElement.blur();
+      if (!reducedMotion) canvas.animate([{transform: before}, {transform: canvas.style.transform}], {duration: 700, easing: 'cubic-bezier(.22,1,.36,1)'});
+    }
+    svg.addEventListener('pointerdown', event => {
+      if(event.target.closest('.connection-hit')) event.preventDefault();
+    });
+    svg.addEventListener('click', returnAlongLink);
+    svg.addEventListener('keydown', event => { if(event.key==='Enter'||event.key===' ') returnAlongLink(event); });
+    const viewer = document.querySelector('#portrait-viewer');
+    const largePortrait = document.querySelector('#portrait-large');
+    function showPortrait(frame) {
+      largePortrait.src=frame.dataset.full; largePortrait.alt=frame.dataset.name;
+      document.querySelector('#portrait-caption').textContent=frame.dataset.name;
+      viewer.showModal();
+    }
+    document.querySelector('#portrait-close').onclick=()=>viewer.close();
+    viewer.addEventListener('click', event=>{if(event.target===viewer)viewer.close();});
+    viewer.addEventListener('close', ()=>{largePortrait.removeAttribute('src');});
+    nodes.addEventListener('click', event => {
+      const frame=event.target.closest('.portrait[data-full]');
+      if(frame){event.stopPropagation();showPortrait(frame);return;}
+      const el=event.target.closest('[role="button"]'); if(el) openGroup(el.dataset.title);
+    });
+    nodes.addEventListener('keydown', event => { if(event.key==='Enter'||event.key===' '){const frame=event.target.closest('.portrait[data-full]');if(frame){event.preventDefault();event.stopPropagation();showPortrait(frame);return;}const el=event.target.closest('[role="button"]');if(el){event.preventDefault();event.stopPropagation();openGroup(el.dataset.title);}} });
+    viewport.addEventListener('wheel',event=>{event.preventDefault();const r=viewport.getBoundingClientRect();zoom(scale*Math.exp(-event.deltaY*.0015),event.clientX-r.left,event.clientY-r.top);},{passive:false});
+    const pointers=new Map();let gesture=null,moved=false;
+    function pinchState(){const [a,b]=[...pointers.values()];const r=viewport.getBoundingClientRect();return {distance:Math.hypot(b.x-a.x,b.y-a.y),x:(a.x+b.x)/2-r.left,y:(a.y+b.y)/2-r.top};}
+    viewport.onpointerdown=event=>{
+      if(event.button!==0)return;
+      if(event.pointerType!=='touch'&&event.target.closest('[role="button"]'))return;
+      if(!pointers.size)moved=false;
+      pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+      gesture=pointers.size===2?pinchState():null;
+    };
+    viewport.onpointermove=event=>{
+      const previous=pointers.get(event.pointerId);if(!previous)return;
+      const dx=event.clientX-previous.x,dy=event.clientY-previous.y;
+      if(!moved&&pointers.size===1&&Math.hypot(dx,dy)<5)return;
+      pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+      moved=true;viewport.setPointerCapture(event.pointerId);viewport.classList.add('dragging');
+      if(pointers.size>=2){const next=pinchState();if(gesture&&gesture.distance>0){x+=next.x-gesture.x;y+=next.y-gesture.y;zoom(scale*next.distance/gesture.distance,next.x,next.y);}gesture=next;}
+      else{x+=dx;y+=dy;render();}
+    };
+    function endPointer(event){pointers.delete(event.pointerId);gesture=pointers.size>=2?pinchState():null;if(!pointers.size)viewport.classList.remove('dragging');}
+    viewport.onpointerup=endPointer;viewport.onpointercancel=endPointer;
+    viewport.addEventListener('click',event=>{if(moved){event.preventDefault();event.stopImmediatePropagation();moved=false;}},true);
+    viewport.onkeydown=event=>{const moves={ArrowLeft:[60,0],ArrowRight:[-60,0],ArrowUp:[0,60],ArrowDown:[0,-60]};if(moves[event.key]){event.preventDefault();x+=moves[event.key][0];y+=moves[event.key][1];render();}else if(event.key==='+'||event.key==='='){event.preventDefault();zoom(scale*1.25);}else if(event.key==='-'){event.preventDefault();zoom(scale/1.25);}else if(event.key==='0'){event.preventDefault();fit();}};
+    const navigation = document.querySelector('.branch-nav');
+    const branchToggle=document.querySelector('#mobile-branches-toggle');
+    const arcToggle=document.querySelector('#mobile-arcs-toggle');
+    function togglePanel(panel) {
+      const open=navigation.dataset.panel===panel ? '' : panel;
+      navigation.dataset.panel=open;
+      branchToggle.setAttribute('aria-expanded',String(open==='branches'));
+      arcToggle.setAttribute('aria-expanded',String(open==='arcs'));
+    }
+    branchToggle.onclick=()=>togglePanel('branches');
+    arcToggle.onclick=()=>togglePanel('arcs');
+    navigation.addEventListener('keydown',event=>{if(event.key==='Escape'){
+      const previous=navigation.dataset.panel;
+      navigation.dataset.panel='';branchToggle.setAttribute('aria-expanded','false');arcToggle.setAttribute('aria-expanded','false');
+      (previous==='arcs'?arcToggle:branchToggle).focus();
+    }});
+    function resizeMapArea() {
+      const nextColumns=mobileLayout()?2:4;if(nextColumns!==cardColumns){cardColumns=nextColumns;buildScene();}
+      viewport.style.top = `${Math.ceil(navigation.getBoundingClientRect().bottom) + 16}px`;
+      fit();
+    }
+    window.addEventListener('resize', resizeMapArea);
+    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(resizeMapArea).observe(navigation);
+    resizeMapArea();
+    document.fonts?.ready.then(resizeMapArea);
+
+  </script>
+</body>
+</html>
+<style is:global>
+  .panel-chevron{display:block;flex-shrink:0;transition:transform .2s}.mobile-panel-toggle[aria-expanded="true"] .panel-chevron{transform:rotate(180deg)}
+  .mobile-panel-toggle{display:none}.filter-options,.branch-options{display:contents}.return-to-cycle{gap:4px}
+  .map-fallback{position:fixed;inset:160px 20px 80px;overflow:auto;z-index:6;padding:24px;background:var(--parchment);line-height:1.7}.map-fallback h3{font-family:"Playfair Display",Georgia,serif}
+  *{box-sizing:border-box}
+  :root{--parchment:#FAF6F0;--ink:#2C2C2C;--muted:#6B6660;--border:#D4C5A9;--gold:#C9A84C;--gold-ink:#7A5E1A;--dark:#1A1A2E}
+  body{margin:0;background:var(--parchment);color:var(--ink);font-family:Inter,system-ui,sans-serif;height:100dvh;overflow:hidden;-webkit-font-smoothing:antialiased}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  #viewport{position:fixed;inset:80px 0 70px;overflow:hidden;cursor:grab;touch-action:none;background:var(--parchment)}
+  #viewport.dragging{cursor:grabbing}#viewport:focus-visible{outline:1px solid var(--gold);outline-offset:-4px}
+  #canvas{position:absolute;transform-origin:0 0}
+  #connections{position:absolute;overflow:visible;pointer-events:none}#connections:focus{outline:none}
+  .back-links,.branch-nav,.controls{position:fixed;z-index:10;background:#FAF6F0ed;backdrop-filter:blur(10px);border:1px solid var(--border);box-shadow:0 3px 16px #1a1a2e05}
+  .back-links{top:80px;left:24px;display:flex;align-items:center;padding:12px 16px;font-size:11px}
+  .back-links a{color:var(--muted);text-decoration:none;transition:color .2s}.back-links a:hover{color:var(--gold-ink)}
+  .back-links .site-link{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--ink)}.back-links span{color:var(--border)}
+  .branch-nav{top:16px;left:24px;right:24px;max-width:none;display:flex;flex-wrap:wrap;gap:4px;padding:2px;background:none;border:0;box-shadow:none;backdrop-filter:none}
+  .branch-nav .return-to-cycle{flex:0 0 138px;width:138px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:#FAF6F0ed;font-size:10px;color:var(--muted);text-decoration:none}.branch-nav .return-to-cycle:hover{color:var(--gold-ink);background:#C9A84C12}
+  .branch-nav button{flex:0 0 138px;width:138px;height:32px;padding:5px 8px;white-space:normal;border:1px solid var(--border);background:#FAF6F0ed;backdrop-filter:blur(10px);font-size:9px;line-height:1.3}
+  .branch-nav .return-to-cycle{background:#EAD9AA;border-color:#B99A4A;color:#574115}
+  .branch-nav .return-to-cycle:hover{background:#E1CA8B;color:#46320C}
+  .arc-filters{flex:0 0 100%;display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)}
+  .arc-label{font-size:9px;color:var(--muted);padding:0 8px 0 2px}
+  .branch-nav .arc-filters button{width:auto;flex:0 0 auto;padding:5px 9px;display:flex;align-items:center;gap:6px;font-size:9px}
+  .arc-dot{width:8px;height:8px;border:2px solid var(--arc-color);display:inline-block;flex-shrink:0}
+  .branch-nav button[aria-pressed="true"]{background:#F4EDDF;border-color:#A68B53;color:#574B36;box-shadow:inset 0 0 0 1px #A68B5333}
+  .branch-nav button[data-filter="all"][aria-pressed="true"]{background:#E9E3D8;border-color:#BFB19A;color:#5E584F}
+  select,button{font:12px Inter,system-ui,sans-serif;color:var(--muted);background:transparent;border:0;border-radius:0}
+  select{padding:14px 32px 14px 14px;max-width:310px;cursor:pointer}select option{background:var(--parchment);color:var(--ink)}
+  button{cursor:pointer;transition:background .2s,color .2s}button:hover{background:#C9A84C12;color:var(--gold-ink)}
+  button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .controls{bottom:24px;right:24px;display:flex;align-items:center;padding:4px}
+  .controls button{min-width:34px;height:34px;font-size:19px}.controls #fit{font-size:11px;padding:0 12px;border-left:1px solid var(--border);margin-left:5px}
+  output{font-size:10px;color:var(--muted);width:42px;text-align:center;font-variant-numeric:tabular-nums}
+  footer{position:fixed;z-index:5;left:24px;bottom:30px;max-width:calc(100vw - 260px);font-size:10px;line-height:1.7;color:var(--muted);pointer-events:none}footer span{display:block;opacity:.65;font-size:9px}
+  .node{position:absolute;border-radius:4px;user-select:none}.node[role="button"]{cursor:pointer}
+  .node[role="button"]:hover{box-shadow:0 4px 18px #1a1a2e0c;border-color:var(--gold)}
+  .node[role="button"]:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+  .root{display:grid;place-items:center;background:var(--dark);border:1px solid #B29A64;color:var(--parchment);font:600 26px 'Playfair Display',Georgia,serif}
+  .group{background:#FFFCF7;border:1px solid var(--border);padding:16px;box-shadow:0 2px 9px #1a1a2e03}
+  .group h2{font:600 17px/24px 'Playfair Display',Georgia,serif;text-align:center;margin:0 0 14px;color:var(--ink)}
+  .group:not(:has(.people)){display:flex;align-items:center;justify-content:center;background:#F1EADD}
+  .group:not(:has(.people)) h2{margin:0;width:100%}
+  .branch-toggle{position:absolute;right:9px;top:8px;font-size:14px;line-height:18px;color:var(--gold-ink)}
+  .connection-hit{pointer-events:stroke;cursor:pointer}.connection-hit:focus{outline:none}.connection-hit:focus-visible{stroke:#C9A84C44;outline:none}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 10px}.person{text-align:center}
+  .portrait{width:86px;height:110px;margin:0 auto 9px;overflow:hidden;border-radius:3px;background:var(--parchment);border:1px solid var(--border);display:grid;place-items:center}
+  .portrait img{width:100%;height:100%;object-fit:cover}.portrait span{font:26px 'Playfair Display',Georgia,serif;color:var(--gold-ink)}
+  .portrait[data-full]{cursor:zoom-in}.portrait[data-full]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .person h3{font-size:12px;font-weight:500;line-height:1.4;margin:0 0 5px;color:var(--ink)}.nickname{display:block;font-size:10px;font-weight:400;margin-top:2px;color:var(--muted)}.person p{font-size:10px;line-height:1.4;margin:0;color:var(--muted)}
+  #portrait-viewer{padding:16px;border:1px solid var(--border);border-radius:4px;background:var(--parchment);color:var(--ink);max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow:auto;text-align:center}
+  #portrait-viewer::backdrop{background:#1A1A2Ecc}#portrait-large{display:block;max-width:min(80vw,760px);height:auto;max-height:78dvh;object-fit:contain;margin:auto}
+  #portrait-caption{margin:12px 28px 0;font:18px 'Playfair Display',Georgia,serif}#portrait-close{position:absolute;right:8px;top:8px;width:36px;height:36px;padding:0;font-size:26px;background:#FAF6F0ed}
+  @media(max-width:650px){
+    .branch-nav{top:max(10px,env(safe-area-inset-top));left:10px;right:10px;gap:6px;background:var(--parchment);padding:0}
+    .branch-nav .return-to-cycle,.branch-nav .mobile-panel-toggle{display:flex;align-items:center;justify-content:center;gap:7px;flex:1 1 0;width:auto;height:44px;font-size:11px;padding:6px;border:1px solid var(--border)}
+    .filter-options{display:none;flex:0 0 100%;gap:5px;flex-wrap:wrap;max-height:45dvh;overflow-y:auto;padding:8px 2px 10px;overscroll-behavior:contain}
+    .branch-nav .return-to-cycle{flex:0 0 44px;width:44px;font-size:24px}.return-label{display:none}
+    .branch-options,.filter-options .arc-filters{display:none}
+    .branch-nav[data-panel="branches"] .filter-options,.branch-nav[data-panel="arcs"] .filter-options{display:flex}
+    .branch-nav[data-panel="branches"] .branch-options{display:contents}
+    .branch-nav[data-panel="arcs"] .arc-filters{display:flex;margin:0;padding:0;border:0}
+    .branch-nav .mobile-panel-toggle[aria-expanded="true"]{background:#F4EDDF;border-color:#A68B53}
+    .branch-nav .branch-options>button{flex:1 0 45%;width:auto;min-height:44px;height:auto;font-size:11px;padding:7px 9px}
+    .branch-nav .arc-filters button{min-height:44px;flex:1 0 100%;font-size:11px;padding:7px 9px}
+    .controls{bottom:max(12px,env(safe-area-inset-bottom));right:12px}.controls button{min-width:44px;height:44px}.controls #fit{padding:0 10px}
+    footer{left:12px;bottom:22px;max-width:90px;font-size:9px;line-height:1.5}footer span{display:none}
+    #portrait-viewer{padding:10px;max-width:calc(100vw - 16px)}#portrait-large{max-width:calc(100vw - 38px);max-height:78dvh}#portrait-close{width:44px;height:44px}
+  }
+</style>

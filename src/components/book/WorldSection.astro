@@ -11,7 +11,11 @@ const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 <Section title={ui.bookSections.world} tightHeader>
   <div class="mb-4 space-y-4">
     {world.split('\n\n').filter((p: string) => p.trim()).map((para: string) => (
-      <p class="text-dp-text leading-relaxed">{para.trim()}</p>
+      <p class="text-dp-text leading-relaxed">{para.trim().split(/(\*\*[^*]+\*\*)/g).map(part => (
+        part.startsWith('**') && part.endsWith('**')
+          ? <strong>{part.slice(2, -2)}</strong>
+          : part
+      ))}</p>
     ))}
   </div>
 </Section>

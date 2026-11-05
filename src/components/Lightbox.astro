@@ -52,6 +52,14 @@ const aria = ui.aria ?? {};
     class="object-contain select-none"
   />
 
+  <div id="lb-zoom-controls" hidden aria-label="Масштаб карты">
+    <button id="lb-zoom-out" type="button" aria-label="Уменьшить карту">−</button>
+    <output id="lb-zoom-value" aria-live="polite">100%</output>
+    <button id="lb-zoom-in" type="button" aria-label="Увеличить карту">+</button>
+    <button id="lb-zoom-native" type="button" title="Оригинальный размер изображения">1:1</button>
+    <button id="lb-zoom-fit" type="button">Вся карта</button>
+  </div>
+
   <!-- Counter -->
   <div id="lb-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-body"></div>
 </div>
@@ -63,6 +71,84 @@ const aria = ui.aria ?? {};
   const lbPrev = document.getElementById('lb-prev') as HTMLButtonElement;
   const lbNext = document.getElementById('lb-next') as HTMLButtonElement;
   const lbCounter = document.getElementById('lb-counter') as HTMLElement;
+
+  const zoomControls = document.getElementById('lb-zoom-controls') as HTMLElement;
+  const zoomValue = document.getElementById('lb-zoom-value') as HTMLElement;
+  const zoomIn = document.getElementById('lb-zoom-in') as HTMLButtonElement;
+  const zoomOut = document.getElementById('lb-zoom-out') as HTMLButtonElement;
+  const zoomFit = document.getElementById('lb-zoom-fit') as HTMLButtonElement;
+  const zoomNative = document.getElementById('lb-zoom-native') as HTMLButtonElement;
+  let mapMode = false, magnification = 1, offsetX = 0, offsetY = 0, fitScale = 1;
+  const pointers = new Map<number, {x: number; y: number}>();
+  let pinch: {x: number; y: number; distance: number} | null = null;
+  function paintMap() {
+    if (!mapMode) return;
+    // Keep at least part of the map within reach when dragging.
+    const limitX = Math.max(0, (lbImg.naturalWidth * fitScale * magnification - window.innerWidth) / 2 + window.innerWidth / 3);
+    const limitY = Math.max(0, (lbImg.naturalHeight * fitScale * magnification - window.innerHeight) / 2 + window.innerHeight / 3);
+    offsetX = Math.max(-limitX, Math.min(limitX, offsetX));
+    offsetY = Math.max(-limitY, Math.min(limitY, offsetY));
+    lbImg.style.transform = `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px) scale(${magnification})`;
+    zoomValue.textContent = `${Math.round(fitScale * magnification * 100)}%`;
+  }
+  function fitMap() {
+    if (!mapMode || !lbImg.naturalWidth) return;
+    fitScale = Math.min(1, Math.max(1, window.innerWidth - 32) / lbImg.naturalWidth, Math.max(1, window.innerHeight - 160) / lbImg.naturalHeight);
+    lbImg.style.width = `${lbImg.naturalWidth * fitScale}px`;
+    lbImg.style.height = `${lbImg.naturalHeight * fitScale}px`;
+    magnification = 1; offsetX = offsetY = 0;
+    paintMap();
+  }
+  function zoomMap(next: number, anchorX = 0, anchorY = 0) {
+    if (!mapMode || !lbImg.naturalWidth) return;
+    next = Math.max(1, Math.min(Math.max(8, 1 / fitScale), next));
+    offsetX = anchorX - (anchorX - offsetX) * next / magnification;
+    offsetY = anchorY - (anchorY - offsetY) * next / magnification;
+    magnification = next; paintMap();
+  }
+  zoomIn.addEventListener('click', () => zoomMap(magnification * 1.4));
+  zoomOut.addEventListener('click', () => zoomMap(magnification / 1.4));
+  zoomFit.addEventListener('click', fitMap);
+  zoomNative.addEventListener('click', () => zoomMap(1 / fitScale));
+  lbImg.addEventListener('load', fitMap);
+  lightbox.addEventListener('wheel', event => {
+    if (!mapMode) return;
+    event.preventDefault();
+    zoomMap(magnification * Math.exp(-event.deltaY * .0015), event.clientX - window.innerWidth / 2, event.clientY - window.innerHeight / 2);
+  }, { passive: false });
+  lbImg.draggable = false;
+  function pinchState() {
+    const [a,b] = [...pointers.values()];
+    return {x: (a.x+b.x)/2, y: (a.y+b.y)/2, distance: Math.hypot(b.x-a.x,b.y-a.y)};
+  }
+  lbImg.addEventListener('pointerdown', event => {
+    if (!mapMode || event.button !== 0) return;
+    pointers.set(event.pointerId, {x:event.clientX,y:event.clientY});
+    lbImg.setPointerCapture(event.pointerId);
+    pinch = pointers.size >= 2 ? pinchState() : null;
+    lbImg.classList.add('is-dragging');
+  });
+  lbImg.addEventListener('pointermove', event => {
+    const previous = pointers.get(event.pointerId);
+    if (!mapMode || !previous) return;
+    pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+    if (pointers.size >= 2) {
+      const next = pinchState();
+      if (pinch && pinch.distance > 0) {
+        offsetX += next.x-pinch.x; offsetY += next.y-pinch.y;
+        zoomMap(magnification*next.distance/pinch.distance,next.x-window.innerWidth/2,next.y-window.innerHeight/2);
+      }
+      pinch = next;
+    } else {offsetX += event.clientX-previous.x;offsetY += event.clientY-previous.y;paintMap();}
+  });
+  function finishPointer(event: PointerEvent) {
+    pointers.delete(event.pointerId);
+    pinch = pointers.size >= 2 ? pinchState() : null;
+    if (!pointers.size) lbImg.classList.remove('is-dragging');
+  }
+  lbImg.addEventListener('pointerup', finishPointer);
+  lbImg.addEventListener('pointercancel', finishPointer);
+  window.addEventListener('resize', fitMap);
 
   let opener: HTMLElement | null = null;
   let previousOverflow = '';
@@ -114,10 +200,11 @@ const aria = ui.aria ?? {};
     }
     opener = null;
     gallery = [];
+    pointers.clear(); pinch=null; lbImg.classList.remove('is-dragging');
   }
 
   function showImage() {
-    lbImg.src = gallery[currentIndex];
+
     // Copy alt text from the trigger element
     const triggers = document.querySelectorAll(`[data-lightbox-group]`);
     const triggerEl = Array.from(triggers).find(el => {
@@ -126,6 +213,14 @@ const aria = ui.aria ?? {};
     });
     const altText = triggerEl ? imageDescription(triggerEl) : '';
     lbImg.alt = altText;
+    mapMode = triggerEl?.getAttribute('data-lightbox-zoom') === 'true';
+    lightbox.classList.toggle('map-view', mapMode);
+    zoomControls.hidden = !mapMode;
+    pointers.clear(); pinch=null; magnification=1;offsetX=offsetY=0;
+    lbImg.classList.remove('is-dragging');
+    lbImg.style.removeProperty('width'); lbImg.style.removeProperty('height'); lbImg.style.removeProperty('transform');
+    lbImg.src = gallery[currentIndex];
+    if (mapMode && lbImg.complete && lbImg.naturalWidth) fitMap();
     lbCounter.textContent = gallery.length > 1 ? `${currentIndex + 1} / ${gallery.length}` : '';
   }
 
@@ -159,7 +254,7 @@ const aria = ui.aria ?? {};
   document.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('hidden')) return;
     if (e.key === 'Tab') {
-      const controls = [lbClose, lbPrev, lbNext].filter(button => !button.disabled && button.getClientRects().length > 0);
+      const controls = [lbClose, lbPrev, lbNext, zoomOut, zoomIn, zoomNative, zoomFit].filter(button => !button.disabled && button.getClientRects().length > 0);
       const index = controls.indexOf(document.activeElement as HTMLButtonElement);
       const next = index < 0 ? (e.shiftKey ? controls.length - 1 : 0)
         : (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length;
@@ -167,6 +262,14 @@ const aria = ui.aria ?? {};
       controls[next].focus({ preventScroll: true });
     }
     if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+    if (mapMode && ['+', '=', '-', '0', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+      e.preventDefault();
+      if (e.key==='+' || e.key==='=') zoomMap(magnification*1.4);
+      else if(e.key==='-')zoomMap(magnification/1.4);
+      else if(e.key==='0')fitMap();
+      else {offsetX += e.key==='ArrowLeft'?60:e.key==='ArrowRight'?-60:0;offsetY += e.key==='ArrowUp'?60:e.key==='ArrowDown'?-60:0;paintMap();}
+      return;
+    }
     if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
   });
@@ -234,6 +337,17 @@ const aria = ui.aria ?? {};
 </script>
 
 <style is:global>
+  #lightbox.map-view { overflow: hidden; }
+  #lightbox.map-view #lb-img {position:absolute;left:50%;top:50%;max-width:none;max-height:none;touch-action:none;cursor:grab;transform-origin:center;}
+  #lightbox.map-view #lb-img.is-dragging {cursor:grabbing;}
+  #lb-zoom-controls {position:absolute;bottom:42px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:4px;padding:5px;background:#FAF6F0;border:1px solid #D4C5A9;color:#2C2C2C;white-space:nowrap;}
+  #lb-zoom-controls[hidden],#lb-zoom-hint[hidden] {display:none;}
+  #lb-zoom-controls button {min-width:44px;height:44px;padding:0 10px;font-size:14px;}
+  #lb-zoom-controls button:hover {background:#C9A84C20;}
+  #lb-zoom-controls button:focus-visible {outline:2px solid #C9A84C;outline-offset:-3px;}
+  #lb-zoom-value {min-width:46px;text-align:center;font-size:12px;}
+  #lb-zoom-hint {position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:11px;color:#fff;pointer-events:none;}
+  @media(max-width:480px){#lb-zoom-controls{bottom:48px;gap:0;padding:3px;}#lb-zoom-controls button{padding:0 6px;font-size:12px;}#lb-zoom-hint{padding:0 12px;font-size:10px;}}
   #lb-img {
     max-height: 75vh;
     max-height: 75dvh;

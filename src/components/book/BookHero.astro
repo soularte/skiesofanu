@@ -57,6 +57,11 @@ const coverLinks = data.links ?? [];
 
     <div class="prose prose-sm prose-invert max-w-none text-dp-text leading-relaxed">
       <Content />
+      {data.publicationNote && (
+        <aside aria-label="Статус публикации" class="mt-6 border-l-2 border-dp-gold/60 pl-4 text-dp-muted">
+          <p>{data.publicationNote}</p>
+        </aside>
+      )}
     </div>
   </div>
 </div>

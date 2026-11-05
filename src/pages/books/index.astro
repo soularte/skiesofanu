@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import MarketplaceLinks from '../../components/MarketplaceLinks.astro';
 import GenreChip from '../../components/GenreChip.astro';
 import GoldLine from '../../components/GoldLine.astro';
+import SeriesBadge from '../../components/SeriesBadge.astro';
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { findImage } from '../../lib/images';
@@ -60,6 +61,7 @@ const ordered = await Promise.all(
             )}
             <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none z-0"></div>
             <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300 z-10"></div>
+            <SeriesBadge count={book.data.series ? Math.max(0, (book.data.books?.length ?? 0) - 1) : 0} />
           </a>
           <!-- Info -->
           <div class="flex-1">

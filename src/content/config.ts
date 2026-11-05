@@ -25,6 +25,7 @@ const books = defineCollection({
     seoDescription: z.string().optional(),
     authors: z.array(z.enum(['ksenia', 'vasily'])).min(1).optional(),
     mediumDescription: z.string().optional(),
+    publicationNote: z.string().optional(),
     series: z.string().optional(),
     seriesSubtitle: z.string().optional(),
     seriesDescription: z.string().optional(),

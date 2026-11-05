@@ -84,7 +84,7 @@ const articleLd = {
           <img
             src={entry.data.previewCover ?? entry.data.cover}
             data-lightbox-group={entry.slug === 'aviatory-map' ? 'lore-cover' : undefined}
-            data-lightbox-src={entry.slug === 'aviatory-map' ? '/images/lore/aviatory-map.png' : undefined}
+            data-lightbox-src={entry.slug === 'aviatory-map' ? entry.data.cover : undefined}
             alt={entry.data.title}
             class="w-full h-full object-cover"
             loading="lazy"

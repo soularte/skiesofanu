@@ -29,6 +29,7 @@ const covers = orderedBooks
     if (!src) return null;
     return {
       slug: b.slug,
+      extraBooks: b.data.series ? Math.max(0, (b.data.books?.length ?? 0) - 1) : 0,
       title: b.data.title,
       src,
       description: b.data.shortDescription,

@@ -18,6 +18,7 @@ import { getCollection, render } from 'astro:content';
 import { loadDataFile } from '../../lib/data';
 import { findImage } from '../../lib/images';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 export async function getStaticPaths() {
@@ -60,7 +61,10 @@ if (data.cardsFolder) {
     cardImages = fs.readdirSync(cardsDir)
       .filter(f => /\.(jpe?g|png|webp|avif)$/i.test(f))
       .sort((a, b) => a.localeCompare(b, 'ru'))
-      .map(f => `/cards/${data.cardsFolder}/${f}`);
+      .map(f => {
+        const version = createHash('sha256').update(fs.readFileSync(path.join(cardsDir, f))).digest('hex').slice(0, 10);
+        return `/cards/${data.cardsFolder}/${f}?v=${version}`;
+      });
   }
 }
 

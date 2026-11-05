@@ -12,5 +12,5 @@ tags: [карта, география]
 
 Карта отражает состояние мира на момент последней написанной книги.
 
-<img src="/images/lore/anu-map-preview.webp" alt="Карта мира Небес Ану" loading="lazy" data-lightbox-group="lore-article" data-lightbox-src="/images/lore/version-06-(by-norsilenser).png" />
+<img src="/images/lore/anu-map-preview.webp" alt="Карта мира Небес Ану" loading="lazy" data-lightbox-group="lore-article" data-lightbox-zoom="true" data-lightbox-src="/images/lore/version-06-(by-norsilenser).png" />
 
