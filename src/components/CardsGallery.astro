@@ -1,5 +1,5 @@
 ---
-import GalleryArrow from './GalleryArrow.astro';
+import Gallery from './Gallery.astro';
 import { loadDataFile } from '../lib/data';
 
 interface Props {
@@ -10,45 +10,16 @@ const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
 const aria = ui.aria ?? {};
 ---
 
-<div class="relative">
-  <!-- Mobile: one card at a time, centered -->
-  <div class="sm:hidden">
-    <div
-      id="cards-track-mobile"
-      class="overflow-hidden relative"
-    >
-      <div class="flex transition-transform duration-300" id="cards-slider">
-        {images.map(src => (
+<Gallery count={images.length} prefix="cards" trackClass="gap-4 py-2">
+  <Fragment slot="mobile">
+    {images.map(src => (
           <div class="w-full flex-shrink-0 flex justify-center px-4">
             <img src={src} alt={aria.promoCard} loading="lazy" draggable="false" width="248" height="350" class="h-[350px] w-auto shadow-lg" data-lightbox-group="cards-mobile" data-lightbox-src={src} />
           </div>
         ))}
-      </div>
-      <!-- Compact controls share the desktop arrow component. -->
-      {images.length > 1 && (
-        <>
-        <GalleryArrow direction="left" id="cards-mobile-prev" mobile />
-        <GalleryArrow direction="right" id="cards-mobile-next" mobile />
-        </>
-      )}
-    </div>
-    {images.length > 1 && (
-      <div class="flex justify-center gap-2 mt-3">
-        {images.map((_, i) => (
-          <button class="cards-dot w-2 h-2 rounded-full bg-dp-border transition-colors" data-index={i}></button>
-        ))}
-      </div>
-    )}
-  </div>
-
-  <!-- Desktop: scrollable track -->
-  <div class="hidden sm:block">
-    <div
-      id="cards-track"
-      class="flex gap-4 overflow-x-auto select-none py-2"
-      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
-    >
-      {images.map(src => (
+  </Fragment>
+  <Fragment slot="desktop">
+    {images.map(src => (
         <img
           src={src}
           alt={aria.promoCard}
@@ -56,27 +27,10 @@ const aria = ui.aria ?? {};
           draggable="false"
           width="248"
           height="350"
-          class="flex-shrink-0 h-[350px] w-auto shadow-lg snap-center cursor-pointer hover:opacity-90 transition-opacity"
+          class="flex-shrink-0 h-[350px] w-auto shadow-lg snap-start cursor-pointer hover:opacity-90 transition-opacity"
           data-lightbox-group="cards"
           data-lightbox-src={src}
         />
       ))}
-    </div>
-
-    <!-- Left hover zone -->
-    <GalleryArrow direction="left" id="cards-prev" />
-
-    <!-- Right hover zone -->
-    <GalleryArrow direction="right" id="cards-next" />
-  </div>
-</div>
-
-<style>
-  #cards-track::-webkit-scrollbar { display: none; }
-  .cards-dot.active { background-color: #C9A84C; }
-</style>
-
-<script>
-  import { initSlider } from '../lib/slider';
-  initSlider({ prefix: 'cards', step: 300 });
-</script>
+  </Fragment>
+</Gallery>

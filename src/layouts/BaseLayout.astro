@@ -34,20 +34,17 @@ interface Props {
   description?: string;
   image?: string;
   canonicalURL?: string;
-  keywords?: string;
   ogType?: string;
   noindex?: boolean;
   additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const SITE_KEYWORDS = 'стимпанк, дизельпанк, фэнтези, фантастика, ксения котова, василий зеленков, авиаторы его величества, романтическое фэнтези, литнет, литгород, автор тудей, литрес, умная фантастика, умное фэнтези, авторские миры, фантастические миры, воздушные корабли, летающие острова, воздушные пираты, парящие города, альтернативная история, ретрофутуризм, приключенческая фантастика, фэнтези-приключения, романтическая фантастика, авантюрный роман, городское фэнтези, магический реализм, читать онлайн, купить книгу фэнтези, электронная книга фэнтези, серия книг фэнтези, цикл фэнтези, новинки фэнтези, российское фэнтези, отечественное фэнтези, соавторы, соавторский дуэт, авторский тандем, книжная серия, небеса ану, авиаторы, Лем Декс, steampunk, dieselpunk, fantasy, science fiction, Ksenia Kotova, Vasily Zelenkov, Aviators of His Majesty, romantic fantasy, litnet, litgorod, author today, litres, smart fantasy, author worlds, fictional worlds, airships, floating islands, air pirates, retrofuturism, adventure fantasy, romantic fiction, russian fantasy books, co-authors, writing duo, skies of anu';
 
 const {
   title,
   description = site.defaultDescription,
   image,
   canonicalURL = Astro.url.href,
-  keywords,
   ogType = 'website',
   noindex = false,
   additionalSchema,
@@ -63,7 +60,6 @@ const socialImageURL = socialCard ? new URL(socialCard.src, Astro.site ?? Astro.
 const socialWidth = socialCard?.width ?? (!image ? defaultOgImg.width : undefined);
 const socialHeight = socialCard?.height ?? (!image ? defaultOgImg.height : undefined);
 const socialType = socialCard?.type ?? (!image ? 'image/jpeg' : undefined);
-const allKeywords = keywords ? `${keywords}, ${SITE_KEYWORDS}` : SITE_KEYWORDS;
 const pageSeo = (seoPages as Record<string, {title: string; description: string}>)[socialPath];
 const siteTitle = `${pageSeo?.title ?? title} — ${site.siteName}`;
 const pageDescription = pageSeo?.description ?? description;
@@ -95,7 +91,6 @@ const extraSchemas = additionalSchema
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={pageDescription} />
-    <meta name="keywords" content={allKeywords} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
@@ -148,6 +143,7 @@ const extraSchemas = additionalSchema
     ))}
   <style is:global>
     @import '../styles/prose.css';
+    #back-to-top { bottom: calc(var(--floating-obstruction, 0px) + 1.5rem); }
     p + p {
       margin-top: 1em;
     }
@@ -236,9 +232,16 @@ const extraSchemas = additionalSchema
       if (!localStorage.getItem('privacy-closed')) {
         banner.style.display = '';
       }
+      function updateFloatingObstruction() {
+        const height = banner.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--floating-obstruction', `${height}px`);
+      }
+      new ResizeObserver(updateFloatingObstruction).observe(banner);
+      updateFloatingObstruction();
       document.getElementById('privacy-close')?.addEventListener('click', () => {
         banner.style.display = 'none';
         localStorage.setItem('privacy-closed', '1');
+        updateFloatingObstruction();
       });
     </script>
   </body>

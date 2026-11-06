@@ -1,7 +1,65 @@
 ---
+import { genreIcons } from '../lib/genre-icons';
 interface Props {
   label: string;
+  mobileIcon?: boolean;
 }
-const { label } = Astro.props;
+const { label, mobileIcon = false } = Astro.props;
+const icon = mobileIcon ? genreIcons[label] : undefined;
+const tooltipId = icon ? `genre-${crypto.randomUUID()}` : undefined;
 ---
-<span class="text-[11px] font-body tracking-widest px-2 py-1 border border-dp-border bg-dp-border/20 text-dp-muted cursor-default select-none">{label.toUpperCase()}</span>
+<span class:list={['genre-chip', { 'has-mobile-icon': !!icon }]} data-genre-chip={icon ? true : undefined}>
+  <span class="genre-text text-[11px] font-body tracking-widest px-2 py-1 border border-dp-border bg-dp-border/20 text-dp-muted cursor-default select-none">{label.toUpperCase()}</span>
+  {icon && <>
+    <button class="genre-symbol" type="button" aria-label={label} aria-describedby={tooltipId} aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icon} />
+    </button>
+    <span class="genre-tooltip" id={tooltipId} role="tooltip">{label}</span>
+  </>}
+</span>
+<style>
+  .genre-chip { display: contents; }
+  .genre-symbol, .genre-tooltip { display: none; }
+  @media (max-width: 767px) {
+    .has-mobile-icon { display: block; position: relative; min-width: 0; }
+    .has-mobile-icon .genre-text { display: none; }
+    .genre-symbol { display: grid; place-items: center; width: 100%; min-height: 48px; border: 1px solid #D4C5A9; background: rgb(250 246 240 / 45%); color: #7A5E1A; cursor: pointer; }
+    .genre-symbol:focus-visible { outline: 2px solid #957323; outline-offset: 3px; }
+    .genre-tooltip { position: absolute; z-index: 3; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); width: max-content; max-width: 220px; padding: .4rem .6rem; border: 1px solid #D4C5A9; background: #FAF6F0; color: #2C2C2C; font-size: .75rem; line-height: 1.5; box-shadow: 0 3px 10px rgb(26 26 46 / 10%); }
+    .genre-chip:first-child .genre-tooltip { left: 0; transform: none; }
+    .genre-chip:last-child .genre-tooltip { left: auto; right: 0; transform: none; }
+    .genre-chip:focus-within .genre-tooltip, .genre-chip.is-open .genre-tooltip { display: block; }
+    .genre-symbol:is(:hover, :focus-visible, :active) + .genre-tooltip { display: block; }
+    .genre-symbol:is(:hover, :focus-visible, [aria-expanded="true"]) { color: #7A5E1A; border-color: #957323; background: #eee5d3; }
+  }
+</style>
+<script>
+  const chips = Array.from(document.querySelectorAll<HTMLElement>('[data-genre-chip]'));
+  function closeChips(except?: HTMLElement) {
+    chips.forEach(chip => {
+      if (chip === except) return;
+      chip.classList.remove('is-open');
+      chip.querySelector('button')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+  chips.forEach(chip => {
+    const button = chip.querySelector('button')!;
+    button.addEventListener('click', () => {
+      const open = !chip.classList.contains('is-open');
+      closeChips(chip);
+      chip.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      if (!open) button.blur();
+    });
+    chip.addEventListener('focusout', () => {
+      chip.classList.remove('is-open');
+      button.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', event => {
+    if (!(event.target as Element).closest('[data-genre-chip]')) closeChips();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { closeChips(); (document.activeElement as HTMLElement)?.blur(); }
+  });
+</script>

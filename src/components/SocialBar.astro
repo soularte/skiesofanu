@@ -9,7 +9,7 @@ interface Props {
 const { socials, variant = 'topbar' } = Astro.props;
 const isTopbar = variant === 'topbar';
 ---
-<div class={`flex items-center ${isTopbar ? 'gap-5' : 'gap-4'} justify-center`}>
+<div class={`social-bar flex items-center ${isTopbar ? 'gap-5' : 'gap-4'} justify-center`}>
   {socials.map(s => (
     <a
       href={s.url}
@@ -25,3 +25,10 @@ const isTopbar = variant === 'topbar';
     </a>
   ))}
 </div>
+
+<style>
+  @media (max-width: 767px) {
+    .social-bar { gap: .5rem; }
+    a { display: grid; place-items: center; width: 44px; height: 44px; }
+  }
+</style>

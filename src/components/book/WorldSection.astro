@@ -3,19 +3,179 @@ import Section from './Section.astro';
 import { loadDataFile } from '../../lib/data';
 
 interface Props {
+  id?: string;
   world: string;
 }
-const { world } = Astro.props;
+const { world, id } = Astro.props;
+const paragraphs = world.split('\n\n').map(para => para.trim()).filter(Boolean);
+// A server-rendered approximation keeps the no-JS layout useful; the browser
+// balances measured paragraph heights once the actual fonts and width are known.
+let split = paragraphs.length;
+if (paragraphs.length > 1) {
+  const total = paragraphs.reduce((sum, para) => sum + para.length, 0);
+  let left = 0;
+  let difference = Infinity;
+  for (let index = 1; index < paragraphs.length; index++) {
+    left += paragraphs[index - 1].length;
+    const nextDifference = Math.abs(total - 2 * left) + (2 * left < total ? total : 0);
+    if (nextDifference < difference) { split = index; difference = nextDifference; }
+  }
+}
+const columns = [paragraphs.slice(0, split), paragraphs.slice(split)];
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title={ui.bookSections.world} tightHeader>
-  <div class="mb-4 space-y-4">
-    {world.split('\n\n').filter((p: string) => p.trim()).map((para: string) => (
-      <p class="text-dp-text leading-relaxed">{para.trim().split(/(\*\*[^*]+\*\*)/g).map(part => (
+<Section id={id} title={ui.bookSections.world} tightHeader>
+  <div class="world-columns mb-4" data-world-columns data-world-split={split}>
+    {columns.map(column => <div class="world-column">
+      {column.map(para => <p class="text-dp-text leading-relaxed">{para.split(/(\*\*[^*]+\*\*)/g).map(part => (
         part.startsWith('**') && part.endsWith('**')
           ? <strong>{part.slice(2, -2)}</strong>
           : part
-      ))}</p>
-    ))}
+      ))}</p>)}
+    </div>)}
   </div>
 </Section>
+<style>
+  .world-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .world-column { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+  .world-column:empty { display: none; }
+  .world-column p { margin: 0; padding: 0; }
+  @media (min-width: 768px) {
+    .world-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 4vw, 4rem); }
+  }
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-world-columns]').forEach(root => {
+    const columns = Array.from(root.children) as HTMLElement[];
+    const originals = Array.from(root.querySelectorAll<HTMLParagraphElement>('p')).map(para => para.cloneNode(true) as HTMLParagraphElement);
+    if (!originals.length) return;
+    const segmenter = new Intl.Segmenter('ru', { granularity: 'word' });
+    const units = originals.flatMap((para, paragraph) => {
+      // Named descriptions, including Rekkanar, remain indivisible.
+      const fragments = para.querySelector('strong') ? [para.textContent ?? '']
+        : Array.from(segmenter.segment(para.textContent ?? ''), item => item.segment);
+      return fragments.map(text => ({ paragraph, text }));
+    });
+    function renderUnits(items: typeof units) {
+      const nodes: HTMLParagraphElement[] = [];
+      let previous = -1;
+      for (const item of items) {
+        if (item.paragraph !== previous) {
+          const original = originals[item.paragraph];
+          const node = original.cloneNode(!!original.querySelector('strong')) as HTMLParagraphElement;
+          node.dataset.worldParagraph = String(item.paragraph);
+          nodes.push(node);
+          previous = item.paragraph;
+        }
+        if (!originals[item.paragraph].querySelector('strong')) nodes[nodes.length - 1].append(document.createTextNode(item.text));
+      }
+      return nodes;
+    }
+    let queued = false;
+    let lastWidth = -1;
+    function balance() {
+      queued = false;
+      const width = root.getBoundingClientRect().width;
+      if (!width || Math.abs(width - lastWidth) < .5) return;
+      lastWidth = width;
+      if (!window.matchMedia('(min-width: 768px)').matches || units.length < 2) {
+        columns[0].replaceChildren(...originals.map(para => para.cloneNode(true)));
+        columns[1].replaceChildren();
+        return;
+      }
+      const measure = columns[0].cloneNode(false) as HTMLElement;
+      measure.setAttribute('aria-hidden', 'true');
+      measure.inert = true;
+      Object.assign(measure.style, { position: 'absolute', visibility: 'hidden', pointerEvents: 'none', width: `${columns[0].getBoundingClientRect().width}px` });
+      root.append(measure);
+      const naturalBreaks = new Set<number>();
+      let unitOffset = 0;
+      originals.forEach((original, paragraph) => {
+        const parts = units.filter(unit => unit.paragraph === paragraph);
+        if (!original.querySelector('strong')) {
+          const full = original.cloneNode(false) as HTMLParagraphElement;
+          full.textContent = original.textContent;
+          measure.replaceChildren(full);
+          const text = full.firstChild;
+          const words: { start: number; end: number; top: number }[] = [];
+          let characterOffset = 0;
+          if (text) parts.forEach((part, index) => {
+            if (part.text.trim()) {
+              const range = document.createRange();
+              range.setStart(text, characterOffset);
+              range.setEnd(text, characterOffset + part.text.length);
+              const rect = Array.from(range.getClientRects()).find(rect => rect.width > 0);
+              if (rect) words.push({ start: unitOffset + index, end: unitOffset + index + 1, top: rect.top });
+            }
+            characterOffset += part.text.length;
+          });
+          for (let index = 1; index < words.length; index++) {
+            if (words[index].top > words[index - 1].top + .5) {
+              for (let boundary = words[index - 1].end; boundary <= words[index].start; boundary++) naturalBreaks.add(boundary);
+            }
+          }
+        }
+        unitOffset += parts.length;
+      });
+      function measurePart(items: typeof units, edge: 'first' | 'last') {
+        measure.replaceChildren(...renderUnits(items));
+        const paragraph = (edge === 'first' ? measure.firstElementChild : measure.lastElementChild) as HTMLElement;
+        const lineHeight = parseFloat(getComputedStyle(paragraph).lineHeight);
+        return { height: measure.getBoundingClientRect().height, edgeLines: paragraph.getBoundingClientRect().height / lineHeight };
+      }
+      let bestSplit = units.length;
+      let difference = Infinity;
+      let leftIsLonger = false;
+      const candidates = new Map<number, { delta: number; valid: boolean }>();
+      function compare(index: number) {
+        const cached = candidates.get(index);
+        if (cached) return cached;
+        const left = measurePart(units.slice(0, index), 'last');
+        const right = measurePart(units.slice(index), 'first');
+        const splitsParagraph = units[index - 1].paragraph === units[index].paragraph;
+        const valid = !splitsParagraph || (naturalBreaks.has(index) && left.edgeLines >= 1.95 && right.edgeLines >= 1.95);
+        const delta = left.height - right.height;
+        // Prefer the closest balance with the left column at least as tall.
+        // Keep a shorter-left fallback only when no safe boundary allows that.
+        const preferred = delta >= -.5;
+        if (valid && ((preferred && !leftIsLonger) || (preferred === leftIsLonger && Math.abs(delta) < difference))) {
+          bestSplit = index;
+          difference = Math.abs(delta);
+          leftIsLonger = preferred;
+        }
+        const result = { delta, valid };
+        candidates.set(index, result);
+        return result;
+      }
+      // Prefix height grows while suffix height shrinks; avoid measuring every word.
+      let low = 1;
+      let high = units.length - 1;
+      while (low <= high) {
+        const middle = Math.floor((low + high) / 2);
+        if (compare(middle).delta < 0) low = middle + 1;
+        else high = middle - 1;
+      }
+      // Look for the nearest valid boundary on either side of the balance point.
+      // An isolated first/last line must never win solely on equal column heights.
+      for (const direction of [-1, 1]) {
+        let index = Math.min(units.length - 1, Math.max(1, low));
+        while (index > 0 && index < units.length) {
+          if (compare(index).valid) break;
+          index += direction;
+        }
+      }
+      measure.remove();
+      columns[0].replaceChildren(...renderUnits(units.slice(0, bestSplit)));
+      columns[1].replaceChildren(...renderUnits(units.slice(bestSplit)));
+    }
+    function scheduleBalance() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(balance);
+    }
+    new ResizeObserver(scheduleBalance).observe(root);
+    root.closest('details')?.addEventListener('toggle', scheduleBalance);
+    document.fonts.ready.then(() => { lastWidth = -1; scheduleBalance(); });
+    scheduleBalance();
+  });
+</script>

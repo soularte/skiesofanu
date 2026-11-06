@@ -71,11 +71,7 @@ function initializeAuthorNavigation() {
   });
   details.forEach(section => section.addEventListener('toggle', updateCollapseLabel));
   updateCollapseLabel();
-  document.addEventListener('click', event => {
-    const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-publication-ref], a[data-author-jump]');
-    if (!link) return;
-    const target = document.getElementById(link.hash.slice(1));
-    if (!target) return;
+  function navigateToTarget(target: HTMLElement) {
     expand(target);
     if (target instanceof HTMLTableRowElement) {
       const table = target.closest<HTMLTableElement>('table')!;
@@ -91,7 +87,20 @@ function initializeAuthorNavigation() {
     target.classList.add('author-target');
     setTimeout(() => target.classList.remove('author-target'), 2500);
     requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  }
+  document.addEventListener('click', event => {
+    const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-publication-ref], a[data-author-jump]');
+    if (!link) return;
+    const target = document.getElementById(link.hash.slice(1));
+    if (target) navigateToTarget(target);
   });
+  // External links can point directly to a row hidden by pagination.
+  function navigateToHash() {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (target) navigateToTarget(target);
+  }
+  navigateToHash();
+  window.addEventListener('hashchange', navigateToHash);
 }
 initializeAuthorNavigation();
 document.addEventListener('astro:page-load', initializeAuthorNavigation);

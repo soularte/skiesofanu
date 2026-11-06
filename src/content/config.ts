@@ -22,6 +22,7 @@ const books = defineCollection({
     displayOrder: z.number().optional(),
     logline: z.string().optional(),
     shortDescription: z.string(),
+    seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
     authors: z.array(z.enum(['ksenia', 'vasily'])).min(1).optional(),
     mediumDescription: z.string().optional(),
@@ -53,13 +54,30 @@ const books = defineCollection({
       logline: z.string().optional(),
       shortDescription: z.string().optional(),
       description: z.string().optional(),
+      printEdition: z.object({
+        title: z.string(),
+        bibliographyUrl: z.string().startsWith('/'),
+      }).optional(),
       links: z.array(z.object({ label: z.string(), url: z.string() })).optional().default([]),
     })).optional(),
     booktrailer: z.object({
       visible: z.boolean().optional().default(true),
-      file: z.string(),
+      file: z.string().optional(),
+      url: z.string().url().refine(value => {
+        const url = new URL(value);
+        return url.protocol === 'https:' && url.hostname === 'rutube.ru'
+          && /^\/video\/(?:private\/)?[a-f0-9]{32}\/?$/i.test(url.pathname);
+      }, 'Нужна ссылка на видео RUTUBE').optional(),
       orientation: z.enum(['horizontal', 'vertical']).optional().default('horizontal'),
-    }).optional(),
+      seo: z.object({
+        name: z.string().min(1),
+        description: z.string().min(1),
+        thumbnailUrl: z.string().url(),
+        uploadDate: z.string().datetime({ offset: true }),
+        datePublished: z.string().datetime({ offset: true }).optional(),
+        duration: z.string().regex(/^PT(?=\d)(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?$/),
+      }).optional(),
+    }).refine(trailer => !!(trailer.file || trailer.url), 'Укажите файл или ссылку буктрейлера').optional(),
     reviews: z.array(z.object({
       text: z.string(),
       author: z.string(),

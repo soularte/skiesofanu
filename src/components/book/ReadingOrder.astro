@@ -1,0 +1,63 @@
+---
+import Section from './Section.astro';
+import GenreChip from '../GenreChip.astro';
+import { loadDataFile } from '../../lib/data';
+import type { CollectionEntry } from 'astro:content';
+
+type BookData = CollectionEntry<'books'>['data'];
+
+interface Props {
+  id?: string;
+  data: BookData;
+  readingOrderId?: string;
+}
+const { data, id, readingOrderId } = Astro.props;
+const bookIndexByTitle = new Map((data.books ?? []).map((book, index) => [book.title.trim(), index]));
+const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
+---
+<Section id={id} title={ui.bookSections.readingOrder} headingId={readingOrderId} tightHeader divider={false}>
+  {data.readingOrder && data.readingOrder.length > 0 && (
+    <div>
+      <div class="max-w-2xl">
+        <ol class="space-y-3">
+          {data.readingOrder.map((item, i) => (
+            <li class="flex gap-3 text-dp-text items-baseline">
+              <span class="text-dp-gold/60 leading-tight w-5 shrink-0">{i + 1}</span>
+              <span class="flex flex-wrap items-baseline gap-1.5">
+                {bookIndexByTitle.has(item.title.trim())
+                  ? <a href={`#book-${bookIndexByTitle.get(item.title.trim())! + 1}`} data-reading-book class="hover:text-dp-gold-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-dp-gold-ink focus-visible:outline-offset-2">{item.title}</a>
+                  : <span class="reading-unavailable" aria-disabled="true">{item.title}</span>}
+
+                {item.labels && item.labels.map(label => <GenreChip label={label} />)}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+      {data.readingMap && (
+        <div class="mt-6">
+          <a href={data.readingMap.url} class="text-dp-gold-ink hover:text-dp-text transition-colors underline underline-offset-4 text-sm">{data.readingMap.label}</a>
+        </div>
+      )}
+    </div>
+  )}
+</Section>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-reading-book]').forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.getElementById(link.hash.slice(1));
+      if (!target) { event.preventDefault(); return; }
+      let parent = target.parentElement;
+      while (parent) {
+        if (parent instanceof HTMLDetailsElement) parent.open = true;
+        parent = parent.parentElement;
+      }
+      // The section opens before the browser follows the native anchor.
+    });
+  });
+</script>
+
+<style>
+  .reading-unavailable { color: #999187; cursor: default; }
+</style>

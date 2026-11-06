@@ -1,9 +1,10 @@
 ---
 import Section from './Section.astro';
+import PublicationNote from './PublicationNote.astro';
 import MarketplaceLinks from '../MarketplaceLinks.astro';
 import GenreChip from '../GenreChip.astro';
 import GoldLine from '../GoldLine.astro';
-import { Image } from 'astro:assets';
+import ZoomableCover from '../ZoomableCover.astro';
 import { findImage } from '../../lib/images';
 import { loadDataFile } from '../../lib/data';
 import type { CollectionEntry } from 'astro:content';
@@ -11,12 +12,13 @@ import type { CollectionEntry } from 'astro:content';
 type Book = NonNullable<CollectionEntry<'books'>['data']['books']>[number];
 
 interface Props {
+  id?: string;
   books: Book[];
 }
-const { books } = Astro.props;
+const { books, id } = Astro.props;
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title={ui.bookSections.booksInSeries}>
+<Section id={id} title={ui.bookSections.booksInSeries}>
   <div class="space-y-10">
     {books.map((b, i) => {
       const bCover = findImage(b.cover);
@@ -24,10 +26,7 @@ const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
         <article id={`book-${i + 1}`} class={`flex flex-col items-center sm:items-start sm:flex-row gap-8 scroll-mt-32 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}>
           <div class={`flex-shrink-0 flex flex-col gap-4 items-center sm:items-start ${i % 2 === 1 ? 'sm:items-end' : ''}`}>
             {bCover && (
-              <div class="relative">
-                <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none -z-10"></div>
-                <Image src={bCover} alt={b.title} widths={[250, 500]} sizes="250px" loading="lazy" class="h-[350px] w-auto relative cursor-pointer" data-lightbox-group="series-covers" />
-              </div>
+              <ZoomableCover src={bCover} title={b.title} group="series-covers" height={350} />
             )}
             {b.links && b.links.length > 0 && (
               <div class={`flex justify-center ${i % 2 === 1 ? 'sm:justify-end' : 'sm:justify-start'}`}>
@@ -53,9 +52,16 @@ const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
                 ))}
               </div>
             )}
+            {b.printEdition && <PublicationNote>
+              Книга выходила на бумаге в составе издания <a href={b.printEdition.bibliographyUrl} class="underline underline-offset-4 hover:text-dp-text">«{b.printEdition.title}»</a>.
+            </PublicationNote>}
           </div>
         </article>
       );
     })}
   </div>
 </Section>
+
+<style>
+  article[id] { scroll-margin-top: var(--page-anchor-offset, 8rem); }
+</style>

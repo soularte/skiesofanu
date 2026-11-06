@@ -1,0 +1,13 @@
+---
+interface Props {
+  description?: string;
+  Content?: any;
+  paragraphClass?: string;
+  fallbackClass?: string;
+}
+const { description, Content, paragraphClass, fallbackClass } = Astro.props;
+---
+{description
+  ? description.split('\n\n').filter(para => para.trim()).map(para => <p class={paragraphClass}>{para.trim()}</p>)
+  : Content && (fallbackClass ? <div class={fallbackClass}><Content /></div> : <Content />)
+}

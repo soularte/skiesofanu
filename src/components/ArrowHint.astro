@@ -1,0 +1,12 @@
+---
+interface Props { direction?: 'expand' | 'up' }
+const { direction = 'expand' } = Astro.props;
+const path = direction === 'up' ? 'M5 15l7-7 7 7' : 'M7 17 17 7M7 7h10v10';
+---
+<span class="arrow-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d={path} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+<style>
+  .arrow-hint { display: grid; place-items: center; width: 40px; height: 40px; box-sizing: border-box; border: 1px solid rgb(201 168 76 / 50%); color: #C9A84C; background: rgb(250 246 240 / 90%); opacity: .18; transition: opacity 180ms ease; pointer-events: none; }
+  svg { width: 16px; height: 16px; }
+  :global(button:hover) .arrow-hint, :global(button:focus-visible) .arrow-hint { background: #FAF6F0; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .arrow-hint { transition: none; } }
+</style>

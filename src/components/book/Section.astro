@@ -1,31 +1,41 @@
 ---
+import ArrowHint from '../ArrowHint.astro';
 interface Props {
   title: string;
+  id?: string;
   tightHeader?: boolean;
+  divider?: boolean;
   headingId?: string;
   headingLevel?: 'h2' | 'h3' | 'h4';
   class?: string;
 }
-const { title, tightHeader = false, headingId, headingLevel: Heading = 'h2', class: className } = Astro.props;
+const { title, id, tightHeader = false, divider = true, headingId, headingLevel: Heading = 'h2', class: className } = Astro.props;
 const headerMb = tightHeader ? 'mb-4' : 'mb-6';
 ---
-<details class:list={["book-section", className]} aria-labelledby={headingId} open>
+<details id={id} data-atlas-section={id ? true : undefined} class:list={["book-section", className]} aria-labelledby={headingId} open>
   <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer">
-    <div class="section-divider flex items-center gap-4 mb-2" aria-hidden="true">
-      <div class="flex-1 h-px bg-dp-border"></div>
-      <div class="w-2 h-2 rotate-45 bg-dp-gold/50"></div>
-      <div class="flex-1 h-px bg-dp-border"></div>
-    </div>
+    {divider && <div class="section-divider h-px bg-dp-border mb-2" aria-hidden="true"></div>}
     <div class:list={[`section-heading flex items-center gap-3 ${headerMb}`, { 'has-actions': Astro.slots.has('heading-actions') }]}>
       <svg class="section-chevron w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
       <Heading id={headingId} class="font-heading text-2xl font-semibold">{title}</Heading>
       <slot name="heading-actions" />
     </div>
   </summary>
-  <div class="section-content"><slot /></div>
+  <div class="section-content"><slot />
+    <div class="section-return-row">
+      <button type="button" class="section-return" aria-label="Вернуться к началу описания" title="К началу описания">
+        <ArrowHint direction="up" />
+      </button>
+    </div>
+  </div>
 </details>
 
 <style>
+  .section-return-row { display: flex; justify-content: flex-end; margin-top: .5rem; }
+  @media (max-width: 767px) { .section-return-row { display: none; } }
+  .section-return { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .section-return:focus-visible { outline: 2px solid #957323; outline-offset: 4px; }
+  .section-divider { width: 50%; background: linear-gradient(to right, transparent, #D4C5A9 12%, #D4C5A9 88%, transparent); }
   .has-actions { flex-wrap: wrap; }
   .has-actions > :is(h2, h3, h4) { min-width: 0; flex: 1; }
   .book-section:not([open]) > .section-content { display: none; }
@@ -45,3 +55,20 @@ const headerMb = tightHeader ? 'mb-4' : 'mb-6';
     margin-bottom: 0;
   }
 </style>
+
+<script>
+  function returnToPageHeading() {
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+    const target = document.querySelector<HTMLElement>('main h1')
+      ?? document.querySelector<HTMLElement>('h1');
+    const header = document.querySelector<HTMLElement>('body > div.sticky');
+    const headerHeight = header?.getBoundingClientRect().height ?? 0;
+    const top = target ? window.scrollY + target.getBoundingClientRect().top - headerHeight - 16 : 0;
+    window.scrollTo({ top: Math.max(0, top), behavior });
+  }
+  document.querySelectorAll<HTMLButtonElement>('.section-return').forEach(button => {
+    button.addEventListener('click', () => {
+      returnToPageHeading();
+    });
+  });
+</script>

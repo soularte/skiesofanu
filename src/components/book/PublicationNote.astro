@@ -1,0 +1,5 @@
+---
+interface Props { label?: string }
+const { label = 'Примечание о публикации' } = Astro.props;
+---
+<aside aria-label={label} class="mt-4 border-l-2 border-dp-gold/60 pl-4 text-base font-normal text-dp-muted leading-relaxed"><p><slot /></p></aside>

@@ -1,8 +1,9 @@
 ---
-import { Image } from 'astro:assets';
+import ZoomableCover from '../ZoomableCover.astro';
+import BookDescription from './BookDescription.astro';
+import PublicationNote from './PublicationNote.astro';
 import MarketplaceLinks from '../MarketplaceLinks.astro';
 import GenreChip from '../GenreChip.astro';
-import GoldLine from '../GoldLine.astro';
 import type { CollectionEntry } from 'astro:content';
 import { findImage } from '../../lib/images';
 
@@ -11,57 +12,85 @@ type BookData = CollectionEntry<'books'>['data'];
 interface Props {
   data: BookData;
   Content: any;
+  materialsCount?: number;
 }
-const { data, Content } = Astro.props;
+const { data, Content, materialsCount = 0 } = Astro.props;
 const coverImg = findImage(data.cover);
 const coverLinks = data.links ?? [];
+const isSeries = !!(data.books && data.books.length > 0);
+const pluralRules = new Intl.PluralRules('ru');
+function countLabel(count: number, forms: [string, string, string]) {
+  const category = pluralRules.select(count);
+  return forms[category === 'one' ? 0 : category === 'few' ? 1 : 2];
+}
+const statistics = [
+  { count: isSeries ? data.books!.length : 1, forms: ['книга', 'книги', 'книг'] as [string, string, string] },
+  { count: data.characters?.length ?? 0, forms: ['портрет', 'портрета', 'портретов'] as [string, string, string] },
+  { count: materialsCount, forms: ['материал', 'материала', 'материалов'] as [string, string, string] },
+  { count: data.extraLinks?.length ?? 0, forms: ['ссылка', 'ссылки', 'ссылок'] as [string, string, string] },
+];
 ---
-<div class="flex flex-col items-center gap-12 md:grid md:grid-cols-[250px_1fr] md:items-start md:place-items-start">
-  <!-- Left: cover + purchase links -->
-  <div class="flex flex-col items-center md:items-start gap-6">
-    <div class="relative">
-      <div class="absolute -bottom-2 -right-2 w-full h-full border border-dp-gold/30 pointer-events-none -z-10"></div>
-      {coverImg && (
-        <Image
-          src={coverImg}
-          alt={data.title}
-          widths={[250, 500]}
-          sizes="250px"
-          loading="eager"
-          fetchpriority="high"
-          class="h-[350px] w-auto relative cursor-pointer"
-          data-lightbox-group="book-cover"
-        />
-      )}
-    </div>
-
-    {coverLinks.length > 0 && (
-      <MarketplaceLinks links={coverLinks} marketplace={data.marketplace} />
-    )}
+<header class="book-page-heading">
+  <h1 class="font-heading text-3xl md:text-4xl font-semibold leading-tight text-dp-gold-ink">{data.series ?? data.title}</h1>
+  {data.series && data.seriesSubtitle && <p class="font-accent italic mt-2 text-sm text-dp-muted leading-relaxed">{data.seriesSubtitle}</p>}
+</header>
+<div class="book-hero">
+  <div class="hero-cover">
+    {coverImg && <ZoomableCover src={coverImg} title={data.title} group="book-cover" width={200} eager />}
   </div>
 
-  <!-- Right: title, genres, description -->
-  <div>
-    <h1 class="font-heading text-4xl md:text-5xl font-semibold leading-tight mb-4">{data.title}</h1>
-    <GoldLine class="mb-6" />
-
-    {data.genres && (
-      <div class="flex flex-wrap gap-1 mb-6">
-        {data.genres.map(g => <GenreChip label={g} />)}
-      </div>
-    )}
-
-    {data.logline && (
-      <p class="font-accent italic text-dp-gold-ink text-base mb-6 leading-relaxed">{data.logline}</p>
-    )}
-
-    <div class="prose prose-sm prose-invert max-w-none text-dp-text leading-relaxed">
-      <Content />
-      {data.publicationNote && (
-        <aside aria-label="Статус публикации" class="mt-6 border-l-2 border-dp-gold/60 pl-4 text-dp-muted">
-          <p>{data.publicationNote}</p>
-        </aside>
-      )}
+  <div class="hero-copy">
+    <div class="hero-top">
+    <div class="hero-introduction">
+    {data.logline && <p data-hero-logline class="font-accent italic text-dp-gold-ink text-base leading-relaxed">{data.logline}</p>}
     </div>
+    {data.genres?.length > 0 && <div class="hero-metadata flex flex-wrap items-center gap-x-3 gap-y-2">
+      {data.genres?.length > 0 && <div class="flex flex-wrap gap-1" aria-label="Жанры">
+        {data.genres.map(genre => <GenreChip label={genre} mobileIcon />)}
+      </div>}
+    </div>}
+    <ul class="hero-statistics" aria-label="Содержимое страницы">
+      {statistics.map(stat => <li><strong>{stat.count}</strong><span>{countLabel(stat.count, stat.forms)}</span></li>)}
+    </ul>
+    </div>
+    {(!isSeries || data.seriesDescription || data.publicationNote) && <div class="hero-description prose prose-sm prose-invert max-w-none text-dp-text leading-relaxed">
+      <BookDescription description={isSeries ? data.seriesDescription : undefined} Content={isSeries ? undefined : Content} />
+      {data.publicationNote && <PublicationNote label="Статус публикации">{data.publicationNote}</PublicationNote>}
+    </div>}
+    {coverLinks.length > 0 && <div class="hero-links mt-4">
+      <MarketplaceLinks links={coverLinks} marketplace={data.marketplace} />
+    </div>}
   </div>
 </div>
+<style>
+  .book-page-heading { text-align: center; margin: 0 0 2rem; }
+  .book-hero { position: relative; padding: 1.5rem; background: rgb(212 197 169 / 20%); display: grid; grid-template-areas: 'cover' 'copy'; gap: 1.25rem; }
+  .book-hero::before { content: ''; position: absolute; top: 0; left: 20%; width: 60%; height: 1px; background: linear-gradient(to right, transparent, #D4C5A9 15%, #D4C5A9 85%, transparent); pointer-events: none; }
+  .hero-cover { grid-area: cover; width: 200px; justify-self: center; }
+  .hero-statistics { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem .85rem; list-style: none; padding: 0; margin: 0; justify-content: flex-end; }
+  .hero-statistics li { display: flex; align-items: baseline; gap: .4rem; font-size: .75rem; min-height: 24px; line-height: 24px; white-space: nowrap; color: #6B6660; }
+  .hero-statistics strong { font-family: "Playfair Display", Georgia, serif; font-size: 1.2rem; line-height: 24px; font-weight: 500; color: #7A5E1A; }
+  .hero-copy { grid-area: copy; min-width: 0; container-type: inline-size; }
+  .hero-top { display: grid; grid-template-areas: 'introduction' 'statistics' 'genres'; row-gap: .5rem; margin-bottom: .75rem; }
+  .hero-introduction { grid-area: introduction; min-width: 0; }
+  .hero-introduction p { margin: 0; line-height: 1.5; }
+  .hero-statistics { grid-area: statistics; align-self: start; justify-self: end; }
+  .hero-metadata { grid-area: genres; margin-bottom: 0; }
+
+  .hero-description :global(p) { margin-top: 0; margin-bottom: .75rem; }
+  .hero-description :global(p:last-child) { margin-bottom: 0; }
+  .hero-links :global(> div) { justify-content: flex-start; }
+  @media (max-width: 767px) {
+    .hero-introduction { text-align: center; }
+    .hero-metadata > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; width: min(100%, 260px); margin-inline: auto; }
+    .hero-statistics li { flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-width: 0; min-height: 40px; padding: .15rem 0; font-size: .65rem; line-height: 1.4; }
+    .hero-statistics strong { font-size: 1.3rem; line-height: 1.2; }
+
+    .hero-statistics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; max-width: 320px; justify-self: center; gap: .25rem; }
+  }
+  @media (min-width: 1024px) {
+    .book-hero { padding: 2rem; }
+    .book-hero { grid-template-columns: 200px minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'cover copy'; column-gap: 2rem; row-gap: .75rem; align-items: start; }
+    .hero-cover { justify-self: start; }
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import GalleryArrow from './GalleryArrow.astro';
+interface Props {
+  count: number;
+  prefix: string;
+  trackClass?: string;
+}
+const { count, prefix, trackClass = '' } = Astro.props;
+const id = `${prefix}-${crypto.randomUUID()}`;
+---
+<div class="relative" data-gallery={id}>
+  <div class="sm:hidden">
+    <div id={`${id}-track-mobile`} class="overflow-hidden relative">
+      <div class="flex transition-transform duration-300" id={`${id}-slider`}><slot name="mobile" /></div>
+      {count > 1 && <>
+        <GalleryArrow direction="left" id={`${id}-mobile-prev`} mobile />
+        <GalleryArrow direction="right" id={`${id}-mobile-next`} mobile />
+      </>}
+    </div>
+    {count > 1 && <div class="flex flex-wrap justify-center gap-1 mt-3">
+      {Array.from({ length: count }, (_, i) => <button type="button" class="gallery-dot" data-index={i} aria-label={`Слайд ${i + 1}`}></button>)}
+    </div>}
+  </div>
+  <div class="hidden sm:block overflow-visible">
+    <div id={`${id}-track`} class:list={['gallery-track flex overflow-x-auto select-none', trackClass]} style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: none;"><slot name="desktop" /></div>
+    {count > 1 && <>
+      <GalleryArrow direction="left" id={`${id}-prev`} />
+      <GalleryArrow direction="right" id={`${id}-next`} />
+    </>}
+  </div>
+</div>
+<style>
+  .gallery-track { overflow-anchor: none; }
+  .gallery-track::-webkit-scrollbar { display: none; }
+  .gallery-dot { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .gallery-dot::before { content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; background: #D4C5A9; transition: background-color 180ms ease; }
+  .gallery-dot.active::before { background-color: #C9A84C; }
+  .gallery-dot:focus-visible { outline: 2px solid #957323; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .gallery-dot::before { transition: none; } }
+</style>
+<script>
+  import { initSlider } from '../lib/slider';
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach(root => {
+    initSlider({ prefix: root.dataset.gallery!, root });
+  });
+</script>

@@ -3,13 +3,15 @@ import Section from './Section.astro';
 import { loadDataFile } from '../../lib/data';
 
 interface Props {
+  id?: string;
   reviews: Array<{ text: string; author: string }>;
 }
-const { reviews } = Astro.props;
+const { reviews, id } = Astro.props;
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title={ui.bookSections.reviews}>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<Section id={id} title={ui.bookSections.reviews}>
+  <div class="reviews-container">
+  <div class="reviews-grid">
     {reviews.map(review => (
       <div class="border border-dp-border p-6 flex flex-col gap-4">
         <p class="text-dp-text leading-relaxed flex-1">{review.text}</p>
@@ -17,4 +19,13 @@ const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
       </div>
     ))}
   </div>
+  </div>
 </Section>
+
+<style>
+  .reviews-container { container-type: inline-size; }
+  .reviews-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  @container (min-width: 60rem) {
+    .reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

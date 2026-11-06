@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import ArrowHint from './ArrowHint.astro';
+import type { ImageMetadata } from 'astro';
+interface Props {
+  src: ImageMetadata;
+  title: string;
+  group: string;
+  width?: number;
+  height?: number;
+  eager?: boolean;
+}
+const { src, title, group, width = 250, height, eager = false } = Astro.props;
+---
+<button type="button" class="zoomable-cover" data-lightbox-group={group} aria-label={`Увеличить обложку: ${title}`}>
+  <Image src={src} alt={title} widths={[width, width * 2]} sizes={`${width}px`} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} style={height ? `height: ${height}px; width: auto;` : `width: ${width}px; height: auto;`} />
+  <span class="zoom-hint"><ArrowHint /></span>
+</button>
+<style>
+  .zoomable-cover { position: relative; display: block; max-width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; box-shadow: 0 0 0 1px rgb(122 94 26 / 35%), 0 3px 16px rgb(26 26 46 / 10%); }
+  .zoomable-cover :global(img) { display: block; max-width: 100%; }
+  .zoom-hint { position: absolute; right: .5rem; bottom: .5rem; pointer-events: none; }
+  .zoomable-cover:focus-visible { outline: 2px solid #957323; outline-offset: 4px; }
+</style>

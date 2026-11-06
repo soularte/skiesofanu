@@ -2,8 +2,9 @@
 import { schemaAuthors } from '../../lib/schema';
 import { compareLoreEntries } from '../../lib/lore';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageSectionMenu from '../../components/book/PageSectionMenu.astro';
 import BookHero from '../../components/book/BookHero.astro';
-import SeriesAbout from '../../components/book/SeriesAbout.astro';
+import ReadingOrder from '../../components/book/ReadingOrder.astro';
 import Booktrailer from '../../components/book/Booktrailer.astro';
 import Reviews from '../../components/book/Reviews.astro';
 import BooksInSeries from '../../components/book/BooksInSeries.astro';
@@ -13,7 +14,6 @@ import LoreSection from '../../components/book/LoreSection.astro';
 import Section from '../../components/book/Section.astro';
 import PageNav from '../../components/PageNav.astro';
 import CardsGallery from '../../components/CardsGallery.astro';
-import GoldLine from '../../components/GoldLine.astro';
 import { getCollection, render } from 'astro:content';
 import { loadDataFile } from '../../lib/data';
 import { findImage } from '../../lib/images';
@@ -42,7 +42,7 @@ const { book, prev, next } = Astro.props;
 const { Content } = await render(book);
 const data = book.data;
 const isSeries = !!(data.books && data.books.length > 0);
-const hasSeriesAbout = !!(data.series && (data.seriesDescription || (data.readingOrder && data.readingOrder.length > 0)));
+const hasReadingOrder = !!(data.series && data.readingOrder?.length);
 const coverImg = findImage(data.cover);
 
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {}, home: {} });
@@ -67,6 +67,19 @@ if (data.cardsFolder) {
       });
   }
 }
+
+const sectionItems = [
+  { id: 'atlas-intro', label: isSeries ? 'О цикле' : 'Аннотация' },
+  ...(hasReadingOrder ? [{ id: 'atlas-about', label: 'Порядок чтения' }] : []),
+  ...(cardImages.length ? [{ id: 'atlas-promo', label: 'Промо' }] : []),
+  ...(data.booktrailer && data.booktrailer.visible !== false ? [{ id: 'atlas-trailer', label: 'Буктрейлер' }] : []),
+  ...(data.reviews?.length ? [{ id: 'atlas-reviews', label: 'Отзывы' }] : []),
+  ...(isSeries ? [{ id: 'atlas-books', label: 'Книги' }] : []),
+  ...(data.characters?.length ? [{ id: 'atlas-characters', label: 'Персонажи' }] : []),
+  ...(data.world ? [{ id: 'atlas-world', label: 'Мир' }] : []),
+  ...(data.extraLinks?.length ? [{ id: 'atlas-links', label: 'Ссылки' }] : []),
+  ...(bookLore.length ? [{ id: 'atlas-lore', label: 'Материалы' }] : []),
+];
 
 const coverURL = coverImg
   ? new URL(coverImg.src, Astro.site ?? Astro.url.origin).href
@@ -112,7 +125,7 @@ const breadcrumbLd = {
     {
       '@type': 'ListItem',
       position: 2,
-      name: data.title,
+      name: data.series ?? data.title,
       item: canonicalURL,
     },
   ],
@@ -120,7 +133,7 @@ const breadcrumbLd = {
 ---
 
 <BaseLayout
-  title={data.title}
+  title={data.seoTitle ?? data.title}
   description={data.seoDescription ?? data.shortDescription ?? data.title}
   image={coverURL}
   canonicalURL={canonicalURL}
@@ -140,49 +153,40 @@ const breadcrumbLd = {
       position="top"
     />
 
-    <!-- Series title above grid -->
-    {data.series && (
-      <div class="text-center mb-4 md:mb-16">
-        <h1 class="font-heading text-4xl md:text-5xl font-semibold text-dp-gold-ink">{data.series}</h1>
-        <GoldLine class="mx-auto mt-4" />
-        {data.seriesSubtitle && (
-          <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{data.seriesSubtitle}</p>
-        )}
-      </div>
-    )}
+    <div id="atlas-intro" data-atlas-section><BookHero data={data} Content={Content} materialsCount={bookLore.length} /></div>
 
-    <BookHero data={data} Content={Content} />
+    <PageSectionMenu items={sectionItems} />
+
+    {hasReadingOrder && <ReadingOrder id="atlas-about" data={data} readingOrderId="atlas-reading-order" />}
 
     {cardImages.length > 0 && (
-      <div class="mt-10 mb-10">
+      <Section id="atlas-promo" title="Промо">
         <CardsGallery images={cardImages} />
-      </div>
+      </Section>
     )}
 
-    {hasSeriesAbout && <SeriesAbout data={data} />}
-
     {data.booktrailer && data.booktrailer.visible !== false && (
-      <Booktrailer trailer={data.booktrailer} />
+      <Booktrailer id="atlas-trailer" trailer={data.booktrailer} />
     )}
 
     {data.reviews && data.reviews.length > 0 && (
-      <Reviews reviews={data.reviews} />
+      <Reviews id="atlas-reviews" reviews={data.reviews} />
     )}
 
     {isSeries && (
-      <BooksInSeries books={data.books ?? []} />
+      <BooksInSeries id="atlas-books" books={data.books ?? []} />
     )}
 
     {data.characters && data.characters.length > 0 && (
-      <CharactersSection characters={data.characters} folder={data.charactersFolder} />
+      <CharactersSection id="atlas-characters" characters={data.characters} folder={data.charactersFolder} />
     )}
 
     {data.world && (
-      <WorldSection world={data.world} />
+      <WorldSection id="atlas-world" world={data.world} />
     )}
 
     {data.extraLinks && data.extraLinks.length > 0 && (
-      <Section title={ui.bookSections.extraLinks}>
+      <Section id="atlas-links" title={ui.bookSections.extraLinks}>
         <div class="flex flex-wrap gap-2">
           {data.extraLinks.map(link => (
             <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-[11px] font-body tracking-widest uppercase px-3 py-1.5 border border-dp-gold/60 text-dp-gold-ink hover:bg-dp-gold/10 transition-colors">{link.label}</a>
@@ -192,7 +196,7 @@ const breadcrumbLd = {
     )}
 
     {bookLore.length > 0 && (
-      <LoreSection items={bookLore} bookSlug={book.slug} />
+      <LoreSection id="atlas-lore" items={bookLore} bookSlug={book.slug} />
     )}
 
     <!-- Breadcrumb + Prev/Next navigation (bottom) -->

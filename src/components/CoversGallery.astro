@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import SeriesBadge from './SeriesBadge.astro';
 import MarketplaceLinks from './MarketplaceLinks.astro';
-import GalleryArrow from './GalleryArrow.astro';
+import Gallery from './Gallery.astro';
 import { loadDataFile } from '../lib/data';
 import type { ImageMetadata } from 'astro';
 
@@ -22,12 +22,9 @@ const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
 const aria = ui.aria ?? {};
 ---
 
-<div class="relative">
-  <!-- Mobile: one cover at a time -->
-  <div class="sm:hidden">
-    <div id="covers-track-mobile" class="overflow-hidden relative">
-      <div class="flex transition-transform duration-300" id="covers-slider">
-        {covers.map(cover => (
+<Gallery count={covers.length} prefix="covers" trackClass="gap-6 overflow-y-clip pt-10 pb-4 px-4">
+  <Fragment slot="mobile">
+    {covers.map(cover => (
           <div class="w-full flex-shrink-0 flex justify-center px-4">
             <div class="flex flex-col" style="width: 200px;">
               <a href={`/books/${cover.slug}`} class="group block relative shadow-md" style="width: 200px;" draggable="false">
@@ -59,33 +56,10 @@ const aria = ui.aria ?? {};
             </div>
           </div>
         ))}
-      </div>
-      <!-- Compact controls share the desktop arrow component. -->
-      {covers.length > 1 && (
-        <>
-        <GalleryArrow direction="left" id="covers-mobile-prev" mobile />
-        <GalleryArrow direction="right" id="covers-mobile-next" mobile />
-        </>
-      )}
-    </div>
-    {covers.length > 1 && (
-      <div class="flex justify-center gap-2 mt-3">
-        {covers.map((_, i) => (
-          <button class="covers-dot w-2 h-2 rounded-full bg-dp-border transition-colors" data-index={i}></button>
-        ))}
-      </div>
-    )}
-  </div>
-
-  <!-- Desktop: scrollable track with hover arrows -->
-  <div class="hidden sm:block overflow-visible">
-    <div
-      id="covers-track"
-      class="flex gap-6 overflow-x-auto overflow-y-clip select-none pt-10 pb-4 px-4"
-      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
-    >
-      {covers.map(cover => (
-        <div class="flex-shrink-0 flex flex-col snap-center transition-transform duration-300 hover:scale-105 hover:-translate-y-2" style="width: 200px;">
+  </Fragment>
+  <Fragment slot="desktop">
+    {covers.map(cover => (
+        <div class="flex-shrink-0 flex flex-col snap-start transition-transform duration-300 hover:scale-105 hover:-translate-y-2" style="width: 200px;">
           <a href={`/books/${cover.slug}`} class="block relative shadow-md" style="width: 200px;" draggable="false">
             <Image
               src={cover.src}
@@ -113,22 +87,5 @@ const aria = ui.aria ?? {};
           </div>
         </div>
       ))}
-    </div>
-
-    <!-- Left hover zone -->
-    <GalleryArrow direction="left" id="covers-prev" />
-
-    <!-- Right hover zone -->
-    <GalleryArrow direction="right" id="covers-next" />
-  </div>
-</div>
-
-<style>
-  #covers-track::-webkit-scrollbar { display: none; }
-  .covers-dot.active { background-color: #C9A84C; }
-</style>
-
-<script>
-  import { initSlider } from '../lib/slider';
-  initSlider({ prefix: 'covers', step: 240 });
-</script>
+  </Fragment>
+</Gallery>

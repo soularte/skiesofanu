@@ -7,12 +7,13 @@ import type { CollectionEntry } from 'astro:content';
 type BookData = CollectionEntry<'books'>['data'];
 
 interface Props {
+  id?: string;
   characters: NonNullable<BookData['characters']>;
   folder?: string;
 }
-const { characters, folder } = Astro.props;
+const { characters, folder, id } = Astro.props;
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 ---
-<Section title={ui.bookSections.characters}>
+<Section id={id} title={ui.bookSections.characters}>
   <CharactersGallery characters={characters} folder={folder} />
 </Section>

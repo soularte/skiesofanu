@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { items: { id: string; label: string; image?: ImageMetadata; detail?: string }[]; catalogShelf?: boolean }
+const { items, catalogShelf = false } = Astro.props;
+const listId = `page-menu-${crypto.randomUUID()}`;
+const menuName = catalogShelf ? 'Книги' : 'Разделы страницы';
+---
+<nav class:list={["page-section-menu", { "catalog-shelf": catalogShelf }]} aria-label={menuName} data-menu-name={menuName}>
+  <button class="menu-shade" type="button" aria-label="Закрыть меню разделов" tabindex="-1"></button>
+  <button class="menu-fab" type="button" aria-label={`Открыть: ${menuName}`} aria-expanded="false" aria-controls={listId}>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h14" /></svg>
+  </button>
+  <ol id={listId}>
+    {items.map((item, index) => <li style={`--petal-index: ${index}`}><a href={`#${item.id}`} title={catalogShelf ? item.label : undefined} aria-label={catalogShelf ? item.label : undefined}>{item.image && <Image class="menu-thumbnail" src={item.image} width={207} height={207} alt="" loading="lazy" />}<span>{item.label}{item.detail && <span class="menu-item-detail">{item.detail}</span>}</span></a></li>)}
+  </ol>
+</nav>
+<style>
+  .page-section-menu { position: sticky; top: var(--page-menu-top, 0px); z-index: 40; margin: 0 0 1.75rem; padding: .15rem 1rem; background: linear-gradient(rgb(212 197 169 / 20%), rgb(212 197 169 / 20%)), #FAF6F0; }
+  .page-section-menu::after { content: ''; position: absolute; bottom: 0; left: 20%; width: 60%; height: 1px; background: linear-gradient(to right, transparent, #D4C5A9 15%, #D4C5A9 85%, transparent); pointer-events: none; }
+  .menu-item-detail { display: block; margin-top: .2rem; font-size: .7rem; }
+  .menu-thumbnail { display: none; }
+  ol { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 2rem; list-style: none; margin: 0; padding: 0; }
+  a { display: flex; align-items: center; min-height: 36px; padding: .35rem 0; color: #6B6660; font-size: .75rem; line-height: 1.5; white-space: nowrap; text-decoration: none; }
+  .catalog-shelf a > span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; min-width: 0; overflow-wrap: anywhere; }
+  a:hover, a[aria-current] { color: #7A5E1A; }
+  a:focus-visible { outline: 2px solid #957323; outline-offset: 3px; }
+  @media (pointer: coarse) { a { min-height: 44px; } }
+  .menu-fab, .menu-shade { display: none; }
+  @media (max-width: 767px) {
+    :global(body:has(.page-section-menu) #back-to-top) { bottom: calc(var(--floating-obstruction, 0px) + max(1.25rem, env(safe-area-inset-bottom))); right: 28px; }
+    :global(body:has(.page-section-menu.is-open) #back-to-top) { visibility: hidden; pointer-events: none; }
+    .page-section-menu::before, .page-section-menu::after { display: none; }
+    .page-section-menu { position: fixed; top: auto; bottom: calc(var(--floating-obstruction, 0px) + max(1.25rem, env(safe-area-inset-bottom))); left: 1.25rem; right: auto; width: 56px; height: 56px; margin: 0; padding: 0; background: none; }
+    .menu-fab { position: relative; z-index: 2; display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid rgb(201 168 76 / 40%); border-radius: 50%; color: #FAF6F0; background: #1A1A2E; box-shadow: 0 5px 22px rgb(26 26 46 / 20%); cursor: pointer; }
+    .menu-fab svg { transition: transform 220ms ease; }
+    .is-open .menu-fab svg { transform: rotate(90deg); }
+    .menu-fab:focus-visible { outline: 2px solid #957323; outline-offset: 4px; }
+    .menu-shade { display: block; position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: rgb(26 26 46 / 18%); backdrop-filter: blur(3px); visibility: hidden; opacity: 0; transition: opacity 200ms ease, visibility 200ms; }
+    ol { position: absolute; z-index: 1; left: 0; right: auto; bottom: 72px; width: min(344px, calc(100vw - 40px)); max-height: calc(100dvh - 180px); overflow-y: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; padding: .4rem; visibility: hidden; pointer-events: none; }
+    li { min-width: 0; opacity: 0; transform: translate(-20px, 30px) scale(.85); transform-origin: bottom left; transition: opacity 180ms ease, transform 220ms ease; }
+    a { justify-content: center; min-height: 48px; height: 100%; padding: .65rem .6rem; white-space: normal; text-align: center; border: 1px solid #D4C5A9; border-radius: 24px; background: #FAF6F0; box-shadow: 0 2px 7px rgb(26 26 46 / 8%); }
+    a[aria-current] { color: #7A5E1A; background: #eee5d3; border-color: #957323; }
+    .is-open ol { visibility: visible; pointer-events: auto; }
+    .is-open li { opacity: 1; transform: none; transition-delay: calc(var(--petal-index) * 18ms); }
+    .is-open .menu-shade { visibility: visible; opacity: 1; }
+  }
+  @media (min-width: 768px) {
+    .catalog-shelf { width: 100%; max-width: 100%; margin-inline: auto; padding: .3rem .6rem; box-sizing: border-box; }
+    .catalog-shelf ol { flex-wrap: nowrap; justify-content: center; gap: clamp(.25rem, .6vw, .5rem); overflow-x: auto; scrollbar-width: none; padding: .3rem; }
+    .catalog-shelf ol::-webkit-scrollbar { display: none; }
+    .catalog-shelf li { flex: 0 0 auto; }
+    .catalog-shelf a { justify-content: center; width: 77px; height: 77px; padding: 4px; box-sizing: border-box; transition: background-color 180ms ease, box-shadow 180ms ease; }
+    .catalog-shelf a > span { display: none; }
+    .catalog-shelf :global(.menu-thumbnail) { display: block; width: 69px; height: 69px; object-fit: cover; object-position: center; box-shadow: 0 2px 5px rgb(26 26 46 / 12%); }
+    .catalog-shelf a[aria-current] { background: #e2d6c2; }
+    .catalog-shelf a:hover, .catalog-shelf a:focus-visible { background: #f5eee3; box-shadow: inset 0 0 0 1px rgb(149 115 35 / 35%); }
+
+  }
+  @media (max-width: 767px) and (max-height: 600px) {
+    .page-section-menu.is-open { z-index: 60; }
+    ol { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .375rem; bottom: 64px; max-height: none; overflow: visible; padding: .25rem; }
+    a { min-height: 40px; padding: .25rem; font-size: .65rem; line-height: 1.25; }
+  }
+  @media (prefers-reduced-motion: reduce) { li, .menu-fab svg, .menu-shade { transition: none; } }
+  :global([data-atlas-section]), :global(#atlas-reading-order) { scroll-margin-top: var(--page-anchor-offset, 7rem); }
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('.page-section-menu').forEach(menu => {
+    const siteHeader = document.querySelector<HTMLElement>('body > div.sticky');
+    const page = menu.parentElement;
+    const mobile = window.matchMedia('(max-width: 767px)');
+    const toggle = menu.querySelector<HTMLButtonElement>('.menu-fab')!;
+    const list = menu.querySelector<HTMLOListElement>('ol')!;
+    function setOpen(open: boolean, restoreFocus = false) {
+      menu!.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', `${open ? 'Закрыть' : 'Открыть'}: ${menu.dataset.menuName}`);
+      list.inert = mobile.matches && !open;
+      if (restoreFocus) toggle.focus({ preventScroll: true });
+    }
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('click', event => { if (!menu.contains(event.target as Node)) setOpen(false); });
+    menu.querySelector('.menu-shade')!.addEventListener('click', () => setOpen(false, true));
+    menu.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setOpen(false, true);
+    });
+    menu.addEventListener('focusout', () => requestAnimationFrame(() => {
+      if (!menu!.contains(document.activeElement)) setOpen(false);
+    }));
+    mobile.addEventListener('change', () => { setOpen(false); updateOffsets(); });
+    function updateOffsets() {
+      const headerHeight = siteHeader?.getBoundingClientRect().height ?? 0;
+      menu!.style.setProperty('--page-menu-top', `${headerHeight}px`);
+      page?.style.setProperty('--page-anchor-offset', `${headerHeight + (mobile.matches ? 0 : menu!.getBoundingClientRect().height) + 16}px`);
+    }
+    const resizeObserver = new ResizeObserver(updateOffsets);
+    if (siteHeader) resizeObserver.observe(siteHeader);
+    resizeObserver.observe(menu);
+    setOpen(false);
+    updateOffsets();
+    const links = Array.from(menu.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+    const targets = links.map(link => document.getElementById(link.hash.slice(1))).filter((el): el is HTMLElement => !!el);
+    menu.addEventListener('click', event => {
+      const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!link) return;
+      const target = document.getElementById(link.hash.slice(1));
+      if (!target) return;
+      let ancestor: HTMLElement | null = target;
+      while (ancestor) { if (ancestor instanceof HTMLDetailsElement) ancestor.open = true; ancestor = ancestor.parentElement; }
+      target.querySelectorAll('details').forEach(details => { details.open = true; });
+      if (mobile.matches) {
+        event.preventDefault();
+        setOpen(false, true);
+        updateOffsets();
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+          history.replaceState(null, '', link.hash);
+        });
+      }
+    });
+    // Choose the section at the reading position, including nested headings.
+    // IntersectionObserver entries alone can leave a stale active link on long sections.
+    let scheduled = false;
+    function updateCurrent() {
+      scheduled = false;
+      const readingLine = (siteHeader?.getBoundingClientRect().height ?? 0) + (mobile.matches ? 0 : menu!.getBoundingClientRect().height) + 24;
+      let current = targets[0];
+      for (const target of targets) {
+        if (target.getBoundingClientRect().top <= readingLine) current = target;
+      }
+      links.forEach(link => {
+        if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    function scheduleUpdate() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(updateCurrent);
+    }
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    window.addEventListener('load', scheduleUpdate, { once: true });
+    updateCurrent();
+  });
+</script>

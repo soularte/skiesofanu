@@ -5,6 +5,7 @@ import TagFilter from '../TagFilter.astro';
 import { loadDataFile } from '../../lib/data';
 
 interface Props {
+  id?: string;
   items: Array<{
     slug: string;
     data: {
@@ -17,13 +18,13 @@ interface Props {
   bookSlug: string;
 }
 
-const { items, bookSlug } = Astro.props;
+const { items, bookSlug, id } = Astro.props;
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 
 const allTags = [...new Set(items.flatMap(item => item.data.tags ?? []))].sort();
 ---
 
-<Section title={ui.bookSections.lore}>
+<Section id={id} title={ui.bookSections.lore}>
   {allTags.length > 0 && (
     <TagFilter tags={allTags} group="lore" class="mb-6" />
   )}

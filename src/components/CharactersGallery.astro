@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { findImage } from '../lib/images';
-import GalleryArrow from './GalleryArrow.astro';
+import Gallery from './Gallery.astro';
 import { loadDataFile } from '../lib/data';
 
 interface Props {
@@ -24,12 +24,9 @@ function resolvePhoto(photo: string | undefined) {
 }
 ---
 
-<div class="relative">
-  <!-- Mobile: one character at a time -->
-  <div class="sm:hidden">
-    <div id="chars-track-mobile" class="overflow-hidden relative">
-      <div class="flex transition-transform duration-300" id="chars-slider">
-        {characters.map(char => {
+<Gallery count={characters.length} prefix="chars" trackClass="gap-6 pb-4">
+  <Fragment slot="mobile">
+    {characters.map(char => {
           const photoImg = resolvePhoto(char.photo);
           const initials = char.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('');
           return (
@@ -54,36 +51,13 @@ function resolvePhoto(photo: string | undefined) {
           </div>
           );
         })}
-      </div>
-      <!-- Compact controls share the desktop arrow component. -->
-      {characters.length > 1 && (
-        <>
-        <GalleryArrow direction="left" id="chars-mobile-prev" mobile />
-        <GalleryArrow direction="right" id="chars-mobile-next" mobile />
-        </>
-      )}
-    </div>
-    {characters.length > 1 && (
-      <div class="flex justify-center gap-2 mt-3">
-        {characters.map((_, i) => (
-          <button class="chars-dot w-2 h-2 rounded-full bg-dp-border transition-colors" data-index={i}></button>
-        ))}
-      </div>
-    )}
-  </div>
-
-  <!-- Desktop: scrollable track -->
-  <div class="hidden sm:block">
-    <div
-      id="chars-track"
-      class="flex gap-6 overflow-x-auto select-none pb-4"
-      style="scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory;"
-    >
-      {characters.map(char => {
+  </Fragment>
+  <Fragment slot="desktop">
+    {characters.map(char => {
         const photoImg = resolvePhoto(char.photo);
         const initials = char.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('');
         return (
-        <div class="flex-shrink-0 flex flex-col snap-center" style="width: 250px;">
+        <div class="flex-shrink-0 flex flex-col snap-start" style="width: 250px;">
           <div class="border border-dp-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" style="width: 250px; height: 350px;" data-lightbox-group="characters">
             {photoImg
               ? <Image src={photoImg} alt={char.name} widths={[250, 500]} sizes="250px" loading="lazy" class="w-full h-full object-cover" />
@@ -102,22 +76,5 @@ function resolvePhoto(photo: string | undefined) {
         </div>
         );
       })}
-    </div>
-
-    <!-- Left hover zone -->
-    <GalleryArrow direction="left" id="chars-prev" />
-
-    <!-- Right hover zone -->
-    <GalleryArrow direction="right" id="chars-next" />
-  </div>
-</div>
-
-<style>
-  #chars-track::-webkit-scrollbar { display: none; }
-  .chars-dot.active { background-color: #C9A84C; }
-</style>
-
-<script>
-  import { initSlider } from '../lib/slider';
-  initSlider({ prefix: 'chars', step: 280 });
-</script>
+  </Fragment>
+</Gallery>
