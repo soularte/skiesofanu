@@ -19,6 +19,8 @@ SEO-AUDIT.md
 .env.*
 !.env.example
 
-# Local book copy review
-/research/books-copy-review-2026-11-05.md
-/research/books-copy-review-2026-11-05.html
+# Working materials belong in local-only; do not recommit old locations.
+/audits/
+/research/
+/materials/
+/Ану Летающие Головы/
