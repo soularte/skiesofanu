@@ -65,9 +65,13 @@ const books = defineCollection({
       file: z.string().optional(),
       url: z.string().url().refine(value => {
         const url = new URL(value);
-        return url.protocol === 'https:' && url.hostname === 'rutube.ru'
-          && /^\/video\/(?:private\/)?[a-f0-9]{32}\/?$/i.test(url.pathname);
-      }, 'Нужна ссылка на видео RUTUBE').optional(),
+        return url.protocol === 'https:' && (
+          (['rutube.ru', 'www.rutube.ru'].includes(url.hostname)
+            && /^\/video\/(?:private\/)?[a-f0-9]{32}\/?$/i.test(url.pathname))
+          || (['vkvideo.ru', 'vk.com', 'www.vkvideo.ru', 'www.vk.com'].includes(url.hostname)
+            && /^\/video-?\d+_\d+\/?$/.test(url.pathname))
+        );
+      }, 'Нужна ссылка на видео RUTUBE или VK Видео').optional(),
       orientation: z.enum(['horizontal', 'vertical']).optional().default('horizontal'),
       seo: z.object({
         name: z.string().min(1),

@@ -9,13 +9,26 @@ interface Props {
 const { trailer, id } = Astro.props;
 const ui = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 let embedUrl: string | undefined;
+let provider = 'RUTUBE';
 if (trailer.url) {
   const source = new URL(trailer.url);
-  const videoId = source.pathname.split('/').filter(Boolean).at(-1);
-  const embed = new URL(`https://rutube.ru/play/embed/${videoId}/`);
-  const accessKey = source.searchParams.get('p');
-  if (accessKey) embed.searchParams.set('p', accessKey);
-  embedUrl = embed.href;
+  const vkVideo = source.pathname.match(/^\/video(-?\d+)_(\d+)\/?$/);
+  if (['vkvideo.ru', 'vk.com', 'www.vkvideo.ru', 'www.vk.com'].includes(source.hostname) && vkVideo) {
+    const embed = new URL('https://vkvideo.ru/video_ext.php');
+    embed.searchParams.set('oid', vkVideo[1]);
+    embed.searchParams.set('id', vkVideo[2]);
+    embed.searchParams.set('hd', '2');
+    const accessKey = source.searchParams.get('hash');
+    if (accessKey) embed.searchParams.set('hash', accessKey);
+    embedUrl = embed.href;
+    provider = 'VK Видео';
+  } else if (['rutube.ru', 'www.rutube.ru'].includes(source.hostname)) {
+    const videoId = source.pathname.split('/').filter(Boolean).at(-1);
+    const embed = new URL(`https://rutube.ru/play/embed/${videoId}/`);
+    const accessKey = source.searchParams.get('p');
+    if (accessKey) embed.searchParams.set('p', accessKey);
+    embedUrl = embed.href;
+  }
 }
 const pageURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 const videoSchema = trailer.seo ? {
@@ -36,7 +49,7 @@ const videoSchema = trailer.seo ? {
     <div class:list={['trailer-player', { vertical: trailer.orientation === 'vertical' }]}>
       {embedUrl ? <iframe
         src={embedUrl}
-        title="Буктрейлер — RUTUBE"
+        title={`Буктрейлер — ${provider}`}
         loading="lazy"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; fullscreen"
         allowfullscreen

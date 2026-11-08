@@ -50,7 +50,7 @@ cardsFolder: "Aviators"
 # === Буктрейлер ===
 booktrailer:
   visible: true
-  url: "https://rutube.ru/video/e8320a5d83766f4610d4eb87d5ee5dd6/"
+  url: "https://vkvideo.ru/video-85006543_456239177"
   orientation: "horizontal"
   seo:
     name: "Авиаторы Его Величества — буктрейлер"
