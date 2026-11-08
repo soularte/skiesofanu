@@ -14,7 +14,7 @@ if (trailer.url) {
   const source = new URL(trailer.url);
   const vkVideo = source.pathname.match(/^\/video(-?\d+)_(\d+)\/?$/);
   if (['vkvideo.ru', 'vk.com', 'www.vkvideo.ru', 'www.vk.com'].includes(source.hostname) && vkVideo) {
-    const embed = new URL('https://vkvideo.ru/video_ext.php');
+    const embed = new URL('https://vk.com/video_ext.php');
     embed.searchParams.set('oid', vkVideo[1]);
     embed.searchParams.set('id', vkVideo[2]);
     embed.searchParams.set('hd', '2');
