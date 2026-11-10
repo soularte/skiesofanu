@@ -35,6 +35,7 @@ interface Props {
   image?: string;
   canonicalURL?: string;
   ogType?: string;
+  author?: string;
   noindex?: boolean;
   additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
@@ -46,6 +47,7 @@ const {
   image,
   canonicalURL = Astro.url.href,
   ogType = 'website',
+  author = authorNames,
   noindex = false,
   additionalSchema,
 } = Astro.props;
@@ -115,7 +117,7 @@ const extraSchemas = additionalSchema
     <meta name="twitter:image:alt" content={socialCard?.alt ?? siteTitle} />
 
     <!-- Авторы и тема -->
-    <meta name="author" content={authorNames} />
+    <meta name="author" content={author} />
     <meta name="theme-color" content="#FAF6F0" />
 
     <title>{siteTitle}</title>

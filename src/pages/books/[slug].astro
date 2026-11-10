@@ -138,6 +138,7 @@ const breadcrumbLd = {
   image={coverURL}
   canonicalURL={canonicalURL}
   ogType="book"
+  author={authorEntities.map(author => author.name).join(', ')}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />

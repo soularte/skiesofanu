@@ -27,6 +27,15 @@ bibliography:
     entries: []
   - title: Романы
     entries:
+      - title: Главная героиня перепишет финал
+        year: 2026
+        href: /books/ggpf/
+        publication: Сетевая публикация
+        publicationTypes:
+          - online
+        readingSources: []
+        sources: []
+        awards: []
       - year: 2020
         title: 'Авиаторы Его Величества: Пылающий город'
         href: /books/aviatory/#book-2

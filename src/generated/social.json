@@ -110,5 +110,12 @@
     "height": 630,
     "type": "image/jpeg",
     "alt": "Василий Зеленков — Бортжурнал"
+  },
+  "/books/ggpf/": {
+    "src": "/social/books-ggpf-8bb329e4a0.jpg",
+    "width": 1200,
+    "height": 630,
+    "type": "image/jpeg",
+    "alt": "Главная героиня перепишет финал — Ксения Котова"
   }
 }
