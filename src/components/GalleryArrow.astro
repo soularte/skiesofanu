@@ -13,7 +13,7 @@ const posClass = isLeft ? 'left-0' : 'right-0';
   type="button"
   id={id}
   aria-label={isLeft ? 'Назад' : 'Вперёд'}
-  class={`absolute ${posClass} -translate-y-1/2 w-[52px] h-[52px] flex items-center justify-center ${mobile ? 'opacity-100' : 'opacity-0 hover:opacity-100 focus-visible:opacity-100'} transition-opacity duration-300 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-dp-gold-ink focus-visible:outline-offset-2`}
+  class={`absolute ${posClass} -translate-y-1/2 w-[52px] h-[52px] flex items-center justify-center ${mobile ? 'opacity-100' : 'opacity-30 hover:opacity-100 focus-visible:opacity-100'} transition-opacity duration-300 z-10 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-dp-gold-ink focus-visible:outline-offset-2`}
   style={mobile ? 'top: var(--gallery-arrow-top, 175px);' : 'top: 50%;'}
 >
   <span class="w-9 h-9 flex items-center justify-center rounded bg-white/60 shadow pointer-events-none">
