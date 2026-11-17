@@ -146,6 +146,11 @@ const extraSchemas = additionalSchema
   <style is:global>
     @import '../styles/prose.css';
     #back-to-top { bottom: calc(var(--floating-obstruction, 0px) + 1.5rem); }
+    @media (max-width: 767px) and (max-height: 500px) {
+      .site-header-group { position: static; }
+      #privacy-banner { max-height: 40dvh; overflow-y: auto; overscroll-behavior: contain; align-items: flex-start; padding-block: 12px; }
+      #privacy-close { position: sticky; top: 0; min-width: 44px; min-height: 44px; }
+    }
     p + p {
       margin-top: 1em;
     }
@@ -169,7 +174,7 @@ const extraSchemas = additionalSchema
     <!-- Skip to content -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[999] focus:bg-dp-gold focus:text-dp-dark focus:px-4 focus:py-2 focus:text-sm">Перейти к содержимому</a>
     <!-- Sticky header group -->
-    <div class="sticky top-0 z-50">
+    <div class="site-header-group sticky top-0 z-50">
       {linksData.socials.length > 0 && (
         <div class="bg-dp-dark">
           <div class="max-w-5xl mx-auto px-6 py-1.5 flex justify-start">
@@ -189,8 +194,10 @@ const extraSchemas = additionalSchema
     <button
       type="button"
       id="back-to-top"
+      inert
+      tabindex="-1"
       aria-label="Наверх"
-      class="fixed bottom-6 right-4 z-40 w-10 h-10 border border-dp-gold/50 text-dp-gold bg-parchment flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 hover:border-dp-gold hover:bg-dp-gold/10 md:right-6"
+      class="fixed bottom-6 right-4 z-40 w-10 h-10 border border-dp-gold/50 text-dp-gold bg-parchment flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 motion-reduce:transition-none hover:border-dp-gold hover:bg-dp-gold/10 md:right-6"
     >
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" /></svg>
     </button>
@@ -217,16 +224,20 @@ const extraSchemas = additionalSchema
       // Кнопка «Наверх»
       const btn = document.getElementById('back-to-top');
       if (btn) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 400) {
-            btn.style.opacity = '1';
-            btn.style.pointerEvents = 'auto';
-          } else {
-            btn.style.opacity = '0';
-            btn.style.pointerEvents = 'none';
-          }
-        });
-        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        const updateBackToTop = () => {
+          const visible = window.scrollY > 400;
+          btn.style.opacity = visible ? '1' : '0';
+          btn.style.pointerEvents = visible ? 'auto' : 'none';
+          btn.inert = !visible;
+          btn.tabIndex = visible ? 0 : -1;
+        };
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        window.addEventListener('pageshow', updateBackToTop);
+        updateBackToTop();
+        btn.addEventListener('click', () => window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+        }));
       }
 
       // Плашка конфиденциальности

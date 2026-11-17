@@ -64,6 +64,10 @@ const menuName = catalogShelf ? 'Книги' : 'Разделы страницы'
     ol { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .375rem; bottom: 64px; max-height: none; overflow: visible; padding: .25rem; }
     a { min-height: 40px; padding: .25rem; font-size: .65rem; line-height: 1.25; }
   }
+  @media (max-width: 767px) and (max-height: 350px) {
+    .page-section-menu.is-open { bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+    ol { position: fixed; top: 8px; bottom: auto; left: 20px; max-height: calc(100dvh - 92px); overflow-y: auto; overscroll-behavior: contain; }
+  }
   @media (prefers-reduced-motion: reduce) { li, .menu-fab svg, .menu-shade { transition: none; } }
   :global([data-atlas-section]), :global(#atlas-reading-order) { scroll-margin-top: var(--page-anchor-offset, 7rem); }
 </style>
@@ -140,7 +144,7 @@ const menuName = catalogShelf ? 'Книги' : 'Разделы страницы'
         if (target.getBoundingClientRect().top <= readingLine) current = target;
       }
       if (menu.dataset.selectionOnly === 'true') {
-        const fragment = document.getElementById(window.location.hash.slice(1));
+        const fragment = document.getElementById(window.location.hash.slice(1) || new URLSearchParams(window.location.search).get('book') || '');
         current = targets.find(target => target === fragment || (!!fragment && target.contains(fragment))) ?? targets[0];
       }
       links.forEach(link => {

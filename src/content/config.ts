@@ -154,6 +154,8 @@ const authors = defineCollection({
       works: z.array(z.string()).optional(),
       readingSources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
       entries: z.array(z.object({
+        id: z.string().regex(/^publication-[a-z0-9]+(?:-[a-z0-9]+)*$/),
+        legacyIds: z.array(z.string().regex(/^publication-\d+-\d+$/)).default([]),
         year: z.number().int().optional(),
         title: z.string(),
         href: z.string().startsWith('/').optional(),
@@ -162,6 +164,7 @@ const authors = defineCollection({
         containsWorks: z.array(z.string()).default([]),
         publicationTypes: z.array(z.enum(['online', 'print'])).default([]),
         cycle: z.object({ title: z.string(), href: z.string().startsWith('/') }).optional(),
+        audioLinks: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
         collections: z.array(z.object({ title: z.string(), href: z.string().optional() })).default([]),
         readingSources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
         links: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),

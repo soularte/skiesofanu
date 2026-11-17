@@ -195,7 +195,7 @@ const musicSchema = {
   function selectBook(event?: Event) {
     const requested = window.location.hash.slice(1);
     const target = document.getElementById(requested);
-    const groupId = target?.closest<HTMLElement>('.book-panel')?.dataset.panel ?? requested;
+    const groupId = target?.closest<HTMLElement>('.book-panel')?.dataset.panel ?? (requested || new URLSearchParams(window.location.search).get('book'));
     const selected = choices.find(choice => choice.hash.slice(1) === groupId) ?? choices[0];
     if (!selected) return;
     choices.forEach(choice => {
@@ -209,8 +209,13 @@ const musicSchema = {
       const panel = document.getElementById(selected.hash.slice(1))!;
       panel.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
       panel.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-    } else if (target?.matches('.track-card, .book-panel')) {
+    } else if (target?.matches('.track-card')) {
       requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+    } else if (!event && target?.matches('.book-panel')) {
+      // Legacy collection links select a book without hiding the page heading.
+      const showHeading = () => window.scrollTo({ top: 0, behavior: 'instant' });
+      requestAnimationFrame(showHeading);
+      if (document.readyState !== 'complete') window.addEventListener('load', showHeading, { once: true });
     }
   }
   document.addEventListener('page-menu-select', selectBook);

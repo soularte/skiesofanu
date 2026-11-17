@@ -12,7 +12,14 @@ const uiData = loadDataFile<any>('src/data/ui.md', { nav: [], aria: {} });
 const navLinks = uiData.nav ?? [];
 const aria = uiData.aria ?? {};
 
-const currentPath = Astro.url.pathname;
+const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
+const currentPath = normalizePath(Astro.url.pathname);
+function currentSection(href: string): 'page' | 'location' | undefined {
+  const path = normalizePath(href);
+  if (currentPath === path) return 'page';
+  if (path !== '/' && currentPath.startsWith(`${path}/`)) return 'location';
+  return undefined;
+}
 ---
 <header class="border-b border-dp-border bg-parchment/90 backdrop-blur-sm">
   <div class="max-w-5xl mx-auto px-6 pt-4 pb-[26px] flex items-center justify-between">
@@ -24,9 +31,9 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a
           href={link.href}
-          aria-current={currentPath === link.href ? 'page' : undefined}
+          aria-current={currentSection(link.href)}
           class={`focus-ring text-sm tracking-widest uppercase transition-colors ${
-            currentPath === link.href
+            currentSection(link.href)
               ? 'text-dp-gold-ink border-b border-dp-gold pb-0.5'
               : 'text-dp-muted hover:text-dp-text'
           }`}
@@ -36,7 +43,7 @@ const currentPath = Astro.url.pathname;
       ))}
     </nav>
     <!-- Mobile menu button -->
-    <button id="menu-toggle" class="focus-ring md:hidden text-dp-muted hover:text-dp-text" aria-label={aria.openMenu} aria-expanded="false" aria-controls="mobile-menu">
+    <button id="menu-toggle" class="focus-ring md:hidden text-dp-muted hover:text-dp-text" aria-label={aria.openMenu} data-open-label={aria.openMenu} data-close-label={aria.closeMenu ?? 'Закрыть меню'} aria-expanded="false" aria-controls="mobile-menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -49,8 +56,10 @@ const currentPath = Astro.url.pathname;
         <a
           href={link.href}
           data-mobile-link
-          aria-current={currentPath === link.href ? 'page' : undefined}
-          class="focus-ring text-sm tracking-widest uppercase text-dp-muted hover:text-dp-text transition-colors"
+          aria-current={currentSection(link.href)}
+          class={`focus-ring self-start text-sm tracking-widest uppercase transition-colors ${currentSection(link.href)
+            ? 'text-dp-gold-ink border-b border-dp-gold pb-0.5'
+            : 'text-dp-muted hover:text-dp-text'}`}
         >
           {link.label}
         </a>
@@ -62,13 +71,20 @@ const currentPath = Astro.url.pathname;
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
-  const closeMenu = () => {
-    menu?.classList.add('hidden');
-    toggle?.setAttribute('aria-expanded', 'false');
+  const setMenuOpen = (open: boolean) => {
+    menu?.classList.toggle('hidden', !open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', (open ? toggle.dataset.closeLabel : toggle.dataset.openLabel) ?? 'Меню');
   };
+  const closeMenu = () => setMenuOpen(false);
   toggle?.addEventListener('click', () => {
-    const isHidden = menu?.classList.toggle('hidden');
-    toggle.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+    setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || toggle?.getAttribute('aria-expanded') !== 'true') return;
+    event.preventDefault();
+    closeMenu();
+    toggle.focus({ preventScroll: true });
   });
   document.querySelectorAll<HTMLAnchorElement>('[data-mobile-link]').forEach(link => {
     link.addEventListener('click', closeMenu);

@@ -7,15 +7,22 @@ import { authorBookLinks } from '../lib/author-links';
 const books = await getCollection('books');
 interface Props { sections: CollectionEntry<'authors'>['data']['bibliography']; contests: CollectionEntry<'authors'>['data']['contests'] }
 const { sections: sourceSections, contests } = Astro.props;
+const publicationIds = new Set<string>();
+for (const section of sourceSections) for (const entry of section.entries) {
+  for (const id of [entry.id, ...entry.legacyIds]) {
+    if (publicationIds.has(id)) throw new Error(`Повторяющийся якорь библиографии: ${id}`);
+    publicationIds.add(id);
+  }
+}
 const cycleFor = (title: string) => {
   const index = sourceSections.findIndex(section => section.works?.includes(title));
   return index < 0 ? undefined : { title: sourceSections[index].title.replace(/^Цикл «|»$/g, ''), href: `#bibliography-${index}` };
 };
-const originals = sourceSections.map((section, sectionIndex) => ({
+const originals = sourceSections.map(section => ({
   ...section,
-  entries: section.entries.map((entry, index) => ({ ...entry,
+  entries: section.entries.map(entry => ({ ...entry,
     cycle: cycleFor(entry.title) ?? entry.cycle,
-    anchor: `publication-${sectionIndex}-${index}`,
+    anchor: entry.id,
     publicationRefs: [] as { href: string; label: string }[],
   })),
 }));
@@ -28,7 +35,7 @@ const sections = originals.map(section => section.works ? {
     const base = matches.find(entry => entry.publicationTypes.includes('online')) ?? matches[0];
     const paper = entries.filter(entry => entry.publicationTypes.includes('print') &&
       (entry.title === title || entry.containsWorks.includes(title)));
-    return [{ ...base, anchor: undefined, cycle: undefined,
+    return [{ ...base, anchor: undefined, legacyIds: [], cycle: undefined,
       publication: base.publicationTypes.includes('online') ? base.publication : '',
       sources: [],
       publicationTypes: [...new Set([...matches, ...paper].flatMap(entry => entry.publicationTypes))],
@@ -65,7 +72,7 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
       <table data-sortable class="author-table">
         <thead><tr><th scope="col">Год</th><th scope="col">Название</th><th scope="col"><span data-sort-label>Публикация / издание</span><span class="publication-filter" data-publication-filter hidden><label title="Бумажные публикации"><input type="checkbox" value="print" checked aria-label={`Бумажные публикации: ${section.title}`} />Б</label><label title="Сетевые публикации"><input type="checkbox" value="online" checked aria-label={`Сетевые публикации: ${section.title}`} />С</label></span></th><th scope="col">Ссылки</th></tr></thead>
         <tbody>{[...section.entries].sort((a,b) => (b.year ?? 0) - (a.year ?? 0)).map(entry => <tr id={entry.anchor} data-publication-types={entry.publicationTypes.join(' ')}>
-          <td class="year" data-sort-value={entry.year ?? ""}>{entry.year ?? '—'}</td>
+          <td class="year" data-sort-value={entry.year ?? ""}>{entry.legacyIds.map(id => <span id={id} class="publication-legacy-anchor" aria-hidden="true"></span>)}{entry.year ?? '—'}</td>
           <td class="work" data-sort-value={entry.title}>{entry.href ? <a href={entry.href}>{entry.title}</a> : <span>{entry.title}</span>}
             {entry.readingSources.length > 0 && <div class="external-sources">{entry.readingSources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
             {entry.coauthors && <small>Соавтор: {['Василий Зеленков', 'Зеленков Василий'].includes(entry.coauthors) ? <a href="/about/vasily/">{entry.coauthors}</a> : ['Ксения Котова', 'Котова Ксения'].includes(entry.coauthors) ? <a href="/about/ksenia/">{entry.coauthors}</a> : entry.coauthors}</small>}
@@ -81,7 +88,9 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
             {entry.publicationRefs.map(ref => <div><a href={ref.href} data-publication-ref>{ref.label}</a></div>)}
             {entry.sources.length > 0 && <div class="external-sources">{entry.sources.map(source => <a class="source external-source" href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</div>}
           </td>
-          <td class="platforms">{readingLinks(entry).length ? <MarketplaceLinks links={readingLinks(entry)} /> : <span class="empty-platforms">—</span>}</td>
+          <td class="platforms">
+            {readingLinks(entry).length || entry.audioLinks.length ? <MarketplaceLinks links={[...readingLinks(entry), ...entry.audioLinks]} /> : <span class="empty-platforms">—</span>}
+          </td>
         </tr>)}</tbody>
       </table>
     </div>
@@ -140,6 +149,7 @@ const readingLinks = (entry: Props['sections'][number]['entries'][number]) =>
   th { font-size: .75rem; font-weight: 600; letter-spacing: .025em; background: rgba(170,140,65,.08); }
   th, td { padding: .85rem .65rem; border-bottom: 1px solid rgba(150,130,90,.23); vertical-align: top; }
   tr[id] { scroll-margin-top: 9rem; }
+  .publication-legacy-anchor { display: block; height: 0; scroll-margin-top: 9rem; }
   .year { white-space: nowrap; font-variant-numeric: tabular-nums; }
   .collection-note { margin-top: .5rem; font-size: .85rem; }
   .platforms { min-width: 9rem; }

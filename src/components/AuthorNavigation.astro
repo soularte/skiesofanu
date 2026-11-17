@@ -72,6 +72,12 @@ function initializeAuthorNavigation() {
   details.forEach(section => section.addEventListener('toggle', updateCollapseLabel));
   updateCollapseLabel();
   function navigateToTarget(target: HTMLElement) {
+    // Legacy fragments stay attached to their original record, even after reordering.
+    const publication = target.closest<HTMLTableRowElement>('tr[id]');
+    if (publication && target !== publication) {
+      history.replaceState(null, '', `#${publication.id}`);
+      target = publication;
+    }
     expand(target);
     if (target instanceof HTMLTableRowElement) {
       const table = target.closest<HTMLTableElement>('table')!;

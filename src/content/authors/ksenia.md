@@ -28,6 +28,8 @@ bibliography:
   - title: Романы
     entries:
       - title: Главная героиня перепишет финал
+        id: publication-glavnaya-geroinya-perepishet-final-2026
+        legacyIds: [publication-3-0]
         year: 2026
         href: /books/ggpf/
         publication: Сетевая публикация
@@ -37,6 +39,8 @@ bibliography:
         sources: []
         awards: []
       - year: 2020
+        id: publication-aviatory-ego-velichestva-pylayushchiy-gorod-2020
+        legacyIds: [publication-3-1]
         title: 'Авиаторы Его Величества: Пылающий город'
         href: /books/aviatory/#book-2
         publication: Сетевая публикация
@@ -52,6 +56,8 @@ bibliography:
             url: https://fantlab.ru/work1582510
         awards: []
       - year: 2019
+        id: publication-aviatory-ego-velichestva-pokhishchennoe-solntse-2019
+        legacyIds: [publication-3-2]
         title: 'Авиаторы Его Величества: Похищенное солнце'
         href: /books/aviatory/#book-1
         publication: Сетевая публикация
@@ -67,6 +73,8 @@ bibliography:
             url: https://fantlab.ru/work1582509
         awards: []
       - year: 2022
+        id: publication-aviatory-ego-velichestva-2022
+        legacyIds: [publication-3-3]
         title: Авиаторы Его Величества
         containsWorks:
           - 'Авиаторы Его Величества: Похищенное солнце'
@@ -90,6 +98,8 @@ bibliography:
         awards:
           - award-19
       - title: Маги Канверона
+        id: publication-magi-kanverona-2025
+        legacyIds: [publication-3-4]
         coauthors: Василий Зеленков
         year: 2025
         href: /books/kanveron/#book-1
@@ -100,6 +110,8 @@ bibliography:
         sources: []
         awards: []
       - title: Аудиуры Завесы
+        id: publication-audiury-zavesy-2026
+        legacyIds: [publication-3-5]
         coauthors: Василий Зеленков
         year: 2026
         href: /books/kanveron/#book-2
@@ -112,6 +124,8 @@ bibliography:
   - title: Сборники
     entries:
       - year: 2024
+        id: publication-pust-eta-muzyka-stikhnet-2024
+        legacyIds: [publication-4-0]
         title: Пусть эта музыка стихнет
         publication: >-
           Котова, К. В. Пусть эта музыка стихнет: [16+] / Ксения Котова. – Москва: Т8 RUGRAM: RUGRAM
@@ -129,6 +143,8 @@ bibliography:
         awards:
           - award-18
       - title: Крошки к чаю
+        id: publication-kroshki-k-chayu-2024
+        legacyIds: [publication-4-1]
         publication: Сетевая публикация
         links:
           - label: ЛитГород
@@ -146,6 +162,8 @@ bibliography:
   - title: Повести
     entries:
       - title: Остров сломанных человечков
+        id: publication-ostrov-slomannykh-chelovechkov-2026
+        legacyIds: [publication-5-0]
         href: /books/ostrov/
         publication: Сетевая публикация
         coauthors: Василий Зеленков
@@ -158,6 +176,8 @@ bibliography:
           - award-1
           - award-2
       - title: Стирающее поветрие, или Бумажная лавка госпожи Анны
+        id: publication-stirayushchee-povetrie-ili-bumazhnaya-lavka-gospozhi-anny-2026
+        legacyIds: [publication-5-1]
         href: /books/stirayushchee/
         publication: Сетевая публикация
         year: 2026
@@ -168,6 +188,8 @@ bibliography:
         awards:
           - award-3
       - year: 2025
+        id: publication-virdolog-2025
+        legacyIds: [publication-5-2]
         title: Вирдолог
         href: /books/virdolog/
         publication: Сетевая публикация
@@ -181,6 +203,8 @@ bibliography:
   - title: Рассказы
     entries:
       - title: Собиратели ракушек
+        id: publication-sobirateli-rakushek-2008
+        legacyIds: [publication-6-0]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -194,6 +218,8 @@ bibliography:
           - online
         awards: []
       - title: Всё та же девушка
+        id: publication-vse-ta-zhe-devushka-2008
+        legacyIds: [publication-6-1]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -212,6 +238,8 @@ bibliography:
         awards:
           - award-8
       - title: Соломинки
+        id: publication-solominki-2008
+        legacyIds: [publication-6-2]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -227,6 +255,8 @@ bibliography:
           - online
         awards: []
       - title: Дарить жизнь
+        id: publication-darit-zhizn-2008
+        legacyIds: [publication-6-3]
         publication: Сетевая публикация
         year: 2008
         coauthors: Василий Зеленков
@@ -241,6 +271,8 @@ bibliography:
           - online
         awards: []
       - title: Музыка воды
+        id: publication-muzyka-vody-2008
+        legacyIds: [publication-6-4]
         publication: Сетевая публикация
         year: 2008
         coauthors: Игорь Ревзин
@@ -258,6 +290,8 @@ bibliography:
         awards:
           - award-21
       - title: Благословенная музыка
+        id: publication-blagoslovennaya-muzyka-2008
+        legacyIds: [publication-6-5]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -271,6 +305,8 @@ bibliography:
           - online
         awards: []
       - title: Немое сердце
+        id: publication-nemoe-serdtse-2009
+        legacyIds: [publication-6-6]
         publication: Сетевая публикация
         year: 2009
         coauthors: Зарубинская Дарья
@@ -287,6 +323,8 @@ bibliography:
           - online
         awards: []
       - title: Нетронутый лист
+        id: publication-netronutyy-list-2010
+        legacyIds: [publication-6-7]
         publication: Сетевая публикация
         year: 2010
         coauthors: Зарубинская Дарья
@@ -301,6 +339,8 @@ bibliography:
           - online
         awards: []
       - title: След вихря
+        id: publication-sled-vikhrya-2010
+        legacyIds: [publication-6-8]
         publication: Сетевая публикация
         year: 2010
         coauthors: Василий Зеленков
@@ -315,6 +355,8 @@ bibliography:
           - online
         awards: []
       - title: Настоящее лето
+        id: publication-nastoyashchee-leto-2010
+        legacyIds: [publication-6-9]
         publication: Сетевая публикация
         year: 2010
         coauthors: Василий Зеленков
@@ -329,6 +371,8 @@ bibliography:
           - online
         awards: []
       - title: Странная благодарность
+        id: publication-strannaya-blagodarnost-2012
+        legacyIds: [publication-6-10]
         publication: >-
           Переплёт Фантазии. Том I: сборник рассказов международных литературных конкурсов «Пролёт Фантазии» /
           [составители и редакторы: оргкомитет конкурса]. – Москва: [б. и.], 2012. – 320 с. – ISBN
@@ -346,6 +390,8 @@ bibliography:
           - print
         awards: []
       - title: Талисман
+        id: publication-talisman-2011
+        legacyIds: [publication-6-11]
         publication: Сетевая публикация
         year: 2011
         collections: []
@@ -357,6 +403,8 @@ bibliography:
           - online
         awards: []
       - title: Все ответы
+        id: publication-vse-otvety-2011
+        legacyIds: [publication-6-12]
         publication: Сетевая публикация
         year: 2011
         collections:
@@ -370,6 +418,8 @@ bibliography:
           - online
         awards: []
       - title: Мудрец, кошка и Психея
+        id: publication-mudrets-koshka-i-psikheya-2011
+        legacyIds: [publication-6-13]
         publication: Сетевая публикация
         year: 2011
         collections:
@@ -383,6 +433,8 @@ bibliography:
           - online
         awards: []
       - title: Лазурные небеса, изумрудная земля
+        id: publication-lazurnye-nebesa-izumrudnaya-zemlya-2017
+        legacyIds: [publication-6-14]
         publication: >-
           Полдень 5: антология / главный редактор Н. М. Романецкий ; художник А. Каллас. – Санкт-Петербург:
           Издательство «Сидорович», 2017. – 252 с. – (Альманах фантастики «Полдень»). – ISBN
@@ -402,6 +454,8 @@ bibliography:
           - print
         awards: []
       - title: Портрет дочери художника
+        id: publication-portret-docheri-khudozhnika-2014
+        legacyIds: [publication-6-15]
         publication: Сетевая публикация
         year: 2014
         collections:
@@ -415,6 +469,11 @@ bibliography:
           - online
         awards: []
       - title: Пусть эта музыка стихнет
+        id: publication-pust-eta-muzyka-stikhnet-2015
+        legacyIds: [publication-6-16]
+        audioLinks:
+          - label: Автор.Тудей Аудио
+            url: https://author.today/audiobook/416606
         publication: ФанCity. – 2014. – № 6, зима 2015. – ISSN 2311-6676.
         year: 2015
         collections:
@@ -429,6 +488,8 @@ bibliography:
         awards:
           - award-7
       - title: Первые и мудрые
+        id: publication-pervye-i-mudrye-2014
+        legacyIds: [publication-6-17]
         publication: Сетевая публикация
         year: 2014
         collections:
@@ -446,6 +507,8 @@ bibliography:
           - online
         awards: []
       - title: Трижды мёртвая
+        id: publication-trizhdy-mertvaya-2014
+        legacyIds: [publication-6-18]
         publication: Сетевая публикация
         year: 2014
         collections:
@@ -459,6 +522,8 @@ bibliography:
           - online
         awards: []
       - title: Чужак
+        id: publication-chuzhak-2015
+        legacyIds: [publication-6-19]
         publication: >-
           Аэлита/011: сборник фантастики / составители: А. Бочаров, Б. Долинго ; обложка А. Федотова. –
           Екатеринбург: ЭИ «@элита», 2015. – 404 с. – (Аэлита). – ISBN 978-5-9905650-4-3.
@@ -474,6 +539,8 @@ bibliography:
           - print
         awards: []
       - title: Дорога слепых
+        id: publication-doroga-slepykh-2015
+        legacyIds: [publication-6-20]
         publication: Сетевая публикация
         year: 2015
         collections:
@@ -487,6 +554,8 @@ bibliography:
           - online
         awards: []
       - title: Злые глаза, злые сердца
+        id: publication-zlye-glaza-zlye-serdtsa-2015
+        legacyIds: [publication-6-21]
         publication: Сетевая публикация
         year: 2015
         collections:
@@ -500,6 +569,8 @@ bibliography:
           - online
         awards: []
       - title: Пастухи наваждений
+        id: publication-pastukhi-navazhdeniy-2016
+        legacyIds: [publication-6-22]
         publication: Сетевая публикация
         year: 2016
         coauthors: Василий Зеленков
@@ -514,6 +585,8 @@ bibliography:
           - online
         awards: []
       - title: Из глубин души
+        id: publication-iz-glubin-dushi-2017
+        legacyIds: [publication-6-23]
         publication: Сетевая публикация
         year: 2017
         coauthors: Василий Зеленков
@@ -528,6 +601,8 @@ bibliography:
           - online
         awards: []
       - title: Озеро на излёте звездопада
+        id: publication-ozero-na-izlete-zvezdopada-2018
+        legacyIds: [publication-6-24]
         publication: Сетевая публикация
         year: 2018
         coauthors: Василий Зеленков
@@ -542,6 +617,8 @@ bibliography:
           - online
         awards: []
       - title: Совершенство жизни
+        id: publication-sovershenstvo-zhizni-2020
+        legacyIds: [publication-6-25]
         publication: Сетевая публикация
         year: 2020
         collections:
@@ -557,6 +634,8 @@ bibliography:
           - online
         awards: []
       - title: Все мы становимся чем-то
+        id: publication-vse-my-stanovimsya-chem-to-2020
+        legacyIds: [publication-6-26]
         publication: Сетевая публикация
         year: 2020
         collections:
@@ -570,6 +649,8 @@ bibliography:
           - online
         awards: []
       - title: Милой в подарок
+        id: publication-miloy-v-podarok-2021
+        legacyIds: [publication-6-27]
         publication: Сетевая публикация
         year: 2021
         collections:
@@ -587,6 +668,8 @@ bibliography:
           - online
         awards: []
       - title: Часовой
+        id: publication-chasovoy-2021
+        legacyIds: [publication-6-28]
         publication: Сетевая публикация
         year: 2021
         collections: []
@@ -602,6 +685,8 @@ bibliography:
           - award-11
           - award-17
       - title: Анж Ансельм
+        id: publication-anzh-anselm-2022
+        legacyIds: [publication-6-29]
         publication: Сетевая публикация
         year: 2022
         collections: []
@@ -615,6 +700,8 @@ bibliography:
           - online
         awards: []
       - year: 2026
+        id: publication-chasovoy-2026
+        legacyIds: [publication-6-30]
         title: Часовой
         publication: >-
           «Счастье даром»: литературный альманах «Полынья», № 7. / [главный редактор Ю. В. Шутова]. –
@@ -633,6 +720,8 @@ bibliography:
           - award-11
           - award-17
       - year: 2025
+        id: publication-vse-ta-zhe-devushka-2025
+        legacyIds: [publication-6-31]
         title: Все та же девушка
         publication: >-
           Драма на трёх страницах: сборник рассказов-финалистов Второго Всероссийского конкурса /
@@ -654,7 +743,12 @@ bibliography:
         awards:
           - award-8
       - year: 2026
+        id: publication-odnodnevki-2026
+        legacyIds: [publication-6-32]
         title: Однодневки
+        audioLinks:
+          - label: Автор.Тудей Аудио
+            url: https://author.today/audiobook/681538
         publication: >-
           Необычное свойство: сборник рассказов по итогам конкурса «Синий буривух — 2025/2026» / [составители
           Аль, Тин]. – Москва: Новая Страна, 2026. – 376 с. ; 21 см. – Текст: непосредственный. – ISBN
@@ -672,6 +766,8 @@ bibliography:
           - award-5
           - award-9
       - year: 2025
+        id: publication-kurer-utrachennogo-2025
+        legacyIds: [publication-6-33]
         title: Курьер утраченного
         publication: >-
           «Алиса — 2025»: сборник лучшей магической прозы VII международной премии в области литературного
@@ -691,7 +787,12 @@ bibliography:
         awards:
           - award-10
       - year: 2025
+        id: publication-odnodnevki-2025
+        legacyIds: [publication-6-34]
         title: Однодневки
+        audioLinks:
+          - label: Автор.Тудей Аудио
+            url: https://author.today/audiobook/681538
         publication: >-
           Кубок Брэдбери 2025: антология / [председатель жюри Е. Ю. Лукин]. – Волгоград: Перископ-Волга, 2025.
           – 816 с. – ISBN 978-5-908012-94-2.
@@ -711,6 +812,8 @@ bibliography:
           - award-5
           - award-9
       - year: 2025
+        id: publication-pochtyashka-kotoryy-rasserdil-pochtu-2025
+        legacyIds: [publication-6-35]
         title: Почтяшка, который рассердил почту
         publication: >-
           Уральский книгоход: литературный альманах. Вып. IX / Государственное автономное учреждение культуры
@@ -724,6 +827,8 @@ bibliography:
           - award-6
           - award-12
       - year: 2025
+        id: publication-pochtyashka-kotoryy-rasserdil-pochtu-2025-8a0de83a
+        legacyIds: [publication-6-36]
         title: Почтяшка, который рассердил почту
         publication: >-
           Жили-были дети: собрание произведений лауреатов литературно-педагогического конкурса «Добрая лира» /
@@ -738,6 +843,8 @@ bibliography:
           - award-6
           - award-12
       - year: 2022
+        id: publication-chasovoy-2022
+        legacyIds: [publication-6-37]
         title: Часовой
         publication: >-
           Кубок Брэдбери-2022: антология / [под редакцией коллегии жюри ; председатель Е. Ю. Лукин]. –
@@ -755,6 +862,8 @@ bibliography:
           - award-11
           - award-17
       - year: 2015
+        id: publication-khozyain-prilivov-2015
+        legacyIds: [publication-6-38]
         title: Хозяин Приливов
         publication: Уральский следопыт. – 2015. – № 2 (февраль). – 84 с. – ISSN 0134-2142.
         coauthors: Василий Зеленков
@@ -770,10 +879,14 @@ bibliography:
         awards:
           - award-20
       - title: Квинтэссенция
+        id: publication-kvintessentsiya-2025
+        legacyIds: [publication-6-39]
         year: 2025
         publication: Сетевая публикация
         collections: []
-        readingSources: []
+        readingSources:
+          - label: Фантлаб
+            url: https://fantlab.ru/work1582532
         links:
           - label: ЛитРес
             url: https://www.litres.ru/book/kseniya-kotova/kvintessenciya-71588824/
@@ -783,6 +896,8 @@ bibliography:
           - online
         awards: []
       - title: Мечты создателей
+        id: publication-mechty-sozdateley-2026
+        legacyIds: [publication-6-40]
         publication: Сетевая публикация
         collections:
           - title: Векторы возможного
@@ -795,6 +910,8 @@ bibliography:
         year: 2026
         awards: []
       - title: Мшистый робот
+        id: publication-mshistyy-robot-2026
+        legacyIds: [publication-6-41]
         year: 2026
         publication: >-
           Чаща всего: [интерактивный сборник сказочных рассказов современных авторов] / по инициативе
@@ -805,6 +922,11 @@ bibliography:
         readingSources: []
         awards: []
       - title: Королевский сокол
+        id: publication-korolevskiy-sokol-2021
+        legacyIds: [publication-6-42]
+        readingSources:
+          - label: Фантлаб
+            url: https://fantlab.ru/work1582533
         coauthors: Василий Зеленков
         year: 2021
         href: /books/aviatory/#book-3
@@ -818,6 +940,8 @@ bibliography:
   - title: Микрорассказы
     entries:
       - title: Песня печали
+        id: publication-pesnya-pechali-2008
+        legacyIds: [publication-7-0]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -835,6 +959,8 @@ bibliography:
           - online
         awards: []
       - title: Эпилог
+        id: publication-epilog-2008
+        legacyIds: [publication-7-1]
         publication: Сетевая публикация
         year: 2008
         collections:
@@ -850,6 +976,8 @@ bibliography:
           - online
         awards: []
       - title: Покер
+        id: publication-poker-2009
+        legacyIds: [publication-7-2]
         publication: Сетевая публикация
         year: 2009
         collections:
@@ -865,6 +993,8 @@ bibliography:
           - online
         awards: []
       - title: У пруда
+        id: publication-u-pruda-2009
+        legacyIds: [publication-7-3]
         publication: Сетевая публикация
         year: 2009
         collections:
@@ -880,6 +1010,11 @@ bibliography:
           - online
         awards: []
       - title: Что я знаю, что ты знаешь
+        id: publication-chto-ya-znayu-chto-ty-znaesh-2019
+        legacyIds: [publication-7-4]
+        audioLinks:
+          - label: Автор.Тудей Аудио
+            url: https://author.today/audiobook/683405
         publication: Сетевая публикация
         year: 2019
         collections:
@@ -897,6 +1032,8 @@ bibliography:
           - online
         awards: []
       - title: Три сестры
+        id: publication-tri-sestry-2021
+        legacyIds: [publication-7-5]
         publication: Сетевая публикация
         collections:
           - title: Крошки к чаю
@@ -912,6 +1049,8 @@ bibliography:
           - online
         awards: []
       - title: Месть как золото
+        id: publication-mest-kak-zoloto-2023
+        legacyIds: [publication-7-6]
         publication: Сетевая публикация
         collections:
           - title: Крошки к чаю
@@ -927,6 +1066,8 @@ bibliography:
           - online
         awards: []
       - title: Закопано
+        id: publication-zakopano-2024
+        legacyIds: [publication-7-7]
         publication: Сетевая публикация
         collections:
           - title: Крошки к чаю
@@ -940,6 +1081,8 @@ bibliography:
           - online
         awards: []
       - title: Голодный
+        id: publication-golodnyy-2024
+        legacyIds: [publication-7-8]
         publication: Сетевая публикация
         collections:
           - title: Крошки к чаю

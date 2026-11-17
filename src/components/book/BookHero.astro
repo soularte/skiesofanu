@@ -98,10 +98,14 @@ const statistics = [
     .mobile-book-arrow a:focus-visible { outline: 2px solid #957323; outline-offset: 2px; }
     .hero-introduction { text-align: center; }
     .hero-metadata > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; width: min(100%, 260px); margin-inline: auto; }
-    .hero-statistics li { flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-width: 0; min-height: 40px; padding: .15rem 0; font-size: .65rem; line-height: 1.4; }
+    .hero-statistics li { flex-direction: column; align-items: center; justify-content: flex-start; gap: .15rem; min-width: 0; min-height: 40px; padding: .15rem 0; font-size: .65rem; line-height: 1.4; white-space: normal; text-align: center; }
+    .hero-statistics li > span { max-width: 100%; overflow-wrap: anywhere; }
     .hero-statistics strong { font-size: 1.3rem; line-height: 1.2; }
 
     .hero-statistics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; max-width: 320px; justify-self: center; gap: .25rem; }
+  }
+  @media (max-width: 359px) {
+    .hero-statistics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1rem; }
   }
   @media (min-width: 1024px) {
     .book-hero { padding: 2rem; }

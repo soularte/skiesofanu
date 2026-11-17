@@ -63,7 +63,7 @@ world: |
   А ещё за морями прячутся земли этнимов — древнего народа, помнящего мир ещё до людей. О них рассказывают сказки. Этнимы — духи природы, всадники на звёздных китах, хранители забытых знаний и существа, способные менять ткань реальности. Их тайны пугают сильнее любого оружия, и встреча с ними почти никогда не проходит бесследно.
 extraLinks:
   - label: "Музыка по книге"
-    url: "/music/#stirayushchee"
+    url: "/music/?book=stirayushchee"
   - label: "LiveLib — отзывы"
     url: "https://www.livelib.ru/book/1015678399-stirayuschee-povetrie-ili-bumazhnaya-lavka-gospozhi-anny-kseniya-kotova"
   - label: "Pinterest — арты по книге"
