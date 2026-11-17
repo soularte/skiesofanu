@@ -13,8 +13,12 @@ interface Props {
   data: BookData;
   Content: any;
   materialsCount?: number;
+  prev?: { href: string; title: string } | null;
+  next?: { href: string; title: string } | null;
 }
-const { data, Content, materialsCount = 0 } = Astro.props;
+const { data, Content, materialsCount = 0, prev, next } = Astro.props;
+const headingTitle = data.series ?? data.title;
+const mobileTitleSize = headingTitle.length > 45 ? '22px' : headingTitle.length > 25 ? '26px' : '30px';
 const coverImg = findImage(data.cover);
 const coverLinks = data.links ?? [];
 const isSeries = !!(data.books && data.books.length > 0);
@@ -31,7 +35,11 @@ const statistics = [
 ];
 ---
 <header class="book-page-heading">
-  <h1 class="font-heading text-3xl md:text-4xl font-semibold leading-tight text-dp-gold-ink">{data.series ?? data.title}</h1>
+  <div class="book-title-row" style={`--mobile-title-size: ${mobileTitleSize}`}>
+  <span class="mobile-book-arrow">{prev && <a href={prev.href} aria-label={`Предыдущая книга: ${prev.title}`} title={prev.title}>←</a>}</span>
+  <h1 class="font-heading text-3xl md:text-4xl font-semibold leading-tight text-dp-gold-ink">{headingTitle}</h1>
+  <span class="mobile-book-arrow">{next && <a href={next.href} aria-label={`Следующая книга: ${next.title}`} title={next.title}>→</a>}</span>
+  </div>
   {data.series && data.seriesSubtitle && <p class="font-accent italic mt-2 text-sm text-dp-muted leading-relaxed">{data.seriesSubtitle}</p>}
 </header>
 <div class="book-hero">
@@ -64,6 +72,7 @@ const statistics = [
 </div>
 <style>
   .book-page-heading { text-align: center; margin: 0 0 2rem; }
+  .mobile-book-arrow { display: none; }
   .book-hero { position: relative; padding: 1.5rem; background: rgb(212 197 169 / 20%); display: grid; grid-template-areas: 'cover' 'copy'; gap: 1.25rem; }
   .book-hero::before { content: ''; position: absolute; top: 0; left: 20%; width: 60%; height: 1px; background: linear-gradient(to right, transparent, #D4C5A9 15%, #D4C5A9 85%, transparent); pointer-events: none; }
   .hero-cover { grid-area: cover; width: 200px; justify-self: center; }
@@ -81,6 +90,12 @@ const statistics = [
   .hero-description :global(p:last-child) { margin-bottom: 0; }
   .hero-links :global(> div) { justify-content: flex-start; }
   @media (max-width: 767px) {
+    .book-title-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 4px; }
+    .book-title-row { margin-inline: -12px; }
+    .book-title-row h1 { min-width: 0; font-size: var(--mobile-title-size); line-height: 1.25; text-wrap: balance; overflow-wrap: break-word; }
+    .mobile-book-arrow { display: block; }
+    .mobile-book-arrow a { display: grid; place-items: center; min-width: 44px; min-height: 44px; color: #6B6660; font-size: 24px; }
+    .mobile-book-arrow a:focus-visible { outline: 2px solid #957323; outline-offset: 2px; }
     .hero-introduction { text-align: center; }
     .hero-metadata > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; width: min(100%, 260px); margin-inline: auto; }
     .hero-statistics li { flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-width: 0; min-height: 40px; padding: .15rem 0; font-size: .65rem; line-height: 1.4; }

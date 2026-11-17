@@ -71,7 +71,7 @@ const filterLabel = (title: string) => filterLabels[title] ?? title;
       {data.map(branch => <section><h3>{branch.title}</h3><ul>{listCharacters(branch).map(person => <li><strong>{person.name}</strong>{person.role && ` — ${person.role}`}</li>)}</ul></section>)}
     </section>
   </noscript>
-  <footer>Нажмите на ветку, чтобы раскрыть · Перетаскивайте карту · Колесо — масштаб <span>Возможны спойлеры</span></footer>
+  <footer><span class="desktop-map-hint">Нажмите на ветку, чтобы раскрыть · Перетаскивайте карту · Колесо — масштаб</span><span class="mobile-map-hint">Перетаскивайте карту · Масштаб — двумя пальцами</span><span class="spoiler-hint">Возможны спойлеры</span></footer>
   <dialog id="portrait-viewer" aria-labelledby="portrait-caption">
     <button id="portrait-close" type="button" aria-label="Закрыть портрет">×</button>
     <img id="portrait-large" alt="" />
@@ -551,7 +551,7 @@ const filterLabel = (title: string) => filterLabels[title] ?? title;
   .controls{bottom:24px;right:24px;display:flex;align-items:center;padding:4px}
   .controls button{min-width:34px;height:34px;font-size:19px}.controls #fit{font-size:11px;padding:0 12px;border-left:1px solid var(--border);margin-left:5px}
   output{font-size:10px;color:var(--muted);width:42px;text-align:center;font-variant-numeric:tabular-nums}
-  footer{position:fixed;z-index:5;left:24px;bottom:30px;max-width:calc(100vw - 260px);font-size:10px;line-height:1.7;color:var(--muted);pointer-events:none}footer span{display:block;opacity:.65;font-size:9px}
+  footer{position:fixed;z-index:5;left:24px;bottom:30px;max-width:calc(100vw - 260px);font-size:10px;line-height:1.7;color:var(--muted);pointer-events:none}footer .spoiler-hint{display:block;opacity:.65;font-size:9px}.mobile-map-hint{display:none}
   .node{position:absolute;border-radius:4px;user-select:none}.node[role="button"]{cursor:pointer}
   .node[role="button"]:hover{box-shadow:0 4px 18px #1a1a2e0c;border-color:var(--gold)}
   .node[role="button"]:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
@@ -582,8 +582,9 @@ const filterLabel = (title: string) => filterLabels[title] ?? title;
     .branch-nav .mobile-panel-toggle[aria-expanded="true"]{background:#F4EDDF;border-color:#A68B53}
     .branch-nav .branch-options>button{flex:1 0 45%;width:auto;min-height:44px;height:auto;font-size:11px;padding:7px 9px}
     .branch-nav .arc-filters button{min-height:44px;flex:1 0 100%;font-size:11px;padding:7px 9px}
-    .controls{bottom:max(12px,env(safe-area-inset-bottom));right:12px}.controls button{min-width:44px;height:44px}.controls #fit{padding:0 10px}
-    footer{left:12px;bottom:22px;max-width:90px;font-size:9px;line-height:1.5}footer span{display:none}
+    #viewport{bottom:calc(86px + env(safe-area-inset-bottom))}
+    .controls{bottom:0;left:0;right:0;justify-content:center;padding:6px 12px calc(28px + env(safe-area-inset-bottom));background:var(--parchment);border-width:1px 0 0;box-shadow:none;backdrop-filter:none}.controls button{min-width:44px;height:44px}.controls #fit{padding:0 16px}
+    footer{z-index:11;left:8px;right:8px;bottom:calc(7px + env(safe-area-inset-bottom));max-width:none;text-align:center;font-size:9px;line-height:1.5}footer .desktop-map-hint,footer .spoiler-hint{display:none}.mobile-map-hint{display:inline}
     #portrait-viewer{padding:10px;max-width:calc(100vw - 16px)}#portrait-large{max-width:calc(100vw - 38px);max-height:78dvh}#portrait-close{width:44px;height:44px}
   }
 </style>

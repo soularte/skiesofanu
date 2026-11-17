@@ -18,9 +18,10 @@ export interface Props {
   prev?: { href: string; title: string } | null;
   next?: { href: string; title: string } | null;
   position?: 'top' | 'bottom';
+  mobileArrows?: boolean;
 }
 
-const { section, sectionHref, title, prev, next, position = 'top' } = Astro.props;
+const { section, sectionHref, title, prev, next, position = 'top', mobileArrows = true } = Astro.props;
 const isBottom = position === 'bottom';
 const linkClass = 'hover:text-dp-gold transition-colors inline-flex items-baseline gap-1';
 ---
@@ -36,7 +37,7 @@ const linkClass = 'hover:text-dp-gold transition-colors inline-flex items-baseli
   )}
 
   {/* Arrows row */}
-  <div class="flex w-full items-center justify-between mt-4">
+  <div class:list={['w-full items-center justify-between mt-4', mobileArrows ? 'flex' : 'hidden md:flex']}>
     <div class="nav-link-wrap">
       {prev && (
         <a href={prev.href} class={linkClass} title={prev.title} data-nav-prev>

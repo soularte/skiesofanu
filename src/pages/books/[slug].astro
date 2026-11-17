@@ -152,9 +152,10 @@ const breadcrumbLd = {
       prev={prev ? { href: `/books/${prev.slug}`, title: prev.data.title } : null}
       next={next ? { href: `/books/${next.slug}`, title: next.data.title } : null}
       position="top"
+      mobileArrows={false}
     />
 
-    <div id="atlas-intro" data-atlas-section><BookHero data={data} Content={Content} materialsCount={bookLore.length} /></div>
+    <div id="atlas-intro" data-atlas-section><BookHero data={data} Content={Content} materialsCount={bookLore.length} prev={prev ? { href: `/books/${prev.slug}`, title: prev.data.title } : null} next={next ? { href: `/books/${next.slug}`, title: next.data.title } : null} /></div>
 
     <PageSectionMenu items={sectionItems} />
 

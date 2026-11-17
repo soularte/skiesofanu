@@ -6,6 +6,31 @@ export interface SliderOptions {
 export function initSlider({ prefix, root }: SliderOptions) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const desktop = document.getElementById(`${prefix}-track`);
+  // Captions and marketplace links must not affect the image navigation axis.
+  if (desktop) {
+    function alignDesktopArrows() {
+      const trackBounds = desktop!.getBoundingClientRect();
+      if (!trackBounds.width) return;
+      const slide = Array.from(desktop!.children).find(child => {
+        const bounds = child.getBoundingClientRect();
+        return bounds.right > trackBounds.left + 1 && bounds.left < trackBounds.right - 1;
+      });
+      const media = slide?.querySelector<HTMLElement>('[data-gallery-media], img');
+      const bounds = media?.getBoundingClientRect();
+      if (bounds?.height) root.style.setProperty('--gallery-desktop-arrow-top', `${bounds.top + bounds.height / 2 - root.getBoundingClientRect().top}px`);
+    }
+    let alignmentFrame = 0;
+    const scheduleAlignment = () => {
+      cancelAnimationFrame(alignmentFrame);
+      alignmentFrame = requestAnimationFrame(alignDesktopArrows);
+    };
+    desktop.addEventListener('scroll', scheduleAlignment, { passive: true });
+    desktop.addEventListener('load', scheduleAlignment, true);
+    const mediaObserver = new ResizeObserver(scheduleAlignment);
+    mediaObserver.observe(desktop);
+    desktop.querySelectorAll<HTMLElement>('[data-gallery-media], img').forEach(media => mediaObserver.observe(media));
+    scheduleAlignment();
+  }
   if (desktop && !desktop.dataset.loopReady) {
     desktop.dataset.loopReady = 'true';
     const originals = Array.from(desktop.children) as HTMLElement[];
@@ -200,7 +225,7 @@ export function initSlider({ prefix, root }: SliderOptions) {
       if (i === current) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
-    const image = slides[current].querySelector('img');
+    const image = slides[current].querySelector('[data-gallery-media], img');
     const container = slider!.parentElement;
     if (image && container) {
       const bounds = image.getBoundingClientRect();

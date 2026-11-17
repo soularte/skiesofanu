@@ -32,7 +32,7 @@ function resolvePhoto(photo: string | undefined) {
           return (
           <div class="w-full flex-shrink-0 flex justify-center px-4">
             <div class="flex flex-col" style="width: 250px;">
-              <div class="border border-dp-border overflow-hidden" style="width: 250px; height: 350px;" data-lightbox-group="characters-mobile">
+              <div class="border border-dp-border overflow-hidden" style="width: 250px; height: 350px;" data-gallery-media data-lightbox-group="characters-mobile">
                 {photoImg
                   ? <Image src={photoImg} alt={char.name} widths={[250, 500]} sizes="250px" loading="lazy" class="w-full h-full object-cover" />
                   : <div class="w-full h-full bg-dp-dark/30 flex flex-col items-center justify-center gap-2"><span class="font-heading text-3xl text-dp-gold/70">{initials || '—'}</span><span class="text-dp-muted text-xs tracking-wider text-center px-3">{char.name}</span></div>
@@ -58,7 +58,7 @@ function resolvePhoto(photo: string | undefined) {
         const initials = char.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('');
         return (
         <div class="flex-shrink-0 flex flex-col snap-start" style="width: 250px;">
-          <div class="border border-dp-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" style="width: 250px; height: 350px;" data-lightbox-group="characters">
+          <div class="border border-dp-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" style="width: 250px; height: 350px;" data-gallery-media data-lightbox-group="characters">
             {photoImg
               ? <Image src={photoImg} alt={char.name} widths={[250, 500]} sizes="250px" loading="lazy" class="w-full h-full object-cover" />
               : <div class="w-full h-full bg-dp-dark/30 flex flex-col items-center justify-center gap-2"><span class="font-heading text-3xl text-dp-gold/70">{initials || '—'}</span><span class="text-dp-muted text-xs tracking-wider text-center px-3">{char.name}</span></div>

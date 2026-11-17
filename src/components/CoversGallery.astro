@@ -27,7 +27,7 @@ const aria = ui.aria ?? {};
     {covers.map(cover => (
           <div class="w-full flex-shrink-0 flex justify-center px-4">
             <div class="flex flex-col" style="width: 200px;">
-              <a href={`/books/${cover.slug}`} class="group block relative shadow-md" style="width: 200px;" draggable="false">
+              <a href={`/books/${cover.slug}`} data-gallery-media class="group block relative shadow-md" style="width: 200px;" draggable="false">
                 <Image
                   src={cover.src}
                   alt={cover.title}
@@ -60,7 +60,7 @@ const aria = ui.aria ?? {};
   <Fragment slot="desktop">
     {covers.map(cover => (
         <div class="flex-shrink-0 flex flex-col snap-start transition-transform duration-300 hover:scale-105 hover:-translate-y-2" style="width: 200px;">
-          <a href={`/books/${cover.slug}`} class="block relative shadow-md" style="width: 200px;" draggable="false">
+          <a href={`/books/${cover.slug}`} data-gallery-media class="block relative shadow-md" style="width: 200px;" draggable="false">
             <Image
               src={cover.src}
               alt={cover.title}
