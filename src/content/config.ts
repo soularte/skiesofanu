@@ -1,4 +1,4 @@
-﻿import { defineCollection, z } from "astro:content";
+﻿import { defineCollection, reference, z } from "astro:content";
 
 const blog = defineCollection({
   type: "content",
@@ -89,6 +89,28 @@ const books = defineCollection({
   }),
 });
 
+const music = defineCollection({
+  type: 'content',
+  schema: z.object({
+    book: reference('books'),
+    pattern: z.string().regex(/^\/images\/music\/[a-z0-9-]+\.(webp|svg)$/).optional(),
+    patternSize: z.number().positive().default(480),
+    patternRepeat: z.enum(['repeat', 'no-repeat']).default('repeat'),
+    order: z.number().optional(),
+    draft: z.boolean().default(false),
+    tracks: z.array(z.object({
+      title: z.string().min(1),
+      credit: z.string().min(1),
+      lyricist: z.string().min(1).optional(),
+      performer: z.string().min(1).optional(),
+      duration: z.string().regex(/^PT(?=\d)(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?$/).optional(),
+      src: z.string().regex(/^\/audio\/[^?#]+\.(mp3|m4a|ogg|wav|flac|aac)$/i).optional(),
+      lyrics: z.string().optional(),
+      demo: z.boolean().default(false),
+    }).refine(track => track.demo || !!track.src, 'Укажите src аудиофайла или demo: true')),
+  }),
+});
+
 const lore = defineCollection({
   type: "content",
   schema: z.object({
@@ -167,4 +189,4 @@ const paths = defineCollection({
   }),
 });
 
-export const collections = { books, blog, lore, authors, paths };
+export const collections = { books, music, blog, lore, authors, paths };

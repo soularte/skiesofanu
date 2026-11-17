@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import MarketplaceLinks from '../../components/MarketplaceLinks.astro';
 import GenreChip from '../../components/GenreChip.astro';
 import GoldLine from '../../components/GoldLine.astro';
+import PageHeading from '../../components/PageHeading.astro';
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { findImage } from '../../lib/images';
@@ -74,11 +75,7 @@ const catalogSchema = {
 ---
 <BaseLayout title={booksHeading} description={site.seoBooks ?? ''} canonicalURL={catalogURL} additionalSchema={catalogSchema}>
   <div class="max-w-5xl mx-auto px-6 pt-8 pb-16">
-    <div class="text-center mb-6">
-      <h1 class="font-heading text-4xl md:text-5xl font-semibold">{booksHeading}</h1>
-      <GoldLine class="mx-auto mt-4" />
-      {site.booksSubtitle && <p class="font-accent italic text-dp-muted text-base mt-2 leading-relaxed">{site.booksSubtitle}</p>}
-    </div>
+    <PageHeading title={booksHeading} subtitle={site.booksSubtitle} />
 
     <PageSectionMenu catalogShelf items={sorted.map(book => ({ id: `catalog-${book.slug}`, label: catalogTitle(book.data), detail: book.data.series ? bookCount(book.data.books?.length ?? 0) : undefined, image: findImage(`navigation/${book.slug}.webp`) ?? findImage(book.data.cover) }))} />
 

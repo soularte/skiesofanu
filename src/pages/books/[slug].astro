@@ -190,7 +190,7 @@ const breadcrumbLd = {
       <Section id="atlas-links" title={ui.bookSections.extraLinks}>
         <div class="flex flex-wrap gap-2">
           {data.extraLinks.map(link => (
-            <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-[11px] font-body tracking-widest uppercase px-3 py-1.5 border border-dp-gold/60 text-dp-gold-ink hover:bg-dp-gold/10 transition-colors">{link.label}</a>
+            <a href={link.url} target={link.url.startsWith('/') ? undefined : '_blank'} rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'} class="text-[11px] font-body tracking-widest uppercase px-3 py-1.5 border border-dp-gold/60 text-dp-gold-ink hover:bg-dp-gold/10 transition-colors">{link.label}</a>
           ))}
         </div>
       </Section>

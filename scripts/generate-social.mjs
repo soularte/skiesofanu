@@ -31,6 +31,7 @@ const cards = [
  {route:'/books/',title:'Книги',label:site.siteName,source:artwork('authors/favi.jpg')},
  {route:'/about/',title:'Об авторах',label:site.siteName,source:artwork('authors/favi.jpg')},
  {route:'/blog/',title:'Блог',label:site.siteName,source:artwork('authors/favi.jpg')},
+ {route:'/music/',title:'Музыка',label:site.siteName,source:artwork('authors/favi.jpg')},
 ];
 for (const group of ['books','blog','lore','authors']) {
  for (const file of (await files(`src/content/${group}`)).filter(f => f.endsWith('.md')).sort()) {
@@ -54,8 +55,11 @@ function wrap(text, max) {
  if(line) lines.push(line); return lines;
 }
 await fs.mkdir(out,{recursive:true});
-const manifest={}; const keep=new Set();
-for (const card of cards) {
+const onlyRoute = process.argv.find(arg => arg.startsWith('--route='))?.slice('--route='.length);
+if (onlyRoute && !cards.some(card => card.route === onlyRoute)) throw new Error(`Unknown route: ${onlyRoute}`);
+const manifest = onlyRoute ? JSON.parse(await fs.readFile('src/generated/social.json', 'utf8')) : {};
+const keep=new Set();
+for (const card of cards.filter(card => !onlyRoute || card.route === onlyRoute)) {
  const override = overrides[card.route];
  if (override?.title) card.title = override.title;
  if (override?.description) card.description = override.description;
@@ -99,5 +103,5 @@ for (const card of cards) {
  console.log(`${card.route} → ${name} (${Math.round(jpeg.length/1024)} KB)`);
 }
 // Only remove prior generated JPEGs, never unrelated files.
-for(const f of await fs.readdir(out))if(/-[a-f0-9]{10}\.jpg$/.test(f)&&!keep.has(f))await fs.unlink(path.join(out,f));
+if (!onlyRoute) for(const f of await fs.readdir(out))if(/-[a-f0-9]{10}\.jpg$/.test(f)&&!keep.has(f))await fs.unlink(path.join(out,f));
 await fs.writeFile('src/generated/social.json',JSON.stringify(manifest,null,2)+'\n');

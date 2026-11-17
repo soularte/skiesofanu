@@ -174,6 +174,8 @@ characters:
 
 # === Дополнительные ссылки ===
 extraLinks:
+  - label: "Музыка по книге"
+    url: "/music/#aviatory"
   - label: "Интерактивная карта персонажей"
     url: "/character-map/"
   - label: "LiveLib — отзывы"

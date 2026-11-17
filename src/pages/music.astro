@@ -1,0 +1,271 @@
+---
+import { getCollection } from 'astro:content';
+import PageSectionMenu from '../components/book/PageSectionMenu.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import { findImage } from '../lib/images';
+import { audioMime, trackAnchor } from '../lib/music';
+import seoPages from '../data/seo.json';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+const books = await getCollection('books');
+const music = await getCollection('music');
+const groups = music
+  .filter(group => !group.data.draft && group.data.tracks.some(track => track.src && !track.demo))
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999) || a.slug.localeCompare(b.slug, 'ru'))
+  .map(group => {
+    const bookSlug = group.data.book.slug;
+    const book = books.find(book => book.slug === bookSlug);
+    if (!book) throw new Error(`Не найдена книга для музыки: ${bookSlug}`);
+    for (const asset of [group.data.pattern, ...group.data.tracks.map(track => track.src)].filter(Boolean)) {
+      if (!existsSync(join(process.cwd(), 'public', asset!))) throw new Error(`Не найден файл музыки: ${asset}`);
+    }
+    return { bookSlug, tracks: group.data.tracks, pattern: group.data.pattern, patternSize: group.data.patternSize, patternRepeat: group.data.patternRepeat, book };
+  });
+// One collection per book and stable, unique track links are part of the content contract.
+const anchors = new Set<string>();
+for (const group of groups) {
+  for (const id of [group.bookSlug, ...group.tracks.filter(track => track.src).map(track => trackAnchor(group.bookSlug, track.src!))]) {
+    if (anchors.has(id)) throw new Error(`Повторяющаяся ссылка в музыкальной коллекции: ${id}`);
+    anchors.add(id);
+  }
+}
+const canonicalURL = new URL('/music/', Astro.site ?? Astro.url.origin).href;
+const absolute = (path: string) => new URL(path, canonicalURL).href;
+const playlists = groups.map(group => ({
+  '@type': 'MusicPlaylist',
+  '@id': `${canonicalURL}#${group.bookSlug}`,
+  url: `${canonicalURL}#${group.bookSlug}`,
+  name: `Музыка по книге «${group.book.data.title}»`,
+  numTracks: group.tracks.filter(track => !track.demo).length,
+  track: group.tracks.filter(track => track.src && !track.demo).map(track => ({
+    '@type': 'MusicRecording',
+    '@id': `${canonicalURL}#${trackAnchor(group.bookSlug, track.src!)}`,
+    url: `${canonicalURL}#${trackAnchor(group.bookSlug, track.src!)}`,
+    name: track.title,
+    description: track.credit,
+    inLanguage: 'ru',
+    ...(track.duration ? { duration: track.duration } : {}),
+    ...(track.performer ? { byArtist: { '@type': 'Person', name: track.performer } } : {}),
+    isBasedOn: { '@type': group.book.data.series ? 'BookSeries' : 'Book', name: group.book.data.title, url: absolute(`/books/${group.bookSlug}/`) },
+    recordingOf: {
+      '@type': 'MusicComposition', name: track.title,
+      ...(track.lyricist ? { lyricist: { '@type': 'Person', name: track.lyricist } } : {}),
+    },
+    encoding: { '@type': 'AudioObject', name: track.title, contentUrl: absolute(track.src!), encodingFormat: audioMime(track.src!), ...(track.duration ? { duration: track.duration } : {}) },
+  })),
+}));
+const musicSchema = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  '@id': `${canonicalURL}#collection`, url: canonicalURL,
+  name: 'Музыка по книгам — Звучание историй',
+  description: seoPages['/music/'].description,
+  inLanguage: 'ru',
+  isPartOf: { '@id': absolute('/#website') },
+  mainEntity: { '@type': 'ItemList', numberOfItems: playlists.length, itemListElement: playlists.map((playlist, index) => ({ '@type': 'ListItem', position: index + 1, item: playlist })) },
+};
+---
+
+<BaseLayout title="Музыка" description={musicSchema.description} canonicalURL={canonicalURL} additionalSchema={musicSchema}>
+  <div class="music-library">
+    <PageHeading title="Музыка" subtitle="Звучание историй" />
+
+    <PageSectionMenu catalogShelf selectionOnly items={groups.map(group => ({
+      id: group.bookSlug,
+      label: group.book.data.series ? `Цикл «${group.book.data.series}»` : group.book.data.title,
+      image: findImage(`navigation/${group.bookSlug}.webp`) ?? findImage(group.book.data.cover),
+    }))} />
+
+    <p class="playback-notice" role="status" hidden><span></span> <button type="button">Показать трек</button></p>
+    <section class="collection" aria-label="Музыкальная библиотека">
+
+
+      {groups.map(group => (
+        <section id={group.bookSlug} class="book-panel" aria-labelledby={`${group.bookSlug}-title`} data-panel={group.bookSlug} data-pattern-repeat={group.patternRepeat} style={group.pattern ? `--music-pattern: url("${group.pattern}"); --music-pattern-size: ${group.patternSize}px` : undefined}>
+          <div class="panel-heading">
+            <h2 id={`${group.bookSlug}-title`} tabindex="-1">{group.book.data.title}</h2>
+            <a class="book-link text-xs tracking-widest uppercase transition-colors" href={`/books/${group.bookSlug}/`}>Вернуться к книге</a>
+            <form class="track-search" role="search" aria-label={`Поиск трека: ${group.book.data.title}`} hidden>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>
+              <label class="sr-only" for={`search-${group.bookSlug}`}>Название трека</label>
+              <input id={`search-${group.bookSlug}`} type="search" placeholder="Найти трек" autocomplete="off" aria-controls={`tracks-${group.bookSlug}`} />
+            </form>
+          </div>
+          <div class="track-grid" id={`tracks-${group.bookSlug}`}>
+            {group.tracks.map(track => (
+              <article id={track.src ? trackAnchor(group.bookSlug, track.src) : undefined} data-track-title={track.title} class:list={['track-card', { 'demo-card': track.demo }]}>
+                <div class="track-main">
+                  <span class="track-symbol" aria-hidden="true">{track.demo ? '—' : '♫'}</span>
+                  <div class="track-copy"><h3>{track.title}</h3><p>{track.credit.split('|').map((part, index) => <span class="credit-part">{index > 0 && <span class="credit-separator" aria-hidden="true"> | </span>}{part.trim()}</span>)}</p></div>
+                  {track.src && !track.demo && <div class="copy-control"><button class="share-track" type="button" hidden aria-label={`Скопировать ссылку на трек «${track.title}»`} title="Скопировать ссылку" data-share-url={`${canonicalURL}#${trackAnchor(group.bookSlug, track.src)}`}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></svg>
+                  </button><span class="share-status" role="status" hidden></span></div>}
+                </div>
+                <input class="share-manual" type="text" readonly aria-label="Ссылка на трек для копирования" hidden />
+                {!track.demo && <audio controls preload="none" aria-label={`Слушать: ${track.title}`}><source src={track.src} type={audioMime(track.src!)} /><a href={track.src}>Открыть аудиозапись «{track.title}»</a></audio>}
+                <p class="audio-error" role="status" hidden>Не удалось загрузить запись. <a href={track.src}>Открыть аудиофайл</a></p>
+                {track.demo ? <p class="demo-note">Пример трека · без аудиозаписи</p> : track.lyrics && <details class="track-lyrics"><summary>Текст песни <span aria-hidden="true">+</span></summary><div class="lyrics">{track.lyrics}</div></details>}
+              </article>
+            ))}
+          </div>
+          <p class="search-empty" role="status" hidden>Треки не найдены. Попробуйте другое название.</p>
+        </section>
+      ))}
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .music-library{max-width:1080px;margin:auto;padding:32px 24px 64px;--collection-bg:#555569;--card-bg:#626277;--text:#faf6f0;--muted:#eeebe5;--border:#838394;--accent:#f0d591;--playing-bg:#6b697d}
+  .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+  .collection{overflow:hidden;background:var(--collection-bg);color:var(--text);border-radius:24px;padding:28px;box-shadow:0 18px 50px #1a1a2e18}
+  .book-panel{position:relative;isolation:isolate;margin-top:0;scroll-margin-top:var(--page-anchor-offset,150px);padding-bottom:var(--music-card-height,210px)}
+  .book-panel::before{content:'';position:absolute;left:-28px;right:-28px;bottom:-28px;height:calc(var(--music-card-height,210px) + 128px);z-index:-1;pointer-events:none;background-image:var(--music-pattern,none);background-size:var(--music-pattern-size,480px) auto;background-position:center bottom;background-repeat:repeat;opacity:.22;mask-image:linear-gradient(to bottom,transparent,black 65%)}
+  .book-panel[data-pattern-repeat="no-repeat"]::before{background-repeat:no-repeat;background-size:max(100%,var(--music-pattern-size,480px)) auto}
+  .book-panel[hidden]{display:none}.panel-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:baseline;margin-bottom:24px}h2{grid-column:1;grid-row:1;min-width:0;font:400 26px/1.3 'Playfair Display',Georgia,serif}.book-link{grid-column:2;grid-row:1;align-self:baseline;white-space:nowrap;color:var(--accent)}.book-link:hover{color:var(--text)}
+  .track-search{grid-column:1/-1;grid-row:2;display:flex;align-items:center;gap:8px;width:240px;max-width:100%;min-width:0;padding:8px 0;border-bottom:1px solid var(--border);color:var(--muted);transition:border-color .2s}
+  .track-search:focus-within{border-color:var(--accent)}.track-search svg{flex-shrink:0}.track-search input{width:100%;min-width:0;background:transparent;color:var(--text);font:inherit;font-size:16px;outline:none}.track-search input::placeholder{color:var(--muted);opacity:1}.track-search input::-webkit-search-cancel-button{cursor:pointer}.track-card[hidden]{display:none}.search-empty{color:var(--muted);font-size:13px;padding:12px 0}
+  @media(max-width:767px){.panel-heading{grid-template-columns:minmax(0,1fr);row-gap:16px;margin-bottom:16px}.panel-heading h2{grid-row:2;text-align:center}.book-link{grid-column:1;grid-row:1;justify-self:end;margin:0}.track-search{grid-row:3;width:100%;padding:0}}
+  .track-search[hidden],.playback-notice[hidden],.audio-error[hidden]{display:none}
+  .playback-notice{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-bottom:16px;font-size:13px;color:theme('colors.dp-muted')}.playback-notice button{min-height:44px;text-decoration:underline;text-underline-offset:4px;color:theme('colors.dp-gold-ink')}
+  .audio-error{font-size:12px;line-height:1.6;margin-top:8px;color:var(--text)}.audio-error a{text-decoration:underline;text-underline-offset:3px}
+  .track-card:target{outline:2px solid var(--accent);outline-offset:3px}.track-card{scroll-margin-top:var(--page-anchor-offset,150px)}h2:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  .track-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}.track-card{position:relative;display:flex;flex-direction:column;min-width:0;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:16px;transition:background .2s,border-color .2s}.track-card.is-playing{background:var(--playing-bg);border-color:var(--accent)}
+  .track-grid:has(.track-lyrics[open]){align-items:start}
+  .track-main{display:grid;grid-template-columns:38px minmax(0,1fr) 44px;gap:12px;align-items:center;width:100%}.track-symbol{width:38px;height:38px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;background:#c9a84c14;color:var(--accent);font-size:22px}.track-copy{min-width:0;flex:1}h3{font:400 20px/1.35 'Playfair Display',Georgia,serif;overflow-wrap:anywhere}.track-copy p{min-height:3.3em;font-size:12px;line-height:1.65;color:var(--muted);margin-top:6px}
+  .track-lyrics{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}.track-lyrics summary{display:flex;justify-content:space-between;align-items:center;cursor:pointer;min-height:36px;font-size:12px;color:var(--accent);list-style:none}.track-lyrics summary::-webkit-details-marker{display:none}.track-lyrics summary span{font-size:19px;transition:transform .2s}.track-lyrics[open] summary span{transform:rotate(45deg)}.lyrics{white-space:pre-line;overflow-wrap:anywhere;font-size:14px;line-height:1.95;color:var(--text);margin-top:16px}.demo-note{font-size:10px;color:var(--muted);margin-top:20px;border-top:1px solid var(--border);padding-top:14px}
+  .copy-control{position:relative;width:44px;align-self:center;justify-self:end}
+  .share-track{display:grid;place-items:center;width:44px;min-height:44px;align-self:center;justify-self:end;border-radius:8px;color:var(--accent)}.share-track:hover{background:#faf6f014}.share-track[hidden],.share-status[hidden],.share-manual[hidden]{display:none}.share-status{position:absolute;right:0;bottom:calc(100% + 6px);z-index:5;white-space:nowrap;pointer-events:none;padding:7px 10px;border-radius:7px;background:#faf6f0;color:#2c2c2c;font-size:12px;line-height:1.4;box-shadow:0 3px 14px #1a1a2e33}.share-manual{position:absolute;z-index:6;left:14px;right:14px;top:64px;width:calc(100% - 28px);min-width:0;font-size:16px;padding:8px;margin-top:8px;background:var(--collection-bg);border:1px solid var(--border);border-radius:6px;color:var(--text)}
+  audio{display:block;width:100%;min-width:0;height:40px;margin-top:12px}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  @media(max-width:767px){.music-library{padding:32px 16px 48px}.collection{padding:16px;border-radius:20px}.book-panel{padding-bottom:32px;scroll-margin-top:calc(var(--page-anchor-offset,150px) + 10px)}.book-panel::before{left:-16px;right:-16px;bottom:-16px}h2{font-size:23px}.track-grid{grid-template-columns:1fr}.track-main{grid-template-columns:minmax(0,1fr) 44px}.track-symbol{display:none}.track-card{padding:14px}.track-lyrics summary,.book-link,.track-search{min-height:44px}.book-link{display:inline-flex;align-items:center;align-self:start;line-height:24px;margin-block:-10px}.track-search{margin-top:2px}.track-search input{line-height:24px}.track-copy p{min-height:0}.credit-part{display:block}}
+  @media(max-width:380px){.track-main{grid-template-columns:minmax(0,1fr) 36px;gap:8px}.copy-control,.share-track{width:36px}.share-track::before{content:'';position:absolute;inset:0 -4px}.track-copy h3{font-size:18px}}
+</style>
+
+<script>
+  import { rememberAudioProgress } from '../lib/audio-progress';
+  import { normalizeTrackSearch } from '../lib/music';
+  import { copyTrackLink } from '../lib/share-track';
+
+  document.querySelectorAll<HTMLButtonElement>('.share-track').forEach(button => {
+    button.hidden = false;
+    const card = button.closest('article')!;
+    const status = card.querySelector<HTMLElement>('.share-status')!;
+    const manual = card.querySelector<HTMLInputElement>('.share-manual')!;
+    let feedbackTimer: ReturnType<typeof setTimeout>;
+    manual.addEventListener('blur', () => { manual.hidden = true; status.hidden = true; });
+    button.addEventListener('click', async () => {
+      clearTimeout(feedbackTimer);
+      const result = await copyTrackLink(button.dataset.shareUrl!);
+      status.hidden = false;
+      manual.hidden = result !== 'manual';
+      status.textContent = result === 'copied' ? 'Ссылка скопирована' : 'Скопируйте ссылку';
+      if (result === 'manual') {
+        manual.value = button.dataset.shareUrl!;
+        manual.focus();
+        manual.select();
+      } else {
+        feedbackTimer = setTimeout(() => { status.hidden = true; }, 1800);
+      }
+    });
+  });
+  const choices = Array.from(document.querySelectorAll<HTMLAnchorElement>('.page-section-menu a[href^="#"]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-panel]'));
+  const notice = document.querySelector<HTMLElement>('.playback-notice')!;
+  function updatePlaybackNotice() {
+    const playing = Array.from(document.querySelectorAll<HTMLAudioElement>('.track-card audio')).find(player => !player.paused && !player.ended);
+    const card = playing?.closest<HTMLElement>('.track-card');
+    notice.hidden = !card || (!card.hidden && !card.closest<HTMLElement>('.book-panel')?.hidden);
+    if (card) notice.querySelector('span')!.textContent = `Продолжает звучать: ${card.dataset.trackTitle}`;
+  }
+  notice.querySelector('button')!.addEventListener('click', () => {
+    const player = Array.from(document.querySelectorAll<HTMLAudioElement>('.track-card audio')).find(player => !player.paused && !player.ended);
+    const card = player?.closest<HTMLElement>('.track-card');
+    if (!card) return;
+    const input = card.closest('.book-panel')!.querySelector<HTMLInputElement>('input[type="search"]')!;
+    input.value = '';
+    input.dispatchEvent(new Event('input'));
+    history.pushState(null, '', `#${card.id}`);
+    selectBook();
+    card.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    player!.focus({ preventScroll: true });
+  });
+  function selectBook(event?: Event) {
+    const requested = window.location.hash.slice(1);
+    const target = document.getElementById(requested);
+    const groupId = target?.closest<HTMLElement>('.book-panel')?.dataset.panel ?? requested;
+    const selected = choices.find(choice => choice.hash.slice(1) === groupId) ?? choices[0];
+    if (!selected) return;
+    choices.forEach(choice => {
+      const active = choice === selected;
+      if (active) choice.setAttribute('aria-current', 'true');
+      else choice.removeAttribute('aria-current');
+    });
+    panels.forEach(panel => { panel.hidden = panel.dataset.panel !== selected.hash.slice(1); });
+    updatePlaybackNotice();
+    if (event?.type === 'page-menu-select' && matchMedia('(max-width: 767px)').matches) {
+      const panel = document.getElementById(selected.hash.slice(1))!;
+      panel.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
+      panel.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    } else if (target?.matches('.track-card, .book-panel')) {
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+    }
+  }
+  document.addEventListener('page-menu-select', selectBook);
+  window.addEventListener('hashchange', selectBook);
+  window.addEventListener('popstate', selectBook);
+  selectBook();
+
+  panels.forEach(panel => {
+    const form = panel.querySelector<HTMLFormElement>('.track-search')!;
+    form.hidden = false;
+    const input = form.querySelector<HTMLInputElement>('input')!;
+    const tracks = Array.from(panel.querySelectorAll<HTMLElement>('[data-track-title]'));
+    const empty = panel.querySelector<HTMLElement>('.search-empty')!;
+    const filter = () => {
+      const terms = normalizeTrackSearch(input.value).split(' ').filter(Boolean);
+      let matches = 0;
+      tracks.forEach(track => {
+        const title = normalizeTrackSearch(track.dataset.trackTitle ?? '');
+        track.hidden = !terms.every(term => title.includes(term));
+        if (!track.hidden) matches++;
+      });
+      empty.hidden = matches > 0;
+      updatePlaybackNotice();
+    };
+    input.addEventListener('input', filter);
+    input.addEventListener('search', filter);
+    form.addEventListener('submit', event => { event.preventDefault(); filter(); });
+  });
+
+  // Measure closed cards so the decorative space follows the actual responsive card height.
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.track-card'));
+  const sizeObserver = new ResizeObserver(entries => {
+    entries.forEach(entry => {
+      const card = entry.target as HTMLElement;
+      if (!card.getBoundingClientRect().height || card.closest('.book-panel')?.querySelector('details[open]')) return;
+      card.closest<HTMLElement>('.book-panel')?.style.setProperty('--music-card-height', `${Math.round(card.getBoundingClientRect().height)}px`);
+    });
+  });
+  cards.forEach(card => sizeObserver.observe(card));
+
+  const players = Array.from(document.querySelectorAll<HTMLAudioElement>('.track-card audio'));
+  players.forEach(player => {
+    rememberAudioProgress(player);
+    player.addEventListener('play', () => {
+      players.forEach(other => { if (other !== player) other.pause(); });
+      player.closest('article')?.classList.add('is-playing');
+      player.closest('article')!.querySelector<HTMLElement>('.audio-error')!.hidden = true;
+      updatePlaybackNotice();
+    });
+    ['pause', 'ended', 'error'].forEach(event => {
+      player.addEventListener(event, () => {
+        player.closest('article')?.classList.remove('is-playing');
+        if (event === 'error') player.closest('article')!.querySelector<HTMLElement>('.audio-error')!.hidden = false;
+        updatePlaybackNotice();
+      });
+    });
+  });
+</script>

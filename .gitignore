@@ -5,6 +5,11 @@ SEO-AUDIT.md
 # Generated output and caches
 /dist/
 /.astro/
+/coverage/
+*.tsbuildinfo
+
+# Local runtime logs
+*.log
 
 # macOS metadata
 .DS_Store
@@ -24,3 +29,7 @@ SEO-AUDIT.md
 /research/
 /materials/
 /Ану Летающие Головы/
+
+# Local Litnet automation
+/litnet_bot.py
+/.venv-litnet/

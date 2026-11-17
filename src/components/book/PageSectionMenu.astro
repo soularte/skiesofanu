@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-interface Props { items: { id: string; label: string; image?: ImageMetadata; detail?: string }[]; catalogShelf?: boolean }
-const { items, catalogShelf = false } = Astro.props;
+interface Props { items: { id: string; label: string; image?: ImageMetadata; detail?: string }[]; catalogShelf?: boolean; selectionOnly?: boolean }
+const { items, catalogShelf = false, selectionOnly = false } = Astro.props;
 const listId = `page-menu-${crypto.randomUUID()}`;
 const menuName = catalogShelf ? 'Книги' : 'Разделы страницы';
 ---
-<nav class:list={["page-section-menu", { "catalog-shelf": catalogShelf }]} aria-label={menuName} data-menu-name={menuName}>
+<nav class:list={["page-section-menu", { "catalog-shelf": catalogShelf }]} aria-label={menuName} data-menu-name={menuName} data-selection-only={selectionOnly ? "true" : undefined}>
   <button class="menu-shade" type="button" aria-label="Закрыть меню разделов" tabindex="-1"></button>
   <button class="menu-fab" type="button" aria-label={`Открыть: ${menuName}`} aria-expanded="false" aria-controls={listId}>
     <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h14" /></svg>
@@ -106,6 +106,14 @@ const menuName = catalogShelf ? 'Книги' : 'Разделы страницы'
       if (!link) return;
       const target = document.getElementById(link.hash.slice(1));
       if (!target) return;
+      if (menu.dataset.selectionOnly === 'true') {
+        event.preventDefault();
+        history.pushState(null, '', link.hash);
+        setOpen(false, mobile.matches);
+        menu.dispatchEvent(new CustomEvent('page-menu-select', { bubbles: true }));
+        scheduleUpdate();
+        return;
+      }
       let ancestor: HTMLElement | null = target;
       while (ancestor) { if (ancestor instanceof HTMLDetailsElement) ancestor.open = true; ancestor = ancestor.parentElement; }
       target.querySelectorAll('details').forEach(details => { details.open = true; });
@@ -129,6 +137,10 @@ const menuName = catalogShelf ? 'Книги' : 'Разделы страницы'
       for (const target of targets) {
         if (target.getBoundingClientRect().top <= readingLine) current = target;
       }
+      if (menu.dataset.selectionOnly === 'true') {
+        const fragment = document.getElementById(window.location.hash.slice(1));
+        current = targets.find(target => target === fragment || (!!fragment && target.contains(fragment))) ?? targets[0];
+      }
       links.forEach(link => {
         if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
@@ -139,6 +151,8 @@ const menuName = catalogShelf ? 'Книги' : 'Разделы страницы'
       scheduled = true;
       requestAnimationFrame(updateCurrent);
     }
+    window.addEventListener('hashchange', scheduleUpdate);
+    window.addEventListener('popstate', scheduleUpdate);
     window.addEventListener('scroll', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate, { passive: true });
     window.addEventListener('load', scheduleUpdate, { once: true });
