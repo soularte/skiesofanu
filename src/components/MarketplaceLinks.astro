@@ -9,6 +9,11 @@ interface Props {
 const { links, marketplace = false, centered = false } = Astro.props;
 const uiData = loadDataFile<any>('src/data/ui.md', { bookSections: {} });
 const marketplaceLabel = uiData.bookSections?.marketplace ?? 'Маркетплейсы';
+const { marketplaceOrder = [] } = loadDataFile<{ marketplaceOrder?: string[] }>('src/data/links.md', {});
+const platformRanks = new Map(marketplaceOrder.map((label, index) => [label, index]));
+const orderedLinks = [...links].sort((a, b) =>
+  (platformRanks.get(a.label) ?? marketplaceOrder.length) - (platformRanks.get(b.label) ?? marketplaceOrder.length)
+);
 ---
 {links.length > 0 && (
   <div class={`flex flex-wrap gap-1 justify-center ${centered ? '' : 'md:justify-start'}`}>
@@ -17,13 +22,13 @@ const marketplaceLabel = uiData.bookSections?.marketplace ?? 'Маркетпле
         {marketplaceLabel}
       </span>
     )}
-    {links.map(link => (
+    {orderedLinks.map(link => (
       <a
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
         title={link.label}
-        class="text-[11px] font-body tracking-widest whitespace-nowrap px-2 py-1 border border-dp-gold/50 text-dp-gold-ink hover:border-dp-gold hover:text-dp-text transition-colors cursor-pointer"
+        class="text-[11px] font-body tracking-[.05em] whitespace-nowrap px-1.5 py-1 border border-dp-gold/50 text-dp-gold-ink hover:border-dp-gold hover:text-dp-text transition-colors cursor-pointer"
       >
         {link.label}
       </a>

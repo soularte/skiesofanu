@@ -9,7 +9,7 @@ interface Props {
 const { socials, variant = 'topbar' } = Astro.props;
 const isTopbar = variant === 'topbar';
 ---
-<div class={`social-bar flex items-center ${isTopbar ? 'gap-5' : 'gap-4'} justify-center`}>
+<div class={`social-bar flex items-center ${isTopbar ? 'gap-5' : 'gap-4'} justify-center`} style={`--social-count: ${socials.length}`}>
   {socials.map(s => (
     <a
       href={s.url}
@@ -28,7 +28,14 @@ const isTopbar = variant === 'topbar';
 
 <style>
   @media (max-width: 767px) {
-    .social-bar { gap: .5rem; }
-    a { display: grid; place-items: center; width: 44px; height: 44px; }
+    .social-bar {
+      display: grid;
+      grid-template-columns: repeat(var(--social-count), minmax(0, 44px));
+      gap: .5rem;
+      width: 100%;
+      max-width: calc(var(--social-count) * 52px - 8px);
+      min-width: 0;
+    }
+    a { display: grid; place-items: center; width: 100%; min-width: 0; height: 44px; }
   }
 </style>

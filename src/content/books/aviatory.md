@@ -22,6 +22,8 @@ links:
     url: "https://book-litgorod.litgorod.ru/go/0m1rkz77"
   - label: "ЛитНет"
     url: "https://links.litnet.com/go/9mpq53yt"
+  - label: "WoW"
+    url: "https://worldwords.io/search?tab=collection_series&p=1&s=true&q=Небеса+Ану&csort=a&fsort=a&asort=a"
 
 # === Серия (заголовок + "О цикле") ===
 series: "Небеса Ану"
@@ -90,6 +92,8 @@ books:
         url: "https://book-litgorod.litgorod.ru/go/oj1o4oyc"
       - label: "ЛитНет"
         url: "https://links.litnet.com/go/09av4d9y"
+      - label: "WoW"
+        url: "https://worldwords.io/books/aviatori-yego-velichestva-pokhishchennoe-solntse"
   - title: "Авиаторы Его Величества: Пылающий город"
     cover: "aev-2.jpg"
     marketplace: false
@@ -109,6 +113,8 @@ books:
         url: "https://book-litgorod.litgorod.ru/go/jhxhrcpd"
       - label: "ЛитНет"
         url: "https://links.litnet.com/go/shikvhhb"
+      - label: "WoW"
+        url: "https://worldwords.io/books/aviatory-ego-velichestva-pylayushij-gorod"
   - title: "Авиаторы Его Величества: Королевский сокол"
     cover: "aev-3.jpg"
     marketplace: false
@@ -120,6 +126,8 @@ books:
         url: "https://book-litgorod.litgorod.ru/go/8svwfnzz"
       - label: "ЛитНет"
         url: "https://links.litnet.com/go/a0sfthan"
+      - label: "WoW"
+        url: "https://worldwords.io/books/aviatory-ego-velichestva-pylayushij-gorod"
   - title: "Авиаторы Его Величества: Путеводитель"
     cover: "aev-4.jpg"
     marketplace: false

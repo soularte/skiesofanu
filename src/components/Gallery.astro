@@ -11,7 +11,7 @@ const id = `${prefix}-${crypto.randomUUID()}`;
 <div class="relative" data-gallery={id}>
   <div class="sm:hidden">
     <div id={`${id}-track-mobile`} class="overflow-hidden relative">
-      <div class="flex transition-transform duration-300" id={`${id}-slider`}><slot name="mobile" /></div>
+      <div class="overflow-hidden"><div class="flex transition-transform duration-300" id={`${id}-slider`}><slot name="mobile" /></div></div>
       {count > 1 && <>
         <GalleryArrow direction="left" id={`${id}-mobile-prev`} mobile />
         <GalleryArrow direction="right" id={`${id}-mobile-next`} mobile />

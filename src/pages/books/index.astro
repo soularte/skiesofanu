@@ -102,13 +102,13 @@ const catalogSchema = {
           </a>
           <!-- Info -->
           <div class="flex-1">
-            <h2 class="font-heading text-2xl md:text-3xl font-semibold mb-2">
+            <h2 class="catalog-heading font-heading text-2xl md:text-3xl font-semibold mb-2">
               <a href={`/books/${book.slug}`} class="hover:text-dp-gold transition-colors">{catalogTitle(book.data)}</a>
             </h2>
             <!-- Genres -->
-            <div class="flex flex-wrap items-center gap-1 mb-3">
-              {book.data.genres.map(g => <GenreChip label={g} />)}
-              {book.data.series && <span class="text-sm text-dp-muted ml-2">{bookCount(book.data.books?.length ?? 0)}</span>}
+            <div class="catalog-meta flex flex-wrap items-center gap-1 mb-3">
+              <div class="catalog-genres">{book.data.genres.map(g => <GenreChip label={g} />)}</div>
+              {book.data.series && <span class="catalog-count text-sm text-dp-muted ml-2">{bookCount(book.data.books?.length ?? 0)}</span>}
             </div>
             <GoldLine size="sm" class="mb-4" />
             <div class="mb-6 space-y-3">
@@ -136,7 +136,12 @@ const catalogSchema = {
 </BaseLayout>
 
 <style>
+  .catalog-genres { display: contents; }
   @media (max-width: 767px) {
+    .catalog-heading { margin-bottom: .625rem; line-height: 1.2; }
+    .catalog-meta { flex-direction: column; align-items: flex-start; gap: .625rem; }
+    .catalog-genres { display: flex; flex-wrap: wrap; gap: .25rem; }
+    .catalog-count { margin-left: 0; line-height: 1.2; }
     .catalog-details { display: table; margin-inline: auto; }
   }
 </style>

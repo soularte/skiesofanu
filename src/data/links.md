@@ -5,6 +5,19 @@
 #               BaseLayout (футер, SocialBar)
 # ═══════════════════════════════════════════════════════════
 
+# Единый порядок кнопок площадок во всех карточках.
+# Отсутствующие площадки пропускаются; неуказанные идут после списка
+# в порядке записи в Markdown. Аудиоверсии — сразу после своей площадки.
+marketplaceOrder:
+  - "ЛитРес"
+  - "ЛитРес Аудио"
+  - "Автор.Тудей"
+  - "Автор.Тудей Аудио"
+  - "ЛитГород"
+  - "ЛитНет"
+  - "WoW"
+  - "Самиздат"
+
 # ─── Иконки соцсетей (SocialBar в шапке + футер) ─────────
 socials:
   - label: "ВКонтакте"
@@ -31,7 +44,7 @@ litportals:
       url: "https://links.litnet.com/go/e1dsu0gj"
     - label: "ЛитГород"
       url: "https://book-litgorod.litgorod.ru/go/hhtnh156"
-    - label: "WorldWords"
+    - label: "WoW"
       url: "https://worldwords.io/authors/kseniya-kotova"
   vasily:
     - label: "ЛитРес"
@@ -42,7 +55,7 @@ litportals:
       url: "https://links.litnet.com/go/c2a72qtd"
     - label: "ЛитГород"
       url: "https://book-litgorod.litgorod.ru/go/3qw0ebt4"
-    - label: "WorldWords"
+    - label: "WoW"
       url: "https://worldwords.io/authors/vizet"
 
 # ─── Контакты (ссылки «Связаться» в блоке Socials) ───────

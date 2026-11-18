@@ -22,30 +22,31 @@ const ui = loadDataFile<any>('src/data/ui.md', { aria: {} });
 const aria = ui.aria ?? {};
 ---
 
+<div class="covers-gallery">
 <Gallery count={covers.length} prefix="covers" trackClass="gap-6 overflow-y-clip pt-10 pb-4 px-4">
   <Fragment slot="mobile">
     {covers.map(cover => (
-          <div class="w-full flex-shrink-0 flex justify-center px-4">
-            <div class="flex flex-col" style="width: 200px;">
-              <a href={`/books/${cover.slug}`} data-gallery-media class="group block relative shadow-md" style="width: 200px;" draggable="false">
+          <div class="w-full min-w-0 flex-shrink-0 flex justify-center px-3">
+            <div class="flex flex-col w-full max-w-[320px] min-w-0">
+              <a href={`/books/${cover.slug}`} data-gallery-media class="mobile-cover-media group block relative shadow-md" draggable="false">
                 <Image
                   src={cover.src}
                   alt={cover.title}
-                  widths={[200, 400]}
-                  sizes="200px"
+                  widths={[320, 640]}
+                  sizes="(max-width: 375px) calc(100vw - 104px), 272px"
                   loading="lazy"
                   draggable="false"
-                  style="width: 200px; height: auto; display: block;"
+                  class="block w-full h-auto"
                 />
                 <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></div>
                 <SeriesBadge count={cover.extraBooks ?? 0} />
               </a>
-              <div class="pt-3">
-                <a href={`/books/${cover.slug}`} class="font-heading font-semibold text-sm leading-tight hover:text-dp-gold-ink transition-colors">
+              <div class="pt-4">
+                <a href={`/books/${cover.slug}`} class="font-heading font-semibold text-lg leading-snug hover:text-dp-gold-ink transition-colors">
                   {cover.title}
                 </a>
                 {cover.description && (
-                  <p class="text-dp-muted text-xs leading-relaxed mt-1.5 cursor-default">{cover.description}</p>
+                  <p class="text-dp-muted text-[15px] leading-relaxed mt-2 cursor-default">{cover.description}</p>
                 )}
                 {cover.links && cover.links.length > 0 && (
                   <div class="mt-2">
@@ -89,3 +90,16 @@ const aria = ui.aria ?? {};
       ))}
   </Fragment>
 </Gallery>
+</div>
+
+<style>
+  @media (max-width: 639px) {
+    .covers-gallery :global([id$="-track-mobile"]) { overflow: visible; }
+    .covers-gallery :global(button[id$="-mobile-prev"]) { left: -16px; }
+    .covers-gallery :global(button[id$="-mobile-next"]) { right: -16px; }
+    .mobile-cover-media {
+      width: calc(100% - 48px);
+      margin-inline: auto;
+    }
+  }
+</style>
