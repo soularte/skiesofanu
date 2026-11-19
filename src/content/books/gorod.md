@@ -6,7 +6,7 @@ seoDescription: "«Город без имени» Василия Зеленко�
 cover: "06 Город без имени.jpg"
 displayOrder: 25
 genres: ["Городское фэнтези", "Уютная проза", "Рассказы"]
-marketplace: true
+marketplace: false
 logline: "Маленький город, где живут большие тайны."
 shortDescription: "Сборник уютных рассказов в жанре городского фэнтези по одноимённому миру."
 mediumDescription: |
