@@ -81,14 +81,32 @@ async function pikabu() {
 }
 
 async function vk(token: string) {
-  const url = new URL('https://api.vk.ru/method/wall.get');
-  url.search = new URLSearchParams({ domain: 'skiesofanu', filter: 'owner', count: '15', v: '5.199', access_token: token }).toString();
-  const data = await (await fetchPublic(url)).json() as {
-    response?: { items: { owner_id: number; id: number; date: number; text: string }[] }
+  const body = new URLSearchParams({
+    domain: 'skiesofanu', filter: 'owner', count: '15', v: '5.199', access_token: token,
+  });
+  const response = await fetch('https://api.vk.ru/method/wall.get', {
+    method: 'POST', body, redirect: 'error', signal: AbortSignal.timeout(8000),
+  }).catch(error => {
+    const causeCode = error?.cause?.code;
+    const code = typeof causeCode === 'string' && /^(?:E[A-Z]+|UND_ERR_[A-Z_]+)$/.test(causeCode)
+      ? causeCode
+      : error?.name === 'TimeoutError' ? 'timeout' : 'request failed';
+    throw new Error(`VK connection: ${code}`);
+  });
+  if (!response.ok) throw new Error(`VK HTTP ${response.status}`);
+
+  const data = await response.json().catch(() => {
+    throw new Error('VK returned a non-JSON response');
+  }) as {
+    error?: { error_code?: number };
+    response?: { items: { owner_id: number; id: number; date: number; text: string }[] };
   };
-  if (!data.response) throw new Error('VK API rejected the request');
+  if (Number.isInteger(data.error?.error_code)) {
+    throw new Error(`VK wall.get error code ${data.error!.error_code}`);
+  }
+  if (!Array.isArray(data.response?.items)) throw new Error('VK returned no wall items');
   return data.response.items.map(post => social('Группа ВК',
-    `https://vk.com/wall${post.owner_id}_${post.id}`, new Date(post.date * 1000).toISOString(), post.text));
+    `https://vk.com/wall${post.owner_id}_${post.id}`, new Date(post.date * 1000).toISOString(), post.text ?? ''));
 }
 
 const updateSections = [
@@ -150,7 +168,10 @@ function siteUpdates(): Entry[] {
 async function collectFeed() {
   const snapshot = '.feed-cache/posts.json';
   const previous: Entry[] = await readFile(snapshot, 'utf8').then(JSON.parse).catch(() => []);
-  const token = process.env.VK_FEED_TOKEN;
+  const token = process.env.VK_FEED_TOKEN?.trim();
+  if (!token && process.env.CI && process.env.GITHUB_EVENT_NAME !== 'pull_request') {
+    console.warn('[feed] Группа ВК: VK_FEED_TOKEN is missing');
+  }
   const sources = [
     { name: 'Telegram', load: telegram },
     { name: 'Пикабу', load: pikabu },
@@ -161,8 +182,11 @@ async function collectFeed() {
       const items = (await load()).filter(item => Number.isFinite(Date.parse(item.date)));
       if (items.length) return items.sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 15);
       console.warn(`[feed] ${name}: no readable posts`);
-    } catch {
-      console.warn(`[feed] ${name}: source unavailable`);
+    } catch (error) {
+      const reason = error instanceof Error && /^VK (?:connection: |HTTP |wall\.get error code |returned )/.test(error.message)
+        ? error.message
+        : 'source unavailable';
+      console.warn(`[feed] ${name}: ${reason}`);
     }
     const cached = previous.filter(item => item.source === name);
     return cached.length || name !== 'Telegram' ? cached : telegramSnapshot;
