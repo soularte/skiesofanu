@@ -30,7 +30,7 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
     <ul class="space-y-4" aria-label="Публикации">
       {entries.map(entry => {
         const isSite = entry.source === 'Сайт';
-        const hasHeadline = isSite || entry.source === 'Пикабу';
+        const hasHeadline = isSite || entry.source === 'Пикабу' || entry.source === 'Дзен';
         return (
           <li class:list={[
             'rounded border-l-4 px-4 py-4 md:px-6 scroll-mt-20',

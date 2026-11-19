@@ -80,6 +80,27 @@ async function pikabu() {
   });
 }
 
+async function dzen() {
+  const endpoint = 'https://dzen.ru/api/v3/launcher/export?channel_name=skiesofanu.ru&tab=articles';
+  const { items } = await (await fetchPublic(endpoint)).json() as {
+    items?: {
+      publisher_id?: string;
+      share_link?: string;
+      publication_date?: string;
+      title?: string;
+      text?: string;
+    }[];
+  };
+  return (items ?? []).flatMap(post => {
+    if (post.publisher_id !== '61800b6bbc90d54cb8f056dd' ||
+        !post.share_link || !/^https:\/\/dzen\.ru\/a\/[\w-]+$/.test(post.share_link) ||
+        !post.publication_date || !post.title) return [];
+    const date = new Date(Number(post.publication_date) * 1000);
+    if (!Number.isFinite(date.getTime())) return [];
+    return [social('Дзен', post.share_link, date.toISOString(), post.text ?? '', post.title)];
+  });
+}
+
 async function vk(token: string) {
   const body = new URLSearchParams({
     domain: 'skiesofanu', filter: 'owner', count: '15', v: '5.199', access_token: token,
@@ -175,6 +196,7 @@ async function collectFeed() {
   const sources = [
     { name: 'Telegram', load: telegram },
     { name: 'Пикабу', load: pikabu },
+    { name: 'Дзен', load: dzen },
     ...(token ? [{ name: 'Группа ВК', load: () => vk(token) }] : []),
   ];
   const groups = await Promise.all(sources.map(async ({ name, load }) => {
@@ -198,7 +220,7 @@ async function collectFeed() {
   }
   return [...new Map([...external, ...siteUpdates()].map(entry => [entry.id, entry])).values()]
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-    .slice(0, 40);
+    .slice(0, 55);
 }
 
 let feed: ReturnType<typeof collectFeed> | undefined;
