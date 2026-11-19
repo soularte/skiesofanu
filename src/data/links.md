@@ -30,7 +30,7 @@ socials:
     url: "https://pikabu.ru/@ViZet85"
     icon: "pikabu"
   - label: "Яндекс Дзен"
-    url: "https://dzen.ru/skiesofanu"
+    url: "https://dzen.ru/skiesofanu.ru"
     icon: "dzen"
 
 # ─── Литпорталы (блок «Литпорталы» на / и /about) ────────
