@@ -8,8 +8,8 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      // Unfinished reading paths remain available for review, but not indexing.
-      filter: (page) => !new URL(page).pathname.startsWith('/paths/'),
+      // Keep review pages out of the sitemap.
+      filter: (page) => !/^\/(?:paths|feed)(?:\/|$)/.test(new URL(page).pathname),
     }),
   ],
 });

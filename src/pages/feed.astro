@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GoldLine from '../components/GoldLine.astro';
+import { feedTitle, feedDescription, feedTimeZone, getFeed } from '../lib/feed';
+
+const entries = await getFeed();
+const sourceStyles: Record<string, string> = {
+  'Сайт': 'border-amber-700 bg-amber-50 text-amber-900',
+  Telegram: 'border-sky-700 bg-sky-50 text-sky-900',
+  'Группа ВК': 'border-indigo-700 bg-indigo-50 text-indigo-900',
+  'Канал ВК': 'border-violet-700 bg-violet-50 text-violet-900',
+  'Пикабу': 'border-emerald-700 bg-emerald-50 text-emerald-900',
+  'Дзен': 'border-rose-700 bg-rose-50 text-rose-900',
+};
+const formatter = new Intl.DateTimeFormat('ru-RU', {
+  dateStyle: 'long',
+  timeZone: feedTimeZone,
+});
+---
+
+<BaseLayout title={feedTitle} description={feedDescription} noindex>
+  <section class="max-w-3xl mx-auto px-6 pt-8 pb-16">
+    <header class="text-center mb-10">
+      <h1 class="font-heading text-4xl md:text-5xl font-semibold">Лента «Небес Ану»</h1>
+      <GoldLine class="mx-auto mt-4" />
+      <p class="mt-4 text-dp-muted">{feedDescription}</p>
+      <a href="/rss.xml" type="application/rss+xml" class="inline-block mt-5 px-4 py-2 border border-dp-border rounded underline underline-offset-4">Подписаться по RSS</a>
+    </header>
+
+    <ul class="space-y-4" aria-label="Публикации">
+      {entries.map(entry => {
+        const isSite = entry.source === 'Сайт';
+        const hasHeadline = isSite || entry.source === 'Пикабу';
+        return (
+          <li class:list={[
+            'rounded border-l-4 px-4 py-4 md:px-6 scroll-mt-20',
+            sourceStyles[entry.source] ?? 'border-dp-border bg-white text-dp-text',
+          ]} id={isSite ? `update-${entry.id.split(':').at(-1)}` : undefined}>
+            <p class="text-xs tracking-wider uppercase mb-2">
+              {isSite ? 'Изменения на сайте' : entry.source}
+              <span aria-hidden="true"> · </span>
+              <time datetime={entry.date}>{formatter.format(new Date(entry.date))}</time>
+            </p>
+            {hasHeadline && (
+              <h2 class="font-heading text-xl font-semibold text-dp-text">
+                {isSite ? entry.title : (
+                  <a href={entry.url} class="hover:underline underline-offset-4">{entry.title}</a>
+                )}
+              </h2>
+            )}
+            {entry.description && (!hasHeadline || entry.title !== entry.description) && (
+              <p class="mt-2 whitespace-pre-line text-dp-text">{entry.description}</p>
+            )}
+            {!hasHeadline && (
+              <a href={entry.url} class="inline-block mt-2 text-sm underline underline-offset-4">
+                Открыть в {entry.source === 'Telegram' ? 'Telegram' : 'ВК'}
+              </a>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+    {!entries.length && <p class="text-center text-dp-muted">Публикации появятся здесь после обновления ленты.</p>}
+  </section>
+</BaseLayout>
